@@ -27,12 +27,12 @@ summary(elona_recapture$Peristome)
 
 
 hist(elona_recapture$Diameter)
-hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson
+hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
 
 
 table(elona_recapture$Site)
-table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas
+table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
 # On a des catégories (?, JUV? JUV/SUB, SUB/AD) où on a très peu d'individus, passer en NA ou dans une autre classe
 elona_recapture$Stage[which(elona_recapture$Stage=="?")] <- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV?")]<- "JUV"
@@ -42,6 +42,23 @@ elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
+
+
+table(elona_recapture$Activity)
+elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
+elona_recapture$Activity[which(elona_recapture$Activity=="ACT  ")]<- "ACT"
+elona_recapture$Activity[which(elona_recapture$Activity=="ACT   ")]<- "ACT"
+elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
+elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
+elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
+table(elona_recapture$Activity)
+
+table(elona_recapture$Type_Event)
+elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
+elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
+table(elona_recapture$Type_Event)
+
+
 
 # Relation potentielle entre X et Y
 boxplot(elona_recapture$Diameter~elona_recapture$Site)
