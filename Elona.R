@@ -9,45 +9,49 @@ elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",
 elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 
 # Importer la feuille 2 pour rajouter les sites
-# voir pour faire fusionner la jour le mois et l'année pour mettre une date et mettre ça directement dans R
-# ça sera peut-être plus informatif que juste le jour, le mois et l'année séparemment
-# ou au moins le jour et le mois pour avoir la période de l'année et on met un autre effet aléatoire pour l'année
+
+elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
+elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
+
 
 # valeur abérante dans Y
-boxplot(elona$Diameter)
-summary(elona$Diameter)
+boxplot(elona_recapture$Diameter)
+summary(elona_recapture$Diameter)
 # On a des valeurs très faibles mais ça me parait pas improbable
 
-boxplot(elona$Peristome) # Une valeur très très haute => on va l'enlever ça parait improbable
-summary(elona$Peristome)
-elona$Peristome[which.max(elona$Peristome)] <- NA
-boxplot(elona$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
-summary(elona$Peristome)
+boxplot(elona_recapture$Peristome) # Une valeur très très haute => on va l'enlever ça parait improbable
+summary(elona_recapture$Peristome)
+elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
+boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
+summary(elona_recapture$Peristome)
 
 
-hist(elona$Diameter)
-hist(elona$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson
-summary(elona$Peristome)
+hist(elona_recapture$Diameter)
+hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson
+summary(elona_recapture$Peristome)
 
 
-table(elona$Site)
-table(elona$Stage)# Nombre de modalités dans "Stage" va pas
+table(elona_recapture$Site)
+table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas
 # On a des catégories (?, JUV? JUV/SUB, SUB/AD) où on a très peu d'individus, passer en NA ou dans une autre classe
-elona$Stage[which(elona$Stage=="?")]<- NA
-elona$Stage[which(elona$Stage=="JUV?")]<- "JUV"
+elona_recapture$Stage[which(elona_recapture$Stage=="?")] <- NA
+elona_recapture$Stage[which(elona_recapture$Stage=="JUV?")]<- "JUV"
 # Pour les deux autres on peut les passer en NA ou alors trancher mais on a aucunes données pour trancher
-elona$Stage[which(elona$Stage=="JUV/SUB")]<- NA
-elona$Stage[which(elona$Stage=="SUB/AD")]<- NA
+elona_recapture$Stage[which(elona_recapture$Stage=="JUV/SUB")]<- NA
+elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
+elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
+elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
+table(elona_recapture$Stage)
 
 # Relation potentielle entre X et Y
-boxplot(elona$Diameter~elona$Site)
-boxplot(elona$Peristome~elona$Site)
+boxplot(elona_recapture$Diameter~elona_recapture$Site)
+boxplot(elona_recapture$Peristome~elona_recapture$Site)
 # Recent a l'air plus haut
 
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
-m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona)
+m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
 
 # Conditions de validité
 plot(m1) # résidus ok
