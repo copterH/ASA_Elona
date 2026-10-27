@@ -1,0 +1,1643 @@
+Site;Diameter;Peristome;Stage;Activity;Type_Event;Day;Month;Year;Event;ID_1erC
+Old_highdensity;23,4;11,1;AD;ACT;C;13;04;2021;E1;B1_Bleu
+Old_highdensity;23;10,5;AD;IMMO;R;27;04;2021;E2;B1_Bleu
+Old_highdensity;19,3;10;JUV;ACT ;C;14;04;2022;E9;B1_JauneJauneJauneVert
+Old_highdensity;19,5;10,3;JUV;ACT  ;R;12;05;2022;E11;B1_JauneJauneJauneVert
+Old_highdensity;19,4;10,7;JUV;ACT ;R;24;05;2022;E12;B1_JauneJauneJauneVert
+Old_highdensity;17,6;9,7;JUV;ACT;C;13;04;2021;E1;B10_BleuRoseBleu
+Old_highdensity;21;9,9;JUV;ACT;R;26;05;2021;E4;B10_BleuRoseBleu
+Old_highdensity;22;10;AD;ACT ;C;14;04;2022;E9;B10_JauneJauneBleuCRouge
+Old_highdensity;22,2;10,1;AD;ACT ;R;27;04;2022;E10;B10_JauneJauneBleuCRouge
+Old_highdensity;22,3;9,8;AD;ACT ;R;13;05;2022;E11;B10_JauneJauneBleuCRouge
+Old_highdensity;21,8;11;AD;ACT ;R;24;05;2022;E12;B10_JauneJauneBleuCRouge
+Old_highdensity;21,8;10,2;AD;ACT ;C;14;04;2022;E9;B11_JauneJauneVertVert
+Old_highdensity;20,5;10,5;AD;ACT;R;27;09;2022;E14;B11_JauneJauneVertVert
+Old_highdensity;16,9;8,9;JUV;ACT ;C;14;04;2022;E9;B12_JauneJauneVertRouge
+Old_highdensity;17;9,2;JUV;ACT ;R;27;04;2022;E10;B12_JauneJauneVertRouge
+Old_highdensity;17,1;9,2;JUV;IMMO;R;13;05;2022;E11;B12_JauneJauneVertRouge
+Old_highdensity;16,9;9,7;JUV;MORT;R_MORT;24;05;2022;E12;B12_JauneJauneVertRouge
+Old_highdensity;16,9;NA;JUV;ACT;C;17;04;2023;E17;B12_OrangeRoseFVertBleuF
+Old_highdensity;19,5;10,4;JUV;ACT;R;16;05;2023;E19;B12_OrangeRoseFVertBleuF
+Old_highdensity;8,1;3,9;JUV;ACT;C;13;04;2021;E1;B13_BleuRoseRose
+Old_highdensity;NA;NA;JUV;MORT;R_MORT;13;07;2021;E5;B13_BleuRoseRose
+Old_highdensity;20,7;10;SUB;ACT ;C;14;04;2022;E9;B14_JauneOrangeOrangeVert
+Old_highdensity;21;10;AD;NA;R;13;05;2022;E11;B14_JauneOrangeOrangeVert
+Old_highdensity;21;9,8;AD;ACT;C;13;04;2021;E1;B16_RoseRoseBleu
+Old_highdensity;21,2;9,8;AD;ACT;R;10;05;2021;E3;B16_RoseRoseBleu
+Old_highdensity;21,3;9,9;AD;ACT;R;26;05;2021;E4;B16_RoseRoseBleu
+Old_highdensity;15,7;8,5;JUV;ACT;C;17;04;2023;E17;B16_RougeJauneBleuFOrange
+Old_highdensity;15,5;8,7;JUV;ACT;R;16;05;2023;E19;B16_RougeJauneBleuFOrange
+Old_highdensity;16;8,9;JUV;IMMO;R;30;05;2023;E20;B16_RougeJauneBleuFOrange
+Old_highdensity;21,3;10,1;AD;ACT;C;13;04;2021;E1;B18_RoseBleuRose
+Old_highdensity;21,5;9,9;AD;IMMO;R;27;04;2021;E2;B18_RoseBleuRose
+Old_highdensity;21,5;9,9;AD;IMMO;R;10;05;2021;E3;B18_RoseBleuRose
+Old_highdensity;20,8;9,7;AD;ACT;R;25;05;2021;E4;B18_RoseBleuRose
+Old_highdensity;21,1;10,9;JUV;ACT ;C;14;04;2022;E9;B19_JauneOrangeRoseCRouge
+Old_highdensity;23,6;10,8;AD;ACT ;R;24;05;2022;E12;B19_JauneOrangeRoseCRouge
+Old_highdensity;14,2;8,3;JUV;ACT;C;13;04;2021;E1;B19_RoseBleuBleu
+Old_highdensity;16;9;JUV;ACT;R;26;05;2021;E4;B19_RoseBleuBleu
+Old_highdensity;20,2;9;JUV;ACT;R;13;07;2021;E5;B19_RoseBleuBleu
+Old_highdensity;20,7;10,5;SUB;ACT;C;17;04;2023;E17;B2_BleuFJauneRoseCViolet
+Old_highdensity;21;9,7;SUB;ACT;R;16;05;2023;E19;B2_BleuFJauneRoseCViolet
+Old_highdensity;22,3;10,1;AD;ACT;C;13;04;2021;E1;B20_BleuBleuBleuBleu
+Old_highdensity;22,6;10;AD;ACT;R;26;05;2021;E4;B20_BleuBleuBleuBleu
+Old_highdensity;22;9,2;AD;IMMO;R;10;05;2021;E3;B20_BleuBleuBleuBleu
+Old_highdensity;21,5;10;AD;ACT;R;13;07;2021;E5;B20_BleuBleuBleuBleu
+Old_highdensity;7,9;4,7;JUV;ACT;C;13;04;2021;E1;B21_NA
+Old_highdensity;12,5;NA;JUV;ACT  ;R;24;05;2022;E12;B21_NA
+Old_highdensity;11,3;6,3;JUV;ACT ;C;14;04;2022;E9;B21b_NA
+Old_highdensity;22,6;10;SUB;ACT ;R;27;04;2022;E10;B21b_NA
+Old_highdensity;22,2;10,5;AD;ACT ;R;24;05;2022;E12;B21b_NA
+Old_highdensity;22;10,4;AD;IMMO;R;12;07;2022;E13;B21b_NA
+Old_highdensity;16,8;8,1;SUB;ACT;C;13;04;2021;E1;B22_BleuBleuBleuRose
+Old_highdensity;20,4;9,7;SUB;ACT;R;26;05;2021;E4;B22_BleuBleuBleuRose
+Old_highdensity;18,2;9,5;JUV;ACT ;C;14;04;2022;E9;B22_JauneOrangeVertVert
+Old_highdensity;21,7;11;AD;ACT ;R;24;05;2022;E12;B22_JauneOrangeVertVert
+Old_highdensity;20;10,5;JUV;ACT ;C;14;04;2022;E9;B23_JauneOrangeVertRouge
+Old_highdensity;21,1;10;JUV;ACT ;R;27;04;2022;E10;B23_JauneOrangeVertRouge
+Old_highdensity;22,6;10,4;AD;ACT  ;R;24;05;2022;E12;B23_JauneOrangeVertRouge
+Old_highdensity;17,1;9,4;JUV;ACT;C;13;04;2021;E1;B24_BleuBleuRoseRose
+Old_highdensity;20,8;9,5;SUB;ACT;R;26;05;2021;E4;B24_BleuBleuRoseRose
+Old_highdensity;20,4;10,4;AD;ACT;R;21;02;2022;E8;B24_BleuBleuRoseRose
+Old_highdensity;22;11;AD;ACT ;C;14;04;2022;E9;B24_JauneOrangeRougeRouge
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;B24_JauneOrangeRougeRouge
+Old_highdensity;21;10,7;SUB;ACT;C;13;04;2021;E1;B26_BleuRoseBleuRose
+Old_highdensity;22,2;10,3;AD;ACT;R;15;12;2021;E7;B26_BleuRoseBleuRose
+Old_highdensity;16,9;9,2;JUV;ACT ;C;14;04;2022;E9;B26_JauneVioletVioletRouge
+Old_highdensity;17,5;9,1;JUV;ACT ;R;27;04;2022;E10;B26_JauneVioletVioletRouge
+Old_highdensity;23,1;10,2;AD;ACT;R;16;05;2023;E19;B26_JauneVioletVioletRouge
+Old_highdensity;22,1;10,1;AD;ACT;C;13;04;2021;E1;B28_BleuRoseRoseBleu
+Old_highdensity;22,3;10,4;AD;ACT;R;27;04;2021;E2;B28_BleuRoseRoseBleu
+Old_highdensity;17,7;9,6;JUV;ACT ;C;14;04;2022;E9;B28_JauneVioletRoseCRouge
+Old_highdensity;16,8;9,9;JUV;ACT  ;R;24;05;2022;E12;B28_JauneVioletRoseCRouge
+Old_highdensity;22;11;AD;ACT;R;27;09;2022;E14;B28_JauneVioletRoseCRouge
+Old_highdensity;21,7;10,8;AD;ACT;R;16;05;2023;E19;B28_JauneVioletRoseCRouge
+Old_highdensity;8,2;NA;JUV;ACT;C;17;04;2023;E17;B28_NA
+Old_highdensity;8,1;4,9;JUV;ACT;R;02;05;2023;E18;B28_NA
+Old_highdensity;21;10,3;SUB/AD;ACT ;C;14;04;2022;E9;B29_JauneVioletBleuCVert
+Old_highdensity;21,5;NA;NA;ACT;R;27;09;2022;E14;B29_JauneVioletBleuCVert
+Old_highdensity;7,2;4,2;JUV;ACT;C;13;04;2021;E1;B29_NA
+Old_highdensity;7,1;4;JUV;IMMO;R;27;04;2021;E2;B29_NA
+Old_highdensity;22,5;10,8;AD;ACT;C;13;04;2021;E1;B3_Rose
+Old_highdensity;22,3;10,1;AD;IMMO;R;27;04;2021;E2;B3_Rose
+Old_highdensity;22;10,3;AD;IMMO;R;10;05;2021;E3;B3_Rose
+Old_highdensity;22,1;10,2;AD;ACT;R;25;05;2021;E4;B3_Rose
+Old_highdensity;13;NA;JUV;ACT;C;17;04;2023;E17;B3_RoseFRoseCBleuCBleuF
+Old_highdensity;13,8;7,6;JUV;ACT;R;02;05;2023;E18;B3_RoseFRoseCBleuCBleuF
+Old_highdensity;13,5;7,6;JUV;ACT;R;16;05;2023;E19;B3_RoseFRoseCBleuCBleuF
+Old_highdensity;22;10,7;AD;ACT ;C;14;04;2022;E9;B30_JauneVioletBleuCRouge
+Old_highdensity;22;10,5;AD;ACT ;R;27;04;2022;E10;B30_JauneVioletBleuCRouge
+Old_highdensity;22,2;10,4;AD;IMMO;R;13;05;2022;E11;B30_JauneVioletBleuCRouge
+Old_highdensity;21,7;10,5;AD;IMMO;R;12;07;2022;E13;B30_JauneVioletBleuCRouge
+Old_highdensity;21,1;10,1;AD;ACT ;C;14;04;2022;E9;B31_JauneVioletVertVert
+Old_highdensity;21,7;10,3;AD;ACT ;R;27;04;2022;E10;B31_JauneVioletVertVert
+Old_highdensity;22,4;10,5;AD;ACT;R;27;09;2022;E14;B31_JauneVioletVertVert
+Old_highdensity;20,5;10,1;AD;ACT;R;30;05;2023;E20;B31_JauneVioletVertVert
+Old_highdensity;17,2;8,8;JUV;ACT ;C;14;04;2022;E9;B32_JauneVioletVertRouge
+Old_highdensity;17,5;9,5;JUV;ACT ;R;27;04;2022;E10;B32_JauneVioletVertRouge
+Old_highdensity;18,6;11,1;JUV;ACT  ;R;24;05;2022;E12;B32_JauneVioletVertRouge
+Old_highdensity;17,6;9,4;SUB;ACT;C;13;04;2021;E1;B32_RoseRoseBleuBleu
+Old_highdensity;18,4;10;SUB;ACT;R;25;05;2021;E4;B32_RoseRoseBleuBleu
+Old_highdensity;NA;NA;AD;MORT;R_MORT;14;04;2022;E9;B32_RoseRoseBleuBleu
+Old_highdensity;13,5;7,4;JUV;ACT;C;17;04;2023;E17;B32_RougeRoseCBleuFBlanc
+Old_highdensity;14,3;7,7;JUV;ACT;R;02;05;2023;E18;B32_RougeRoseCBleuFBlanc
+Old_highdensity;16,6;9,1;JUV;ACT ;C;14;04;2022;E9;B33_JauneVioletRougeRouge
+Old_highdensity;17,1;9,6;JUV;ACT ;R;24;05;2022;E12;B33_JauneVioletRougeRouge
+Old_highdensity;19,2;10,5;JUV;ACT ;C;14;04;2022;E9;B34_JauneRoseCRoseCVert
+Old_highdensity;20,3;10,2;JUV;ACT ;R;27;04;2022;E10;B34_JauneRoseCRoseCVert
+Old_highdensity;19,7;9,4;JUV;ACT;C;17;04;2023;E17;B34_RoseCVioletBleuFJaune
+Old_highdensity;20,8;10;AD;ACT;R;16;05;2023;E19;B34_RoseCVioletBleuFJaune
+Old_highdensity;21,1;10,5;AD;ACT;C;13;04;2021;E1;B34_RoseRoseBleuRose
+Old_highdensity;20,7;9,7;AD;ACT;R;26;05;2021;E4;B34_RoseRoseBleuRose
+Old_highdensity;20,4;9,7;AD;ACT;R;06;10;2021;E6;B34_RoseRoseBleuRose
+Old_highdensity;20,3;9,8;AD;ACT ;R;14;04;2022;E9;B34_RoseRoseBleuRose
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;B34_RoseRoseBleuRose
+Old_highdensity;21,3;9,7;AD;ACT ;C;14;04;2022;E9;B35_JauneRoseCRoseCRouge
+Old_highdensity;21;10,1;AD;ACT ;R;24;05;2022;E12;B35_JauneRoseCRoseCRouge
+Old_highdensity;20,2;11,2;AD;ACT;C;13;04;2021;E1;B35_RoseBleuBleuRose
+Old_highdensity;20,1;10,5;SUB;ACT;R;13;07;2021;E5;B35_RoseBleuBleuRose
+Old_highdensity;14,9;7,9;JUV;ACT;C;17;04;2023;E17;B36_OrangeRoseFJauneBleuF
+Old_highdensity;15,1;NA;JUV;ACT;R;16;05;2023;E19;B36_OrangeRoseFJauneBleuF
+Old_highdensity;20,9;11,8;AD;ACT;C;13;04;2021;E1;B36_RoseRoseRoseBleu
+Old_highdensity;22,5;10,9;AD;ACT;R;27;04;2021;E2;B36_RoseRoseRoseBleu
+Old_highdensity;22,5;10,7;AD;ACT;R;25;05;2021;E4;B36_RoseRoseRoseBleu
+Old_highdensity;17,9;9,1;SUB;ACT;C;13;04;2021;E1;B37_Blanc
+Old_highdensity;20,2;10,4;SUB;ACT;R;26;05;2021;E4;B37_Blanc
+Old_highdensity;20,7;10;AD;ACT;R;15;12;2021;E7;B37_Blanc
+Old_highdensity;20,7;9,9;AD;ACT;R;21;02;2022;E8;B37_Blanc
+Old_highdensity;10,9;5,6;JUV;ACT;C;13;04;2021;E1;B38_BlancBleu
+Old_highdensity;11;6,4;JUV;ACT;R;27;04;2021;E2;B38_BlancBleu
+Old_highdensity;14;7,8;JUV;ACT ;C;14;04;2022;E9;B38_JauneRoseCVertVert
+Old_highdensity;13,8;7,7;JUV;ACT ;R;25;05;2022;E12;B38_JauneRoseCVertVert
+Old_highdensity;12,3;7,1;JUV;ACT;C;13;04;2021;E1;B39_BlancRose
+Old_highdensity;14,2;7,1;JUV;ACT;R;26;05;2021;E4;B39_BlancRose
+Old_highdensity;20,9;11;JUV;IMMO;R;24;05;2022;E12;B39_BlancRose
+Old_highdensity;21;9,8;AD;IMMO;R;12;07;2022;E13;B39_BlancRose
+Old_highdensity;19,7;9,4;SUB;ACT ;C;14;04;2022;E9;B39_JauneRoseCVertRouge
+Old_highdensity;20,2;9,9;JUV;ACT ;R;25;05;2022;E12;B39_JauneRoseCVertRouge
+Old_highdensity;14,7;8,4;JUV;ACT;C;13;04;2021;E1;B4_BleuBleu
+Old_highdensity;16;8,1;JUV;ACT;R;26;05;2021;E4;B4_BleuBleu
+Old_highdensity;NA;NA;AD;ACT;C;17;04;2023;E17;B4_VioletJauneRoseFBlanc
+Old_highdensity;20,3;11,1;AD;MORT;R_MORT;02;05;2023;E18;B4_VioletJauneRoseFBlanc
+Old_highdensity;22,1;10,4;AD;ACT;C;13;04;2021;E1;B40_BlancBlanc
+Old_highdensity;24,2;10,7;AD;ACT;R;26;05;2021;E4;B40_BlancBlanc
+Old_highdensity;20,5;9,8;AD;ACT ;C;14;04;2022;E9;B40_JauneRoseCRougeRouge
+Old_highdensity;20,5;10,2;AD;IMM;R;30;11;2022;E15;B40_JauneRoseCRougeRouge
+Old_highdensity;7,4;3,2;JUV;ACT;C;13;04;2021;E1;B41_NA
+Old_highdensity;11,2;6,3;JUV;ACT ;C;14;04;2022;E9;B41_NA
+Old_highdensity;11,6;6;JUV;ACT;C;13;04;2021;E1;B42_BleuBlanc
+Old_highdensity;13;7,5;JUV;ACT;R;06;10;2021;E6;B42_BleuBlanc
+Old_highdensity;13,6;7,9;JUV;ACT;R;21;02;2022;E8;B42_BleuBlanc
+Old_highdensity;15;8,3;JUV;ACT  ;R;24;05;2022;E12;B42_BleuBlanc
+Old_highdensity;18,1;9,4;JUV;ACT ;C;14;04;2022;E9;B42_JauneBleuCBleuCRouge
+Old_highdensity;18,7;9,7;SUB;ACT;R;25;05;2022;E12;B42_JauneBleuCBleuCRouge
+Old_highdensity;21,7;10,3;AD;ACT;R;27;09;2022;E14;B42_JauneBleuCBleuCRouge
+Old_highdensity;22;10,5;AD;ACT;R;17;04;2023;E17;B42_JauneBleuCBleuCRouge
+Old_highdensity;21,8;10,9;AD;ACT;R;02;05;2023;E18;B42_JauneBleuCBleuCRouge
+Old_highdensity;15;8,3;JUV;ACT ;C;14;04;2022;E9;B43_JauneBleuCVertVert
+Old_highdensity;19;9,9;JUV;ACT ;R;25;05;2022;E12;B43_JauneBleuCVertVert
+Old_highdensity;18;9,5;JUV;ACT ;C;14;04;2022;E9;B44_JauneBleuCVertRouge
+Old_highdensity;20,4;10;JUV;ACT ;R;25;05;2022;E12;B44_JauneBleuCVertRouge
+Old_highdensity;11,4;6,5;JUV;ACT;C;13;04;2021;E1;B44_RoseBlanc
+Old_highdensity;19,2;9,1;SUB;ACT ;R;14;04;2022;E9;B44_RoseBlanc
+Old_highdensity;19,3;9,1;SUB;ACT ;R;27;04;2022;E10;B44_RoseBlanc
+Old_highdensity;12,4;6,9;JUV;ACT;C;13;04;2021;E1;B45_BlancBlancBlanc
+Old_highdensity;18,8;9,2;SUB;ACT;R;27;09;2022;E14;B45_BlancBlancBlanc
+Old_highdensity;19,1;9,5;AD;ACT;R;17;04;2023;E17;B45_BlancBlancBlanc
+Old_highdensity;19,1;9,2;AD;ACT;R;02;05;2023;E18;B45_BlancBlancBlanc
+Old_highdensity;16,9;8,2;JUV;ACT ;C;14;04;2022;E9;B45_JauneBleuCRougeRouge
+Old_highdensity;18;10;JUV;ACT  ;R;24;05;2022;E12;B45_JauneBleuCRougeRouge
+Old_highdensity;15,1;8,1;JUV;IMMO;C;17;04;2023;E17;B45_RoseCJauneBleuFBlanc
+Old_highdensity;14,8;7,9;JUV;ACT;R;02;05;2023;E18;B45_RoseCJauneBleuFBlanc
+Old_highdensity;17;9;JUV;ACT ;C;14;04;2022;E9;B46_JauneVertVertVert
+Old_highdensity;17,9;9,3;JUV;ACT ;R;25;05;2022;E12;B46_JauneVertVertVert
+Old_highdensity;20,2;10,2;AD;IMMO;R;17;04;2023;E17;B46_JauneVertVertVert
+Old_highdensity;20,1;10,3;AD;ACT;R;02;05;2023;E18;B46_JauneVertVertVert
+Old_highdensity;21,5;10,3;AD;ACT;C;17;04;2023;E17;B46_OrangeBleuFBleuFJaune
+Old_highdensity;20,8;10,3;AD;ACT;R;16;05;2023;E19;B46_OrangeBleuFBleuFJaune
+Old_highdensity;16,8;8,8;JUV;ACT;C;13;04;2021;E1;B47_BlancBleuBlanc
+Old_highdensity;19;9,4;AD;ACT ;R;24;05;2022;E12;B47_BlancBleuBlanc
+Old_highdensity;19,1;10;JUV;ACT ;C;14;04;2022;E9;B49_JauneRougeRougeRouge
+Old_highdensity;21,6;10,5;AD;ACT;R;30;11;2022;E15;B49_JauneRougeRougeRouge
+Old_highdensity;10,6;6,4;JUV;ACT;C;13;04;2021;E1;B5_RoseRose
+Old_highdensity;8,5;4,6;JUV;ACT;R;26;05;2021;E4;B5_RoseRose
+Old_highdensity;10,3;5,9;JUV;ACT ;C;14;04;2022;E9;B50_NA
+Old_highdensity;11,8;6,5;JUV;IMMO;R;12;05;2022;E11;B50_NA
+Old_highdensity;22,2;10,4;AD;ACT;C;13;04;2021;E1;B51_BlancBlancRoseF
+Old_highdensity;22;10,5;AD;ACT;R;13;07;2021;E5;B51_BlancBlancRoseF
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;B51_BlancBlancRoseF
+Old_highdensity;9;5,1;JUV;ACT;C;13;04;2021;E1;B51_NA
+Old_highdensity;8,2;4,9;JUV;ACT;R;10;05;2021;E3;B51_NA
+Old_highdensity;21;10;AD;ACT ;C;14;04;2022;E9;B51_OrangeOrangeOrangeRouge
+Old_highdensity;21;9,5;AD;ACT ;R;25;05;2022;E12;B51_OrangeOrangeOrangeRouge
+Old_highdensity;NA;10,5;AD;MORT;R_MORT;02;05;2023;E18;B51_OrangeOrangeOrangeRouge
+Old_highdensity;20,2;9,8;AD;IMMO;C;17;04;2023;E17;B52_RoseFRoseFRougeVert
+Old_highdensity;21,5;9,7;AD;ACT;R;16;05;2023;E19;B52_RoseFRoseFRougeVert
+Old_highdensity;14;7,8;JUV;ACT;C;13;04;2021;E1;B53_BlancBlancBleu
+Old_highdensity;15,4;8,4;JUV;ACT;R;26;05;2021;E4;B53_BlancBlancBleu
+Old_highdensity;20,3;10;AD;ACT;C;13;04;2021;E1;B54_RoseBlancBlanc
+Old_highdensity;20,3;10,2;AD;MORT;R_MORT;13;07;2021;E5;B54_RoseBlancBlanc
+Old_highdensity;16,2;8,5;JUV;ACT;C;13;04;2021;E1;B55_BleuBlancBlanc
+Old_highdensity;18,4;9,5;JUV;ACT;R;26;05;2021;E4;B55_BleuBlancBlanc
+Old_highdensity;NA;NA;AD;ACT;R;13;07;2021;E5;B55_BleuBlancBlanc
+Old_highdensity;13,2;7,6;JUV;ACT ;C;14;04;2022;E9;B56_OrangeOrangeBleuCVert
+Old_highdensity;13,5;7,4;JUV;IMMO;R;12;05;2022;E11;B56_OrangeOrangeBleuCVert
+Old_highdensity;22,5;10,5;AD;ACT;C;13;04;2021;E1;B56_RoseRoseBlanc
+Old_highdensity;23,1;10,4;AD;IMMO;R;27;04;2021;E2;B56_RoseRoseBlanc
+Old_highdensity;20,6;10,2;SUB;ACT;R;06;10;2021;E6;B56_RoseRoseBlanc
+Old_highdensity;20,7;10,3;SUB;ACT;R;15;12;2021;E7;B56_RoseRoseBlanc
+Old_highdensity;21,1;10,4;JUV;ACT ;R;27;04;2022;E10;B56_RoseRoseBlanc
+Old_highdensity;9,8;6,5;JUV;ACT;C;13;04;2021;E1;B57_NA
+Old_highdensity;10,4;5,8;JUV;ACT;R;25;05;2021;E4;B57_NA
+Old_highdensity;14,9;8,4;JUV;ACT ;R;15;04;2022;E9;B57_NA
+Old_highdensity;NA;NA;JUV;MORT;R_MORT;24;05;2022;E12;B57_NA
+Old_highdensity;8,8;5;JUV;ACT;C;13;04;2021;E1;B58_NA
+Old_highdensity;13,9;8;JUV;ACT;R;21;02;2022;E8;B58_NA
+Old_highdensity;NA;NA;JUV;MORT;R_MORT;27;09;2022;E14;B58_NA
+Old_highdensity;15,2;8;JUV;IMMO;C;17;04;2023;E17;B59_VertBleuCVioletRoseF
+Old_highdensity;14,8;8,2;JUV;ACT;R;16;05;2023;E19;B59_VertBleuCVioletRoseF
+Old_highdensity;15,2;8,4;JUV;ACT;R;30;05;2023;E20;B59_VertBleuCVioletRoseF
+Old_highdensity;21,4;10,6;AD;ACT;C;13;04;2021;E1;B6_BleuFRoseF
+Old_highdensity;21,4;10,4;AD;ACT;R;25;05;2021;E4;B6_BleuFRoseF
+Old_highdensity;20,7;10;AD;ACT;R;13;07;2021;E5;B6_BleuFRoseF
+Old_highdensity;21,5;9,5;AD;ACT ;C;14;04;2022;E9;B6_JauneJauneVioletRouge
+Old_highdensity;21,3;9,9;AD;ACT ;R;27;04;2022;E10;B6_JauneJauneVioletRouge
+Old_highdensity;21,5;9,8;AD;IMMO;R;12;05;2022;E11;B6_JauneJauneVioletRouge
+Old_highdensity;21,4;10,2;AD;ACT ;R;24;05;2022;E12;B6_JauneJauneVioletRouge
+Old_highdensity;21,4;19,8;AD;ACT;R;27;09;2022;E14;B6_JauneJauneVioletRouge
+Old_highdensity;20,9;10,2;AD;ACT ;C;14;04;2022;E9;B60_OrangeOrangeRougeRouge
+Old_highdensity;21,3;9,5;AD;ACT ;R;27;04;2022;E10;B60_OrangeOrangeRougeRouge
+Old_highdensity;9,1;4,9;JUV;ACT;C;13;04;2021;E1;B60_RoseBlancRose
+Old_highdensity;13,2;7,4;JUV;ACT;R;15;12;2021;E7;B60_RoseBlancRose
+Old_highdensity;15,5;8,6;JUV;ACT;C;13;04;2021;E1;B61_BleuBlancBleu
+Old_highdensity;16,9;8,2;JUV;ACT;R;25;05;2021;E4;B61_BleuBlancBleu
+Old_highdensity;20,6;10;AD;ACT;R;06;10;2021;E6;B61_BleuBlancBleu
+Old_highdensity;10,5;6;JUV;ACT;C;13;04;2021;E1;B62_BlancBleuRose
+Old_highdensity;12;6,6;JUV;ACT;R;10;05;2021;E3;B62_BlancBleuRose
+Old_highdensity;17,4;9,6;JUV;ACT ;C;14;04;2022;E9;B65_OrangeVioletBleuCVert
+Old_highdensity;19,5;10,2;JUV;ACT ;R;24;05;2022;E12;B65_OrangeVioletBleuCVert
+Old_highdensity;15,1;8,7;JUV;ACT;C;02;05;2023;E18;B65_RoseCVertVertRouge
+Old_highdensity;15,5;8,4;JUV;ACT;R;16;05;2023;E19;B65_RoseCVertVertRouge
+Old_highdensity;21,4;10,9;AD;ACT ;C;14;04;2022;E9;B66_OrangeVioletBleuCRouge
+Old_highdensity;21,3;9,8;AD;IMMO;R;13;05;2022;E11;B66_OrangeVioletBleuCRouge
+Old_highdensity;21;9,8;AD;IMMO;R;24;05;2022;E12;B66_OrangeVioletBleuCRouge
+Old_highdensity;20,7;9,9;AD;ACT;C;13;04;2021;E1;B67_BleuBleuBleuBlanc
+Old_highdensity;20,5;9,8;AD;ACT;R;25;05;2021;E4;B67_BleuBleuBleuBlanc
+Old_highdensity;22,6;10,6;AD;ACT;C;13;04;2021;E1;B68_BleuBleuRoseBlanc
+Old_highdensity;22,6;10,6;AD;ACT;R;25;05;2021;E4;B68_BleuBleuRoseBlanc
+Old_highdensity;12,2;7,2;JUV;ACT;C;13;04;2021;E1;B69_BleuBleuBlancBleu
+Old_highdensity;12,8;7,2;JUV;ACT;R;25;05;2021;E4;B69_BleuBleuBlancBleu
+Old_highdensity;13;7;JUV;ACT ;C;14;04;2022;E9;B69_OrangeVioletRouge
+Old_highdensity;19,2;9,8;JUV;ACT;R;17;04;2023;E17;B69_OrangeVioletRouge
+Old_highdensity;20,3;9,6;AD;ACT ;C;14;04;2022;E9;B7_JauneJauneRoseCVert
+Old_highdensity;20,4;9,8;AD;IMMO;R;12;07;2022;E13;B7_JauneJauneRoseCVert
+Old_highdensity;19,6;9,7;AD;IMMO;C;14;04;2022;E9;B70_OrangeRoseCRoseCVert
+Old_highdensity;19,5;9,7;AD;IMMO;R;12;07;2022;E13;B70_OrangeRoseCRoseCVert
+Old_highdensity;16,2;9,2;JUV;ACT;C;02;05;2023;E18;B71_BlancRoseFBleuCViolet
+Old_highdensity;16,2;901;SUB;ACT;R;16;05;2023;E19;B71_BlancRoseFBleuCViolet
+Old_highdensity;14;7,9;JUV;ACT;C;13;04;2021;E1;B71_BleuBleuBlancBlanc
+Old_highdensity;17,1;9,3;JUV;ACT;R;06;10;2021;E6;B71_BleuBleuBlancBlanc
+Old_highdensity;12;7;JUV;ACT ;R;15;04;2022;E9;B71_BleuBleuBlancBlanc
+Old_highdensity;20,2;9,7;AD;ACT;C;13;04;2021;E1;B72_BleuRoseBleuBlanc
+Old_highdensity;21,1;10,1;SUB;ACT;R;25;05;2021;E4;B72_BleuRoseBleuBlanc
+Old_highdensity;13;7,6;JUV;IMMO;C;14;04;2022;E9;B72_OrangeRoseCRoseCVert
+Old_highdensity;12,9;NA;JUV?;ACT ;R;27;04;2022;E10;B72_OrangeRoseCRoseCVert
+Old_highdensity;14,8;8,3;JUV;ACT;R;12;07;2022;E13;B72_OrangeRoseCRoseCVert
+Old_highdensity;9;5,1;JUV;ACT;C;13;04;2021;E1;B73_BleuBlanc
+Old_highdensity;8,3;5,8;JUV;IMMO;R;10;05;2021;E3;B73_BleuBlanc
+Old_highdensity;12,8;7,7;JUV;ACT;R;15;12;2021;E7;B73_BleuBlanc
+Old_highdensity;20,5;9,8;AD;ACT;C;02;05;2023;E18;B73_BleuFVertBlancViolet
+Old_highdensity;20,6;9,6;AD;ACT;R;16;05;2023;E19;B73_BleuFVertBlancViolet
+Old_highdensity;20,8;10,4;JUV;ACT;C;02;05;2023;E18;B74_BleuCJauneBleuFOrange
+Old_highdensity;NA;NA;JUV;MORT;R;30;05;2023;E20;B74_BleuCJauneBleuFOrange
+Old_highdensity;20,8;10,1;AD;ACT;C;13;04;2021;E1;B74_BleuRoseRoseBlanc
+Old_highdensity;NA;NA;NA;MORT;R_MORT;25;05;2021;E4;B74_BleuRoseRoseBlanc
+Old_highdensity;10;5,5;JUV;ACT ;C;14;04;2022;E9;B74_NA
+Old_highdensity;10,5;6,1;JUV;ACT ;R;13;05;2022;E11;B74_NA
+Old_highdensity;16,2;9;JUV;ACT ;C;14;04;2022;E9;B75_OrangeRoseCVertRouge
+Old_highdensity;21,1;10;AD;ACT;R;27;09;2022;E14;B75_OrangeRoseCVertRouge
+Old_highdensity;21,5;9,9;AD;ACT;C;13;04;2021;E1;B76_BleuRoseBlancRose
+Old_highdensity;21,4;10,1;SUB;ACT;R;25;05;2021;E4;B76_BleuRoseBlancRose
+Old_highdensity;21;10,5;AD;ACT;R;13;07;2021;E5;B76_BleuRoseBlancRose
+Old_highdensity;14;8,3;JUV;ACT;C;13;04;2021;E1;B77_BleuFRoseFBlancBlanc
+Old_highdensity;20,1;11,2;SUB;ACT;R;10;05;2021;E3;B77_BleuFRoseFBlancBlanc
+Old_highdensity;15,5;7;JUV;ACT;R;13;07;2021;E5;B77_BleuFRoseFBlancBlanc
+Old_highdensity;21,7;10,6;AD;ACT ;C;14;04;2022;E9;B77_OrangeBleuCBleuCVert
+Old_highdensity;21,8;10,2;AD;ACT ;R;27;04;2022;E10;B77_OrangeBleuCBleuCVert
+Old_highdensity;NA;NA;NA;MORT;R_MORT;27;09;2022;E14;B77_OrangeBleuCBleuCVert
+Old_highdensity;20,8;9,2;AD;ACT;C;13;04;2021;E1;B78_BleuBlancBleuBleu
+Old_highdensity;NA;NA;NA;MORT;R_MORT;25;05;2021;E4;B78_BleuBlancBleuBleu
+Old_highdensity;17;9,2;JUV;ACT ;C;14;04;2022;E9;B78_OrangeBleuCBleuCRouge
+Old_highdensity;17,7;10,5;JUV;ACT  ;R;24;05;2022;E12;B78_OrangeBleuCBleuCRouge
+Old_highdensity;17,5;9,3;JUV;ACT ;C;14;04;2022;E9;B79_OrangeBleuCVertVert
+Old_highdensity;20;10,8;JUV;ACT ;R;24;05;2022;E12;B79_OrangeBleuCVertVert
+Old_highdensity;21,9;10,4;AD;ACT;R;12;07;2022;E13;B79_OrangeBleuCVertVert
+Old_highdensity;22,3;10,2;AD;ACT;R;27;09;2022;E14;B79_OrangeBleuCVertVert
+Old_highdensity;22,3;9,9;AD;IMMO;R;14;02;2023;E16;B79_OrangeBleuCVertVert
+Old_highdensity;22,9;10,9;AD;ACT;C;13;04;2021;E1;B8_BleuBleuBleu
+Old_highdensity;NA;NA;AD;MORT;R_MORT;10;05;2021;E3;B8_BleuBleuBleu
+Old_highdensity;21,1;9,6;AD;ACT ;C;14;04;2022;E9;B8_JauneJauneRoseCRouge
+Old_highdensity;20,8;10;AD;ACT ;R;24;05;2022;E12;B8_JauneJauneRoseCRouge
+Old_highdensity;17,3;8,8;JUV;ACT;C;17;04;2023;E17;B8_RoseCRoseFRoseFBleuF
+Old_highdensity;19,2;10,1;JUV;ACT;R;16;05;2023;E19;B8_RoseCRoseFRoseFBleuF
+Old_highdensity;21,1;9,4;AD;ACT;C;13;04;2021;E1;B80_BleuFBlancBleuFBlanc
+Old_highdensity;21,2;9,8;AD;IMMO;R;27;04;2021;E2;B80_BleuFBlancBleuFBlanc
+Old_highdensity;NA;NA;AD;MORT;R_MORT;06;10;2021;E6;B80_BleuFBlancBleuFBlanc
+Old_highdensity;16,9;9;JUV;ACT ;C;14;04;2022;E9;B80_OrangeBleuCVertRouge
+Old_highdensity;21,4;10,4;SUB;ACT;R;27;09;2022;E14;B80_OrangeBleuCVertRouge
+Old_highdensity;21,4;10,8;AD;ACT;R;30;11;2022;E15;B80_OrangeBleuCVertRouge
+Old_highdensity;19,1;10;JUV;ACT ;C;14;04;2022;E9;B81_OrangeBleuCRougeRouge
+Old_highdensity;21,3;10;AD;ACT;R;17;04;2023;E17;B81_OrangeBleuCRougeRouge
+Old_highdensity;16,9;9;JUV;ACT ;C;14;04;2022;E9;B82_OrangeVertVertVert
+Old_highdensity;NA;NA;NA;MORT;R_MORT;14;02;2023;E16;B82_OrangeVertVertVert
+Old_highdensity;23;10,5;AD;ACT;C;13;04;2021;E1;B83_BleuBlancRoseBlanc
+Old_highdensity;23;10,4;AD;IMMO;R;27;04;2021;E2;B83_BleuBlancRoseBlanc
+Old_highdensity;18,6;9,4;AD;ACT;C;02;05;2023;E18;B83_BleuCRoseCVioletRouge
+Old_highdensity;18,9;9;AD;ACT;R;16;05;2023;E19;B83_BleuCRoseCVioletRouge
+Old_highdensity;21,4;10,5;AD;ACT ;C;14;04;2022;E9;B84_OrangeVertRougeRouge
+Old_highdensity;21,4;10;AD;ACT ;R;27;04;2022;E10;B84_OrangeVertRougeRouge
+Old_highdensity;21,5;11,6;AD;ACT;C;16;05;2023;E19;B85_VioletOrangeBlancRoseC
+Old_highdensity;21;10,4;AD;ACT;R;30;05;2023;E20;B85_VioletOrangeBlancRoseC
+Old_highdensity;14;8,3;JUV;ACT;C;13;04;2021;E1;B86_BleuFBlancBlancBlanc
+Old_highdensity;15,6;8,6;JUV;ACT;R;25;05;2021;E4;B86_BleuFBlancBlancBlanc
+Old_highdensity;22,3;11,5;AD;ACT;C;16;05;2023;E19;B86_VioletVertVertRoseC
+Old_highdensity;21,5;10,1;AD;ACT;R;30;05;2023;E20;B86_VioletVertVertRoseC
+Old_highdensity;18,5;9,4;JUV;ACT ;C;14;04;2022;E9;B86_VioletVioletVioletVert
+Old_highdensity;18,9;9,6;JUV;ACT ;R;13;05;2022;E11;B86_VioletVioletVioletVert
+Old_highdensity;21,6;10,6;AD;ACT;R;27;09;2022;E14;B86_VioletVioletVioletVert
+Old_highdensity;NA;NA;AD;MORT;R_MORT;17;04;2023;E17;B86_VioletVioletVioletVert
+Old_highdensity;9,5;5,6;JUV;IMMO;C;13;04;2021;E1;B87_NA
+Old_highdensity;9,6;5,7;JUV;ACT;R;27;04;2021;E2;B87_NA
+Old_highdensity;14;NA;JUV?;ACT ;C;14;04;2022;E9;B87_VioletVioletRougeRouge
+Old_highdensity;13,4;7,7;JUV;IMMO;R;12;07;2022;E13;B87_VioletVioletRougeRouge
+Old_highdensity;16;8,5;JUV;ACT ;C;14;04;2022;E9;B89_VioletVioletRoseCRouge
+Old_highdensity;16,7;8,8;JUV;ACT ;R;27;04;2022;E10;B89_VioletVioletRoseCRouge
+Old_highdensity;16,9;10;JUV;ACT  ;R;24;05;2022;E12;B89_VioletVioletRoseCRouge
+Old_highdensity;19,5;9,5;AD;ACT;R;30;11;2022;E15;B89_VioletVioletRoseCRouge
+Old_highdensity;19,5;9,4;AD;ACT;R;16;05;2023;E19;B89_VioletVioletRoseCRouge
+Old_highdensity;22,5;10,9;AD;ACT;C;13;04;2021;E1;B9_BleuBleuRose
+Old_highdensity;22,4;10,1;AD;IMMO;R;27;04;2021;E2;B9_BleuBleuRose
+Old_highdensity;14,2;7,9;JUV;ACT ;C;14;04;2022;E9;B9_JauneJauneBleuCVert
+Old_highdensity;NA;NA;NA;MORT;R_MORT;27;09;2022;E14;B9_JauneJauneBleuCVert
+Old_highdensity;19,6;10,1;AD;ACT;C;16;05;2023;E19;B90_RoseFOrangeVioletRouge
+Old_highdensity;19,7;9,4;AD;ACT;R;30;05;2023;E20;B90_RoseFOrangeVioletRouge
+Old_highdensity;17,2;9,5;JUV;ACT ;C;14;04;2022;E9;B90_VioletVioletBleuCVert
+Old_highdensity;17,8;9,2;SUB;ACT ;R;13;05;2022;E11;B90_VioletVioletBleuCVert
+Old_highdensity;17,2;9,7;JUV;ACT ;R;24;05;2022;E12;B90_VioletVioletBleuCVert
+Old_highdensity;19,8;10;JUV;ACT;R;12;07;2022;E13;B90_VioletVioletBleuCVert
+Old_highdensity;20,3;10,7;SUB;ACT;R;30;11;2022;E15;B90_VioletVioletBleuCVert
+Old_highdensity;23,6;11,5;AD;ACT;C;13;04;2021;E1;B91_RoseBleuBleuRose
+Old_highdensity;NA;NA;AD;MORT;R_MORT;27;04;2021;E2;B91_RoseBleuBleuRose
+Old_highdensity;21,1;10,7;AD;ACT ;C;14;04;2022;E9;B91_VioletVioletBleuCRouge
+Old_highdensity;21,5;10,1;AD;ACT ;R;27;04;2022;E10;B91_VioletVioletBleuCRouge
+Old_highdensity;21,2;10,3;AD;IMMO;R;13;05;2022;E11;B91_VioletVioletBleuCRouge
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;B91_VioletVioletBleuCRouge
+Old_highdensity;14,9;8,3;JUV;ACT ;C;14;04;2022;E9;B92_VioletVioletVertVert
+Old_highdensity;15,6;8,1;JUV;ACT ;R;13;05;2022;E11;B92_VioletVioletVertVert
+Old_highdensity;16,2;10,1;JUV;ACT  ;R;24;05;2022;E12;B92_VioletVioletVertVert
+Old_highdensity;17,3;9,2;JUV;ACT ;C;15;04;2022;E9;B93_VioletVioletVertRouge
+Old_highdensity;17,2;9,8;JUV;ACT  ;R;24;05;2022;E12;B93_VioletVioletVertRouge
+Old_highdensity;21;9,5;AD;ACT;R;27;09;2022;E14;B93_VioletVioletVertRouge
+Old_highdensity;20,5;9,7;AD;ACT ;C;15;04;2022;E9;B94_VioletVioletRougeRouge
+Old_highdensity;20,7;9,6;AD;ACT ;R;27;04;2022;E10;B94_VioletVioletRougeRouge
+Old_highdensity;13,5;7,3;JUV;ACT ;C;15;04;2022;E9;B95_VioletRoseCRoseCVert
+Old_highdensity;NA;NA;SUB;MORT;R_MORT;17;04;2023;E17;B95_VioletRoseCRoseCVert
+Old_highdensity;20,6;10,1;AD;ACT;C;13;04;2021;E1;B96_RoseBleuRoseBleu
+Old_highdensity;21,1;10;AD;ACT;R;25;05;2021;E4;B96_RoseBleuRoseBleu
+Old_highdensity;17,4;9,1;JUV;ACT ;C;15;04;2022;E9;B96_VioletRoseCRoseCVert
+Old_highdensity;17,5;9;JUV;ACT ;R;13;05;2022;E11;B96_VioletRoseCRoseCVert
+Old_highdensity;12,3;7;JUV;ACT ;C;15;04;2022;E9;B99_VioletRoseCVertVert
+Old_highdensity;13,5;7,5;JUV;ACT ;R;13;05;2022;E11;B99_VioletRoseCVertVert
+Old_highdensity;20,3;10;SUB;ACT;R;17;04;2023;E17;B99_VioletRoseCVertVert
+Old_highdensity;21,8;10,4;AD;ACT;R;16;05;2023;E19;B99_VioletRoseCVertVert
+Old_highdensity;16,3;8,5;JUV;ACT ;C;15;04;2022;E9;J1_JauneJauneJauneRoseF
+Old_highdensity;16,4;8,9;JUV;ACT ;R;13;05;2022;E11;J1_JauneJauneJauneRoseF
+Old_highdensity;22,7;10,5;AD;ACT ;C;15;04;2022;E9;J10_JauneOrangeBleuCRoseF
+Old_highdensity;23,6;10,6;AD;IMMO;R;27;04;2022;E10;J10_JauneOrangeBleuCRoseF
+Old_highdensity;22,7;10,9;AD;ACT ;R;24;05;2022;E12;J10_JauneOrangeBleuCRoseF
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;J10_JauneOrangeBleuCRoseF
+Old_highdensity;18,7;10;SUB;ACT ;C;15;04;2022;E9;J12_JauneVioletVioletRoseF
+Old_highdensity;18;9,9;JUV;ACT;R;27;09;2022;E14;J12_JauneVioletVioletRoseF
+Old_highdensity;18,1;9;JUV;ACT;C;25;05;2021;E4;J13_BleuVertBleuBleu
+Old_highdensity;19;9,9;JUV;MORT;R_MORT;15;04;2022;E9;J13_BleuVertBleuBleu
+Old_highdensity;15,9;8,5;JUV;ACT ;C;15;04;2022;E9;J14_JauneVioletBleuCRoseF
+Old_highdensity;18,2;9,6;JUV;IMMO;R;12;07;2022;E13;J14_JauneVioletBleuCRoseF
+Old_highdensity;20,9;9,9;AD;ACT ;C;15;04;2022;E9;J15_JauneVioletRoseFRoseF
+Old_highdensity;20,7;9,7;AD;ACT ;R;13;05;2022;E11;J15_JauneVioletRoseFRoseF
+Old_highdensity;21,2;10,3;AD;ACT  ;R;24;05;2022;E12;J15_JauneVioletRoseFRoseF
+Old_highdensity;21,2;10,1;AD;ACT;R;27;09;2022;E14;J15_JauneVioletRoseFRoseF
+Old_highdensity;21;9,8;SUB;ACT;C;25;05;2021;E4;J16_BleuBleuRougeBleu
+Old_highdensity;21,1;10,1;AD;ACT;R;06;10;2021;E6;J16_BleuBleuRougeBleu
+Old_highdensity;21,2;10,2;AD;ACT;R;21;02;2022;E8;J16_BleuBleuRougeBleu
+Old_highdensity;21,2;10,2;AD;IMMO;R;14;04;2022;E9;J16_BleuBleuRougeBleu
+Old_highdensity;21,3;10,3;AD;IMMO ;R;27;04;2022;E10;J16_BleuBleuRougeBleu
+Old_highdensity;19,4;10;JUV;ACT ;C;15;04;2022;E9;J16_JauneRoseCRoseCRoseF
+Old_highdensity;21,2;10,2;AD;IMMO;R;12;07;2022;E13;J16_JauneRoseCRoseCRoseF
+Old_highdensity;20,5;9,5;SUB;ACT;C;25;05;2021;E4;J17_BleuBleuVertRouge
+Old_highdensity;21,8;10,1;AD;ACT;R;15;12;2021;E7;J17_BleuBleuVertRouge
+Old_highdensity;17,7;9,5;JUV;ACT ;C;15;04;2022;E9;J17_JauneRoseCBleuCRoseF
+Old_highdensity;18,5;10,1;JUV;ACT  ;R;24;05;2022;E12;J17_JauneRoseCBleuCRoseF
+Old_highdensity;19,5;10,2;JUV;ACT ;C;15;04;2022;E9;J18_JauneRoseCRoseFRoseF
+Old_highdensity;19,4;10,9;JUV?;ACT ;R;24;05;2022;E12;J18_JauneRoseCRoseFRoseF
+Old_highdensity;21,1;10,4;AD;ACT;C;16;05;2023;E19;J18_JauneRougeOrangeBleuF
+Old_highdensity;21,7;10,6;AD;ACT;R;30;05;2023;E20;J18_JauneRougeOrangeBleuF
+Old_highdensity;21,5;10,1;AD;ACT ;C;15;04;2022;E9;J2_JauneJauneOrangeRoseF
+Old_highdensity;21,3;10,2;AD;ACT;R;27;09;2022;E14;J2_JauneJauneOrangeRoseF
+Old_highdensity;12,7;7;JUV;ACT ;C;15;04;2022;E9;J20_JauneBleuCRoseFRoseF
+Old_highdensity;12;6,7;JUV;ACT ;R;13;05;2022;E11;J20_JauneBleuCRoseFRoseF
+Old_highdensity;12,2;7,7;JUV;ACT ;R;24;05;2022;E12;J20_JauneBleuCRoseFRoseF
+Old_highdensity;17,5;8,8;JUV;ACT ;C;15;04;2022;E9;J21_JauneRoseFRoseFRoseF
+Old_highdensity;18,3;9,5;JUV;ACT ;R;27;04;2022;E10;J21_JauneRoseFRoseFRoseF
+Old_highdensity;16,8;8,6;JUV;ACT ;C;15;04;2022;E9;J23_OrangeOrangeVioletRoseF
+Old_highdensity;18;10,1;JUV;ACT ;R;24;05;2022;E12;J23_OrangeOrangeVioletRoseF
+Old_highdensity;19,2;9,4;SUB;ACT;C;25;05;2021;E4;J24_RougeRougeBlancVert
+Old_highdensity;19,9;9,4;AD;IMMO;R;14;04;2022;E9;J24_RougeRougeBlancVert
+Old_highdensity;13,7;7,4;JUV;ACT ;C;15;04;2022;E9;J25_OrangeOrangeBleuCRoseF
+Old_highdensity;14;7,7;JUV;ACT ;R;27;04;2022;E10;J25_OrangeOrangeBleuCRoseF
+Old_highdensity;13,8;7,4;JUV;ACT ;R;13;05;2022;E11;J25_OrangeOrangeBleuCRoseF
+Old_highdensity;10,5;6;JUV;IMMO;R;12;07;2022;E13;J25_OrangeOrangeBleuCRoseF
+Old_highdensity;13,8;7,5;JUV;ACT ;C;15;04;2022;E9;J26_OrangeOrangeRoseFRoseF
+Old_highdensity;20,6;9,7;JUV;ACT;R;16;05;2023;E19;J26_OrangeOrangeRoseFRoseF
+Old_highdensity;11,7;6,3;JUV;ACT;C;25;05;2021;E4;J27_NA
+Old_highdensity;15,7;NA;JUV;ACT ;R;13;05;2022;E11;J27_NA
+Old_highdensity;16,8;9,1;JUV;ACT ;C;15;04;2022;E9;J27_OrangeVioletVioletRoseF
+Old_highdensity;17,1;9,5;JUV;ACT ;R;27;04;2022;E10;J27_OrangeVioletVioletRoseF
+Old_highdensity;18,5;9,5;JUV;ACT ;C;15;04;2022;E9;J28_OrangeVioletRoseCRoseF
+Old_highdensity;22,6;10,4;AD;ACT;R;16;05;2023;E19;J28_OrangeVioletRoseCRoseF
+Old_highdensity;16,4;9;JUV;ACT;C;25;05;2021;E4;J28_RougeVertRougeVert
+Old_highdensity;20,8;10,2;AD;ACT ;R;27;04;2022;E10;J28_RougeVertRougeVert
+Old_highdensity;16,4;9,1;JUV;ACT ;C;15;04;2022;E9;J29_RoseFOrangeVioletBleuC
+Old_highdensity;21,5;10;AD;ACT;R;27;09;2022;E14;J29_RoseFOrangeVioletBleuC
+Old_highdensity;22,8;9,5;AD;ACT;R;30;11;2022;E15;J29_RoseFOrangeVioletBleuC
+Old_highdensity;18,1;9,6;JUV;ACT ;C;15;04;2022;E9;J3_JauneJauneVioletRoseF
+Old_highdensity;20,4;10;JUV;ACT ;R;24;05;2022;E12;J3_JauneJauneVioletRoseF
+Old_highdensity;21;10;AD;ACT;R;27;09;2022;E14;J3_JauneJauneVioletRoseF
+Old_highdensity;21,5;9,3;AD;IMMO;R;17;04;2023;E17;J3_JauneJauneVioletRoseF
+Old_highdensity;21;10,5;AD;ACT;R;16;05;2023;E19;J3_JauneJauneVioletRoseF
+Old_highdensity;21;9,7;JUV;ACT;R;30;05;2023;E20;J3_JauneJauneVioletRoseF
+Old_highdensity;12,5;6,7;JUV;ACT;C;25;05;2021;E4;J3_NA
+Old_highdensity;13,3;8;JUV;ACT;R;13;07;2021;E5;J3_NA
+Old_highdensity;15;8,5;JUV;ACT ;R;14;04;2022;E9;J3_NA
+Old_highdensity;16,2;9,6;JUV;ACT ;R  ;24;05;2022;E12;J3_NA
+Old_highdensity;NA;NA;SUB;ACT;R;27;09;2022;E14;J3_NA
+Old_highdensity;19,7;9,8;AD;ACT;R;30;11;2022;E15;J3_NA
+Old_highdensity;21,7;9,5;AD;ACT ;C;15;04;2022;E9;J30_OrangeVioletRoseFRoseF
+Old_highdensity;21,9;10,2;AD;ACT ;R;27;04;2022;E10;J30_OrangeVioletRoseFRoseF
+Old_highdensity;14;7,5;JUV;ACT;C;25;05;2021;E4;J30_RougeVertVertRouge
+Old_highdensity;19,1;9,3;SUB;ACT ;R;14;04;2022;E9;J30_RougeVertVertRouge
+Old_highdensity;17,8;8,9;JUV;ACT ;C;15;04;2022;E9;J31_OrangeRoseCRoseCRoseF
+Old_highdensity;18,4;9,9;JUV;ACT  ;R;24;05;2022;E12;J31_OrangeRoseCRoseCRoseF
+Old_highdensity;17,8;9,2;JUV;ACT ;C;15;04;2022;E9;J34_OrangeBleuCBleuCRoseF
+Old_highdensity;18,4;9,5;JUV;IMMO;R;13;05;2022;E11;J34_OrangeBleuCBleuCRoseF
+Old_highdensity;17,8;9,6;JUV;ACT  ;R;24;05;2022;E12;J34_OrangeBleuCBleuCRoseF
+Old_highdensity;18,8;9,9;JUV;ACT ;C;15;04;2022;E9;J37_VioletVioletVioletRoseF
+Old_highdensity;21,4;10,7;SUB;ACT ;R;24;05;2022;E12;J37_VioletVioletVioletRoseF
+Old_highdensity;21,4;10,2;AD;ACT;R;27;09;2022;E14;J37_VioletVioletVioletRoseF
+Old_highdensity;15,1;8,3;JUV;ACT ;C;15;04;2022;E9;J39_VioletVioletBleuCRoseF
+Old_highdensity;15,7;8,3;JUV;ACT ;R;27;04;2022;E10;J39_VioletVioletBleuCRoseF
+Old_highdensity;19,8;9,9;AD;ACT;R;27;09;2022;E14;J39_VioletVioletBleuCRoseF
+Old_highdensity;20,5;9,1;AD;ACT;R;17;04;2023;E17;J39_VioletVioletBleuCRoseF
+Old_highdensity;14,9;7,4;JUV;ACT ;C;15;04;2022;E9;J4_JauneJauneRoseCRoseF
+Old_highdensity;17,3;9,5;JUV;ACT ;R;13;05;2022;E11;J4_JauneJauneRoseCRoseF
+Old_highdensity;15,1;8,1;JUV;ACT ;C;15;04;2022;E9;J40_VioletVioletRoseFRoseF
+Old_highdensity;14,9;8,4;JUV;IMMO;R;12;05;2022;E11;J40_VioletVioletRoseFRoseF
+Old_highdensity;21,9;10,2;AD;ACT ;C;27;04;2022;E10;J46_VioletRoseFRoseFRoseF
+Old_highdensity;21,6;10,2;AD;IMMO;R;12;07;2022;E13;J46_VioletRoseFRoseFRoseF
+Old_highdensity;21,8;9,9;AD;ACT ;C;27;04;2022;E10;J47_RoseCRoseCRoseCRoseF
+Old_highdensity;21,4;10;AD;IMMO ;R;12;05;2022;E11;J47_RoseCRoseCRoseCRoseF
+Old_highdensity;10,3;NA;JUV;IMMO;C;27;04;2022;E10;J48_RoseCRoseCBleuCRoseF
+Old_highdensity;12,8;NA;JUV;IMMO ;R;12;05;2022;E11;J48_RoseCRoseCBleuCRoseF
+Old_highdensity;NA;NA;JUV;ACT  ;R;24;05;2022;E12;J48_RoseCRoseCBleuCRoseF
+Old_highdensity;10,5;NA;JUV;IMMO;R;12;07;2022;E13;J48_RoseCRoseCBleuCRoseF
+Old_highdensity;16,8;8,8;JUV;ACT ;C;15;04;2022;E9;J5_JauneJauneBleuCRoseF
+Old_highdensity;18,3;11,1;JUV;ACT ;R;24;05;2022;E12;J5_JauneJauneBleuCRoseF
+Old_highdensity;22,2;10,1;AD;ACT ;C;27;04;2022;E10;J55_BleuCRoseFRoseFRoseF
+Old_highdensity;21,2;10,3;AD;MORT;R_MORT;27;09;2022;E14;J55_BleuCRoseFRoseFRoseF
+Old_highdensity;15,2;7,8;JUV;ACT;C;26;05;2021;E4;J55_RougeBlancRougeVert
+Old_highdensity;18,8;9,2;JUV;ACT  ;R;14;04;2022;E9;J55_RougeBlancRougeVert
+Old_highdensity;19,5;10,6;JUV;ACT ;R;24;05;2022;E12;J55_RougeBlancRougeVert
+Old_highdensity;22,3;11,3;AD;ACT ;C;27;04;2022;E10;J56_RoseFRoseFRoseFRoseF
+Old_highdensity;21,9;11,5;AD;IMMO;R;12;05;2022;E11;J56_RoseFRoseFRoseFRoseF
+Old_highdensity;22,2;11,2;AD;ACT;R;25;05;2022;E12;J56_RoseFRoseFRoseFRoseF
+Old_highdensity;18,8;9;JUV;ACT ;C;27;04;2022;E10;J59_RoseFVioletJauneJaune
+Old_highdensity;20,2;10;JUV;ACT;R;25;05;2022;E12;J59_RoseFVioletJauneJaune
+Old_highdensity;22;12;AD;ACT;C;26;05;2021;E4;J60_VertRougeBlancRouge
+Old_highdensity;20,4;10,1;AD;ACT;R;30;11;2022;E15;J60_VertRougeBlancRouge
+Old_highdensity;15,5;8;JUV;ACT ;C;27;04;2022;E10;J61_RoseFBleuCJauneJaune
+Old_highdensity;15,1;8,3;JUV;ACT;R;25;05;2022;E12;J61_RoseFBleuCJauneJaune
+Old_highdensity;20,8;10,6;SUB;ACT;C;26;05;2021;E4;J61_VertRougeBlancVert
+Old_highdensity;20,8;10;AD;ACT;R;06;10;2021;E6;J61_VertRougeBlancVert
+Old_highdensity;21;10,4;AD;ACT;R;15;12;2021;E7;J61_VertRougeBlancVert
+Old_highdensity;19,3;10;JUV;ACT ;C;27;04;2022;E10;J62_RoseFRoseFJauneJaune
+Old_highdensity;19,2;10;JUV;ACT;R;25;05;2022;E12;J62_RoseFRoseFJauneJaune
+Old_highdensity;18,9;10;JUV;ACT ;C;27;04;2022;E10;J64_RoseFVioletOrangeJaune
+Old_highdensity;18,9;9,4;JUV;ACT;R;25;05;2022;E12;J64_RoseFVioletOrangeJaune
+Old_highdensity;12,7;7,1;JUV;ACT ;C;27;04;2022;E10;J65_RoseFRoseCOrangeJaune
+Old_highdensity;12,7;7;JUV;IMMO;R;12;05;2022;E11;J65_RoseFRoseCOrangeJaune
+Old_highdensity;12,8;7,1;JUV;IMMO;R;25;05;2022;E12;J65_RoseFRoseCOrangeJaune
+Old_highdensity;NA;NA;NA;ACT;R;16;05;2023;E19;J65_RoseFRoseCOrangeJaune
+Old_highdensity;19,2;9,6;JUV;ACT ;C;27;04;2022;E10;J67_RoseFRoseFOrangeJaune
+Old_highdensity;19,1;9,7;AD;ACT;R;30;05;2023;E20;J67_RoseFRoseFOrangeJaune
+Old_highdensity;18,9;9;JUV;ACT;C;26;05;2021;E4;J69_VertVertBlancRouge
+Old_highdensity;23;10,8;AD;ACT;R;13;07;2021;E5;J69_VertVertBlancRouge
+Old_highdensity;23;11;AD;ACT ;R;14;04;2022;E9;J69_VertVertBlancRouge
+Old_highdensity;16,1;8,2;JUV;ACT;C;26;05;2021;E4;J7_BleuVertRougeBleu
+Old_highdensity;21,6;10,3;AD;ACT;R;21;02;2022;E8;J7_BleuVertRougeBleu
+Old_highdensity;21,3;9,9;AD;ACT ;R;13;05;2022;E11;J7_BleuVertRougeBleu
+Old_highdensity;13,5;7,4;JUV;ACT ;C;15;04;2022;E9;J7_JauneOrangeOrangeRoseF
+Old_highdensity;13,5;7,5;JUV;ACT ;R;13;05;2022;E11;J7_JauneOrangeOrangeRoseF
+Old_highdensity;14,5;7,8;JUV;ACT ;C;27;04;2022;E10;J71_RoseFRoseFVioletJaune
+Old_highdensity;14,3;8,9;JUV;ACT  ;R;24;05;2022;E12;J71_RoseFRoseFVioletJaune
+Old_highdensity;16;8,9;JUV;ACT;R;27;09;2022;E14;J71_RoseFRoseFVioletJaune
+Old_highdensity;16,2;8,9;JUV;ACT ;C;27;04;2022;E10;J72_RoseFRoseCRoseCJaune
+Old_highdensity;16;9,2;JUV;ACT;R;12;07;2022;E13;J72_RoseFRoseCRoseCJaune
+Old_highdensity;19,1;10,2;JUV;ACT ;C;27;04;2022;E10;J73_RoseFBleuCBleuCJaune
+Old_highdensity;22,4;10,5;AD;ACT;R;27;09;2022;E14;J73_RoseFBleuCBleuCJaune
+Old_highdensity;20,1;NA;NA;ACT;R;16;05;2023;E19;J73_RoseFBleuCBleuCJaune
+Old_highdensity;20,7;9,2;AD;ACT ;C;27;04;2022;E10;J74_RoseFRoseFRoseCJaune
+Old_highdensity;20,2;10,4;AD;ACT  ;R;24;05;2022;E12;J74_RoseFRoseFRoseCJaune
+Old_highdensity;20,5;9,3;AD;ACT;R;27;09;2022;E14;J74_RoseFRoseFRoseCJaune
+Old_highdensity;20,1;10,4;SUB;ACT ;C;27;04;2022;E10;J75_RoseFBleuCBleuCJaune
+Old_highdensity;20;10,4;AD;ACT;R;17;04;2023;E17;J75_RoseFBleuCBleuCJaune
+Old_highdensity;17,3;9,1;JUV;ACT;C;26;05;2021;E4;J75_VertBlancRougeVert
+Old_highdensity;19,8;9,5;SUB;ACT;R;13;07;2021;E5;J75_VertBlancRougeVert
+Old_highdensity;21,6;10,6;AD;ACT;R;06;10;2021;E6;J75_VertBlancRougeVert
+Old_highdensity;21,3;10,4;AD;IMMO;R;14;04;2022;E9;J75_VertBlancRougeVert
+Old_highdensity;21,5;10,8;AD;IMMO;R;12;07;2022;E13;J75_VertBlancRougeVert
+Old_highdensity;15,9;8,7;JUV;ACT ;C;27;04;2022;E10;J76_RoseFRoseFBleuCJaune
+Old_highdensity;16;8,5;JUV;ACT ;R;13;05;2022;E11;J76_RoseFRoseFBleuCJaune
+Old_highdensity;16,3;9;JUV;ACT ;R;24;05;2022;E12;J76_RoseFRoseFBleuCJaune
+Old_highdensity;20,2;9,8;AD;ACT;R;30;11;2022;E15;J76_RoseFRoseFBleuCJaune
+Old_highdensity;21,5;9,8;AD;ACT;C;26;05;2021;E4;J76_VertBlancRougeBlanc
+Old_highdensity;21,3;10;AD;ACT;R;13;07;2021;E5;J76_VertBlancRougeBlanc
+Old_highdensity;NA;NA;AD;MORT;R_MORT;15;12;2021;E7;J76_VertBlancRougeBlanc
+Old_highdensity;16;8,2;JUV;ACT;C;26;05;2021;E4;J77_VertBlancRougeVert
+Old_highdensity;20,5;10,2;AD;ACT;R;06;10;2021;E6;J77_VertBlancRougeVert
+Old_highdensity;20,5;9,9;AD;ACT ;R;14;04;2022;E9;J77_VertBlancRougeVert
+Old_highdensity;20,2;10,4;AD;ACT  ;R;24;05;2022;E12;J77_VertBlancRougeVert
+Old_highdensity;13,4;7,2;JUV;ACT;C;26;05;2021;E4;J78_NA
+Old_highdensity;15,1;8,2;JUV;ACT;R;15;12;2021;E7;J78_NA
+Old_highdensity;19;10,1;SUB;ACT ;R;24;05;2022;E12;J78_NA
+Old_highdensity;20,7;9,7;AD;IMMO;R;12;07;2022;E13;J78_NA
+Old_highdensity;15,6;8,6;JUV;ACT ;C;27;04;2022;E10;J78_RoseFOrangeOrangeOrange
+Old_highdensity;17,8;10,2;JUV;ACT;R;17;04;2023;E17;J78_RoseFOrangeOrangeOrange
+Old_highdensity;10,2;5,8;JUV;ACT ;C;27;04;2022;E10;J79_NA
+Old_highdensity;10,8;6,3;JUV;ACT  ;R;24;05;2022;E12;J79_NA
+Old_highdensity;14,7;7,8;JUV;ACT;R;30;11;2022;E15;J79_NA
+Old_highdensity;17,9;9,1;JUV;ACT;R;02;05;2023;E18;J79_NA
+Old_highdensity;18,1;9,3;JUV;ACT;C;26;05;2021;E4;J79_VertBlancVertRouge
+Old_highdensity;20,2;9,6;AD;ACT;R;21;02;2022;E8;J79_VertBlancVertRouge
+Old_highdensity;19,9;9,6;AD;ACT;R;27;09;2022;E14;J79_VertBlancVertRouge
+Old_highdensity;15,4;9,6;JUV;ACT ;C;15;04;2022;E9;J8_JauneOrangeVioletRoseF
+Old_highdensity;17,4;9,5;JUV;ACT ;R;24;05;2022;E12;J8_JauneOrangeVioletRoseF
+Old_highdensity;19;10,2;JUV;IMMO;R;12;07;2022;E13;J8_JauneOrangeVioletRoseF
+Old_highdensity;18,9;9,6;AD;ACT ;C;27;04;2022;E10;J80_RoseFRoseCOrangeOrange
+Old_highdensity;18,7;9,7;AD;ACT ;R;24;05;2022;E12;J80_RoseFRoseCOrangeOrange
+Old_highdensity;19,1;9,7;AD;ACT;R;17;04;2023;E17;J80_RoseFRoseCOrangeOrange
+Old_highdensity;18,1;9,4;AD;MORT;R_MORT;16;05;2023;E19;J80_RoseFRoseCOrangeOrange
+Old_highdensity;22,2;10,2;AD;ACT ;C;27;04;2022;E10;J81_RoseFBleuCOrangeOrange
+Old_highdensity;22;10,3;AD;IMMO;R;13;05;2022;E11;J81_RoseFBleuCOrangeOrange
+Old_highdensity;22;11,1;AD;IMMO;R;24;05;2022;E12;J81_RoseFBleuCOrangeOrange
+Old_highdensity;21,9;10,4;AD;IMMO;R;12;07;2022;E13;J81_RoseFBleuCOrangeOrange
+Old_highdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;J81_RoseFBleuCOrangeOrange
+Old_highdensity;18;9;JUV;ACT;C;26;05;2021;E4;J81_VertBlancVertBlanc
+Old_highdensity;20,8;10;AD;ACT;R;30;11;2022;E15;J81_VertBlancVertBlanc
+Old_highdensity;10,8;6,3;JUV;ACT;C;26;05;2021;E4;J82_NA
+Old_highdensity;17,1;9,4;JUV;ACT;R;21;02;2022;E8;J82_NA
+Old_highdensity;19;9;JUV;ACT ;R;27;04;2022;E10;J82_NA
+Old_highdensity;NA;NA;NA;MORT;R_MORT;24;05;2022;E12;J82_NA
+Old_highdensity;17,2;8,7;JUV;ACT ;C;27;04;2022;E10;J82_RoseFRoseFOrangeOrange
+Old_highdensity;17,2;9,4;JUV;ACT  ;R;24;05;2022;E12;J82_RoseFRoseFOrangeOrange
+Old_highdensity;22;10;AD;ACT;R;27;09;2022;E14;J82_RoseFRoseFOrangeOrange
+Old_highdensity;13,8;7,5;JUV;ACT ;C;27;04;2022;E10;J84_RoseFRoseCVioletOrange
+Old_highdensity;13,3;7,5;JUV;IMMO;R;13;05;2022;E11;J84_RoseFRoseCVioletOrange
+Old_highdensity;13,5;8,9;JUV;ACT ;R;24;05;2022;E12;J84_RoseFRoseCVioletOrange
+Old_highdensity;12,9;7,5;JUV;IMMO;R;12;07;2022;E13;J84_RoseFRoseCVioletOrange
+Old_highdensity;11,3;6,2;JUV;ACT ;C;27;04;2022;E10;J85_NA
+Old_highdensity;11,4;6,1;JUV;ACT ;R;13;05;2022;E11;J85_NA
+Old_highdensity;11,5;NA;JUV;ACT ;R;24;05;2022;E12;J85_NA
+Old_highdensity;13,3;7,4;JUV;ACT ;C;27;04;2022;E10;J86_RoseFRoseFVioletOrange
+Old_highdensity;13,4;7,2;JUV;ACT ;R;13;05;2022;E11;J86_RoseFRoseFVioletOrange
+Old_highdensity;19,3;9,3;JUV;ACT ;C;27;04;2022;E10;J87_RoseFRoseCRoseCOrange
+Old_highdensity;20;9,8;JUV;ACT ;R;13;05;2022;E11;J87_RoseFRoseCRoseCOrange
+Old_highdensity;20,1;12;JUV;ACT  ;R;24;05;2022;E12;J87_RoseFRoseCRoseCOrange
+Old_highdensity;21,2;10,6;SUB;ACT;C;26;05;2021;E4;J88_BlancRougeRougeRouge
+Old_highdensity;NA;NA;NA;MORT;R_MORT;27;09;2022;E14;J88_BlancRougeRougeRouge
+Old_highdensity;22,5;10,5;AD;IMMO;C;27;04;2022;E10;J88_RoseFBleuCRoseCOrange
+Old_highdensity;22,3;11,2;AD;ACT ;R;24;05;2022;E12;J88_RoseFBleuCRoseCOrange
+Old_highdensity;22,3;10,6;AD;IMMO;R;12;07;2022;E13;J88_RoseFBleuCRoseCOrange
+Old_highdensity;21,8;10,2;AD;ACT ;C;27;04;2022;E10;J89_RoseFRoseFRoseCOrange
+Old_highdensity;21,3;10,3;AD;ACT ;R;24;05;2022;E12;J89_RoseFRoseFRoseCOrange
+Old_highdensity;21,5;10;AD;ACT;R;12;07;2022;E13;J89_RoseFRoseFRoseCOrange
+Old_highdensity;21,5;10,1;AD;ACT;R;27;09;2022;E14;J89_RoseFRoseFRoseCOrange
+Old_highdensity;21;9,8;AD;ACT;C;26;05;2021;E4;J9_BleuVertVertVert
+Old_highdensity;20,5;9,7;AD;IMMO;R;13;07;2021;E5;J9_BleuVertVertVert
+Old_highdensity;16,9;9,3;SUB;ACT ;C;15;04;2022;E9;J9_JauneOrangeRoseCRoseF
+Old_highdensity;16,5;9,4;JUV;ACT ;R;13;05;2022;E11;J9_JauneOrangeRoseCRoseF
+Old_highdensity;18,6;9,6;JUV;ACT;R;12;07;2022;E13;J9_JauneOrangeRoseCRoseF
+Old_highdensity;17,4;8,9;JUV;ACT ;C;27;04;2022;E10;J90_RoseFBleuCBleuCOrange
+Old_highdensity;17,7;9,6;JUV;ACT ;R;24;05;2022;E12;J90_RoseFBleuCBleuCOrange
+Old_highdensity;17,1;9,4;JUV;ACT ;C;27;04;2022;E10;J91_RoseFRoseFBleuCOrange
+Old_highdensity;18,8;10,2;SUB;ACT;R;27;09;2022;E14;J91_RoseFRoseFBleuCOrange
+Old_highdensity;19,1;10,2;JUV;ACT ;C;27;04;2022;E10;J92_RoseFRoseFRoseFOrange
+Old_highdensity;20,8;10,3;JUV;ACT ;R;24;05;2022;E12;J92_RoseFRoseFRoseFOrange
+Old_highdensity;18,7;9,6;JUV;ACT ;C;27;04;2022;E10;J93_RoseFVioletVioletViolet
+Old_highdensity;NA;NA;JUV;ACT  ;R;24;05;2022;E12;J93_RoseFVioletVioletViolet
+Old_highdensity;19,7;9,8;AD;ACT;R;17;04;2023;E17;J93_RoseFVioletVioletViolet
+Old_highdensity;20,4;9,5;AD;MORT;R_MORT;02;05;2023;E18;J93_RoseFVioletVioletViolet
+Old_highdensity;20,4;10;JUV;ACT;C;26;05;2021;E4;J94_BlancRougeBlancVert
+Old_highdensity;20,3;10;AD;ACT;R;13;07;2021;E5;J94_BlancRougeBlancVert
+Old_highdensity;20,4;10,6;AD;ACT;R;15;12;2021;E7;J94_BlancRougeBlancVert
+Old_highdensity;18,2;9,5;JUV;ACT ;C;27;04;2022;E10;J94_RoseFRoseCVioletViolet
+Old_highdensity;18,6;9,9;JUV;ACT ;R;24;05;2022;E12;J94_RoseFRoseCVioletViolet
+Old_highdensity;16,6;8,4;JUV;ACT;C;26;05;2021;E4;J95_BlancRougeBlancBlanc
+Old_highdensity;NA;NA;NA;NA;R_MORT;06;10;2021;E6;J95_BlancRougeBlancBlanc
+Old_highdensity;18,7;9,8;JUV;ACT ;C;27;04;2022;E10;J95_RoseFBleuCVioletViolet
+Old_highdensity;21,3;11,3;AD;ACT;R;02;05;2023;E18;J95_RoseFBleuCVioletViolet
+Old_highdensity;21,6;9,9;SUB;ACT;C;26;05;2021;E4;J96_BlancVertRougeRouge
+Old_highdensity;21,1;10;AD;ACT;R;13;07;2021;E5;J96_BlancVertRougeRouge
+Old_highdensity;20,9;9,9;AD;MORT;R_MORT;06;10;2021;E6;J96_BlancVertRougeRouge
+Old_highdensity;13,1;6,9;JUV;ACT ;C;27;04;2022;E10;J97_RoseFRoseCRoseCViolet
+Old_highdensity;12,5;6,9;JUV;IMMO;R;13;05;2022;E11;J97_RoseFRoseCRoseCViolet
+Old_highdensity;13;NA;JUV;ACT ;R;24;05;2022;E12;J97_RoseFRoseCRoseCViolet
+Old_highdensity;23,3;10,3;SUB;ACT;C;26;05;2021;E4;J98_BlancVertRougeVert
+Old_highdensity;23;10,6;AD;ACT ;R;27;04;2022;E10;J98_BlancVertRougeVert
+Old_highdensity;18,2;9,3;JUV;ACT ;C;27;04;2022;E10;J98_RoseFBleuCRoseCViolet
+Old_highdensity;20,4;9,5;AD;ACT;R;27;09;2022;E14;J98_RoseFBleuCRoseCViolet
+Old_highdensity;20,4;10,4;SUB;IMMO;C;10;05;2021;E3;O1_BlancRoseBlancRose
+Old_highdensity;21,7;9,9;SUB;ACT;R;26;05;2021;E4;O1_BlancRoseBlancRose
+Old_highdensity;18,7;9,3;JUV;ACT ;C;27;04;2022;E10;O1_JauneJauneJauneJaune
+Old_highdensity;18,6;10,6;AD;ACT ;R;24;05;2022;E12;O1_JauneJauneJauneJaune
+Old_highdensity;19,8;9,6;SUB;ACT ;C;27;04;2022;E10;O10_JauneJauneVioletViolet
+Old_highdensity;19,7;9,9;JUV;ACT ;R;24;05;2022;E12;O10_JauneJauneVioletViolet
+Old_highdensity;22,2;10,1;AD;IMMO;C;10;05;2021;E3;O11_BlancBlancBlancRose
+Old_highdensity;22,4;10,4;AD;ACT;R;25;05;2021;E4;O11_BlancBlancBlancRose
+Old_highdensity;9,4;5,5;JUV;ACT;C;10;05;2021;E3;O13_NA
+Old_highdensity;10,6;5,8;JUV;ACT;R;26;05;2021;E4;O13_NA
+Old_highdensity;15,5;8,6;JUV;ACT;R;21;02;2022;E8;O13_NA
+Old_highdensity;20,8;10,2;JUV?;IMMO;C;12;05;2022;E11;O14_JauneJauneBleuCRoseC
+Old_highdensity;19;NA;JUV;IMMO;R;12;07;2022;E13;O14_JauneJauneBleuCRoseC
+Old_highdensity;9,7;6;JUV;IMMO;C;10;05;2021;E3;O14_NA
+Old_highdensity;20;9,2;AD;IMMO;R;12;07;2022;E13;O14_NA
+Old_highdensity;23;10,3;AD;IMMO;C;12;05;2022;E11;O15_JauneJauneBleuCBleuC
+Old_highdensity;23;10,5;AD;ACT;R;27;09;2022;E14;O15_JauneJauneBleuCBleuC
+Old_highdensity;22,4;11,4;AD;ACT;R;16;05;2023;E19;O15_JauneJauneBleuCBleuC
+Old_highdensity;22,7;10,4;AD;MORT;R_MORT;30;05;2023;E20;O15_JauneJauneBleuCBleuC
+Old_highdensity;23;10,5;AD;ACT;C;10;05;2021;E3;O15_Rouge
+Old_highdensity;23,2;10,3;AD;ACT;R;25;05;2021;E4;O15_Rouge
+Old_highdensity;22;10;AD;ACT ;C;12;05;2022;E11;O16_JauneJauneOrangeOrange
+Old_highdensity;21,5;10,2;AD;ACT;R;30;11;2022;E15;O16_JauneJauneOrangeOrange
+Old_highdensity;22,1;10,5;AD;IMMO;R;14;02;2023;E16;O16_JauneJauneOrangeOrange
+Old_highdensity;21,8;10,9;AD;ACT;R;16;05;2023;E19;O16_JauneJauneOrangeOrange
+Old_highdensity;18,8;9,8;JUV;IMMO ;C;12;05;2022;E11;O17_JauneOrangeOrangeViolet
+Old_highdensity;21,2;10,7;AD;ACT;R;17;04;2023;E17;O17_JauneOrangeOrangeViolet
+Old_highdensity;20,6;10;SUB;ACT ;C;12;05;2022;E11;O19_JauneOrangeOrangeBleuC
+Old_highdensity;21,7;10,8;AD;ACT;R;17;04;2023;E17;O19_JauneOrangeOrangeBleuC
+Old_highdensity;12;5,6;JUV;ACT;C;10;05;2021;E3;O2_NA
+Old_highdensity;15,6;8,9;JUV;ACT;R;21;02;2022;E8;O2_NA
+Old_highdensity;16,4;9;JUV;ACT;C;10;05;2021;E3;O20_RougeBleu
+Old_highdensity;15,4;9,1;JUV;MORT;R_MORT;06;10;2021;E6;O20_RougeBleu
+Old_highdensity;21,8;10,4;AD;IMMO;C;12;05;2022;E11;O21_JauneOrangeVioletRoseC
+Old_highdensity;21,8;10,5;AD;IMMO;R;12;07;2022;E13;O21_JauneOrangeVioletRoseC
+Old_highdensity;10,1;5,8;JUV;ACT;C;10;05;2021;E3;O21_NA
+Old_highdensity;17,1;9;JUV;ACT;R;25;05;2022;E12;O21_NA
+Old_highdensity;10;6;JUV;IMMO;C;12;05;2022;E11;O24_NA
+Old_highdensity;10,3;5,9;JUV;ACT;R;25;05;2022;E12;O24_NA
+Old_highdensity;10,9;6,9;JUV;IMMO;R;12;07;2022;E13;O24_NA
+Old_highdensity;13,5;7,2;JUV;ACT;R;27;09;2022;E14;O24_NA
+Old_highdensity;22,3;9,9;AD;ACT;R;26;05;2021;E4;O24_VertVert
+Old_highdensity;21;9,9;AD;ACT;C;10;05;2021;E3;O24_VertVert
+Old_highdensity;22;10,1;AD;ACT;R;13;07;2021;E5;O24_VertVert
+Old_highdensity;10,4;6,1;JUV;ACT;C;10;05;2021;E3;O26_NA
+Old_highdensity;14,5;8,2;JUV;ACT;R;06;10;2021;E6;O26_NA
+Old_highdensity;15;8,1;JUV;ACT;R;15;12;2021;E7;O26_NA
+Old_highdensity;15;8,2;JUV;ACT;R;21;02;2022;E8;O26_NA
+Old_highdensity;15,6;9;JUV;ACT ;R;14;04;2022;E9;O26_NA
+Old_highdensity;17,9;9,6;JUV;ACT ;R;13;05;2022;E11;O26_NA
+Old_highdensity;20,4;9,9;AD;IMMO;R;12;07;2022;E13;O26_NA
+Old_highdensity;9,3;5,4;JUV;ACT;C;10;05;2021;E3;O27_NA
+Old_highdensity;15,5;8,1;JUV;ACT ;R;13;05;2022;E11;O27_NA
+Old_highdensity;20,6;10,5;SUB;IMMO;C;10;05;2021;E3;O28_BleuRouge
+Old_highdensity;20,8;10,4;AD;ACT;R;25;05;2021;E4;O28_BleuRouge
+Old_highdensity;12,6;7;JUV;IMMO;C;12;05;2022;E11;O28_JauneVioletVioletBleuC
+Old_highdensity;12,3;5,8;JUV;ACT ;R;24;05;2022;E12;O28_JauneVioletVioletBleuC
+Old_highdensity;21,3;10;SUB;IMMO;C;10;05;2021;E3;O29_BleuVert
+Old_highdensity;20,5;10;AD;MORT;R_MORT;15;04;2022;E9;O29_BleuVert
+Old_highdensity;21,6;9,7;SUB;ACT;C;10;05;2021;E3;O3_BlancBlancBleuBleu
+Old_highdensity;21,1;10,1;AD;ACT;R;13;07;2021;E5;O3_BlancBlancBleuBleu
+Old_highdensity;21,5;9,9;AD;IMMO ;C;13;05;2022;E11;O30_JauneVioletRoseCRoseC
+Old_highdensity;21,6;9,9;AD;ACT  ;R;24;05;2022;E12;O30_JauneVioletRoseCRoseC
+Old_highdensity;22,9;10,8;AD;IMMO;C;13;05;2022;E11;O31_JauneVioletBleuCBleuC
+Old_highdensity;20,9;10,2;AD;ACT;R;17;04;2023;E17;O31_JauneVioletBleuCBleuC
+Old_highdensity;20;10,5;JUV;IMMO;C;10;05;2021;E3;O31_RougeRougeRouge
+Old_highdensity;20,8;10;SUB;ACT;R;25;05;2021;E4;O31_RougeRougeRouge
+Old_highdensity;20,7;10,7;AD;ACT;R;13;07;2021;E5;O31_RougeRougeRouge
+Old_highdensity;20,6;10,4;AD;ACT;R;21;02;2022;E8;O31_RougeRougeRouge
+Old_highdensity;20,3;10,2;AD;ACT ;R;15;04;2022;E9;O31_RougeRougeRouge
+Old_highdensity;20,7;10,2;AD;MORT;R_MORT;14;02;2023;E16;O31_RougeRougeRouge
+Old_highdensity;22,5;10,5;AD;IMMO;C;13;05;2022;E11;O32_JauneRoseCRoseCRoseC
+Old_highdensity;22,2;10,7;AD;ACT  ;R;24;05;2022;E12;O32_JauneRoseCRoseCRoseC
+Old_highdensity;22,4;11,2;AD;ACT;R;02;05;2023;E18;O32_JauneRoseCRoseCRoseC
+Old_highdensity;21,8;11;AD;ACT;R;16;05;2023;E19;O32_JauneRoseCRoseCRoseC
+Old_highdensity;22;10,3;AD;ACT;R;30;05;2023;E20;O32_JauneRoseCRoseCRoseC
+Old_highdensity;22,6;9,9;AD;ACT;C;10;05;2021;E3;O33_RougeRougeBleu
+Old_highdensity;22,5;10;AD;ACT;R;26;05;2021;E4;O33_RougeRougeBleu
+Old_highdensity;23;10,9;AD;ACT ;C;13;05;2022;E11;O34_JauneBleuCBleuCBleuC
+Old_highdensity;23;11;AD;ACT  ;R;24;05;2022;E12;O34_JauneBleuCBleuCBleuC
+Old_highdensity;18,8;9,4;JUV;ACT;C;10;05;2021;E3;O34_RougeVertRouge
+Old_highdensity;20,9;9,9;AD;ACT ;R;15;04;2022;E9;O34_RougeVertRouge
+Old_highdensity;21,2;9,8;AD;ACT;R;27;09;2022;E14;O34_RougeVertRouge
+Old_highdensity;21,3;9,6;AD;IMMO;R;14;02;2023;E16;O34_RougeVertRouge
+Old_highdensity;NA;NA;AD;MORT;R;17;04;2023;E17;O34_RougeVertRouge
+Old_highdensity;13,7;7,5;JUV;ACT ;C;13;05;2022;E11;O35_OrangeOrangeOrangeOrange
+Old_highdensity;14;8,6;JUV;ACT ;R;24;05;2022;E12;O35_OrangeOrangeOrangeOrange
+Old_highdensity;8,5;4,5;JUV;ACT;C;10;05;2021;E3;O36_NA
+Old_highdensity;14,4;7,9;JUV;ACT;R;15;12;2021;E7;O36_NA
+Old_highdensity;17,2;9,1;JUV;ACT ;R;27;04;2022;E10;O36_NA
+Old_highdensity;21,3;9,7;AD;ACT ;C;13;05;2022;E11;O38_OrangeOrangeOrangeBleuC
+Old_highdensity;20,9;9,7;AD;ACT ;R;24;05;2022;E12;O38_OrangeOrangeOrangeBleuC
+Old_highdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;O38_OrangeOrangeOrangeBleuC
+Old_highdensity;18,1;9,5;?;IMMO;C;13;05;2022;E11;O39_OrangeOrangeVioletViolet
+Old_highdensity;NA;NA;JUV;ACT ;R;24;05;2022;E12;O39_OrangeOrangeVioletViolet
+Old_highdensity;20,5;10;SUB;ACT;C;10;05;2021;E3;O39_RougeBleuRouge
+Old_highdensity;21,6;10,1;SUB;ACT;R;25;05;2021;E4;O39_RougeBleuRouge
+Old_highdensity;21,4;10,7;SUB;ACT;R;13;07;2021;E5;O39_RougeBleuRouge
+Old_highdensity;21,6;10,7;AD;ACT;R;06;10;2021;E6;O39_RougeBleuRouge
+Old_highdensity;21,1;10,5;SUB;IMMO;C;10;05;2021;E3;O4_BlancBlancBleuRose
+Old_highdensity;21,3;10,8;SUB;ACT;R;25;05;2021;E4;O4_BlancBlancBleuRose
+Old_highdensity;14,6;7,3;JUV;ACT ;C;27;04;2022;E10;O4_JauneJauneJauneRoseC
+Old_highdensity;14,5;8,1;JUV;ACT ;R;13;05;2022;E11;O4_JauneJauneJauneRoseC
+Old_highdensity;13,6;7,5;JUV;ACT ;C;13;05;2022;E11;O40_OrangeOrangeVioletRoseC
+Old_highdensity;14;7,8;JUV;ACT;R;27;09;2022;E14;O40_OrangeOrangeVioletRoseC
+Old_highdensity;20,2;10,4;SUB;ACT;C;10;05;2021;E3;O40_RougeBleuFVert
+Old_highdensity;22,3;9,7;SUB;ACT;R;26;05;2021;E4;O40_RougeBleuFVert
+Old_highdensity;21,7;10,4;AD;ACT;R;13;07;2021;E5;O40_RougeBleuFVert
+Old_highdensity;22,1;10,4;AD;ACT;R;15;12;2021;E7;O40_RougeBleuFVert
+Old_highdensity;19,2;NA;SUB;ACT;R;21;02;2022;E8;O40_RougeBleuFVert
+Old_highdensity;NA;NA;NA;ACT;R;27;09;2022;E14;O40_RougeBleuFVert
+Old_highdensity;19,2;10,3;JUV;MORT;R_MORT;02;05;2023;E18;O40_RougeBleuFVert
+Old_highdensity;12,6;6,8;JUV;ACT;C;10;05;2021;E3;O42_NA
+Old_highdensity;13,5;7,1;JUV;ACT;R;26;05;2021;E4;O42_NA
+Old_highdensity;14,1;8,2;JUV;ACT;R;13;07;2021;E5;O42_NA
+Old_highdensity;20,6;9,4;SUB;ACT ;C;13;05;2022;E11;O43_OrangeOrangeRoseCBleuC
+Old_highdensity;21,2;9,1;AD;ACT;R;17;04;2023;E17;O43_OrangeOrangeRoseCBleuC
+Old_highdensity;20,8;10,6;AD;ACT;R;02;05;2023;E18;O43_OrangeOrangeRoseCBleuC
+Old_highdensity;20,7;10;AD;ACT;R;16;05;2023;E19;O43_OrangeOrangeRoseCBleuC
+Old_highdensity;22,2;10,1;AD;ACT;C;10;05;2021;E3;O43_VertRougeRouge
+Old_highdensity;22,4;10,1;AD;ACT;R;26;05;2021;E4;O43_VertRougeRouge
+Old_highdensity;21,3;10,6;SUB;ACT;C;10;05;2021;E3;O44_VertRougeVert
+Old_highdensity;22;10,5;SUB;ACT;R;25;05;2021;E4;O44_VertRougeVert
+Old_highdensity;20,4;10,5;SUB;ACT;C;10;05;2021;E3;O45_VertRougeBleu
+Old_highdensity;21,8;10,7;AD;ACT;R;13;07;2021;E5;O45_VertRougeBleu
+Old_highdensity;22,4;10,7;AD;ACT;R;06;10;2021;E6;O45_VertRougeBleu
+Old_highdensity;19,9;10;AD;IMMO;C;13;05;2022;E11;O46_OrangeVioletVioletRoseC
+Old_highdensity;19,5;10;AD;ACT;R;27;09;2022;E14;O46_OrangeVioletVioletRoseC
+Old_highdensity;13,1;7,3;JUV;ACT;C;10;05;2021;E3;O46_VertRougeBleuF
+Old_highdensity;17,1;9,8;JUV;ACT;R;21;02;2022;E8;O46_VertRougeBleuF
+Old_highdensity;21,2;10;AD;ACT;R;30;11;2022;E15;O46_VertRougeBleuF
+Old_highdensity;21,4;10,2;AD;ACT;R;16;05;2023;E19;O46_VertRougeBleuF
+Old_highdensity;13,3;7,3;JUV;ACT;C;10;05;2021;E3;O48_VertVertVert
+Old_highdensity;15;7,7;JUV;ACT;R;13;07;2021;E5;O48_VertVertVert
+Old_highdensity;11,8;6,4;JUV;ACT;C;10;05;2021;E3;O49_NA
+Old_highdensity;14,6;8,1;JUV;ACT;R;06;10;2021;E6;O49_NA
+Old_highdensity;15,7;8,4;JUV;ACT ;R;15;04;2022;E9;O49_NA
+Old_highdensity;15,7;8,6;JUV;IMMO;R;13;05;2022;E11;O49_NA
+Old_highdensity;15,8;8,6;JUV;ACT ;R;24;05;2022;E12;O49_NA
+Old_highdensity;18,9;9,6;SUB;ACT ;C;13;05;2022;E11;O49_OrangeVioletRoseCBleuC
+Old_highdensity;18,6;NA;SUB;ACT;R;27;09;2022;E14;O49_OrangeVioletRoseCBleuC
+Old_highdensity;15,5;8,5;JUV;ACT ;C;27;04;2022;E10;O5_JauneJauneJauneBleuC
+Old_highdensity;21,8;11,2;AD;ACT;R;02;05;2023;E18;O5_JauneJauneJauneBleuC
+Old_highdensity;21,1;11,7;AD;ACT;R;16;05;2023;E19;O5_JauneJauneJauneBleuC
+Old_highdensity;13,4;7,1;JUV;ACT;C;10;05;2021;E3;O5_NA
+Old_highdensity;14,5;7,3;JUV;ACT;R;26;05;2021;E4;O5_NA
+Old_highdensity;17,3;9,6;JUV;ACT;R;21;02;2022;E8;O5_NA
+Old_highdensity;17,5;9,1;JUV;ACT ;R;14;04;2022;E9;O5_NA
+Old_highdensity;8,9;4,5;JUV;ACT;C;10;05;2021;E3;O50_NA
+Old_highdensity;19,9;10,7;JUV;ACT ;R;24;05;2022;E12;O50_NA
+Old_highdensity;15,2;8,3;JUV;ACT ;C;13;05;2022;E11;O50_OrangeVioletBleuCBleuC
+Old_highdensity;17,3;9,4;JUV;ACT;R;27;09;2022;E14;O50_OrangeVioletBleuCBleuC
+Old_highdensity;20,7;9,7;SUB;ACT;C;10;05;2021;E3;O51_VertVertBleu
+Old_highdensity;NA;NA;AD;ACT;R;13;07;2021;E5;O51_VertVertBleu
+Old_highdensity;20,5;10,4;AD;ACT ;R;15;04;2022;E9;O51_VertVertBleu
+Old_highdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;O51_VertVertBleu
+Old_highdensity;8;5;JUV;ACT;C;10;05;2021;E3;O52_NA
+Old_highdensity;8;4,6;JUV;ACT;R;25;05;2021;E4;O52_NA
+Old_highdensity;13,4;8;JUV;ACT;C;10;05;2021;E3;O53_VertBleuRouge
+Old_highdensity;14,4;7,8;JUV;ACT;R;25;05;2021;E4;O53_VertBleuRouge
+Old_highdensity;NA;NA;;ACT;R;13;07;2021;E5;O53_VertBleuRouge
+Old_highdensity;16,6;8,1;JUV;ACT;C;10;05;2021;E3;O54_VertBleuVert
+Old_highdensity;17,1;8,8;JUV;ACT;R;25;05;2021;E4;O54_VertBleuVert
+Old_highdensity;20,7;9,9;AD;ACT ;C;24;05;2022;E12;O55_OrangeBleuCBleuCBleuC
+Old_highdensity;20,3;10,4;AD;ACT;R;17;04;2023;E17;O55_OrangeBleuCBleuCBleuC
+Old_highdensity;22;10,2;AD;IMMO;C;10;05;2021;E3;O57_VertBleuBleu
+Old_highdensity;21,9;10;AD;ACT;R;13;07;2021;E5;O57_VertBleuBleu
+Old_highdensity;19,8;10,4;SUB;IMMO;C;10;05;2021;E3;O6_BlancBlancBleuBlanc
+Old_highdensity;20;9,6;SUB;ACT;R;26;05;2021;E4;O6_BlancBlancBleuBlanc
+Old_highdensity;21,7;10,3;AD;ACT;R;15;12;2021;E7;O6_BlancBlancBleuBlanc
+Old_highdensity;21,7;10,6;AD;ACT;R;21;02;2022;E8;O6_BlancBlancBleuBlanc
+Old_highdensity;22,5;10,8;AD;ACT ;C;24;05;2022;E12;O63_VioletRoseCRoseCBleuC
+Old_highdensity;22,8;9,9;AD;MORT;R_MORT;17;04;2023;E17;O63_VioletRoseCRoseCBleuC
+Old_highdensity;22,6;10,7;AD;ACT ;C;24;05;2022;E12;O68_RoseCRoseCBleuCBleuC
+Old_highdensity;22,4;11;AD;IMMO;R;12;07;2022;E13;O68_RoseCRoseCBleuCBleuC
+Old_highdensity;14,2;8,5;JUV;IMMO;C;10;05;2021;E3;O7_BlancBlancRoseBleu
+Old_highdensity;16,4;8,8;JUV;ACT;R;06;10;2021;E6;O7_BlancBlancRoseBleu
+Old_highdensity;19,3;10,5;JUV;ACT  ;C;24;05;2022;E12;O75_OrangeOrangeJauneJaune
+Old_highdensity;21;10,2;AD;IMMO;R;12;07;2022;E13;O75_OrangeOrangeJauneJaune
+Old_highdensity;21,2;10,8;JUV;ACT  ;C;24;05;2022;E12;O76_VioletOrangeJauneJaune
+Old_highdensity;22,5;10,6;AD;ACT;R;17;04;2023;E17;O76_VioletOrangeJauneJaune
+Old_highdensity;19,3;10,3;JUV;ACT ;C;27;04;2022;E10;O8_JauneJauneOrangeRoseC
+Old_highdensity;19,2;10;SUB;ACT;R;27;09;2022;E14;O8_JauneJauneOrangeroseC
+Old_highdensity;19,4;NA;AD;ACT;R;17;04;2023;E17;O8_JauneJauneOrangeRoseC
+Old_highdensity;14,7;9,2;JUV;ACT  ;C;24;05;2022;E12;O84_BleuCBleuCJauneJaune
+Old_highdensity;14;8,9;JUV;IMMO;R;12;07;2022;E13;O84_BleuCBleuCJauneJaune
+Old_highdensity;15,9;8,6;JUV;ACT;R;27;09;2022;E14;O84_BleuCBleuCJauneJaune
+Old_highdensity;20,4;9,7;SUB;ACT;R;17;04;2023;E17;O84_BleuCBleuCJauneJaune
+Old_highdensity;18,5;9,9;JUV;ACT  ;C;24;05;2022;E12;O85_OrangeOrangeJaune
+Old_highdensity;20,7;10;SUB;ACT;R;27;09;2022;E14;O85_OrangeOrangeJaune
+Old_highdensity;20,5;10;AD;ACT;R;30;11;2022;E15;O85_OrangeOrangeJaune
+Old_highdensity;21;9,8;SUB;ACT;R;17;04;2023;E17;O85_OrangeOrangeJaune
+Old_highdensity;12;NA;JUV;ACT  ;C;24;05;2022;E12;O88_BleuCOrangeOrangeJaune
+Old_highdensity;12,2;7,2;JUV;ACT;R;12;07;2022;E13;O88_BleuCOrangeOrangeJaune
+Old_highdensity;13;NA;JUV;ACT  ;C;24;05;2022;E12;O89_VioletVioletOrangeJaune
+Old_highdensity;23,3;11,6;AD;ACT;R;02;05;2023;E18;O89_VioletVioletOrangeJaune
+Old_highdensity;18,8;9,4;SUB;ACT;C;10;05;2021;E3;O9_BlancBlancRoseBlanc
+Old_highdensity;21,4;10,1;AD;ACT;R;21;02;2022;E8;O9_BlancBlancRoseBlanc
+Old_highdensity;21,3;10;AD;IMMO;R;27;04;2022;E10;O9_BlancBlancRoseBlanc
+Old_highdensity;21,6;11;AD;ACT  ;C;24;05;2022;E12;O90_RoseCVioletOrangeJaune
+Old_highdensity;21,2;10,2;AD;IMMO;R;12;07;2022;E13;O90_RoseCVioletOrangeJaune
+Old_highdensity;18,1;10;JUV;ACT  ;C;24;05;2022;E12;O91_BleuCVioletOrangeJaune
+Old_highdensity;19;10,4;SUB;IMMO;R;12;07;2022;E13;O91_BleuCVioletOrangeJaune
+Old_highdensity;19,3;10,6;AD;ACT  ;C;24;05;2022;E12;O93_BleuCRoseCOrangeJaune
+Old_highdensity;19,5;9,5;AD;IMMO;R;12;07;2022;E13;O93_BleuCRoseCOrangeJaune
+Old_highdensity;13,6;7,7;JUV;ACT  ;C;24;05;2022;E12;O94_BleuCBleuCOrangeJaune
+Old_highdensity;16,4;9;JUV;ACT;R;30;11;2022;E15;O94_BleuCBleuCOrangeJaune
+Old_highdensity;22,7;10,6;AD;ACT;R;16;05;2023;E19;O94_BleuCBleuCOrangeJaune
+Old_highdensity;17,5;9,9;JUV;ACT ;C;24;05;2022;E12;O95_VioletVioletVioletJaune
+Old_highdensity;19;9,8;JUV;ACT;R;27;09;2022;E14;O95_VioletVioletVioletJaune
+Old_highdensity;12;NA;JUV;ACT ;C;24;05;2022;E12;O96_RoseCVioletVioletJaune
+Old_highdensity;18,2;9,3;JUV;ACT;R;16;05;2023;E19;O96_RoseCVioletVioletJaune
+Old_highdensity;17,7;9,8;JUV;ACT ;C;24;05;2022;E12;O97_BleuCVioletVioletJaune
+Old_highdensity;19,8;9,3;SUB;ACT;R;16;05;2023;E19;O97_BleuCVioletVioletJaune
+Old_highdensity;20,8;10,3;JUV;ACT ;C;24;05;2022;E12;O98_RoseCRoseCVioletJaune
+Old_highdensity;21;10;SUB;ACT;R;27;09;2022;E14;O98_RoseCRoseCVioletJaune
+Old_highdensity;18,1;9,9;JUV;ACT ;C;24;05;2022;E12;V11_VioletRougeRougeRouge
+Old_highdensity;21,8;9;AD;ACT;R;27;09;2022;E14;V11_VioletRougeRougeRouge
+Old_highdensity;19,1;10,6;AD;ACT ;C;24;05;2022;E12;V12_RoseCRoseCRoseCVert
+Old_highdensity;19,1;10,5;SUB;ACT;R;30;11;2022;E15;V12_RoseCRoseCRoseCVert
+Old_highdensity;19,1;10,4;AD;ACT;R;17;04;2023;E17;V12_RoseCRoseCRoseCVert
+Old_highdensity;19,2;10,1;AD;ACT;R;16;05;2023;E19;V12_RoseCRoseCRoseCVert
+Old_highdensity;19,1;10,3;AD;ACT ;C;24;05;2022;E12;V13_RoseCRoseCRoseCRouge
+Old_highdensity;19;10;AD;IMMO;R;12;07;2022;E13;V13_RoseCRoseCRoseCRouge
+Old_highdensity;15,5;8,8;JUV;ACT;C;27;04;2021;E2;V13_RoseRoseBlancBleu
+Old_highdensity;21,5;10;JUV;MORT;R_MORT;13;07;2021;E5;V13_RoseRoseBlancBleu
+Old_highdensity;10,4;6,2;JUV;ACT;C;27;04;2021;E2;V14_NA
+Old_highdensity;10;NA;JUV;ACT ;C;24;05;2022;E12;V14_NA
+Old_highdensity;23,5;10,4;AD;IMMO;C;27;04;2021;E2;V15_RoseRoseBlancRose
+Old_highdensity;23,5;10,5;AD;ACT;R;25;05;2021;E4;V15_RoseRoseBlancRose
+Old_highdensity;17,5;10,5;JUV;ACT ;C;24;05;2022;E12;V17_RoseCRoseCVertRouge
+Old_highdensity;17,2;9,4;JUV;ACT;R;27;09;2022;E14;V17_RoseCRoseCVertRouge
+Old_highdensity;21,4;10;AD;ACT;C;27;04;2021;E2;V17_RoseFRoseFBlancBlanc
+Old_highdensity;21,1;10,1;AD;ACT;R;25;05;2021;E4;V17_RoseFRoseFBlancBlanc
+Old_highdensity;21,1;10,6;AD;ACT;R;06;10;2021;E6;V17_RoseFRoseFBlancBlanc
+Old_highdensity;18;10,5;SUB;ACT ;C;24;05;2022;E12;V18_RoseCRoseCRougeRouge
+Old_highdensity;17,8;9,9;JUV;ACT;R;27;09;2022;E14;V18_RoseCRoseCRougeRouge
+Old_highdensity;20,6;9,4;AD;ACT;C;27;04;2021;E2;V18_RoseFBlancBleuFBleuF
+Old_highdensity;20,5;10;AD;ACT;R;15;12;2021;E7;V18_RoseFBlancBleuFBleuF
+Old_highdensity;20,3;9,7;AD;ACT ;R;15;04;2022;E9;V18_RoseFBlancBleuFBleuF
+Old_highdensity;12,1;7,4;JUV;ACT;C;27;04;2021;E2;V19_RoseBlancBleuRose
+Old_highdensity;20,8;9;JUV;ACT  ;R;24;05;2022;E12;V19_RoseBlancBleuRose
+Old_highdensity;21,9;10;AD;IMMO;C;27;04;2021;E2;V22_RoseBlancRoseBleu
+Old_highdensity;22;9,9;AD;IMMO;R;10;05;2021;E3;V22_RoseBlancRoseBleu
+Old_highdensity;NA;NA;NA;MORT;R_MORT;25;05;2021;E4;V22_RoseBlancRoseBleu
+Old_highdensity;14,4;8;JUV;ACT;C;27;04;2021;E2;V23_RoseFBlancRoseFRoseF
+Old_highdensity;17,9;10,1;JUV;ACT;R;06;10;2021;E6;V23_RoseFBlancRoseFRoseF
+Old_highdensity;18,9;10,2;JUV;ACT ;R;27;04;2022;E10;V23_RoseFBlancRoseFRoseF
+Old_highdensity;20,1;10,1;JUV;ACT ;R;13;05;2022;E11;V23_RoseFBlancRoseFRoseF
+Old_highdensity;21,1;11;JUV;ACT ;R;24;05;2022;E12;V23_RoseFBlancRoseFRoseF
+Old_highdensity;22,4;10,5;AD;ACT;R;27;09;2022;E14;V23_RoseFBlancRoseFRoseF
+Old_highdensity;11,4;6;JUV;ACT;C;27;04;2021;E2;V24_RoseBlancRoseBlanc
+Old_highdensity;11,8;6,4;JUV;ACT;R;26;05;2021;E4;V24_RoseBlancRoseBlanc
+Old_highdensity;21,7;10,1;AD;ACT ;R ;24;05;2022;E12;V24_RoseBlancRoseBlanc
+Old_highdensity;21,3;10,6;AD;ACT ;C;24;05;2022;E12;V24_RoseCVertVertVert
+Old_highdensity;22,3;10,5;AD;ACT;R;16;05;2023;E19;V24_RoseCVertVertVert
+Old_highdensity;6,1;3,6;JUV;IMMO;C;27;04;2021;E2;V25_NA
+Old_highdensity;6,1;4,3;JUV;ACT;R;10;05;2021;E3;V25_NA
+Old_highdensity;22,2;10,3;AD;IMMO;C;27;04;2021;E2;V26_RoseFBlancBlancRoseF
+Old_highdensity;21,9;10,3;AD;ACT;R;25;05;2021;E4;V26_RoseFBlancBlancRoseF
+Old_highdensity;21,5;10;AD;ACT;R;13;07;2021;E5;V26_RoseFBlancBlancRoseF
+Old_highdensity;22;10,5;AD;IMMO;R;12;07;2022;E13;V26_RoseFBlancBlancRoseF
+Old_highdensity;21,1;10,3;SUB;IMMO;C;27;04;2021;E2;V28_RoseBlancBlancBlanc
+Old_highdensity;20,9;9,6;SUB;ACT;R;25;05;2021;E4;V28_RoseBlancBlancBlanc
+Old_highdensity;21,4;10,5;AD;ACT;R;21;02;2022;E8;V28_RoseBlancBlancBlanc
+Old_highdensity;21;10;AD;ACT ;R;14;04;2022;E9;V28_RoseBlancBlancBlanc
+Old_highdensity;16;8,5;JUV;IMMO;C;27;04;2021;E2;V3_RoseBleuBlancRose
+Old_highdensity;16,5;8,5;JUV;ACT;R;25;05;2021;E4;V3_RoseBleuBlancRose
+Old_highdensity;10,9;10,4;AD;ACT ;C;24;05;2022;E12;V30_BleuCBleuCVertVert
+Old_highdensity;NA;NA;AD;ACT;R;27;09;2022;E14;V30_BleuCBleuCVertVert
+Old_highdensity;17,5;9,1;JUV;ACT;C;25;05;2022;E12;V36_BleuCVertRougeRouge
+Old_highdensity;20,2;10;AD;ACT;R;27;09;2022;E14;V36_BleuCVertRougeRouge
+Old_highdensity;21,9;9,4;AD;ACT;C;27;04;2021;E2;V37_BlancBleuBlancRose
+Old_highdensity;21,6;9,7;AD;ACT;R;25;05;2021;E4;V37_BlancBleuBlancRose
+Old_highdensity;22,7;10,1;JUV;ACT ;C;25;05;2022;E12;V37_VertVertVertVert
+Old_highdensity;22,5;10,5;AD;IMMO;R;12;07;2022;E13;V37_VertVertVertVert
+Old_highdensity;8,1;5,4;JUV;ACT;C;27;04;2021;E2;V38_NA
+Old_highdensity;8,9;5,2;JUV;ACT;R;26;05;2021;E4;V38_NA
+Old_highdensity;NA;NA;JUV;MORT;R_MORT;30;05;2023;E20;V38_NA
+Old_highdensity;23,9;11;AD;IMMO;C;27;04;2021;E2;V40_BlancBleuBlancBlanc
+Old_highdensity;23,8;10,6;AD;IMMO;R;10;05;2021;E3;V40_BlancBleuBlancBlanc
+Old_highdensity;21,2;9,9;AD;IMMO;C;27;04;2021;E2;V41_BlancRoseBleuBleu
+Old_highdensity;21,4;10;AD;ACT;R;26;05;2021;E4;V41_BlancRoseBleuBleu
+Old_highdensity;22,7;10,4;AD;ACT ;C;25;05;2022;E12;V42_VertJauneJauneJaune
+Old_highdensity;22;11;AD;ACT;R;27;09;2022;E14;V42_VertJauneJauneJaune
+Old_highdensity;18,2;9,8;SUB;ACT;C;27;04;2021;E2;V43_BlancRoseBleuRose
+Old_highdensity;19,1;10;JUV;ACT;R;26;05;2021;E4;V43_BlancRoseBleuRose
+Old_highdensity;21;9,8;AD;ACT;C;27;04;2021;E2;V44_BlancRoseBleuBlanc
+Old_highdensity;20,9;10;NA;MORT;R_MORT;06;10;2021;E6;V44_BlancRoseBleuBlanc
+Old_highdensity;10,1;6,7;JUV;ACT;C;27;04;2021;E2;V45_NA
+Old_highdensity;10,3;5,6;JUV;ACT;R;26;05;2021;E4;V45_NA
+Old_highdensity;9,6;5,5;JUV;ACT;C;27;04;2021;E2;V46_NA
+Old_highdensity;11,8;6,1;JUV;ACT;R;26;05;2021;E4;V46_NA
+Old_highdensity;18,9;10;SUB;ACT;C;27;04;2021;E2;V47_BlancRoseRoseBleu
+Old_highdensity;19,3;10,5;JUV;MORT;R_MORT;25;05;2021;E4;V47_BlancRoseRoseBleu
+Old_highdensity;22;9,9;AD;ACT;C;27;04;2021;E2;V49_BlancRoseRoseBlanc
+Old_highdensity;21,8;9,8;AD;ACT;R;15;12;2021;E7;V49_BlancRoseRoseBlanc
+Old_highdensity;21,2;9,9;AD;IMMO;R ;12;05;2022;E11;V49_BlancRoseRoseBlanc
+Old_highdensity;16;8,9;JUV;ACT;C;27;04;2021;E2;V50_BlancRoseBlancBleu
+Old_highdensity;21;10,5;AD;ACT;R;21;02;2022;E8;V50_BlancRoseBlancBleu
+Old_highdensity;14,5;7,8;JUV;ACT ;C;25;05;2022;E12;V59_VertRoseCOrangeJaune
+Old_highdensity;17,6;9,8;JUV;IMMO;R;14;02;2023;E16;V59_VertRoseCOrangeJaune
+Old_highdensity;22,9;10,2;AD;IMMO;C;27;04;2021;E2;V6_RoseRoseBleuBleu
+Old_highdensity;23;10,5;AD;ACT;R;10;05;2021;E3;V6_RoseRoseBleuBleu
+Old_highdensity;21,1;10,5;JUV;ACT ;C;24;05;2022;E12;V6_VioletBleucVertRouge
+Old_highdensity;NA;NA;SUB;MORT;R_MORT;12;07;2022;E13;V6_VioletBleucVertRouge
+Old_highdensity;21,8;9,9;AD;ACT;C;27;04;2021;E2;V7_RoseRoseBleuRose
+Old_highdensity;21,9;9,5;AD;ACT;R;25;05;2021;E4;V7_RoseRoseBleuRose
+Old_highdensity;15;7,8;JUV;ACT;C;27;04;2021;E2;V8_RoseRoseBleuBlanc
+Old_highdensity;16;8,2;JUV;ACT;R;25;05;2021;E4;V8_RoseRoseBleuBlanc
+Old_highdensity;22;10,6;AD;ACT ;C;24;05;2022;E12;V8_VioletVertVertVert
+Old_highdensity;21,6;10,5;AD;IMMO;R;12;07;2022;E13;V8_VioletVertVertVert
+Old_highdensity;21,8;10,5;AD;ACT;R;27;09;2022;E14;V8_VioletVertVertVert
+Old_highdensity;21,8;10,2;AD;ACT;C;25;05;2021;E4;W_BleuRougeVertBleu
+Old_highdensity;21,4;10,2;AD;ACT;R;15;12;2021;E7;W_BleuRougeVertBleu
+Old_highdensity;21,5;NA;AD;ACT ;R;15;04;2022;E9;W_BleuRougeVertBleu
+Old_highdensity;20,6;9,9;SUB;ACT;C;25;05;2021;E4;W14_BleuBleuVert
+Old_highdensity;21,6;10,2;AD;ACT;R;06;10;2021;E6;W14_BleuBleuVert
+Old_highdensity;9,4;5,3;JUV;ACT;C;25;05;2021;E4;W15_NA
+Old_highdensity;14,8;8;JUV;ACT;R;15;12;2021;E7;W15_NA
+Old_highdensity;12,7;6,2;JUV;ACT;C;25;05;2021;E4;W19_NA
+Old_highdensity;12,9;7,4;JUV;ACT;R;06;10;2021;E6;W19_NA
+Old_highdensity;10;5,7;JUV;ACT;C;25;05;2021;E4;W23_NA
+Old_highdensity;19,4;9,6;JUV;ACT;R;27;09;2022;E14;W23_NA
+Old_highdensity;22;10,4;AD;ACT;C;25;05;2021;E4;W25_RougeRougeVertVert
+Old_highdensity;21,8;10,2;AD;MORT;R_MORT;27;04;2022;E10;W25_RougeRougeVertVert
+Old_highdensity;13,6;8,1;JUV;ACT;C;25;05;2021;E4;W26_RougeRougeVertBleu
+Old_highdensity;16,3;8,6;JUV;ACT;R;13;07;2021;E5;W26_RougeRougeVertBleu
+Old_highdensity;11,3;5,9;JUV;ACT;C;25;05;2021;E4;W32_NA
+Old_highdensity;11,9;6,8;JUV;ACT;R;06;10;2021;E6;W32_NA
+Old_highdensity;13,1;7,1;JUV;ACT;C;25;05;2021;E4;W39_RougeVertVertVert
+Old_highdensity;15,4;8,4;JUV;ACT;R;06;10;2021;E6;W39_RougeVertVertVert
+Old_highdensity;11;6,2;JUV;ACT;C;25;05;2021;E4;W4_NA
+Old_highdensity;16,1;8,7;JUV;ACT;R;06;10;2021;E6;W4_NA
+Old_highdensity;16,9;9,2;SUB;MORT ;R_MORT;27;04;2022;E10;W4_NA
+Old_highdensity;21,8;10,2;AD;ACT;C;25;05;2021;E4;W40_RougeVertVertBleu
+Old_highdensity;21,9;10,2;AD;ACT;R;13;07;2021;E5;W40_RougeVertVertBleu
+Old_highdensity;21,2;10,2;AD;ACT;R;06;10;2021;E6;W40_RougeVertVertBleu
+Old_highdensity;20,8;9,5;AD;ACT;C;25;05;2021;E4;W41_RougeVertBleuRouge
+Old_highdensity;21,1;9,6;AD;ACT;R;13;07;2021;E5;W41_RougeVertBleuRouge
+Old_highdensity;21,3;9,4;AD;IMMO;R;13;05;2022;E11;W41_RougeVertBleuRouge
+Old_highdensity;21,2;10;AD;ACT ;R;24;05;2022;E12;W41_RougeVertBleuRouge
+Old_highdensity;20,7;9,6;AD;ACT;C;25;05;2021;E4;W42_RougeVertBleuVert
+Old_highdensity;20,1;9,8;AD;ACT;R;13;07;2021;E5;W42_RougeVertBleuVert
+Old_highdensity;19,5;9,6;AD;ACT;C;25;05;2021;E4;W43_RougeVertBleuBleu
+Old_highdensity;NA;NA;AD;MORT;R_MORT;27;04;2022;E10;W43_RougeVertBleuBleu
+Old_highdensity;19,8;9,3;SUB;ACT;C;25;05;2021;E4;W46_RougeBleuFRougeVert
+Old_highdensity;22,6;9,9;SUB;ACT;R;13;07;2021;E5;W46_RougeBleuFRougeVert
+Old_highdensity;22,7;10,5;AD;ACT;R;15;12;2021;E7;W46_RougeBleuFRougeVert
+Old_highdensity;22,9;10,4;AD;IMMO;R;13;05;2022;E11;W46_RougeBleuFRougeVert
+Old_highdensity;22,8;10,5;AD;IMMO;R;12;07;2022;E13;W46_RougeBleuFRougeVert
+Old_highdensity;22,6;10,1;AD;ACT;R;16;05;2023;E19;W46_RougeBleuFRougeVert
+Old_highdensity;22,8;10,8;AD;ACT;C;25;05;2021;E4;W47_RougeBleuRougeBleu
+Old_highdensity;22,4;11;AD;MORT;R_MORT;06;10;2021;E6;W47_RougeBleuRougeBleu
+Old_highdensity;12,5;7,3;JUV;ACT;C;25;05;2021;E4;W48_NA
+Old_highdensity;17,2;9,2;JUV;IMMO;R;13;05;2022;E11;W48_NA
+Old_highdensity;17,8;10,5;JUV;ACT  ;R;24;05;2022;E12;W48_NA
+Old_highdensity;18,5;10,3;SUB;IMMO;R;12;07;2022;E13;W48_NA
+Old_highdensity;19,2;10,4;SUB;ACT;R;27;09;2022;E14;W48_NA
+Old_highdensity;21,3;9,9;SUB;ACT;C;25;05;2021;E4;W49_RougeBleuVertRouge
+Old_highdensity;22;10,5;AD;ACT;R;15;12;2021;E7;W49_RougeBleuVertRouge
+Old_highdensity;21,8;10,9;AD;ACT ;R;27;04;2022;E10;W49_RougeBleuVertRouge
+Old_highdensity;NA;NA;AD;MORT;R_MORT;13;05;2022;E11;W49_RougeBleuVertRouge
+Old_highdensity;21;10,4;AD;ACT;C;25;05;2021;E4;W50_RougeBleuVertVert
+Old_highdensity;20,8;10,7;AD;ACT;R;13;07;2021;E5;W50_RougeBleuVertVert
+Old_highdensity;9,6;5,2;JUV;ACT;C;25;05;2021;E4;W54_NA
+Old_highdensity;19,6;10,5;JUV;ACT  ;R;24;05;2022;E12;W54_NA
+Old_highdensity;13,6;7,5;JUV;ACT;C;25;05;2021;E4;W57_RougeBleuBleuBleu
+Old_highdensity;21,9;10;AD;ACT;R;15;12;2021;E7;W57_RougeBleuBleuBleu
+Old_highdensity;14;7,2;JUV;ACT;C;25;05;2021;E4;W59_VertRougeRougeVert
+Old_highdensity;17,8;9,5;JUV;ACT;R;15;12;2021;E7;W59_VertRougeRougeVert
+Old_highdensity;22,9;11;JUV;ACT ;R;24;05;2022;E12;W59_VertRougeRougeVert
+Old_highdensity;18,8;8,8;JUV;ACT;C;25;05;2021;E4;W64_VertRougeBleuFRouge
+Old_highdensity;20,9;10,2;AD;ACT;R;15;12;2021;E7;W64_VertRougeBleuFRouge
+Old_highdensity;20,9;10,4;AD;ACT;R;21;02;2022;E8;W64_VertRougeBleuFRouge
+Old_highdensity;19,7;10;AD;ACT ;R;15;04;2022;E9;W64_VertRougeBleuFRouge
+Old_highdensity;20,7;10,1;AD;ACT;R;27;09;2022;E14;W64_VertRougeBleuFRouge
+Old_highdensity;10,7;6,6;JUV;ACT;C;25;05;2021;E4;W66_NA
+Old_highdensity;14,4;8,2;JUV;ACT;R;06;10;2021;E6;W66_NA
+Old_highdensity;15,7;9;JUV;IMMO;R;13;05;2022;E11;W66_NA
+Old_highdensity;15,8;9,6;JUV;ACT ;R;24;05;2022;E12;W66_NA
+Old_highdensity;11,4;5,8;JUV;ACT;C;25;05;2021;E4;W67_NA
+Old_highdensity;14,5;8,1;JUV;ACT ;R;15;04;2022;E9;W67_NA
+Old_highdensity;19,3;9,2;JUV;ACT;R;27;09;2022;E14;W67_NA
+Old_highdensity;22,8;10,2;AD;ACT;C;25;05;2021;E4;W69_VertVertRougeRouge
+Old_highdensity;NA;NA;AD;MORT;R_MORT;24;05;2022;E12;W69_VertVertRougeRouge
+Old_highdensity;10,5;5,5;JUV;ACT;C;25;05;2021;E4;W70_NA
+Old_highdensity;13;7,1;JUV;ACT ;R;15;04;2022;E9;W70_NA
+Old_highdensity;13,9;7,2;JUV;IMMO;R;12;07;2022;E13;W70_NA
+Old_highdensity;14,4;7,9;JUV;ACT;R;27;09;2022;E14;W70_NA
+Old_highdensity;15,4;8,2;JUV;ACT;R;30;11;2022;E15;W70_NA
+Old_highdensity;21,9;9,7;JUV;ACT;R;30;05;2023;E20;W70_NA
+Old_highdensity;15,1;7,7;JUV;ACT;C;25;05;2021;E4;W72_VertVertRougeVert
+Old_highdensity;20,3;10;AD;ACT;R;30;11;2022;E15;W72_VertVertRougeVert
+Old_highdensity;10,8;6,1;JUV;ACT;C;25;05;2021;E4;W74_NA
+Old_highdensity;19,2;10;SUB;ACT ;R;14;04;2022;E9;W74_NA
+Old_highdensity;22,8;10;AD;ACT;R;27;09;2022;E14;W74_NA
+Old_highdensity;21,5;10,2;AD;ACT;C;25;05;2021;E4;W83_VertVertBleuFBleuF
+Old_highdensity;21;10,5;AD;ACT;R;13;07;2021;E5;W83_VertVertBleuFBleuF
+Old_highdensity;21,2;10,1;AD;ACT;R;06;10;2021;E6;W83_VertVertBleuFBleuF
+Old_highdensity;21,1;10,1;AD;ACT ;R;15;04;2022;E9;W83_VertVertBleuFBleuF
+Old_highdensity;21;10;AD;IMMO;R;12;07;2022;E13;W83_VertVertBleuFBleuF
+Old_highdensity;13,1;7,1;JUV;ACT;C;25;05;2021;E4;W85_NA
+Old_highdensity;17,6;9,8;AD;ACT;R;06;10;2021;E6;W85_NA
+Old_highdensity;14,1;7,9;JUV;ACT;C;25;05;2021;E4;W9_BleuVertVert
+Old_highdensity;18,5;10;AD;IMMO;R;12;07;2022;E13;W9_BleuVertVert
+Old_highdensity;20,2;9,5;SUB;ACT;C;25;05;2021;E4;W93_VertBleuBleuVert
+Old_highdensity;21,5;10,6;AD;ACT;R;06;10;2021;E6;W93_VertBleuBleuVert
+Old_highdensity;20,9;9,6;AD;ACT;C;25;05;2021;E4;W98_BleuRougeVertRouge
+Old_highdensity;20;9,8;AD;ACT ;R;15;04;2022;E9;W98_BleuRougeVertRouge
+Old_highdensity;20,7;9,6;AD;IMMO;R;13;05;2022;E11;W98_BleuRougeVertRouge
+Old_highdensity;14,6;7,5;JUV;ACT;C;25;05;2021;E4;WPPOINT_BleuVertRougeRouge
+Old_highdensity;17,3;8,8;JUV;ACT;R;13;07;2021;E5;WPPOINT_BleuVertRougeRouge
+Old_highdensity;19,5;9,7;AD;ACT;R;15;12;2021;E7;WPPOINT_BleuVertRougeRouge
+Old_highdensity;19,4;9,8;AD;ACT;R;21;02;2022;E8;WPPOINT_BleuVertRougeRouge
+Old_highdensity;21;9,6;AD;ACT;C;25;05;2021;E4;WTRIANGLE_BleuRougeBleuBleu
+Old_highdensity;20,4;10;AD;ACT;R;13;07;2021;E5;WTRIANGLE_BleuRougeBleuBleu
+Old_highdensity;20,8;9,9;AD;ACT;R;06;10;2021;E6;WTRIANGLE_BleuRougeBleuBleu
+Old_highdensity;20,6;9,5;AD;IMMO;R;12;05;2022;E11;WTRIANGLE_BleuRougeBleuBleu
+Recent_lowdensity;14;7,9;JUV;ACT;C;14;04;2021;E1;B1_RougeRouge
+Recent_lowdensity;14,4;8,5;JUV;ACT;R;28;04;2021;E2;B1_RougeRouge
+Recent_lowdensity;15;8,5;JUV;ACT;R;11;05;2021;E3;B1_RougeRouge
+Recent_lowdensity;16,2;8,6;JUV;ACT;R;26;05;2021;E4;B1_RougeRouge
+Recent_lowdensity;19,5;10,3;JUV;ACT;R;13;07;2021;E5;B1_RougeRouge
+Recent_lowdensity;22,4;10,4;AD;ACT;R;06;10;2021;E6;B1_RougeRouge
+Recent_lowdensity;22,2;11;AD;ACT;R;15;12;2021;E7;B1_RougeRouge
+Recent_lowdensity;22;10,3;AD;ACT;R;21;02;2022;E8;B1_RougeRouge
+Recent_lowdensity;22,1;10;AD;ACT ;R;13;04;2022;E9;B1_RougeRouge
+Recent_lowdensity;21,9;10,6;AD;ACT ;R;28;04;2022;E10;B1_RougeRouge
+Recent_lowdensity;22,2;11,9;AD;ACT ;R;11;05;2022;E11;B1_RougeRouge
+Recent_lowdensity;22,5;11,2;AD;ACT ;R;23;05;2022;E12;B1_RougeRouge
+Recent_lowdensity;9,7;6,4;JUV;ACT;C;14;04;2021;E1;B100_NA
+Recent_lowdensity;10,4;6,1;JUV;ACT;R;28;04;2021;E2;B100_NA
+Recent_lowdensity;11,3;6,2;JUV;ACT;R;11;05;2021;E3;B100_NA
+Recent_lowdensity;11,9;6,9;JUV;ACT;R;26;05;2021;E4;B100_NA
+Recent_lowdensity;NA;NA;JUV;MORT;R_MORT;12;07;2022;E13;B100_NA
+Recent_lowdensity;23,6;12;AD;ACT;C;14;04;2021;E1;B29_VertRouge
+Recent_lowdensity;23,5;11,1;AD;ACT;R;28;04;2021;E2;B29_VertRouge
+Recent_lowdensity;23,5;11,4;AD;ACT;R;11;05;2021;E3;B29_VertRouge
+Recent_lowdensity;23,4;11,3;AD;ACT;R;26;05;2021;E4;B29_VertRouge
+Recent_lowdensity;23,4;11,5;AD;ACT;R;15;12;2021;E7;B29_VertRouge
+Recent_lowdensity;22,5;11;AD;ACT;R;21;02;2022;E8;B29_VertRouge
+Recent_lowdensity;22,6;11,2;AD;ACT;R;12;07;2022;E13;B29_VertRouge
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;B29_VertRouge
+Recent_lowdensity;21,7;11,9;SUB;ACT;C;14;04;2021;E1;B3_RougeVert
+Recent_lowdensity;22,4;11;SUB;ACT;R;28;04;2021;E2;B3_RougeVert
+Recent_lowdensity;23,2;11,1;SUB;ACT;R;11;05;2021;E3;B3_RougeVert
+Recent_lowdensity;24,3;11,1;AD;ACT;R;26;05;2021;E4;B3_RougeVert
+Recent_lowdensity;24,4;11,9;AD;ACT;R;13;07;2021;E5;B3_RougeVert
+Recent_lowdensity;24,4;12,1;AD;ACT;R;06;10;2021;E6;B3_RougeVert
+Recent_lowdensity;24,1;11,8;AD;ACT ;R;13;04;2022;E9;B3_RougeVert
+Recent_lowdensity;24;12;AD;ACT ;R;28;04;2022;E10;B3_RougeVert
+Recent_lowdensity;24,3;13,2;AD;ACT ;R;11;05;2022;E11;B3_RougeVert
+Recent_lowdensity;16,1;8,9;JUV;ACT;C;14;04;2021;E1;B32_VertVert
+Recent_lowdensity;18,9;9,8;JUV;ACT;R;11;05;2021;E3;B32_VertVert
+Recent_lowdensity;20,1;10,1;JUV;ACT;R;26;05;2021;E4;B32_VertVert
+Recent_lowdensity;23;10;SUB;ACT;R;13;07;2021;E5;B32_VertVert
+Recent_lowdensity;22,8;10,5;SUB;ACT;R;06;10;2021;E6;B32_VertVert
+Recent_lowdensity;22,9;11;AD;ACT;R;15;12;2021;E7;B32_VertVert
+Recent_lowdensity;22,5;10,6;AD;ACT;R;21;02;2022;E8;B32_VertVert
+Recent_lowdensity;11,6;7,4;JUV;ACT;C;14;04;2021;E1;B33_NA
+Recent_lowdensity;12;7;JUV;ACT;R;28;04;2021;E2;B33_NA
+Recent_lowdensity;12,9;7,4;JUV;ACT;R;11;05;2021;E3;B33_NA
+Recent_lowdensity;14,3;7,4;JUV;ACT;R;26;05;2021;E4;B33_NA
+Recent_lowdensity;15,5;8,7;JUV;ACT;R;13;07;2021;E5;B33_NA
+Recent_lowdensity;22,1;10,3;AD;ACT;R;06;10;2021;E6;B33_NA
+Recent_lowdensity;21,9;10,2;AD;ACT;R;15;12;2021;E7;B33_NA
+Recent_lowdensity;21,7;10,8;AD;ACT;R;21;02;2022;E8;B33_NA
+Recent_lowdensity;21,2;10,3;AD;ACT ;R;13;04;2022;E9;B33_NA
+Recent_lowdensity;21,3;11;AD;ACT ;R;28;04;2022;E10;B33_NA
+Recent_lowdensity;22;11,3;AD;ACT ;R;11;05;2022;E11;B33_NA
+Recent_lowdensity;21,6;10,3;AD;ACT ;R;23;05;2022;E12;B33_NA
+Recent_lowdensity;21,5;10,5;AD;ACT;R;12;07;2022;E13;B33_NA
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;B33_NA
+Recent_lowdensity;23,7;10,8;AD;ACT;C;14;04;2021;E1;B34_VertBlanc
+Recent_lowdensity;23,8;11;AD;ACT;R;28;04;2021;E2;B34_VertBlanc
+Recent_lowdensity;23,7;10,9;AD;ACT;R;11;05;2021;E3;B34_VertBlanc
+Recent_lowdensity;23,8;11;AD;ACT;R;26;05;2021;E4;B34_VertBlanc
+Recent_lowdensity;23,6;11;AD;ACT;R;06;10;2021;E6;B34_VertBlanc
+Recent_lowdensity;23,3;11;AD;ACT ;R ;13;04;2022;E9;B34_VertBlanc
+Recent_lowdensity;23,5;12;AD;ACT ;R;28;04;2022;E10;B34_VertBlanc
+Recent_lowdensity;23,8;11,8;AD;ACT ;R;11;05;2022;E11;B34_VertBlanc
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;B34_VertBlanc
+Recent_lowdensity;22;10,5;AD;ACT;C;14;04;2021;E1;B35_BlancRouge
+Recent_lowdensity;23;11;AD;IMMO;R;28;04;2021;E2;B35_BlancRouge
+Recent_lowdensity;22,3;10,1;AD;ACT;R;11;05;2021;E3;B35_BlancRouge
+Recent_lowdensity;22,2;9,9;AD;ACT;R;26;05;2021;E4;B35_BlancRouge
+Recent_lowdensity;21,9;10;AD;ACT;R;15;12;2021;E7;B35_BlancRouge
+Recent_lowdensity;22;9,5;AD;ACT ;R;13;04;2022;E9;B35_BlancRouge
+Recent_lowdensity;22;NA;AD;ACT ;R;28;04;2022;E10;B35_BlancRouge
+Recent_lowdensity;20,3;11,5;AD;ACT ;R;11;05;2022;E11;B35_BlancRouge
+Recent_lowdensity;22,4;10,3;AD;ACT ;R;23;05;2022;E12;B35_BlancRouge
+Recent_lowdensity;17,8;9,6;JUV;ACT;C;14;04;2021;E1;B36_BlancVert
+Recent_lowdensity;18,8;10,1;SUB;ACT;R;28;04;2021;E2;B36_BlancVert
+Recent_lowdensity;21,1;10,9;JUV;ACT;R;11;05;2021;E3;B36_BlancVert
+Recent_lowdensity;20,5;10,5;SUB;ACT;R;26;05;2021;E4;B36_BlancVert
+Recent_lowdensity;23;11,4;AD;ACT;R;13;07;2021;E5;B36_BlancVert
+Recent_lowdensity;22,9;11,4;AD;ACT;R;15;12;2021;E7;B36_BlancVert
+Recent_lowdensity;22,4;11,3;AD;ACT ;R;13;04;2022;E9;B36_BlancVert
+Recent_lowdensity;22,8;11;AD;ACT ;R;28;04;2022;E10;B36_BlancVert
+Recent_lowdensity;22,9;12,1;AD;ACT ;R;11;05;2022;E11;B36_BlancVert
+Recent_lowdensity;22,6;11,2;AD;ACT ;R;23;05;2022;E12;B36_BlancVert
+Recent_lowdensity;11,5;6,5;JUV;ACT;C;14;04;2021;E1;B37_NA
+Recent_lowdensity;11,6;6,8;JUV;ACT;R;28;04;2021;E2;B37_NA
+Recent_lowdensity;12,8;7,1;JUV;ACT;R;11;05;2021;E3;B37_NA
+Recent_lowdensity;13,1;7;JUV;ACT;R;26;05;2021;E4;B37_NA
+Recent_lowdensity;16,4;7,7;JUV;ACT;R;13;07;2021;E5;B37_NA
+Recent_lowdensity;21;10,5;AD;ACT;R;06;10;2021;E6;B37_NA
+Recent_lowdensity;21;10,8;AD;ACT;R;15;12;2021;E7;B37_NA
+Recent_lowdensity;20,8;10,9;AD;ACT;R;21;02;2022;E8;B37_NA
+Recent_lowdensity;20,6;10,5;AD;ACT ;R;13;04;2022;E9;B37_NA
+Recent_lowdensity;20,5;11,4;AD;ACT ;R;28;04;2022;E10;B37_NA
+Recent_lowdensity;22,3;23,1;AD;ACT ;R;11;05;2022;E11;B37_NA
+Recent_lowdensity;20,9;11,3;AD;ACT ;R;23;05;2022;E12;B37_NA
+Recent_lowdensity;20,8;11,3;AD;ACT;R;12;07;2022;E13;B37_NA
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;B37_NA
+Recent_lowdensity;22,6;11;AD;ACT;C;14;04;2021;E1;B4_RougeBlanc
+Recent_lowdensity;22,9;10,6;AD;ACT;R;28;04;2021;E2;B4_RougeBlanc
+Recent_lowdensity;22,5;10,4;AD;ACT;R;11;05;2021;E3;B4_RougeBlanc
+Recent_lowdensity;22,7;10,4;AD;ACT;R;26;05;2021;E4;B4_RougeBlanc
+Recent_lowdensity;24;11,6;AD;ACT;C;14;04;2021;E1;B40_BlancBlanc
+Recent_lowdensity;23,9;11;AD;ACT;R;26;05;2021;E4;B40_BlancBlanc
+Recent_lowdensity;22,4;11,3;AD;ACT;C;14;04;2021;E1;B48_RougeRougeRouge
+Recent_lowdensity;21,9;11;SUB;ACT;R;28;04;2021;E2;B48_RougeRougeRouge
+Recent_lowdensity;22,4;11,3;SUB;ACT;R;11;05;2021;E3;B48_RougeRougeRouge
+Recent_lowdensity;NA;NA;AD;REPRO;R;26;05;2021;E4;B48_RougeRougeRouge
+Recent_lowdensity;22,1;11;AD;MORT;R_MORT;13;07;2021;E5;B48_RougeRougeRouge
+Recent_lowdensity;11,3;6,6;JUV;ACT;C;14;04;2021;E1;B52_NA
+Recent_lowdensity;11,7;6,8;JUV;ACT;R;28;04;2021;E2;B52_NA
+Recent_lowdensity;12,4;7,1;JUV;ACT;R;11;05;2021;E3;B52_NA
+Recent_lowdensity;13,6;7,4;JUV;ACT;R;26;05;2021;E4;B52_NA
+Recent_lowdensity;24,5;11,8;AD;ACT;C;14;04;2021;E1;B53_RougeRougeVert
+Recent_lowdensity;24,5;11,3;AD;ACT;R;28;04;2021;E2;B53_RougeRougeVert
+Recent_lowdensity;24,2;11,4;AD;ACT;R;11;05;2021;E3;B53_RougeRougeVert
+Recent_lowdensity;24,5;11,3;AD;ACT;R;26;05;2021;E4;B53_RougeRougeVert
+Recent_lowdensity;17,6;9,8;JUV;ACT;C;14;04;2021;E1;B54_RougeRougeBlanc
+Recent_lowdensity;18;10;SUB;ACT;R;28;04;2021;E2;B54_RougeRougeBlanc
+Recent_lowdensity;19,4;10,2;JUV;ACT;R;11;05;2021;E3;B54_RougeRougeBlanc
+Recent_lowdensity;20,8;10,6;JUV;ACT;R;26;05;2021;E4;B54_RougeRougeBlanc
+Recent_lowdensity;21,9;10,7;SUB;ACT;R;13;07;2021;E5;B54_RougeRougeBlanc
+Recent_lowdensity;22,1;10,7;AD;ACT;R;06;10;2021;E6;B54_RougeRougeBlanc
+Recent_lowdensity;22;10,9;AD;ACT;R;15;12;2021;E7;B54_RougeRougeBlanc
+Recent_lowdensity;23,1;10,8;AD;ACT;C;14;04;2021;E1;B55_RougeVertRouge
+Recent_lowdensity;23;10,9;AD;IMMO;R;28;04;2021;E2;B55_RougeVertRouge
+Recent_lowdensity;23,2;10,7;AD;ACT;R;11;05;2021;E3;B55_RougeVertRouge
+Recent_lowdensity;23;10,8;AD;ACT;R;26;05;2021;E4;B55_RougeVertRouge
+Recent_lowdensity;23,1;11,1;AD;ACT;C;14;04;2021;E1;B56_RougeVertVert
+Recent_lowdensity;23,2;10,8;AD;ACT;R;28;04;2021;E2;B56_RougeVertVert
+Recent_lowdensity;22,9;11,1;AD;ACT;R;11;05;2021;E3;B56_RougeVertVert
+Recent_lowdensity;22,8;10,6;AD;ACT;R;26;05;2021;E4;B56_RougeVertVert
+Recent_lowdensity;22,2;11,2;AD;ACT;R;21;02;2022;E8;B56_RougeVertVert
+Recent_lowdensity;22,5;12,8;AD;ACT;R;12;07;2022;E13;B56_RougeVertVert
+Recent_lowdensity;24,7;11,9;AD;ACT;C;14;04;2021;E1;B92_Rouge
+Recent_lowdensity;24,8;11,6;AD;ACT;R;28;04;2021;E2;B92_Rouge
+Recent_lowdensity;24,7;11,4;AD;ACT;R;11;05;2021;E3;B92_Rouge
+Recent_lowdensity;24,8;11,5;AD;ACT;R;26;05;2021;E4;B92_Rouge
+Recent_lowdensity;24,5;11,9;AD;ACT;R;13;07;2021;E5;B92_Rouge
+Recent_lowdensity;24,5;11,5;AD;ACT;C;14;04;2021;E1;B98_Vert
+Recent_lowdensity;24,9;11,4;AD;ACT;R;28;04;2021;E2;B98_Vert
+Recent_lowdensity;24,9;11,1;AD;ACT;R;11;05;2021;E3;B98_Vert
+Recent_lowdensity;23,3;11,4;AD;ACT;C;14;04;2021;E1;B99_Blanc
+Recent_lowdensity;23,5;11,4;AD;ACT;R;28;04;2021;E2;B99_Blanc
+Recent_lowdensity;23,5;11,3;AD;ACT;R;11;05;2021;E3;B99_Blanc
+Recent_lowdensity;23,4;11;AD;ACT;R;26;05;2021;E4;B99_Blanc
+Recent_lowdensity;23,3;11,2;AD;ACT;R;06;10;2021;E6;B99_Blanc
+Recent_lowdensity;23,4;11,3;AD;ACT;R;15;12;2021;E7;B99_Blanc
+Recent_lowdensity;16,4;8;JUV;ACT;C;26;05;2021;E4;J38_RougeBlancRougeRouge
+Recent_lowdensity;22,1;10,7;AD;ACT;R;06;10;2021;E6;J38_RougeBlancRougeRouge
+Recent_lowdensity;22,2;11,2;AD;ACT;R;15;12;2021;E7;J38_RougeBlancRougeRouge
+Recent_lowdensity;21,8;11,1;AD;ACT;R;21;02;2022;E8;J38_RougeBlancRougeRouge
+Recent_lowdensity;21,6;10,8;AD;ACT;R;12;07;2022;E13;J38_RougeBlancRougeRouge
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;J38_RougeBlancRougeRouge
+Recent_lowdensity;21;10,5;SUB;ACT;C;26;05;2021;E4;J39_RougeBlancRougeVert
+Recent_lowdensity;22,3;10,5;AD;ACT;R;13;07;2021;E5;J39_RougeBlancRougeVert
+Recent_lowdensity;22,2;10,4;AD;ACT;R;06;10;2021;E6;J39_RougeBlancRougeVert
+Recent_lowdensity;22,2;10,5;AD;ACT;R;15;12;2021;E7;J39_RougeBlancRougeVert
+Recent_lowdensity;22,5;NA;AD;MORT;R_MORT;21;02;2022;E8;J39_RougeBlancRougeVert
+Recent_lowdensity;13,7;6,9;JUV;ACT;C;26;05;2021;E4;J41_RougeBlancVertRouge
+Recent_lowdensity;16,4;9,2;JUV;ACT;R;13;07;2021;E5;J41_RougeBlancVertRouge
+Recent_lowdensity;21;NA;AD;ACT;R;06;10;2021;E6;J41_RougeBlancVertRouge
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;15;12;2021;E7;J41_RougeBlancVertRouge
+Recent_lowdensity;12,3;7,3;JUV;ACT;C;26;05;2021;E4;J42_NA
+Recent_lowdensity;19;10,1;JUV;ACT;R;13;07;2021;E5;J42_NA
+Recent_lowdensity;21,4;10,3;AD;ACT;R;06;10;2021;E6;J42_NA
+Recent_lowdensity;21,4;10,4;AD;ACT;R;15;12;2021;E7;J42_NA
+Recent_lowdensity;21,2;10,9;AD;ACT;R;21;02;2022;E8;J42_NA
+Recent_lowdensity;21,2;10,4;AD;ACT ;R;13;04;2022;E9;J42_NA
+Recent_lowdensity;21,1;11;AD;ACT ;R;28;04;2022;E10;J42_NA
+Recent_lowdensity;21,5;11,3;AD;ACT ;R;11;05;2022;E11;J42_NA
+Recent_lowdensity;21,2;10,2;AD;ACT ;R;23;05;2022;E12;J42_NA
+Recent_lowdensity;21;10,5;AD;ACT;R;12;07;2022;E13;J42_NA
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;J42_NA
+Recent_lowdensity;22,7;10,8;AD;ACT;C;26;05;2021;E4;J43_RougeBlancVertVert
+Recent_lowdensity;22,5;11,1;AD;ACT;R;13;07;2021;E5;J43_RougeBlancVertVert
+Recent_lowdensity;22,4;10,9;AD;ACT;R;15;12;2021;E7;J43_RougeBlancVertVert
+Recent_lowdensity;22;11;AD;ACT ;R;13;04;2022;E9;J43_RougeBlancVertVert
+Recent_lowdensity;21,6;11;AD;ACT;R;12;07;2022;E13;J43_RougeBlancVertVert
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;J43_RougeBlancVertVert
+Recent_lowdensity;21,6;10,4;AD;ACT;C;26;05;2021;E4;J45_RougeBlancBlancRouge
+Recent_lowdensity;20,8;10,3;AD;ACT ;R;28;04;2022;E10;J45_RougeBlancBlancRouge
+Recent_lowdensity;21,2;11,5;AD;IMMO;R;11;05;2022;E11;J45_RougeBlancBlancRouge
+Recent_lowdensity;20,8;10,5;AD;ACT ;R;23;05;2022;E12;J45_RougeBlancBlancRouge
+Recent_lowdensity;18,6;9,2;JUV;ACT;C;26;05;2021;E4;J46_RougeBlancBlancVert
+Recent_lowdensity;22,5;10,5;AD;ACT;R;15;12;2021;E7;J46_RougeBlancBlancVert
+Recent_lowdensity;23,7;11;AD;ACT;C;26;05;2021;E4;J48_VertRougeRougeRouge
+Recent_lowdensity;23,6;11,1;AD;ACT;R;13;07;2021;E5;J48_VertRougeRougeRouge
+Recent_lowdensity;23;11,2;AD;ACT;R;21;02;2022;E8;J48_VertRougeRougeRouge
+Recent_lowdensity;23,1;11;AD;ACT ;R;28;04;2022;E10;J48_VertRougeRougeRouge
+Recent_lowdensity;23,5;12,4;AD;ACT ;R;11;05;2022;E11;J48_VertRougeRougeRouge
+Recent_lowdensity;23,5;11;AD;ACT ;R;23;05;2022;E12;J48_VertRougeRougeRouge
+Recent_lowdensity;12,4;6,8;JUV;ACT;C;26;05;2021;E4;J49_NA
+Recent_lowdensity;16,8;9,1;JUV;ACT;R;13;07;2021;E5;J49_NA
+Recent_lowdensity;21,9;10,4;SUB;ACT ;R;13;04;2022;E9;J49_NA
+Recent_lowdensity;22,6;11,3;AD;ACT ;R;28;04;2022;E10;J49_NA
+Recent_lowdensity;23,4;11,9;AD;ACT ;R;11;05;2022;E11;J49_NA
+Recent_lowdensity;22,3;11,4;AD;ACT;R;12;07;2022;E13;J49_NA
+Recent_lowdensity;23,4;10,9;AD;ACT;R;27;09;2022;E14;J49_NA
+Recent_lowdensity;23,2;10,8;AD;ACT;R;14;02;2023;E16;J49_NA
+Recent_lowdensity;22,3;10,8;AD;ACT;C;26;05;2021;E4;J50_VertRougeRougeVert
+Recent_lowdensity;22,4;10,4;AD;ACT;R;06;10;2021;E6;J50_VertRougeRougeVert
+Recent_lowdensity;11,9;6,8;JUV;ACT;C;26;05;2021;E4;J51_NA
+Recent_lowdensity;15;9;JUV;ACT;R;13;07;2021;E5;J51_NA
+Recent_lowdensity;21,7;9,9;AD;ACT;R;06;10;2021;E6;J51_NA
+Recent_lowdensity;15;8,6;JUV;ACT;C;11;05;2021;E3;O60_BlancVertRouge
+Recent_lowdensity;15,4;8,2;JUV;ACT;R;26;05;2021;E4;O60_BlancVertRouge
+Recent_lowdensity;18,8;10;JUV;ACT;R;13;07;2021;E5;O60_BlancVertRouge
+Recent_lowdensity;21,2;10,1;AD;ACT;R;21;02;2022;E8;O60_BlancVertRouge
+Recent_lowdensity;20;19,6;AD;IMMO;R;13;04;2022;E9;O60_BlancVertRouge
+Recent_lowdensity;21,3;10,1;AD;ACT ;R;28;04;2022;E10;O60_BlancVertRouge
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;11;05;2022;E11;O60_BlancVertRouge
+Recent_lowdensity;11,6;6,7;JUV;ACT;C;11;05;2021;E3;O61_NA
+Recent_lowdensity;11,6;6,6;JUV;ACT;R;26;05;2021;E4;O61_NA
+Recent_lowdensity;14,6;8,4;JUV;ACT;R;13;07;2021;E5;O61_NA
+Recent_lowdensity;17,2;9,2;JUV;ACT;R;06;10;2021;E6;O61_NA
+Recent_lowdensity;8,3;5;JUV;ACT;C;11;05;2021;E3;O62_NA
+Recent_lowdensity;11,1;6,1;JUV;ACT;R;13;07;2021;E5;O62_NA
+Recent_lowdensity;15,8;8,6;JUV;ACT;R;06;10;2021;E6;O62_NA
+Recent_lowdensity;23,4;11,1;AD;ACT;C;11;05;2021;E3;O63_BlancVertVert
+Recent_lowdensity;23,3;10,9;AD;ACT;R;26;05;2021;E4;O63_BlancVertVert
+Recent_lowdensity;23,1;11,5;AD;ACT;R;13;07;2021;E5;O63_BlancVertVert
+Recent_lowdensity;23,2;11,1;AD;ACT;R;06;10;2021;E6;O63_BlancVertVert
+Recent_lowdensity;22,1;11;AD;ACT;R;21;02;2022;E8;O63_BlancVertVert
+Recent_lowdensity;21,2;10,9;SUB;ACT;C;11;05;2021;E3;O64_BlancVertBlanc
+Recent_lowdensity;23,4;11;AD;ACT;R;13;07;2021;E5;O64_BlancVertBlanc
+Recent_lowdensity;23,4;11;AD;ACT;R;06;10;2021;E6;O64_BlancVertBlanc
+Recent_lowdensity;22,9;10,8;AD;ACT;R;21;02;2022;E8;O64_BlancVertBlanc
+Recent_lowdensity;20,9;11;AD;ACT;R;15;12;2021;E7;O67_BlancBlancRouge
+Recent_lowdensity;20,4;11,4;AD;ACT;R;21;02;2022;E8;O67_BlancBlancRouge
+Recent_lowdensity;14,2;8,3;JUV;ACT;C;11;05;2021;E3;O67_BlancBlancRouge
+Recent_lowdensity;18,2;10,1;;ACT;R;13;07;2021;E5;O67_BlancBlancRouge
+Recent_lowdensity;21;10,8;AD;ACT;R;06;10;2021;E6;O67_BlancBlancRouge
+Recent_lowdensity;NA;NA;AD;ACT;C;11;05;2021;E3;O99_BlancRougeBlanc
+Recent_lowdensity;22,9;11;AD;ACT;R;13;07;2021;E5;O99_BlancRougeBlanc
+Recent_lowdensity;22,7;10,5;AD;ACT;R;15;12;2021;E7;O99_BlancRougeBlanc
+Recent_lowdensity;15,5;5;JUV;ACT;C;28;04;2021;E2;V51_RougeVertBlanc
+Recent_lowdensity;18,8;10;JUV;ACT;R;13;07;2021;E5;V51_RougeVertBlanc
+Recent_lowdensity;18,9;NA;AD;MORT;R_MORT;06;10;2021;E6;V51_RougeVertBlanc
+Recent_lowdensity;22;12;SUB;IMMO;C;28;04;2021;E2;V52_RougeBlancRouge
+Recent_lowdensity;22,7;11,5;SUB;ACT;R;11;05;2021;E3;V52_RougeBlancRouge
+Recent_lowdensity;23,1;10,7;AD;IMMO;C;28;04;2021;E2;V53_RougeBlancVert
+Recent_lowdensity;24,6;10,6;AD;ACT;R;26;05;2021;E4;V53_RougeBlancVert
+Recent_lowdensity;17,3;8,8;JUV;ACT;C;28;04;2021;E2;V54_RougeBlancBlanc
+Recent_lowdensity;17,9;9,9;JUV;ACT;R;11;05;2021;E3;V54_RougeBlancBlanc
+Recent_lowdensity;18,5;9,5;JUV;ACT;R;26;05;2021;E4;V54_RougeBlancBlanc
+Recent_lowdensity;23;11,2;AD;ACT;R;13;07;2021;E5;V54_RougeBlancBlanc
+Recent_lowdensity;23;10,9;AD;ACT;R;06;10;2021;E6;V54_RougeBlancBlanc
+Recent_lowdensity;23;11,4;AD;ACT;R;15;12;2021;E7;V54_RougeBlancBlanc
+Recent_lowdensity;22,5;11,4;AD;ACT;R;21;02;2022;E8;V54_RougeBlancBlanc
+Recent_lowdensity;22,9;11,1;AD;ACT ;R;23;05;2022;E12;V54_RougeBlancBlanc
+Recent_lowdensity;22,1;11,5;AD;ACT;R;30;11;2022;E15;V54_RougeBlancBlanc
+Recent_lowdensity;22,2;11,5;AD;ACT;R;18;04;2023;E17;V54_RougeBlancBlanc
+Recent_lowdensity;22,7;11,3;AD;ACT;R;03;05;2023;E18;V54_RougeBlancBlanc
+Recent_lowdensity;21,3;11,6;SUB;ACT;C;28;04;2021;E2;V55_VertRougeRouge
+Recent_lowdensity;21,9;11,2;SUB;ACT;R;11;05;2021;E3;V55_VertRougeRouge
+Recent_lowdensity;22,2;11,1;SUB;ACT;R;26;05;2021;E4;V55_VertRougeRouge
+Recent_lowdensity;21,4;11;SUB;ACT;R;13;07;2021;E5;V55_VertRougeRouge
+Recent_lowdensity;21,5;11;AD;ACT;R;06;10;2021;E6;V55_VertRougeRouge
+Recent_lowdensity;20,5;11;AD;ACT;R;21;02;2022;E8;V55_VertRougeRouge
+Recent_lowdensity;20,5;10,7;AD;ACT ;R;13;04;2022;E9;V55_VertRougeRouge
+Recent_lowdensity;20,4;10,7;AD;ACT ;R;28;04;2022;E10;V55_VertRougeRouge
+Recent_lowdensity;22;11,7;AD;ACT ;R;11;05;2022;E11;V55_VertRougeRouge
+Recent_lowdensity;20,6;11;AD;ACT ;R;23;05;2022;E12;V55_VertRougeRouge
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;V55_VertRougeRouge
+Recent_lowdensity;22,5;10,4;AD;ACT;C;28;04;2021;E2;V56_VertRougeVert
+Recent_lowdensity;22,3;10,4;AD;ACT;R;11;05;2021;E3;V56_VertRougeVert
+Recent_lowdensity;22,4;10,5;AD;ACT;R;26;05;2021;E4;V56_VertRougeVert
+Recent_lowdensity;22,2;10,7;AD;ACT;R;13;07;2021;E5;V56_VertRougeVert
+Recent_lowdensity;22,2;10,3;AD;ACT;R;06;10;2021;E6;V56_VertRougeVert
+Recent_lowdensity;21,6;10,5;AD;ACT ;R;13;04;2022;E9;V56_VertRougeVert
+Recent_lowdensity;21,9;11;AD;ACT;R;12;07;2022;E13;V56_VertRougeVert
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;V56_VertRougeVert
+Recent_lowdensity;22,5;10,7;AD;ACT;C;28;04;2021;E2;V57_VertRougeBlanc
+Recent_lowdensity;22,3;10,7;AD;ACT;R;11;05;2021;E3;V57_VertRougeBlanc
+Recent_lowdensity;22,4;10,6;AD;ACT;R;26;05;2021;E4;V57_VertRougeBlanc
+Recent_lowdensity;24,6;10,8;AD;ACT;C;28;04;2021;E2;V58_VertVertRouge
+Recent_lowdensity;24,1;11;AD;ACT;R;11;05;2021;E3;V58_VertVertRouge
+Recent_lowdensity;11,7;7,1;JUV;ACT;C;28;04;2021;E2;V59_NA
+Recent_lowdensity;12,5;6,5;JUV;ACT;R;11;05;2021;E3;V59_NA
+Recent_lowdensity;16;8,4;JUV;ACT;R;13;07;2021;E5;V59_NA
+Recent_lowdensity;19,1;10,5;JUV;ACT;R;21;02;2022;E8;V59_NA
+Recent_lowdensity;20,9;10;SUB;ACT ;R;13;04;2022;E9;V59_NA
+Recent_lowdensity;21,3;11,6;AD;ACT ;R;28;04;2022;E10;V59_NA
+Recent_lowdensity;21,8;11,5;AD;ACT ;R;11;05;2022;E11;V59_NA
+Recent_lowdensity;21,5;10,8;AD;ACT ;R;23;05;2022;E12;V59_NA
+Recent_lowdensity;21,3;10,9;AD;ACT;R;30;11;2022;E15;V59_NA
+Recent_lowdensity;21,8;10,7;AD;ACT;R;14;02;2023;E16;V59_NA
+Recent_lowdensity;21,7;11;AD;ACT;R;18;04;2023;E17;V59_NA
+Recent_lowdensity;21,8;11,4;AD;ACT;R;03;05;2023;E18;V59_NA
+Recent_lowdensity;12,8;7,1;JUV;ACT;C;28;04;2021;E2;V60_NA
+Recent_lowdensity;12,7;7,7;JUV;ACT;R;11;05;2021;E3;V60_NA
+Recent_lowdensity;14,4;8;JUV;ACT;R;26;05;2021;E4;V60_NA
+Recent_lowdensity;16,7;8,5;JUV;ACT;C;28;04;2021;E2;V61_VertVertVert
+Recent_lowdensity;18;9,8;JUV;ACT;R;11;05;2021;E3;V61_VertVertVert
+Recent_lowdensity;19,8;10,5;SUB;ACT;R;26;05;2021;E4;V61_VertVertVert
+Recent_lowdensity;22,6;9,4;JUV;ACT;R;13;07;2021;E5;V61_VertVertVert
+Recent_lowdensity;22,9;11,1;AD;ACT;R;06;10;2021;E6;V61_VertVertVert
+Recent_lowdensity;23;10,9;AD;ACT;R;15;12;2021;E7;V61_VertVertVert
+Recent_lowdensity;22,5;11,1;AD;ACT;R;21;02;2022;E8;V61_VertVertVert
+Recent_lowdensity;22,5;10,3;SUB;ACT;C;28;04;2021;E2;V62_VertVertBlanc
+Recent_lowdensity;23,5;10,1;JUV;ACT;R;11;05;2021;E3;V62_VertVertBlanc
+Recent_lowdensity;23,7;11,1;AD;ACT;R;26;05;2021;E4;V62_VertVertBlanc
+Recent_lowdensity;23,7;11,1;AD;ACT;R;13;07;2021;E5;V62_VertVertBlanc
+Recent_lowdensity;23,8;11,1;AD;ACT;R;06;10;2021;E6;V62_VertVertBlanc
+Recent_lowdensity;23,7;11,2;AD;ACT;R;15;12;2021;E7;V62_VertVertBlanc
+Recent_lowdensity;23,3;10,3;AD;ACT;R;21;02;2022;E8;V62_VertVertBlanc
+Recent_lowdensity;23,3;11;AD;ACT ;R;13;04;2022;E9;V62_VertVertBlanc
+Recent_lowdensity;23,2;11;AD;ACT ;R;28;04;2022;E10;V62_VertVertBlanc
+Recent_lowdensity;23,6;12,9;AD;ACT ;R;11;05;2022;E11;V62_VertVertBlanc
+Recent_lowdensity;23,1;11,1;AD;ACT ;R;23;05;2022;E12;V62_VertVertBlanc
+Recent_lowdensity;22,2;10;AD;ACT;C;28;04;2021;E2;V63_VertBlancRouge
+Recent_lowdensity;22,1;10,2;AD;ACT;R;11;05;2021;E3;V63_VertBlancRouge
+Recent_lowdensity;22,1;10;AD;ACT;R;26;05;2021;E4;V63_VertBlancRouge
+Recent_lowdensity;21,8;10,5;AD;ACT;R;13;07;2021;E5;V63_VertBlancRouge
+Recent_lowdensity;21,7;NA;AD;MORT;R_MORT;06;10;2021;E6;V63_VertBlancRouge
+Recent_lowdensity;22,7;10,5;AD;ACT;C;28;04;2021;E2;V64_VertBlancVert
+Recent_lowdensity;23,6;10,5;AD;ACT;R;11;05;2021;E3;V64_VertBlancVert
+Recent_lowdensity;NA;NA;AD;REPRO;R;26;05;2021;E4;V64_VertBlancVert
+Recent_lowdensity;22,5;10,3;AD;MORT;R_MORT;13;07;2021;E5;V64_VertBlancVert
+Recent_lowdensity;19,3;10,5;SUB;ACT;C;28;04;2021;E2;V65_VertBlancBlanc
+Recent_lowdensity;19,9;11,1;JUV;ACT;R;11;05;2021;E3;V65_VertBlancBlanc
+Recent_lowdensity;21;10,1;SUB;ACT;R;26;05;2021;E4;V65_VertBlancBlanc
+Recent_lowdensity;22,3;11;AD;ACT;R;13;07;2021;E5;V65_VertBlancBlanc
+Recent_lowdensity;12,8;7,3;JUV;ACT;C;28;04;2021;E2;V66_NA
+Recent_lowdensity;13,4;8;JUV;ACT;R;11;05;2021;E3;V66_NA
+Recent_lowdensity;14,4;8,1;JUV;ACT;R;26;05;2021;E4;V66_NA
+Recent_lowdensity;18,6;10,1;JUV;ACT;R;13;07;2021;E5;V66_NA
+Recent_lowdensity;22,5;10,6;AD;ACT;R;06;10;2021;E6;V66_NA
+Recent_lowdensity;22,6;11,2;AD;ACT;R;15;12;2021;E7;V66_NA
+Recent_lowdensity;21,8;10,2;AD;ACT;R;21;02;2022;E8;V66_NA
+Recent_lowdensity;22,1;10,5;AD;ACT ;R;13;04;2022;E9;V66_NA
+Recent_lowdensity;21,9;10,7;AD;ACT ;R;28;04;2022;E10;V66_NA
+Recent_lowdensity;22,5;11,9;AD;ACT ;R;11;05;2022;E11;V66_NA
+Recent_lowdensity;21,8;10,5;AD;ACT ;R;23;05;2022;E12;V66_NA
+Recent_lowdensity;21,5;11;AD;IMMO;R;12;07;2022;E13;V66_NA
+Recent_lowdensity;14,1;8;JUV;ACT;C;28;04;2021;E2;V68_BlancRougeVert
+Recent_lowdensity;11,2;7;JUV;ACT;R;11;05;2021;E3;V68_BlancRougeVert
+Recent_lowdensity;14,5;7,9;JUV;ACT;R;26;05;2021;E4;V68_BlancRougeVert
+Recent_lowdensity;18;10,2;JUV;ACT;R;13;07;2021;E5;V68_BlancRougeVert
+Recent_lowdensity;21,2;10;AD;ACT;R;06;10;2021;E6;V68_BlancRougeVert
+Recent_lowdensity;21,3;9,9;AD;ACT;R;15;12;2021;E7;V68_BlancRougeVert
+Recent_lowdensity;20,6;10,3;AD;ACT;R;21;02;2022;E8;V68_BlancRougeVert
+Recent_lowdensity;20,4;10,5;SUB;ACT;C;28;04;2021;E2;V69_BlancRougeBlanc
+Recent_lowdensity;20;10,7;SUB;ACT;R;11;05;2021;E3;V69_BlancRougeBlanc
+Recent_lowdensity;20,6;11;SUB;ACT;R;26;05;2021;E4;V69_BlancRougeBlanc
+Recent_lowdensity;20,8;10,2;JUV;ACT ;C;13;04;2022;E9;W1_JauneJauneJauneJaune
+Recent_lowdensity;21,5;11,4;SUB;ACT ;R;11;05;2022;E11;W1_JauneJauneJauneJaune
+Recent_lowdensity;21,2;11,3;SUB;ACT ;R;23;05;2022;E12;W1_JauneJauneJauneJaune
+Recent_lowdensity;22,8;10,5;AD;ACT ;C;13;04;2022;E9;W10_JauneJauneOrangeRoseF
+Recent_lowdensity;23;11,9;AD;ACT ;R;28;04;2022;E10;W10_JauneJauneOrangeRoseF
+Recent_lowdensity;23,9;12,8;AD;ACT ;R;11;05;2022;E11;W10_JauneJauneOrangeRoseF
+Recent_lowdensity;23,6;11;AD;ACT ;R;23;05;2022;E12;W10_JauneJauneOrangeRoseF
+Recent_lowdensity;19,8;9,8;SUB;ACT ;C;13;04;2022;E9;W11_JauneJauneOrangeRoseC
+Recent_lowdensity;19,9;10,8;JUV;ACT ;R;11;05;2022;E11;W11_JauneJauneOrangeRoseC
+Recent_lowdensity;20,5;10,4;SUB;ACT ;R;23;05;2022;E12;W11_JauneJauneOrangeRoseC
+Recent_lowdensity;22,3;10,7;AD;ACT;R;12;07;2022;E13;W11_JauneJauneOrangeRoseC
+Recent_lowdensity;19,6;10,2;JUV;ACT ;R;28;04;2022;E10;W11_JauneJauneOrangeRoseC
+Recent_lowdensity;12;7,3;JUV;ACT ;C;13;04;2022;E9;W12_JauneJauneOrangeBleuF
+Recent_lowdensity;11,6;NA;JUV;ACT ;R;28;04;2022;E10;W12_JauneJauneOrangeBleuF
+Recent_lowdensity;19,3;9,5;JUV;ACT ;C;13;04;2022;E9;W14_JauneJauneVioletViolet
+Recent_lowdensity;19,7;11;JUV;ACT ;R;28;04;2022;E10;W14_JauneJauneVioletViolet
+Recent_lowdensity;19,2;11,3;JUV;ACT ;R;11;05;2022;E11;W14_JauneJauneVioletViolet
+Recent_lowdensity;20,1;10,4;SUB;ACT ;R;23;05;2022;E12;W14_JauneJauneVioletViolet
+Recent_lowdensity;12;7,2;JUV;ACT ;C;13;04;2022;E9;W15_JauneJauneVioletRoseF
+Recent_lowdensity;12,9;7,4;JUV ;ACT ;R;11;05;2022;E11;W15_JauneJauneVioletRoseF
+Recent_lowdensity;NA;NA;JUV;MORT;R_MORT;23;05;2022;E12;W15_JauneJauneVioletRoseF
+Recent_lowdensity;12,7;NA;JUV;ACT ;R;28;04;2022;E10;W15_JauneJauneVioletRoseF
+Recent_lowdensity;10;5,5;JUV;ACT ;C;13;04;2022;E9;W17_NA
+Recent_lowdensity;9,9;NA;JUV;ACT ;R;28;04;2022;E10;W17_NA
+Recent_lowdensity;10,5;NA;JUV;ACT ;R;11;05;2022;E11;W17_NA
+Recent_lowdensity;11,1;6,2;JUV;ACT ;R;23;05;2022;E12;W17_NA
+Recent_lowdensity;14;8;JUV;ACT;R;12;07;2022;E13;W17_NA
+Recent_lowdensity;18,9;9,6;JUV;ACT ;C;13;04;2022;E9;W18_JauneJauneVioletBleuC
+Recent_lowdensity;18,9;10,7;JUV ;ACT ;R;28;04;2022;E10;W18_JauneJauneVioletBleuC
+Recent_lowdensity;19,5;10,8;JUV;ACT ;R;11;05;2022;E11;W18_JauneJauneVioletBleuC
+Recent_lowdensity;20;10,7;JUV;ACT ;R;23;05;2022;E12;W18_JauneJauneVioletBleuC
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W18_JauneJauneVioletBleuC
+Recent_lowdensity;12,1;6,4;JUV;ACT ;C;13;04;2022;E9;W19_JauneJauneRoseFRoseF
+Recent_lowdensity;12,6;NA;JUV;ACT ;R;28;04;2022;E10;W19_JauneJauneRoseFRoseF
+Recent_lowdensity;13,5;7,5;JUV;ACT ;R;11;05;2022;E11;W19_JauneJauneRoseFRoseF
+Recent_lowdensity;21,8;10,5;SUB;ACT ;C;13;04;2022;E9;W2_JauneJauneJauneOrange
+Recent_lowdensity;21,9;11,5;SUB;ACT ;R;28;04;2022;E10;W2_JauneJauneJauneOrange
+Recent_lowdensity;22,1;12,4;SUB;ACT ;R;11;05;2022;E11;W2_JauneJauneJauneOrange
+Recent_lowdensity;22;11,2;SUB;ACT ;R;23;05;2022;E12;W2_JauneJauneJauneOrange
+Recent_lowdensity;22,3;11,5;AD;ACT;R;27;09;2022;E14;W2_JauneJauneJauneOrange
+Recent_lowdensity;21,9;11,3;AD;ACT;R;30;11;2022;E15;W2_JauneJauneJauneOrange
+Recent_lowdensity;22,6;11,5;AD;ACT;R;18;04;2023;E17;W2_JauneJauneJauneOrange
+Recent_lowdensity;14,1;8,2;JUV;ACT ;C;13;04;2022;E9;W20_JauneJauneRoseFRoseC
+Recent_lowdensity;14;8,5;JUV;ACT ;R;28;04;2022;E10;W20_JauneJauneRoseFRoseC
+Recent_lowdensity;15,8;8,8;JUV;ACT ;R;11;05;2022;E11;W20_JauneJauneRoseFRoseC
+Recent_lowdensity;15,4;8,5;JUV;ACT ;R;23;05;2022;E12;W20_JauneJauneRoseFRoseC
+Recent_lowdensity;16,8;NA;NA;ACT;R;12;07;2022;E13;W20_JauneJauneRoseFRoseC
+Recent_lowdensity;20,1;10,2;SUB;ACT ;C;13;04;2022;E9;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21,2;10;JUV;ACT ;R;28;04;2022;E10;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21,6;11,2;AD;ACT ;R;11;05;2022;E11;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21;10,8;AD;ACT;R;27;09;2022;E14;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21;11;AD;ACT;R;30;11;2022;E15;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21,6;10,6;AD;ACT;R;14;02;2023;E16;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21,6;10,8;AD;ACT;R;18;04;2023;E17;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;21,5;10,8;AD;ACT;R;03;05;2023;E18;W21_JauneJauneRoseFBleuF
+Recent_lowdensity;10,2;9,3;SUB;ACT ;C;13;04;2022;E9;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;19;10,3;JUV;ACT ;R;11;05;2022;E11;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;19,2;10;JUV;IMMO;R;23;05;2022;E12;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;22;10,9;AD;ACT;R;12;07;2022;E13;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;18,3;10,4;JUV;ACT ;R;28;04;2022;E10;W22_JauneJauneRoseFBleuC
+Recent_lowdensity;11,4;6,4;JUV;ACT ;C;13;04;2022;E9;W23_NA
+Recent_lowdensity;11,9;NA;JUV;ACT ;R;28;04;2022;E10;W23_NA
+Recent_lowdensity;12,4;7;JUV;ACT ;R;11;05;2022;E11;W23_NA
+Recent_lowdensity;13;7;JUV;ACT ;R;23;05;2022;E12;W23_NA
+Recent_lowdensity;21,2;10;SUB;ACT ;C;13;04;2022;E9;W24_JauneJauneRoseCBleuC
+Recent_lowdensity;20,8;10,1;AD;ACT ;R;28;04;2022;E10;W24_JauneJauneRoseCBleuC
+Recent_lowdensity;22,3;12,2;AD;ACT ;R;11;05;2022;E11;W24_JauneJauneRoseCBleuC
+Recent_lowdensity;21,8;10,5;AD;ACT ;R;23;05;2022;E12;W24_JauneJauneRoseCBleuC
+Recent_lowdensity;20,8;10,5;JUV;ACT ;C;13;04;2022;E9;W25_JauneJauneJauneBleuF
+Recent_lowdensity;NA;NA;AD;ACT ;R;28;04;2022;E10;W25_JauneJauneJauneBleuF
+Recent_lowdensity;21,2;10,7;AD;ACT ;R;11;05;2022;E11;W25_JauneJauneJauneBleuF
+Recent_lowdensity;21,3;10,1;AD;ACT ;R;23;05;2022;E12;W25_JauneJauneJauneBleuF
+Recent_lowdensity;21,2;10,5;AD;ACT;R;12;07;2022;E13;W25_JauneJauneJauneBleuF
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W25_JauneJauneJauneBleuF
+Recent_lowdensity;20;10,3;JUV;ACT ;C;13;04;2022;E9;W26_JauneJauneBleuFBleuC
+Recent_lowdensity;20;10,5;JUV;ACT ;R;28;04;2022;E10;W26_JauneJauneBleuFBleuC
+Recent_lowdensity;20;11,1;JUV;ACT ;R;11;05;2022;E11;W26_JauneJauneBleuFBleuC
+Recent_lowdensity;20;10,6;JUV;ACT ;R;23;05;2022;E12;W26_JauneJauneBleuFBleuC
+Recent_lowdensity;20,8;11,1;JUV;ACT ;C;13;04;2022;E9;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;21,7;10,5;AD;ACT ;R;28;04;2022;E10;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;23;11,7;AD;ACT  ;R;11;05;2022;E11;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;21,6;10,5;AD;ACT ;R;23;05;2022;E12;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;21,7;10,4;AD;ACT;R;12;07;2022;E13;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W27_JauneJauneBleuCBleuC
+Recent_lowdensity;23,5;11,2;AD;ACT ;C;13;04;2022;E9;W28_JauneOrangeOrangeOrange
+Recent_lowdensity;23,4;11,7;AD;ACT ;R;28;04;2022;E10;W28_JauneOrangeOrangeOrange
+Recent_lowdensity;24,2;12,3;AD;ACT ;R;11;05;2022;E11;W28_JauneOrangeOrangeOrange
+Recent_lowdensity;23,7;11,2;AD;ACT ;R;23;05;2022;E12;W28_JauneOrangeOrangeOrange
+Recent_lowdensity;22,5;11,1;SUB;ACT ;C;13;04;2022;E9;W29_JauneOrangeOrangeViolet
+Recent_lowdensity;22,8;11;AD;ACT ;R;28;04;2022;E10;W29_JauneOrangeOrangeViolet
+Recent_lowdensity;23,3;12,7;AD;ACT ;R;11;05;2022;E11;W29_JauneOrangeOrangeViolet
+Recent_lowdensity;22,9;10,7;AD;ACT ;R;23;05;2022;E12;W29_JauneOrangeOrangeViolet
+Recent_lowdensity;23;11,6;AD;IMMO;R;12;07;2022;E13;W29_JauneOrangeOrangeViolet
+Recent_lowdensity;20,5;10,3;SUB;ACT ;C;13;04;2022;E9;W3_JauneJauneJauneViolet
+Recent_lowdensity;20,2;10,4;SUB;ACT ;R;28;04;2022;E10;W3_JauneJauneJauneViolet
+Recent_lowdensity;20,7;11,2;SUB;ACT ;R;11;05;2022;E11;W3_JauneJauneJauneViolet
+Recent_lowdensity;20,5;10,5;AD;ACT ;R;23;05;2022;E12;W3_JauneJauneJauneViolet
+Recent_lowdensity;23,3;10,9;AD;ACT ;C;13;04;2022;E9;W30_JauneOrangeOrangeRoseF
+Recent_lowdensity;23,6;11,8;AD;ACT ;R;11;05;2022;E11;W30_JauneOrangeOrangeRoseF
+Recent_lowdensity;23,1;10,4;AD;ACT ;R;23;05;2022;E12;W30_JauneOrangeOrangeRoseF
+Recent_lowdensity;22,4;10,8;AD;ACT;R;12;07;2022;E13;W30_JauneOrangeOrangeRoseF
+Recent_lowdensity;NA;NA;NA;MORT;R_MORT;27;09;2022;E14;W30_JauneOrangeOrangeRoseF
+Recent_lowdensity;11,5;6,2;JUV;ACT ;C;13;04;2022;E9;W31_NA
+Recent_lowdensity;12,4;NA;JUV;ACT ;R;28;04;2022;E10;W31_NA
+Recent_lowdensity;12;7,7;JUV;ACT ;R;11;05;2022;E11;W31_NA
+Recent_lowdensity;12,5;7;JUV;ACT ;R;23;05;2022;E12;W31_NA
+Recent_lowdensity;14;8;JUV;ACT ;C;13;04;2022;E9;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;14,5;NA;JUV;ACT ;R;28;04;2022;E10;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;15,1;9;JUV;ACT ;R;11;05;2022;E11;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;16,3;9,5;JUV;ACT ;R;23;05;2022;E12;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;18,2;10,6;JUV;ACT;R;12;07;2022;E13;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;NA;NA;NA;MORT;R_MORT;30;11;2022;E15;W32_JauneOrangeOrangeRoseC
+Recent_lowdensity;18,8;10;SUB;ACT ;C;13;04;2022;E9;W33_JauneOrangeOrangeBleuF
+Recent_lowdensity;19,4;10,3;JUV;ACT ;R;28;04;2022;E10;W33_JauneOrangeOrangeBleuF
+Recent_lowdensity;19,6;11,1;JUV;ACT ;R;11;05;2022;E11;W33_JauneOrangeOrangeBleuF
+Recent_lowdensity;18,7;10,6;SUB;ACT ;R;23;05;2022;E12;W33_JauneOrangeOrangeBleuF
+Recent_lowdensity;9,2;5;JUV;ACT ;C;13;04;2022;E9;W35_NA
+Recent_lowdensity;10;NA;JUV;ACT ;R;28;04;2022;E10;W35_NA
+Recent_lowdensity;11,4;NA;JUV;ACT ;R;11;05;2022;E11;W35_NA
+Recent_lowdensity;14,1;7,9;SUB;ACT ;C;13;04;2022;E9;W36_JauneOrangeVioletRoseF
+Recent_lowdensity;14;8,2;JUV;ACT ;R;28;04;2022;E10;W36_JauneOrangeVioletRoseF
+Recent_lowdensity;14,3;8,3;JUV;ACT ;R;11;05;2022;E11;W36_JauneOrangeVioletRoseF
+Recent_lowdensity;22;11;SUB;ACT ;C;13;04;2022;E9;W37_JauneOrangeVioletRoseC
+Recent_lowdensity;22,5;11,7;AD;ACT ;R;28;04;2022;E10;W37_JauneOrangeVioletRoseC
+Recent_lowdensity;22,9;11,7;AD;ACT ;R;11;05;2022;E11;W37_JauneOrangeVioletRoseC
+Recent_lowdensity;22,5;11,2;AD;ACT ;R;23;05;2022;E12;W37_JauneOrangeVioletRoseC
+Recent_lowdensity;22,6;11,2;AD;ACT;R;12;07;2022;E13;W37_JauneOrangeVioletRoseC
+Recent_lowdensity;23,4;11,9;AD;ACT ;C;11;05;2022;E11;W38_JauneOrangeVioletBleuF
+Recent_lowdensity;22,5;10,8;AD;ACT ;R;23;05;2022;E12;W38_JauneOrangeVioletBleuF
+Recent_lowdensity;22,1;11,2;AD;ACT;R;12;07;2022;E13;W38_JauneOrangeVioletBleuF
+Recent_lowdensity;23;11;AD;ACT;R;27;09;2022;E14;W38_JauneOrangeVioletBleuF
+Recent_lowdensity;22,2;11,3;AD;ACT;R;30;11;2022;E15;W38_JauneOrangeVioletBleuF
+Recent_lowdensity;20;11,2;JUV;ACT ;C;28;04;2022;E10;W39_JauneOrangeVioletBleuC
+Recent_lowdensity;20,1;10,8;JUV;ACT ;R;11;05;2022;E11;W39_JauneOrangeVioletBleuC
+Recent_lowdensity;20,3;10,7;SUB;ACT ;R;23;05;2022;E12;W39_JauneOrangeVioletBleuC
+Recent_lowdensity;16,5;9,3;JUV/SUB;ACT ;C;13;04;2022;E9;W4_NA
+Recent_lowdensity;NA;NA;JUV;ACT ;R;28;04;2022;E10;W4_NA
+Recent_lowdensity;NA;NA;JUV;ACT ;R;11;05;2022;E11;W4_NA
+Recent_lowdensity;NA;NA;JUV/SUB;ACT ;R;23;05;2022;E12;W4_NA
+Recent_lowdensity;14,5;8,5;AD;ACT ;C;28;04;2022;E10;W40_JauneOrangeRoseFRoseF
+Recent_lowdensity;15;8,2;JUV;ACT ;R;11;05;2022;E11;W40_JauneOrangeRoseFRoseF
+Recent_lowdensity;15,1;8,6;JUV;ACT ;R;23;05;2022;E12;W40_JauneOrangeRoseFRoseF
+Recent_lowdensity;15;9;JUV;ACT;R;12;07;2022;E13;W40_JauneOrangeRoseFRoseF
+Recent_lowdensity;NA;NA;JUV;MORT;R_MORT;14;02;2023;E16;W40_JauneOrangeRoseFRoseF
+Recent_lowdensity;21,6;10,5;AD;ACT ;C;28;04;2022;E10;W41_JauneOrangeRoseFRoseC
+Recent_lowdensity;20,9;11,3;AD;ACT ;R;11;05;2022;E11;W41_JauneOrangeRoseFRoseC
+Recent_lowdensity;21,5;10,6;AD;ACT ;R;23;05;2022;E12;W41_JauneOrangeRoseFRoseC
+Recent_lowdensity;10,5;NA;JUV;ACT ;C;11;05;2022;E11;W42_NA
+Recent_lowdensity;10;5,7;JUV;ACT   ;R;23;05;2022;E12;W42_NA
+Recent_lowdensity;NA;NA;JUV;ACT ;R;11;05;2022;E11;W43_JauneOrangeRoseFBleuC
+Recent_lowdensity;12,5;NA;JUV;ACT ;C;28;04;2022;E10;W43_JauneOrangeRoseFBleuC
+Recent_lowdensity;11,8;7,2;JUV;ACT ;R;23;05;2022;E12;W43_JauneOrangeRoseFBleuC
+Recent_lowdensity;18,3;10,2;JUV;ACT ;C;28;04;2022;E10;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;19,5;10,4;JUV;ACT ;R;11;05;2022;E11;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;20,1;10,4;JUV;ACT ;R;23;05;2022;E12;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;23;11;AD;ACT;R;12;07;2022;E13;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;NA;NA;AD;ACT;R;27;09;2022;E14;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;23,2;11;AD;ACT;R;30;11;2022;E15;W44_JauneOrangeRoseCRoseC
+Recent_lowdensity;23,5;10,7;SUB;ACT;C;18;04;2023;E17;W45_JauneOrangeRoseCBleuF
+Recent_lowdensity;22,6;11,4;AD;ACT;R;30;05;2023;E20;W45_JauneOrangeRoseCBleuF
+Recent_lowdensity;19,2;10,2;JUV;ACT ;C;28;04;2022;E10;W46_JauneOrangeRoseCBleuC
+Recent_lowdensity;19,1;10,3;JUV;ACT ;R;11;05;2022;E11;W46_JauneOrangeRoseCBleuC
+Recent_lowdensity;19,3;10,5;AD;ACT ;R;23;05;2022;E12;W46_JauneOrangeRoseCBleuC
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;12;07;2022;E13;W46_JauneOrangeRoseCBleuC
+Recent_lowdensity;22,8;10,8;AD;ACT;C;18;04;2023;E17;W48_JauneOrangeBleuFBleuC
+Recent_lowdensity;22,8;11,1;AD;ACT;R;03;05;2023;E18;W48_JauneOrangeBleuFBleuC
+Recent_lowdensity;18,9;9,8;JUV;ACT;C;18;04;2023;E17;W49_JauneOrangeBleuCBleuC
+Recent_lowdensity;19,5;10,4;JUV;ACT;R;03;05;2023;E18;W49_JauneOrangeBleuCBleuC
+Recent_lowdensity;20;10,8;JUV;ACT;R;30;05;2023;E20;W49_JauneOrangeBleuCBleuC
+Recent_lowdensity;10,3;6;JUV;ACT ;C;13;04;2022;E9;W5_NA
+Recent_lowdensity;NA;NA;JUV;ACT ;R;28;04;2022;E10;W5_NA
+Recent_lowdensity;NA;NA;JUV;ACT ;R;11;05;2022;E11;W5_NA
+Recent_lowdensity;15,3;8,6;JUV;ACT;C;18;04;2023;E17;W50_JauneVioletVioletViolet
+Recent_lowdensity;16,2;9,5;JUV;ACT;R;03;05;2023;E18;W50_JauneVioletVioletViolet
+Recent_lowdensity;16,9;9,5;JUV;ACT;R;15;05;2023;E19;W50_JauneVioletVioletViolet
+Recent_lowdensity;22,7;11,7;AD;ACT;C;18;04;2023;E17;W52_JauneVioletVioletRoseC
+Recent_lowdensity;23,1;11;AD;ACT;R;03;05;2023;E18;W52_JauneVioletVioletRoseC
+Recent_lowdensity;20,6;10,2;JUV;ACT;C;18;04;2023;E17;W53_JauneVioletVioletBleuF
+Recent_lowdensity;22,5;10,5;JUV;ACT;R;03;05;2023;E18;W53_JauneVioletVioletBleuF
+Recent_lowdensity;22,4;10,5;AD;ACT;R;15;05;2023;E19;W53_JauneVioletVioletBleuF
+Recent_lowdensity;22,7;10,6;AD;ACT;R;30;05;2023;E20;W53_JauneVioletVioletBleuF
+Recent_lowdensity;17,1;NA;JUV;ACT;R;15;05;2023;E19;W54_JauneVioletVioletBleuC
+Recent_lowdensity;17,8;8;JUV;ACT;R;30;05;2023;E20;W54_JauneVioletVioletBleuC
+Recent_lowdensity;24,1;12;AD;ACT;C;18;04;2023;E17;W55_JauneVioletRoseFRoseF
+Recent_lowdensity;24;11,7;AD;ACT;R;03;05;2023;E18;W55_JauneVioletRoseFRoseF
+Recent_lowdensity;24;11,5;AD;ACT;R;15;05;2023;E19;W55_JauneVioletRoseFRoseF
+Recent_lowdensity;18,8;10;JUV;ACT;C;18;04;2023;E17;W57_JauneVioletRoseFBleuF
+Recent_lowdensity;21;11;JUV;ACT;R;03;05;2023;E18;W57_JauneVioletRoseFBleuF
+Recent_lowdensity;21,7;10,7;JUV;ACT;R;15;05;2023;E19;W57_JauneVioletRoseFBleuF
+Recent_lowdensity;22,1;10,8;SUB;ACT;R;30;05;2023;E20;W57_JauneVioletRoseFBleuF
+Recent_lowdensity;14,5;7,1;JUV;ACT;C;18;04;2023;E17;W58_JauneVioletRoseFBleuC
+Recent_lowdensity;15,9;8,5;JUV;ACT;R;03;05;2023;E18;W58_JauneVioletRoseFBleuC
+Recent_lowdensity;13,1;9,1;JUV;ACT;R;15;05;2023;E19;W58_JauneVioletRoseFBleuC
+Recent_lowdensity;15,5;8,9;JUV;ACT;R;30;05;2023;E20;W58_JauneVioletRoseFBleuC
+Recent_lowdensity;24,2;11,2;SUB;ACT;C;18;04;2023;E17;W59_JauneVioletRoseCRoseC
+Recent_lowdensity;24,6;11,5;AD;ACT;R;03;05;2023;E18;W59_JauneVioletRoseCRoseC
+Recent_lowdensity;24,5;10,8;AD;ACT;R;15;05;2023;E19;W59_JauneVioletRoseCRoseC
+Recent_lowdensity;23,8;11,7;AD;ACT;R;30;05;2023;E20;W59_JauneVioletRoseCRoseC
+Recent_lowdensity;19;10;SUB;ACT ;C;13;04;2022;E9;W6_JauneJauneBleuFBleuF
+Recent_lowdensity;20,1;11,2;JUV;ACT ;R;11;05;2022;E11;W6_JauneJauneBleuFBleuF
+Recent_lowdensity;18,7;10,2;JUV;ACT;C;18;04;2023;E17;W60_JauneVioletRoseCBleuF
+Recent_lowdensity;20,2;10,5;JUV;ACT;R;03;05;2023;E18;W60_JauneVioletRoseCBleuF
+Recent_lowdensity;21,2;10,5;JUV;ACT;R;15;05;2023;E19;W60_JauneVioletRoseCBleuF
+Recent_lowdensity;21,6;10,7;AD;ACT;R;30;05;2023;E20;W60_JauneVioletRoseCBleuF
+Recent_lowdensity;18,2;9,7;JUV;ACT;C;18;04;2023;E17;W61_JauneVioletRoseCBleuC
+Recent_lowdensity;17;NA;JUV;ACT;R;03;05;2023;E18;W61_JauneVioletRoseCBleuC
+Recent_lowdensity;17,6;NA;JUV;ACT;R;15;05;2023;E19;W61_JauneVioletRoseCBleuC
+Recent_lowdensity;17;9;JUV;ACT;R;30;05;2023;E20;W61_JauneVioletRoseCBleuC
+Recent_lowdensity;24;11;SUB;ACT;C;03;05;2023;E18;W63_JauneVioletBleuFBleuC
+Recent_lowdensity;23,8;10,7;AD;ACT;R;15;05;2023;E19;W63_JauneVioletBleuFBleuC
+Recent_lowdensity;23,6;11,2;AD;ACT;R;30;05;2023;E20;W63_JauneVioletBleuFBleuC
+Recent_lowdensity;22,9;11,1;AD;ACT;C;03;05;2023;E18;W64_JauneVioletBleuCBleuC
+Recent_lowdensity;22,7;10,9;AD;ACT;R;15;05;2023;E19;W64_JauneVioletBleuCBleuC
+Recent_lowdensity;21,5;10,5;JUV;ACT;C;03;05;2023;E18;W65_JauneRoseFRoseFRoseF
+Recent_lowdensity;21,9;10,7;JUV;ACT;R;15;05;2023;E19;W65_JauneRoseFRoseFRoseF
+Recent_lowdensity;21,5;10,9;SUB;ACT;R;30;05;2023;E20;W65_JauneRoseFRoseFRoseF
+Recent_lowdensity;21,4;9,7;JUV;ACT;C;03;05;2023;E18;W67_JauneRoseFRoseFBleuF
+Recent_lowdensity;21,4;10,3;SUB;ACT;R;15;05;2023;E19;W67_JauneRoseFRoseFBleuF
+Recent_lowdensity;23;10,1;AD;ACT;R;30;05;2023;E20;W67_JauneRoseFRoseFBleuF
+Recent_lowdensity;11,4;6,5;JUV;ACT;C;03;05;2023;E18;W68_NA
+Recent_lowdensity;12,4;7;JUV;ACT;R;15;05;2023;E19;W68_NA
+Recent_lowdensity;12,1;7,3;JUV;ACT;R;30;05;2023;E20;W68_NA
+Recent_lowdensity;16,3;8,8;JUV;ACT;C;15;05;2023;E19;W69_JauneRoseFRoseCRoseC
+Recent_lowdensity;16,9;9,1;JUV;ACT;R;30;05;2023;E20;W69_JauneRoseFRoseCRoseC
+Recent_lowdensity;21,4;10,7;AD;ACT ;C;13;04;2022;E9;W7_JauneJauneJauneBleuC
+Recent_lowdensity;21,6;11;AD;ACT ;R;28;04;2022;E10;W7_JauneJauneJauneBleuC
+Recent_lowdensity;21,7;12,4;AD;ACT ;R;11;05;2022;E11;W7_JauneJauneJauneBleuC
+Recent_lowdensity;21,6;10,6;AD;ACT ;R;23;05;2022;E12;W7_JauneJauneJauneBleuC
+Recent_lowdensity;21,1;11;AD;IMMO;R;12;07;2022;E13;W7_JauneJauneJauneBleuC
+Recent_lowdensity;24;11,5;AD;ACT;C;15;05;2023;E19;W70_JauneRoseFRoseCBleuF
+Recent_lowdensity;23,7;11,4;AD;ACT;R;30;05;2023;E20;W70_JauneRoseFRoseCBleuF
+Recent_lowdensity;22,4;10,6;AD;ACT;C;15;05;2023;E19;W71_JauneRoseFRoseCBleuC
+Recent_lowdensity;22,2;11,1;AD;ACT;R;30;05;2023;E20;W71_JauneRoseFRoseCBleuC
+Recent_lowdensity;23;11,2;AD;ACT;C;15;05;2023;E19;W72_JauneRoseFBleuFBleuF
+Recent_lowdensity;22,3;11,4;AD;ACT;R;30;05;2023;E20;W72_JauneRoseFBleuFBleuF
+Recent_lowdensity;23,1;11;AD;ACT;C;15;05;2023;E19;W74_JauneRoseFBleuCBleuC
+Recent_lowdensity;22,8;11,2;AD;ACT;R;30;05;2023;E20;W74_JauneRoseFBleuCBleuC
+Recent_lowdensity;13,3;7;JUV;ACT;C;15;05;2023;E19;W75_JauneRoseCRoseCRoseC
+Recent_lowdensity;12,2;7;JUV;ACT;R;30;05;2023;E20;W75_JauneRoseCRoseCRoseC
+Recent_lowdensity;23,5;10,7;AD;ACT;C;15;05;2023;E19;W76_JauneRoseCRoseCBleuF
+Recent_lowdensity;22,9;10,7;AD;ACT;R;30;05;2023;E20;W76_JauneRoseCRoseCBleuF
+Recent_lowdensity;22,2;10,5;AD;ACT ;C;13;04;2022;E9;W8_JauneJauneOrangeOrange
+Recent_lowdensity;21,9;10,8;AD;ACT ;R;28;04;2022;E10;W8_JauneJauneOrangeOrange
+Recent_lowdensity;23,3;11,8;AD;ACT ;R;11;05;2022;E11;W8_JauneJauneOrangeOrange
+Recent_lowdensity;22,3;10,9;AD;ACT ;R;23;05;2022;E12;W8_JauneJauneOrangeOrange
+Recent_lowdensity;22,7;11;AD;ACT;R;12;07;2022;E13;W8_JauneJauneOrangeOrange
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W8_JauneJauneOrangeOrange
+Recent_lowdensity;20;11,5;SUB;ACT ;C;13;04;2022;E9;W9_JauneJauneOrangeViolet
+Recent_lowdensity;21;12,1;SUB;ACT ;R;11;05;2022;E11;W9_JauneJauneOrangeViolet
+Recent_lowdensity;21,4;10,7;AD;ACT ;R;23;05;2022;E12;W9_JauneJauneOrangeViolet
+Recent_lowdensity;21,3;11,4;AD;ACT;R;12;07;2022;E13;W9_JauneJauneOrangeViolet
+Recent_lowdensity;NA;NA;AD;MORT;R_MORT;27;09;2022;E14;W9_JauneJauneOrangeViolet

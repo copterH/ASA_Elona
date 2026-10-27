@@ -5,9 +5,8 @@ library(lme4)
 library(readxl)
 
 
-elona <-read_excel("/Users/emiliecordier/Downloads/Data ASA/data_elona.xlsx",sheet=3)
-elona$Diameter<-as.numeric(elona$Diameter)
-elona$Peristome<-as.numeric(elona$Peristome)
+elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
+elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 
 # Importer la feuille 2 pour rajouter les sites
 # voir pour faire fusionner la jour le mois et l'année pour mettre une date et mettre ça directement dans R
