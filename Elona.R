@@ -93,6 +93,12 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
 
 ## 1. Diameter ----
+# Modèle linéaire général mixte
+# Diameter = Site + Stage + (ID + date)
+m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date) + (1|IDZone), data=elona_recapture)
+
 ## 2. Peristome ----
+
+
 ## 3. Démographie ----
 
