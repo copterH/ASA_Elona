@@ -71,8 +71,14 @@ boxplot(elona_recapture$Diameter~elona_recapture$Site)
 boxplot(elona_recapture$Peristome~elona_recapture$Site)
 # Recent a l'air plus haut
 
+## 3. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
+
+## 4. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
+
+
+
 
 m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
 
@@ -95,7 +101,9 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 ## 1. Diameter ----
 # Modèle linéaire général mixte
 # Diameter = Site + Stage + (ID + date)
-m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date) + (1|IDZone), data=elona_recapture)
+m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
+
+
 
 ## 2. Peristome ----
 
