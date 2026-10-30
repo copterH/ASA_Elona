@@ -1,9 +1,11 @@
 
+# IMPORTATION DES LIBRARIES ----
 install.packages("readxl")
 install.packages("lme4")
 library(lme4)
 library(readxl)
 
+# IMPORTATION DES DONNEES ----
 
 elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
@@ -13,6 +15,9 @@ elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", de
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
 elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
 
+# EXPLORATION DES DONNEES ----
+
+## 1. Valeurs extrêmes ----
 
 # valeur abérante dans Y
 boxplot(elona_recapture$Diameter)
@@ -30,6 +35,7 @@ hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
 
+## 2. Nettoyage des données ----
 
 table(elona_recapture$Site)
 table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
@@ -70,6 +76,23 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site)
 
 m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
 
-# Conditions de validité
+# CONDITIONS DE VALIDITE ----
+
+## 1. Normalité des résidus ----
 plot(m1) # résidus ok
-# Homoscédasticité
+
+## 2. Homoscédasticité ----
+plot(x = elona_recapture$Date, y = elona_recapture$Diameter )
+plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
+
+## 3. Résidus indépendants ----
+
+
+# ANALYSE ----
+# Choix de la méthode pour répondre à la question :
+# We aim to determine whether the two populations share the same demographic characteristics and traits.
+
+## 1. Diameter ----
+## 2. Peristome ----
+## 3. Démographie ----
+
