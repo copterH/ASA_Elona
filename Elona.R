@@ -50,7 +50,7 @@ elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
-
+elona_recapture$Stage = droplevels(elona_recapture$Stage)
 
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
@@ -60,12 +60,15 @@ elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
+elona_recapture$Activity = droplevels(elona_recapture$Activity)
+table(elona_recapture$Activity)
 
 table(elona_recapture$Type_Event)
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
-
+elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
+table(elona_recapture$Type_Event)
 
 
 # Relation potentielle entre X et Y
@@ -79,13 +82,28 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site)
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
 
+# Interactions entre Stage et Activity
+plot(elona_recapture$Stage~elona_recapture$Activity,type='n',ylab = "Demographic stages",xlab="Activity")
+
+# Interactions entre Elevation & Location
+plot(dataAnts$Nsp~dataAnts$Elevation,type='n',ylab = "Ants Species Richness",xlab="Elevation")
+points(dataAnts$Nsp[dataAnts$Location=="Bog"]~dataAnts$Elevation[dataAnts$Location=="Bog"],pch=16,cex=2,col='#000099')
+points(dataAnts$Nsp[dataAnts$Location=="Forest"]~dataAnts$Elevation[dataAnts$Location=="Forest"],pch=17,cex=2,col='#339900')
+
+# Interactions between Bog Area & Location
+plot(dataAnts$Nsp~dataAnts$LogArea,type='n',ylab = "Ants Species Richness",xlab="Bog Area")
+points(dataAnts$Nsp[dataAnts$Location=="Bog"]~dataAnts$LogArea[dataAnts$Location=="Bog"],pch=16,cex=2,col='#000099')
+points(dataAnts$Nsp[dataAnts$Location=="Forest"]~dataAnts$LogArea[dataAnts$Location=="Forest"],pch=17,cex=2,col='#339900')
+
+
+
 ## 4. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
 # Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
 # --> pas d'utilité je pense
 cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
-                                   elona_recapture$Year)])
+                                   elona_recapture$Date)])
 ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 
@@ -112,7 +130,7 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 # Diameter = Site + Stage + (ID + date)
 m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
-
+plot(m_diam)
 
 ## 2. Peristome ----
 
