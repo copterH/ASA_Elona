@@ -51,6 +51,7 @@ elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
 elona_recapture$Stage = droplevels(elona_recapture$Stage)
+table(elona_recapture$Stage)
 
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
