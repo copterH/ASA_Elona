@@ -32,7 +32,7 @@ elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
 boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
 summary(elona_recapture$Peristome)
 
-
+#Normalité de Y
 hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
@@ -85,7 +85,7 @@ ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
 # Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
 # --> pas d'utilité je pense
 cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
-                                   elona_recapture$Year)])
+                                   elona_recapture$Date)])
 ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 
@@ -118,4 +118,17 @@ m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapt
 
 
 ## 3. Démographie ----
+
+###a. Select the candidate model ----
+#f(proportion de chaque classe d'âge)= Site + Date
+# On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
+
+
+###b. Analyze coefficient estimates & residual deviance ----
+
+###c. Model diagnostic ----
+# Checking distribution of residuals (histogramm/Qqplot)
+# Distribution of residuals depending on fitted values/ Y values
+# Cook’s distance for influential observations
+# Fitted values against observed ones (predictive value of model )
 
