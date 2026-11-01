@@ -83,18 +83,13 @@ ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
 
 # Interactions entre Stage et Activity
-plot(elona_recapture$Stage~elona_recapture$Activity,type='n',ylab = "Demographic stages",xlab="Activity")
+plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
 
-# Interactions entre Elevation & Location
-plot(dataAnts$Nsp~dataAnts$Elevation,type='n',ylab = "Ants Species Richness",xlab="Elevation")
-points(dataAnts$Nsp[dataAnts$Location=="Bog"]~dataAnts$Elevation[dataAnts$Location=="Bog"],pch=16,cex=2,col='#000099')
-points(dataAnts$Nsp[dataAnts$Location=="Forest"]~dataAnts$Elevation[dataAnts$Location=="Forest"],pch=17,cex=2,col='#339900')
+# Interactions entre Stage & Type_Event
+plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stages",xlab="Type Event")
 
-# Interactions between Bog Area & Location
-plot(dataAnts$Nsp~dataAnts$LogArea,type='n',ylab = "Ants Species Richness",xlab="Bog Area")
-points(dataAnts$Nsp[dataAnts$Location=="Bog"]~dataAnts$LogArea[dataAnts$Location=="Bog"],pch=16,cex=2,col='#000099')
-points(dataAnts$Nsp[dataAnts$Location=="Forest"]~dataAnts$LogArea[dataAnts$Location=="Forest"],pch=17,cex=2,col='#339900')
-
+# Interactions entre Activity & Type_Event
+plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
 
 
 ## 4. Analyse des colinéarités ----
