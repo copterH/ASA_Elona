@@ -4,6 +4,8 @@ install.packages("readxl")
 install.packages("lme4")
 library(lme4)
 library(readxl)
+library(GGally)
+library(ggcorrplot)
 
 # IMPORTATION DES DONNEES ----
 
@@ -74,10 +76,17 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site)
 ## 3. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
 
+ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
+        aes(color = Diameter, alpha = 0.5))
+
 ## 4. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
-
+# Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
+# --> pas d'utilité je pense
+cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
+                                   elona_recapture$Year)])
+ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 
 m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
