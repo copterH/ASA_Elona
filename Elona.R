@@ -50,7 +50,7 @@ elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
-
+elona_recapture$Stage = droplevels(elona_recapture$Stage)
 
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
@@ -60,12 +60,15 @@ elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
+elona_recapture$Activity = droplevels(elona_recapture$Activity)
+table(elona_recapture$Activity)
 
 table(elona_recapture$Type_Event)
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
-
+elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
+table(elona_recapture$Type_Event)
 
 
 # Relation potentielle entre X et Y
@@ -78,6 +81,16 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site)
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
+
+# Interactions entre Stage et Activity
+plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
+
+# Interactions entre Stage & Type_Event
+plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stages",xlab="Type Event")
+
+# Interactions entre Activity & Type_Event
+plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
+
 
 ## 4. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
@@ -112,7 +125,7 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 # Diameter = Site + Stage + (ID + date)
 m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
-
+plot(m_diam)
 
 ## 2. Peristome ----
 
