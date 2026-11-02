@@ -1,12 +1,14 @@
 
+# IMPORTATION DES LIBRARIES ----
+install.packages("readxl")
 install.packages("lme4")
 library(lme4)
 library(readxl)
-library(sf) # SF is a library that allows reprensentation for coordinates
-library(dplyr)
-library(ggplot2)
-library(mapview)
+library(GGally)
+library(ggcorrplot)
 
+
+# IMPORTATION DES DONNEES ----
 
 elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
@@ -16,6 +18,9 @@ elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", de
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
 elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
 
+# EXPLORATION DES DONNEES ----
+
+## 1. Valeurs extrêmes ----
 
 # valeur abérante dans Y
 boxplot(elona_recapture$Diameter)
@@ -28,11 +33,14 @@ elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
 boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
 summary(elona_recapture$Peristome)
 
-
+#Normalité de Y
 hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
 
+
+
+## 2. Nettoyage des données ----
 
 table(elona_recapture$Site)
 table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
@@ -45,7 +53,8 @@ elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
-
+elona_recapture$Stage = droplevels(elona_recapture$Stage)
+table(elona_recapture$Stage)
 
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
@@ -55,11 +64,17 @@ elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
+elona_recapture$Activity = droplevels(elona_recapture$Activity)
+table(elona_recapture$Activity)
 
 table(elona_recapture$Type_Event)
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
+elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
+table(elona_recapture$Type_Event)
+
+
 
 table(elona_firstcapture$Stage)
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
@@ -70,6 +85,20 @@ elona_firstcapture$Stage[which(elona_firstcapture$Stage=="")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV ")]<- "JUV"
 table(elona_firstcapture$Stage)
 
+
+# Relation entre les Ys (Diameter & Peristome)
+plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
+    ylab = "Diameter",xlab="Peristome")
+
+elona_recapture$Peristome[which(elona_recapture$Peristome>19)] <- NA
+
+ggplot(data = elona_recapture,  
+       aes(geom_point, x = Peristome, y = Diameter,
+           shape = Site, col = Stage)) +
+  geom_point() +
+  scale_shape_manual(values = c(0,1,2))
+
+
 elona_firstcapture$X[431] <- NA
 elona_firstcapture$Y[431] <- NA
 
@@ -78,13 +107,39 @@ boxplot(elona_recapture$Diameter~elona_recapture$Site)
 boxplot(elona_recapture$Peristome~elona_recapture$Site)
 # Recent a l'air plus haut
 
+## 3. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
+
+ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
+        aes(color = Diameter, alpha = 0.5))
+
+# Interactions entre Stage et Activity
+plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
+
+# Interactions entre Stage & Type_Event
+plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stages",xlab="Type Event")
+
+# Interactions entre Activity & Type_Event
+plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
+
+
+## 4. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
-m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
+# Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
+# --> pas d'utilité je pense
+cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
+                                   elona_recapture$Date)])
+ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
-# Conditions de validité
+
+m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
+
+# CONDITIONS DE VALIDITE ----
+
+## 1. Normalité des résidus ----
 plot(m1) # résidus ok
+
 # Homoscédasticité
 
 
@@ -93,6 +148,41 @@ plot(m1) # résidus ok
 
 
 
+## 2. Homoscédasticité ----
+plot(x = elona_recapture$Date, y = elona_recapture$Diameter )
+plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
+
+## 3. Résidus indépendants ----
+
+
+# ANALYSE ----
+# Choix de la méthode pour répondre à la question :
+# We aim to determine whether the two populations share the same demographic characteristics and traits.
+
+## 1. Diameter ----
+# Modèle linéaire général mixte
+# Diameter = Site + Stage + (ID_1erC + Date)
+m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
+
+plot(m_diam)
+
+## 2. Peristome ----
+
+
+## 3. Démographie ----
+
+###a. Select the candidate model ----
+#f(proportion de chaque classe d'âge)= Site + Date
+# On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
+
+
+###b. Analyze coefficient estimates & residual deviance ----
+
+###c. Model diagnostic ----
+# Checking distribution of residuals (histogramm/Qqplot)
+# Distribution of residuals depending on fitted values/ Y values
+# Cook’s distance for influential observations
+# Fitted values against observed ones (predictive value of model )
 
 ### Spatial description ##
 ## elona_sf contains the portion of the data relevant for analysis
@@ -158,3 +248,4 @@ ggplot() +
 
 mapview(elona_sf_new, 
         zcol = 'IDZone')
+
