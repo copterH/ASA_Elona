@@ -6,6 +6,7 @@ library(lme4)
 library(readxl)
 library(GGally)
 library(ggcorrplot)
+library(dplyr)
 
 
 # IMPORTATION DES DONNEES ----
@@ -175,6 +176,16 @@ plot(m_diam)
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
 
+elona_dem <- data.frame(matrix(ncol = 5, nrow = 0))
+for (site in unique(elona_recapture$Site)){
+  for (event in unique(elona_recapture$Event)){
+    AD <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "AD"))
+    SUB <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "SUB"))
+    JUV <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "JUV"))
+    ligne <- c(AD, SUB, JUV, site, event)
+    elona_dem <- rbind(elona_dem, ligne)
+}}
+colnames(elona_dem) <- c('AD', 'SUB', 'JUV', 'Site', 'Event')
 
 ###b. Analyze coefficient estimates & residual deviance ----
 
@@ -183,6 +194,11 @@ plot(m_diam)
 # Distribution of residuals depending on fitted values/ Y values
 # Cook’s distance for influential observations
 # Fitted values against observed ones (predictive value of model )
+
+
+
+
+
 
 ### Spatial description ##
 ## elona_sf contains the portion of the data relevant for analysis
