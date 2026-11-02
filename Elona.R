@@ -37,6 +37,8 @@ hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
 
+
+
 ## 2. Nettoyage des données ----
 
 table(elona_recapture$Site)
@@ -70,6 +72,16 @@ table(elona_recapture$Type_Event)
 elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
 table(elona_recapture$Type_Event)
 
+# Relation entre les Ys (Diameter & Peristome)
+plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
+    ylab = "Diameter",xlab="Peristome")
+
+ggplot(data = elona_recapture,  
+       aes(geom_point, x = Peristome, y = Diameter,
+           shape = Site, col = Stage)) +
+  geom_point() +
+  scale_shape_manual(values = c(0,1,2))
+
 
 # Relation potentielle entre X et Y
 boxplot(elona_recapture$Diameter~elona_recapture$Site)
@@ -102,7 +114,7 @@ cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peris
 ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 
-m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
+m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
 
 # CONDITIONS DE VALIDITE ----
 
@@ -122,7 +134,7 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 
 ## 1. Diameter ----
 # Modèle linéaire général mixte
-# Diameter = Site + Stage + (ID + date)
+# Diameter = Site + Stage + (ID_1erC + Date)
 m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
 plot(m_diam)
