@@ -32,7 +32,7 @@ elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
 boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
 summary(elona_recapture$Peristome)
 
-
+#Normalité de Y
 hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
@@ -53,6 +53,7 @@ elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
 elona_recapture$Stage = droplevels(elona_recapture$Stage)
+table(elona_recapture$Stage)
 
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
@@ -143,4 +144,17 @@ plot(m_diam)
 
 
 ## 3. Démographie ----
+
+###a. Select the candidate model ----
+#f(proportion de chaque classe d'âge)= Site + Date
+# On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
+
+
+###b. Analyze coefficient estimates & residual deviance ----
+
+###c. Model diagnostic ----
+# Checking distribution of residuals (histogramm/Qqplot)
+# Distribution of residuals depending on fitted values/ Y values
+# Cook’s distance for influential observations
+# Fitted values against observed ones (predictive value of model )
 
