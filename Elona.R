@@ -7,6 +7,8 @@ library(readxl)
 library(GGally)
 library(ggcorrplot)
 library(dplyr)
+library(ggplot2)
+library(tidyverse)
 
 
 # IMPORTATION DES DONNEES ----
@@ -176,16 +178,29 @@ plot(m_diam)
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
 
-elona_dem <- data.frame(matrix(ncol = 5, nrow = 0))
+elona_dem <- data.frame(matrix(ncol = 6, nrow = 0))
+L_Site <- c()
+L_Event <- c()
+L_Event_Site <- c()
 for (site in unique(elona_recapture$Site)){
   for (event in unique(elona_recapture$Event)){
     AD <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "AD"))
     SUB <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "SUB"))
     JUV <- nrow(elona_recapture %>% filter(Site == site & Event == event & Stage == "JUV"))
-    ligne <- c(AD, SUB, JUV, site, event)
-    elona_dem <- rbind(elona_dem, ligne)
-}}
-colnames(elona_dem) <- c('AD', 'SUB', 'JUV', 'Site', 'Event')
+    Event_Site <- paste(event, str_sub(site, 1,3), sep = "_")
+    L_Site <- c(L_Site, site)
+    L_Event <- c(L_Event, event)
+    L_Event_Site <- c(L_Event_Site, Event_Site)
+    elona_dem <- rbind(elona_dem, cbind(AD, SUB, JUV))
+  }}
+elona_dem <- cbind(elona_dem, L_Site, L_Event, L_Event_Site)
+colnames(elona_dem) <- c('AD', 'SUB', 'JUV', 'Site', 'Event', "Event_Site")
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, AD, fill = Site))
+
+  
+  
 
 ###b. Analyze coefficient estimates & residual deviance ----
 
