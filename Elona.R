@@ -1,8 +1,11 @@
 
-install.packages("readxl")
 install.packages("lme4")
 library(lme4)
 library(readxl)
+library(sf) # SF is a library that allows reprensentation for coordinates
+library(dplyr)
+library(ggplot2)
+library(mapview)
 
 
 elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
@@ -58,7 +61,17 @@ elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
 
+table(elona_firstcapture$Stage)
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV?")]<- "JUV"
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV/SUB")]<- NA
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="SUB/AD")]<- NA
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="")]<- NA
+elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV ")]<- "JUV"
+table(elona_firstcapture$Stage)
 
+elona_firstcapture$X[431] <- NA
+elona_firstcapture$Y[431] <- NA
 
 # Relation potentielle entre X et Y
 boxplot(elona_recapture$Diameter~elona_recapture$Site)
@@ -73,3 +86,75 @@ m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_
 # Conditions de validité
 plot(m1) # résidus ok
 # Homoscédasticité
+
+
+
+
+
+
+
+
+### Spatial description ##
+## elona_sf contains the portion of the data relevant for analysis
+elona_sf <- elona_firstcapture %>%
+  filter(!is.na(elona_firstcapture$X)) %>%
+  select(Site, 
+         X, 
+         Y, 
+         IDZone)
+## The coordinates are turned into an sf object in the geometry column
+elona_sf$X <- as.numeric(as.character(elona_sf$X))
+elona_sf$Y <- as.numeric(as.character(elona_sf$Y))
+elona_sf <- elona_sf %>%
+  st_as_sf(coords = c("X", 
+                      "Y"))
+
+
+## We separate the old and new sites because some zone avec the same ID (but different coodinates)
+elona_sf_old <- elona_sf %>%
+  filter(Site == 'Old_highdensity')
+elona_sf_old <- distinct(elona_sf_old, 
+                         IDZone, 
+                         .keep_all = TRUE)
+elona_sf_new <- elona_sf %>%
+  filter(Site == 'Recent_lowdensity')
+elona_sf_new <- distinct(elona_sf_new, 
+                         IDZone, 
+                         .keep_all = TRUE)
+
+## After filtering to keep only one line per zone we bind the 2 sites back together
+elona_sf <- rbind(elona_sf_old, 
+                  elona_sf_new)
+
+
+## Distances between the centroids of the two sites
+st_distance(
+  st_combine(elona_sf_new$geometry) %>%
+    st_centroid(),
+  st_combine(elona_sf_old$geometry) %>%
+    st_centroid()
+)
+
+### PLOTS 
+
+ggplot() +
+  geom_sf(data = elona_sf$geometry, 
+          aes(col = elona_sf$Site))
+
+mapview(elona_sf, 
+        zcol = 'IDZone')
+
+
+ggplot() +
+  geom_sf(data = elona_sf_new$geometry)+
+  theme_void()
+# ligne 1 en bas, ligne 10 en haut, colonne A à droite, G à gauche
+
+ggplot() +
+  geom_sf(data = elona_sf_old$geometry)+
+  theme_void()
+# ligne 1 en haut, ligne 13 en bas, colonne A à gauche, I à droite
+
+
+mapview(elona_sf_new, 
+        zcol = 'IDZone')
