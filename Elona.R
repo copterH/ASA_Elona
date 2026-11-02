@@ -77,6 +77,8 @@ table(elona_recapture$Type_Event)
 plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
     ylab = "Diameter",xlab="Peristome")
 
+elona_recapture$Peristome[which(elona_recapture$Peristome>19)] <- NA
+
 ggplot(data = elona_recapture,  
        aes(geom_point, x = Peristome, y = Diameter,
            shape = Site, col = Stage)) +
