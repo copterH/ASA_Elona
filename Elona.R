@@ -302,7 +302,8 @@ vif(m1)#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
 # GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
 #Stade juvenile est le facteur avec un effet le plus fort
 #les correlationsd'effet fixes sont toutes <0.2
-rsquare(m1)
+r2(m1)
+
 
 
 #selection modele en retirant des var : methode descendante stepAIC {MASS}
