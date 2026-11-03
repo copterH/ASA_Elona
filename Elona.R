@@ -22,7 +22,12 @@ library(dplyr)
 library(sf)
 library(mapview)
 
+
+
 # IMPORTATION DES DONNEES ------------------------------------------------------
+
+
+# IMPORTATION DES DONNEES ----
 # Importation et gestion des classes
 elona_recapture <- read_xlsx("data_elona.xlsx", sheet = 3, col_types = c('text', 'numeric', 'numeric', 'text', 'text', 'text', 'numeric', 'numeric', 'numeric', 'text', 'text'))
 elona_recapture$Site <- as.factor(elona_recapture$Site)
@@ -46,6 +51,7 @@ elona_firstcapture$X <- as.factor(elona_firstcapture$X)
 elona_firstcapture$Y <- as.factor(elona_firstcapture$Y)
 elona_firstcapture <- data.frame(elona_firstcapture$Site, elona_firstcapture$Diameter, elona_firstcapture$Peristome, elona_firstcapture$Stage, elona_firstcapture$Type_Event, elona_firstcapture$Day, elona_firstcapture$Month, elona_firstcapture$Year, elona_firstcapture$Event, elona_firstcapture$ID_1erC,elona_firstcapture$IDZone, elona_firstcapture$X, elona_firstcapture$Y)
 colnames(elona_firstcapture) <- c('Site', 'Diameter', 'Peristome', 'Stage', 'Type_Event', "Day", "Month", "Year", "Event", "ID_1erC", "IDZone", "X", "Y")
+
 
 
 
