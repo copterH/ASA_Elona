@@ -6,7 +6,6 @@ library(lme4)
 library(readxl)
 library(GGally)
 library(ggcorrplot) #graphe de correlation
-library(dplyr)
 library(ggplot2)
 library(tidyverse)
 library(predictmeans)#diagramme de cook
@@ -18,6 +17,10 @@ library(lattice) # multipanel graphics
 library(ade4) # PCA
 library(performance)#r2 LMM
 library(car)
+library(MASS)
+library(dplyr)
+library(sf)
+library(mapview)
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
 # Importation et gestion des classes
@@ -593,7 +596,7 @@ ggplot(data = elona_dem)+
 prop_AD <- elona_dem$Prop_AD
 prop_SUB <- elona_dem$Prop_SUB
 prop_JUV <- elona_dem$Prop_JUV
-proportions <- data.frame(prop_ad, prop_sub, prop_juv)
+proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # Site <- elona_dem$Site
 # Event <- elona_dem$Event
 # proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
