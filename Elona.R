@@ -2,6 +2,7 @@
 # IMPORTATION DES LIBRARIES ----
 install.packages("readxl")
 install.packages("lme4")
+install.packages("mgcv")
 library(lme4)
 library(readxl)
 library(GGally)
@@ -9,7 +10,11 @@ library(ggcorrplot)
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-
+library(nlme)
+library(lmerTest)
+library(mgcv)
+library(corrplot)# Correlation matrix calculus
+library(lattice)# multipanel graphics
 
 # IMPORTATION DES DONNEES ----
 
@@ -33,12 +38,14 @@ summary(elona_recapture$Diameter)
 boxplot(elona_recapture$Peristome) # Une valeur très très haute => on va l'enlever ça parait improbable
 summary(elona_recapture$Peristome)
 elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
+
 boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
+elona_recapture$Peristome[elona_recapture$Peristome>15]<-NA
 summary(elona_recapture$Peristome)
 
 #Normalité de Y
 hist(elona_recapture$Diameter)
-hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
+hist(elona_recapture$Peristome,breaks=1000) # pas normal
 summary(elona_recapture$Peristome)
 
 
@@ -77,7 +84,8 @@ table(elona_recapture$Type_Event)
 elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
 table(elona_recapture$Type_Event)
 
-
+# Ajouter données de sites à elona_recapture
+elona_recapture<-merge(elona_recapture,elona_firstcapture[,c(10,11)], by="ID_1erC")
 
 table(elona_firstcapture$Stage)
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
@@ -136,12 +144,13 @@ cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peris
 ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 
-m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
+
+m1<-lmer(Diameter ~ Site + Stage +(1|Date)+(1|ID_1erC),data=elona_recapture)
 
 # CONDITIONS DE VALIDITE ----
 
 ## 1. Normalité des résidus ----
-plot(m1) # résidus ok
+plot(m1) # résidus bof
 
 # Homoscédasticité
 
@@ -157,8 +166,13 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 
 ## 3. Résidus indépendants ----
 
+# Significativité de la variance associé au facteur aléatoire
+intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
 
 # ANALYSE ----
+summary(m1)
+anova(m1) # effet significatif du site
+
 # Choix de la méthode pour répondre à la question :
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
 
@@ -169,7 +183,90 @@ m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapt
 
 plot(m_diam)
 
+
 ## 2. Peristome ----
+# Transformation de Peristome pour lui faire suivre une loi normale
+m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
+
+# Vérification des conditions de validité
+plot(m_peris) # Résidus répartis de manière non normale
+
+# Autres conditions de validités !!!!
+
+
+# GAM
+# On transforme Date en temps depuis le début de l'expérience parce que les GAM n'acceptent pas les données Dates
+temps <- elona_recapture[,12] - min(elona_recapture$Date)
+elona_recapture$temps<-temps
+elona_recapture$temps<-as.numeric(elona_recapture$temps)
+class(elona_recapture$temps)
+hist(elona_recapture_sansNA$temps)
+
+# On enlève les NA, ça permet d'éviter les messages d'erreurs lors de la vérification de l'homogénéité des variances
+elona_recapture_sansNA<-na.omit(elona_recapture)
+
+# Le modèle GAM
+gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+          family = gaussian,
+          data = elona_recapture_sansNA)
+# regarder pourquoi on doit indiquer gaussian 
+# à voir aussi il est possible de mettre bs = "re" ou bs = "cr"
+
+# Analyse des résultats
+anova(gam_peris)
+
+summary(gam_peris)
+
+# Vérification des conditions de validité
+par(mar = c(2, 2, 2, 2))
+vis.gam(gam_peris, theta = -20, color = "heat") # fonctionne pas
+
+par(mfrow=c(1,2))
+# Histogram
+hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
+# Quantile-Quantile plot
+qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris$residuals,col='red')
+# Pas terrible pour le deuxième graph
+
+# Homogénéité de la variance
+plot(residuals(gam_peris)~fitted(gam_peris)
+     , col='dodgerblue3'
+     , pch=16)
+abline(h = 0)
+# Plus de variance au centre qu'aux extrémités
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$Site, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Sites",
+     main = "")
+abline(h = 0)
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Temps",
+     main = "")
+abline(h = 0)
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Stage",
+     main = "")
+abline(h = 0)
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Individus",
+     main = "")
+abline(h = 0)
 
 
 ## 3. Démographie ----
@@ -513,3 +610,14 @@ subset(elona_recapture, elona_recapture$Peristome>19)
 nrow(table(elona_recapture$Date))
 table (elona_recapture$Site)
 table(elona_recapture$Stage)
+
+
+# Limite de l'étude
+
+# Fait qu'on ne sait pas si les placettes ont des ressources très différentes ou pas
+# Le jeu de données ne nous permet pas de prendre en compte si les escargots bougent ou pas
+
+# Que des psuedo-réplicats ce serait bien d'avoir d'autres sites.
+# De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats
+# Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en varaible explicative
+
