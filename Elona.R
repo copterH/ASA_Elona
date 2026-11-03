@@ -27,11 +27,16 @@ elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", de
 
 #Modification des dates
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
+
+
+
+
+
 #QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
 
 
-# EXPLORATION DES DONNEES ------------------------------------------------------
+# I. EXPLORATION DES DONNEES ------------------------------------------------------
 
 ## 1. Valeurs extrêmes ----
 
@@ -177,6 +182,8 @@ plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 ## Checking collinearity between categorical and continuous independent variables
 par(mfrow=c(1,2))
+
+
 ###Boxplot Dimension selon var explicatives -----
 ####Year ----
 
@@ -252,15 +259,15 @@ which(is.na(elona_recapture_cor)) #6 NA
 
 
 
-## (I) DIAMETRE -----
-##creation du modele mixte du diametre avec le site en modele fixe, et les etapes,annees,  n° d'identification en numero aleatoire ------
+# II. DIAMETRE ----------------------------------------------------------------
+#creation du modele mixte du diametre avec le site en modele fixe, et les etapes,annees,  n° d'identification en numero aleatoire
 m1<-lmer(Diameter ~ Site + Stage +(1|Date)+(1|ID_1erC),data=elona_recapture)
 
 summary(m1)
 
-# CONDITIONS DE VALIDITE ----
+# A.Conditions de validité ----
 
-## 1. Normalité des résidus ----
+### 1. Normalité des résidus ----
 par(mfrow=c(1,2))
 # Histogram
 hist(residuals(m1),col='dodgerblue3',xlab="residuals",main="Check Normality") 
@@ -269,7 +276,7 @@ qqnorm(residuals(m1),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas s
 qqline(residuals(m1),col='red')
 
 
-## 2. Homoscédasticité ----
+### 2. Homoscédasticité ----
 plot(m1) # heteroscedasticite que l'on prendra en compte lors de l'interpretations
 
 
@@ -282,7 +289,7 @@ summary(mod_tot)
 
 
 
-## 3. Résidus indépendants ----
+### 3. Résidus indépendants ----
 
 #L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
 
@@ -300,7 +307,7 @@ summary(mod_tot)
 # plot(x = elona_recapture$Stage, y = residuals(m1) )
 
 
-## 4. Colinearite entre les variables X num ou facteur -----
+### 4. Colinearite entre les variables X num ou facteur -----
 #vif{car}
 vif(m1) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
 # vif(elona_recapture_cor [,2:7])
@@ -353,33 +360,8 @@ vif(mod_tot) #GVIF = 1 --> colinearite moderee
 # ActivityIMMO          -0.30856977  0.4759665
 # ActivityMORT          -1.31770650  0.4159386
 
-#(II)- PERISTOME -----
-# CONDITIONS DE VALIDITE ----
 
-## 1. Normalité des résidus ----
-par(mfrow=c(1,2))
-# Histogram
-hist(residuals(m_peris),col='dodgerblue3',xlab="residuals",main="Check Normality") 
-# Quantile-Quantile plot
-qqnorm(residuals(m_peris),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
-qqline(residuals(m_peris),col='red')
-
-
-## 2. Homoscédasticité ----
-plot(m_peris) # heteroscedasticite encore + que l'on prendra en compte lors de l'interpretations
-
-## 3. Résidus indépendants ----
-
-#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
-
-
-## 4. Colinearite entre les variables X num ou facteur -----
-vif(m_peris) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
-
-# ANALYSE ----
-
-
-## 1. Diameter ----
+## B. Analyse ----
 # Modèle linéaire général mixte
 # Diameter = Site + Stage + (ID_1erC + Date)
 #ATTENTION: m1 = m_diam
@@ -404,9 +386,36 @@ anova(m1) # effet tres significatif de classe d'Age (Stade de dvt), plus faible 
 # Présence d'un effet significatif du site légèrement supérieur pour le récent (0.7838).
 plot(m_diam)
 
-## 2. Peristome ----
+
+
+
+#III. PERISTOME -----------------------------------------------------------------
 # Transformation de Peristome pour lui faire suivre une loi normale
 m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
+
+## A. Conditions de Validité Passage au log ----
+
+### 1. Normalité des résidus ----
+par(mfrow=c(1,2))
+# Histogram
+hist(residuals(m_peris),col='dodgerblue3',xlab="residuals",main="Check Normality") 
+# Quantile-Quantile plot
+qqnorm(residuals(m_peris),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
+qqline(residuals(m_peris),col='red')
+
+
+### 2. Homoscédasticité ----
+plot(m_peris) # heteroscedasticite encore + que l'on prendra en compte lors de l'interpretations
+
+### 3. Résidus indépendants ----
+
+#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
+
+
+### 4. Colinearite entre les variables X num ou facteur -----
+vif(m_peris) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
+
+## B. Analyse passage au log ----
 
 # Analyse modele peristome
 plot(m_peris) # Résidus répartis de manière non normale
@@ -420,7 +429,7 @@ summary(m_peris)
 anova(m_peris) #confirme la forte significativite des 2 variables : Site et Stade de developement (classe d'Age)
 
 
-### GAM ----
+## GAM ----
 # On transforme Date en temps depuis le début de l'expérience parce que les GAM n'acceptent pas les données Dates
 temps <- elona_recapture[,12] - min(elona_recapture$Date)
 elona_recapture$temps<-temps
@@ -439,7 +448,7 @@ gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs
 # à voir aussi il est possible de mettre bs = "re" ou bs = "cr"
 
 
-# Vérification des conditions de validité
+## C. Conditions de validité  GAM----
 par(mar = c(2, 2, 2, 2))
 vis.gam(gam_peris, theta = -20, color = "heat") # fonctionne pas
 
@@ -494,7 +503,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC,
      main = "")
 abline(h = 0)
 
-# Analyse des résultats
+## D. Analyse des résultats ----
 anova(gam_peris)
 #Effet significativite du Stade de developpement (p<2e-16) mais pas visiblement du Site (p=0.0174)
 summary(gam_peris)
@@ -511,9 +520,9 @@ r2(gam_peris)
 
 
 
-## 3. Démographie ----
+# IV. DEMOGRAPHIE --------------------------------------------------------------
 
-###a. Préparation des données ----
+###A. Préparation des données ----
 
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
@@ -567,7 +576,6 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
-
 # On extrait ensuite les proportions dans un nouveau tableau
 prop_AD <- elona_dem$Prop_AD
 prop_SUB <- elona_dem$Prop_SUB
@@ -577,7 +585,7 @@ proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 # Event <- elona_dem$Event
 # proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
 
-###b. Sélection du modèle ----
+###B. Sélection du modèle ----
 
 # On veut analyser les proportions des classes d'âges par rapport aux sites et aux évènements
 # Il y a 4 possibilités
@@ -636,7 +644,7 @@ proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 # add1(demo_model)
 
 
-### Spatial description ##
+# V. SPATIAL DESCRIPTION -------------------------------------------------------
 ## elona_sf contains the portion of the data relevant for analysis
 elona_sf <- elona_firstcapture[,c("Site", 
                                   "X", 
