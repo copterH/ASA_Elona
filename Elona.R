@@ -122,10 +122,13 @@ elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV ")]<- "JUV"
 elona_firstcapture$Stage = droplevels(elona_firstcapture$Stage)
 table(elona_firstcapture$Stage)
 
+#On reformule correctement les NA dans les coordonnées géographiques de firstcapture
+elona_firstcapture$X[431] <- NA
+elona_firstcapture$Y[431] <- NA
+
+
 
 ## 4.  Relation entre les Ys (Diameter & Peristome) ----
-plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
-    ylab = "Diameter",xlab="Peristome")
 
 elona_recapture$Peristome[which(elona_recapture$Peristome>19)] <- NA
 
@@ -134,15 +137,17 @@ ggplot(data = elona_recapture,
            shape = Site, col = Stage)) +
   geom_point() +
   scale_shape_manual(values = c(0,1,2))
+#Il semble y avoir une colinéarité assez forte entre le diamètre et le péristome 
+#De plus, si l'on considère la classe d'âge,on observe que les individus avec un petit diamètre et péristome sont les juvéniles, ce qui fait sens biologiquement.
+#Il semble qu'il y a une légère différence de tailles pour les individus adultes selon le site. 
 
 
-elona_firstcapture$X[431] <- NA
-elona_firstcapture$Y[431] <- NA
 
 ## 5. Relation potentielle entre X et Y ----
+
 boxplot(elona_recapture$Diameter~elona_recapture$Site)
 boxplot(elona_recapture$Peristome~elona_recapture$Site)
-# Recent a l'air plus haut
+# Il semble que les escargots du site Recent ont un diamètre et un péristome plus important, sans que cela soit significatif 
 
 ## 6. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
@@ -160,7 +165,7 @@ plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stage
 plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
 
 
-## 5. Analyse des colinéarités ----
+## 7. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
 # Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
