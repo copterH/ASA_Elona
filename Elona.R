@@ -15,8 +15,8 @@ library(lmerTest)
 library(mgcv)
 library(corrplot) # Correlation matrix calculus
 library(lattice) # multipanel graphics
-library(vegan)
-#library(gtsummary) # regression logistique multivariee
+library(ade4) # PCA
+
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
@@ -471,20 +471,50 @@ ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
 # Choix du type de modèle
-# On définit 2 possibilités
-# Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
-# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA
+# On définit 4 possibilités
+# 1. Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
+# 2. Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA (MAIS RDA plus pour prédiction donc non)
 # Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
 # car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
 # Par la suite on pourra essayer les régressions logistiques
+# 3. ACP (même chose que RDA mais pas de prédiction, plus explicatif)
+# Non car ne marche pas dans la structure des données
+# 4. Régression multiple
+# Trop de variables différentes à cause de interaction Site*Event
+
+
+# On doit d'abord extraire les proportions dans un nouveau tableau
+prop_AD <- elona_dem$Prop_AD
+prop_SUB <- elona_dem$Prop_SUB
+prop_JUV <- elona_dem$Prop_JUV
+Site <- elona_dem$Site
+Event <- elona_dem$Event
+proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
+
+# TESTS
+
+demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV) ~ elona_dem$Site + elona_dem$Event, )
+summary(demo_model)
+
+
+
+
+
+
+# ACP
+demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
+demo_PCA$cw
+demo_PCA$lw
+
+library(FactoMineR)
+demo_PCA <- PCA(proportions, quali.sup = c(Site, Event))
+# same as dudi.pca(palmer[,3:6], scannf=FALSE, scale = TRUE)
+
+library(Factoshiny)
+res <- Factoshiny(proportions)
+
 
 # RDA
-# On doit d'abord extraire les proportions dans un nouveau tableau
-
-prop_ad <- elona_dem$Prop_AD
-prop_sub <- elona_dem$Prop_SUB
-prop_juv <- elona_dem$Prop_JUV
-proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 
 # On écrit le modèle
 RDA <- rda(proportions ~ Site + Event, 
@@ -494,11 +524,23 @@ RsquareAdj(RDA)
 # Résultats du modèle
 anova(RDA, by = "margin")
 
-# Analyse des résultats
+plot(RDA, display=c("species","cn"))
 
+# Regress each (centered) y variable on explanatory matrix X
+# and compute the fitted (y^) and residuals (yres) vectors.
 
+y_chapeau <- 1
+yres <- 1
+
+# Create a new matrix (Y^) containing all the fitted vectors (y^).
+
+# Compute a PCA on Y^ . This will produces a vector of canonical eigenvalues and a matrix U
+# of canonical eigenvectors (principal components).
 
 ###b. Analyze coefficient estimates & residual deviance ----
+
+
+
 
 ###c. Model diagnostic ----
 # Checking distribution of residuals (histogramm/Qqplot)
