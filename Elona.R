@@ -418,7 +418,8 @@ abline(h = 0)
 
 ## 3. Démographie ----
 
-###a. Select the candidate model ----
+###a. Préparation des données ----
+
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
 
@@ -470,67 +471,89 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
-# Choix du type de modèle
-# On définit 4 possibilités
-# 1. Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
-# 2. Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA (MAIS RDA plus pour prédiction donc non)
+
+# On extrait ensuite les proportions dans un nouveau tableau
+prop_AD <- elona_dem$Prop_AD
+prop_SUB <- elona_dem$Prop_SUB
+prop_JUV <- elona_dem$Prop_JUV
+proportions <- data.frame(prop_ad, prop_sub, prop_juv)
+# Site <- elona_dem$Site
+# Event <- elona_dem$Event
+# proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
+
+###b. Sélection du modèle ----
+
+# On veut analyser les proportions des classes d'âges par rapport aux sites et aux évènements
+# Il y a 4 possibilités
+
+# 1. Régression logistique
+# En effet on veut une analyse de proportions donc on pourrait réaliser 3 modèles
+# de régression logistique.
+
+# Cependant ici nous voulons analyser 3 variables quantitatives différentes 
+
+# 2. RDA
+# En effet on veut analyser les relations entre un tableau avec les proportions 
+# et un tableau avec les caractéristiques des captures.
+
+
+# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA (MAIS RDA plus pour prédiction donc non)
 # Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
 # car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
 # Par la suite on pourra essayer les régressions logistiques
+
+
+
+
 # 3. ACP (même chose que RDA mais pas de prédiction, plus explicatif)
 # Non car ne marche pas dans la structure des données
 # 4. Régression multiple
 # Trop de variables différentes à cause de interaction Site*Event
 
 
-# On doit d'abord extraire les proportions dans un nouveau tableau
-prop_AD <- elona_dem$Prop_AD
-prop_SUB <- elona_dem$Prop_SUB
-prop_JUV <- elona_dem$Prop_JUV
-Site <- elona_dem$Site
-Event <- elona_dem$Event
-proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
-
-# TESTS
-
-demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV) ~ elona_dem$Site + elona_dem$Event, )
-summary(demo_model)
-
-
-
-
-
-
-# ACP
-demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
-demo_PCA$cw
-demo_PCA$lw
-
-library(FactoMineR)
-demo_PCA <- PCA(proportions, quali.sup = c(Site, Event))
-# same as dudi.pca(palmer[,3:6], scannf=FALSE, scale = TRUE)
-
-library(Factoshiny)
-res <- Factoshiny(proportions)
-
-
 # RDA
 
 # On écrit le modèle
-RDA <- rda(proportions ~ Site + Event, 
-           data = elona_dem)
-summary(RDA)
-RsquareAdj(RDA)
+# RDA <- rda(proportions ~ Site + Event, data = elona_dem)
+# summary(RDA)
+# RsquareAdj(RDA)
 # Résultats du modèle
-anova(RDA, by = "margin")
+# anova(RDA, by = "margin")
 
-plot(RDA, display=c("species","cn"))
+# plot(RDA, display=c("species","cn"))
+
+
+# ACP
+
+# demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
+# demo_PCA$cw
+# demo_PCA$lw
+
+# library(FactoMineR)
+# demo_PCA <- PCA(proportions, quali.sup = c(Site, Event))
+# same as dudi.pca(palmer[,3:6], scannf=FALSE, scale = TRUE)
+
+# library(Factoshiny)
+# res <- Factoshiny(proportions)
+
+
+# Régression linéaire multiple
+
+# demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV)
+#                  ~ elona_dem$Site + elona_dem$Event)
+# summary(demo_model)
+# step(demo_model)
+
+
+
+
+
 
 # Regress each (centered) y variable on explanatory matrix X
 # and compute the fitted (y^) and residuals (yres) vectors.
 
-y_chapeau <- 1
-yres <- 1
+# y_chapeau <-
+# yres <-
 
 # Create a new matrix (Y^) containing all the fitted vectors (y^).
 
