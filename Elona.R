@@ -801,7 +801,7 @@ par(mfrow = c(1, 1))
 
 #L'estimation de la démographie aurait pu nous aiguiller sur l'hypothèse que les escargots du nouveau sites n'ont pas encore atteint la capacité limite du milieu. 
 
-# CONCLUSION -------------------------------------------------------------------
+# CONCLUSION ---------------  ----------------------------------------------------
 
 #Dans les modèles testés, le diamètre et le péristome sont en premier lieu affecté par le stade de développement
 #Ce qui est cohérent avec l'interprétation biologique: la croissance impacte la taille. 
