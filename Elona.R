@@ -336,20 +336,21 @@ ggplot(data = elona_dem)+
 # RDA
 # On doit d'abord extraire les proportions dans un nouveau tableau
 
-proportions <- select(c(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV))
+prop_ad <- elona_dem$Prop_AD
+prop_sub <- elona_dem$Prop_SUB
+prop_juv <- elona_dem$Prop_JUV
+proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 
-RDA <- rda(elona_dem ~ pC + cn + pH + NPP + map + mat + forest + conifer + relEM +P + K + Ca + Mg, 
-           data = env_observed)
+# On écrit le modèle
+RDA <- rda(proportions ~ Site + Event, 
+           data = elona_dem)
+summary(RDA)
+RsquareAdj(RDA)
+# Résultats du modèle
+anova(RDA, by = "margin")
 
+# Analyse des résultats
 
-
-
-# Régressions linéaires
-mv_reg <- glm(elona_dem ~ Prop_AD + Prop_SUB + Prop_JUV, family = "binomial", data = linelist)
-
-summary(mv_reg)
-  
-m_demo <- multinom(elona_dem$Prop_AD~elona_dem$Event_Site)
 
 
 ###b. Analyze coefficient estimates & residual deviance ----
