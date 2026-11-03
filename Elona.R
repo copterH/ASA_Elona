@@ -153,8 +153,8 @@ ggplot(data = elona_recapture,
 
 ## 5. Relation potentielle entre X et Y ----
 
-boxplot(elona_recapture$Diameter~elona_recapture$Site)
-boxplot(elona_recapture$Peristome~elona_recapture$Site)
+boxplot(elona_recapture$Diameter~elona_recapture$Site, main = "Diameter")
+boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
 # Il semble que les escargots du site Recent ont un diamètre et un péristome plus important, sans que cela soit significatif 
 
 ## 6. Analyse des interactions ----
@@ -176,18 +176,24 @@ plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab
 ## 7. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 ## Checking collinearity between categorical and continuous independent variables
-par(mfrow=c(1,3))
+par(mfrow=c(1,2))
 ###Boxplot Dimension selon var explicatives -----
 ####Year ----
+
 ##Diameter and year (recapture)
-boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,25), main = "Recapture ")
+boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,25), main = "Recapture Diameter ")
 ##Diameter and year (First capture)
-boxplot(elona_firstcapture$Diameter~elona_firstcapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "First Capture")
+boxplot(elona_firstcapture$Diameter~elona_firstcapture$Year, ylab = "Diameter", xlab = "Year",varwidth = TRUE, col=c('royalblue','chartreuse'), ylim = c(0,25), main = "First Capture Diameter")
+#tendance à légère augmentation au cours du temps du diametre des coquilles
+
 
 ##peristome and year (recapture)
-boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,12), main = "Recapture ")
+boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,12), main = "Recapture Peristome")
 ##peristome and year (First capture)
-boxplot(elona_firstcapture$Peristome~elona_firstcapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "First Capture")
+boxplot(elona_firstcapture$Peristome~elona_firstcapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "First Capture Peristome")
+#tendance à légère augmentation au cours du temps de la taille du peristome
+
+
 #### Event----
 ##Diameter and Event (recapture)
 boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
@@ -198,7 +204,7 @@ boxplot(elona_firstcapture$Diameter~elona_firstcapture$Event, varwidth = TRUE, y
 boxplot(elona_recapture$Diameter~elona_recapture$ID_1erC, varwidth = TRUE, ylab = "Diameter", xlab = "ID_1erC",col=c(blues9), ylim = c(0,25), main = "Recapture ")
 ####TypeEvent -----
 boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-
+#Difference de diametre en fonction de l'etat (logique car individus recapturés plus vieux)
 
 
 #Autres BONUS test -----
@@ -237,6 +243,12 @@ which(is.na(elona_recapture_cor)) #6 NA
 # cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
 #                                  elona_recapture$Date)])
 # ggcorrplot(cor_mat, method = "square", lab = TRUE)
+
+# 
+# #Tentative  séparation des données selon les classes d'ages pour obs tendances temporelles
+# elona_ADULT <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="AD")
+# elona_JUVENILE <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="JUV")
+# elona_SUBADULT <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="SUB")
 
 
 
@@ -300,19 +312,10 @@ vif(m1) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible d
 # GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
 # GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
 #Stade juvenile est le facteur avec un effet le plus fort
-<<<<<<< HEAD
-#les correlationsd'effet fixes sont toutes <0.2
-r2(m1)
 
-
-
-#selection modele en retirant des var : methode descendante stepAIC {MASS}
-M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
-stepAIC (M0, mod_tot, direction = "backward")
-=======
 # Significativité de la variance associé au facteur aléatoire
 # intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
->>>>>>> 598f663fdd72b86100f43ef1f17d3b7595e180b8
+
 
 mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
@@ -479,7 +482,10 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage,
      xlab = "Stage",
      main = "")
 abline(h = 0)
-#¨Plus d'heterohene
+#¨Plus d'heterogeneite
+
+
+
 plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC, 
      pch=16,
      col="dodgerblue3",
