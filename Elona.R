@@ -366,7 +366,9 @@ anova(m1) # effet tres significatif de classe d'Age (Stade de dvt), ce qui est c
 
 # Choix de la méthode pour répondre à la question :
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
-
+RsquareAdj(m1)
+RsquareAdj(m_diam)
+RsquareAdj(m_peris)
 ## 1. Diameter ----
 # Modèle linéaire général mixte
 # Diameter = Site + Stage + (ID_1erC + Date)
@@ -381,7 +383,9 @@ plot(m_diam)
 M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
 stepAIC (M0, mod_tot, direction = "backward")
 
-
+#R² du modele Diametre 
+# Conditional R2: 0.833 #effets fixes et aleatoire
+# Marginal R2: 0.411 #seulement effets aleatoires 
 
 ## 2. Peristome ----
 # Transformation de Peristome pour lui faire suivre une loi normale
