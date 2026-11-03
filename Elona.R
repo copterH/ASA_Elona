@@ -16,7 +16,7 @@ library(mgcv)
 library(corrplot) # Correlation matrix calculus
 library(lattice) # multipanel graphics
 library(ade4) # PCA
-
+library(performance)#r2 LMM
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
@@ -28,6 +28,9 @@ elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", de
 #Modification des dates
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
 #QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
+# We aim to determine whether the two populations share the same demographic characteristics and traits.
+
+
 # EXPLORATION DES DONNEES ------------------------------------------------------
 
 ## 1. Valeurs extrêmes ----
@@ -371,15 +374,8 @@ plot(m_peris) # heteroscedasticite encore + que l'on prendra en compte lors de l
 vif(m_peris) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
 
 # ANALYSE ----
-summary(m1)
-anova(m1) # effet tres significatif de classe d'Age (Stade de dvt), ce qui est cohérent
-# Présence d'un effet significatif du site légèrement supérieur pour le récent (0.7838).
 
-# Choix de la méthode pour répondre à la question :
-# We aim to determine whether the two populations share the same demographic characteristics and traits.
-RsquareAdj(m1)
-RsquareAdj(m_diam)
-RsquareAdj(m_peris)
+
 ## 1. Diameter ----
 # Modèle linéaire général mixte
 # Diameter = Site + Stage + (ID_1erC + Date)
@@ -395,17 +391,30 @@ M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
 stepAIC (M0, mod_tot, direction = "backward")
 
 #R² du modele Diametre 
+r2(m_diam)
 # Conditional R2: 0.833 #effets fixes et aleatoire
-# Marginal R2: 0.411 #seulement effets aleatoires 
+# Marginal R2: 0.411 #seulement effets fixes 
+#ce modele est tres significatif, meme avec seulement les effets fixes 
+summary(m_diam)
+summary(m1)
+anova(m1) # effet tres significatif de classe d'Age (Stade de dvt), plus faible pour les stades juvéniles et subadultes, ce qui est cohérent
+# Présence d'un effet significatif du site légèrement supérieur pour le récent (0.7838).
+plot(m_diam)
 
 ## 2. Peristome ----
 # Transformation de Peristome pour lui faire suivre une loi normale
 m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
-# Vérification des conditions de validité
+# Analyse modele peristome
 plot(m_peris) # Résidus répartis de manière non normale
-
-# Autres conditions de validités !!!!
+r2(m_peris)
+#R² plus petit que celui du modele Diameter mais quand meme plutot eleve pour les effets mixtes
+# Conditional R2: 0.794
+# Marginal R2: 0.207
+summary(m_peris)
+# effet tres significatif de classe d'Age (Stade de dvt), plus faible pour le stade juvénile et non-significatif pour le stade subadultes, par rapport au stade adulte
+#Presence d'un effet significatif du site, superieur pour l'Ancien (densite forte)
+anova(m_peris) #confirme la forte significativite des 2 variables : Site et Stade de developement (classe d'Age)
 
 
 ### GAM ----
@@ -426,10 +435,6 @@ gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs
 # regarder pourquoi on doit indiquer gaussian 
 # à voir aussi il est possible de mettre bs = "re" ou bs = "cr"
 
-# Analyse des résultats
-anova(gam_peris)
-
-summary(gam_peris)
 
 # Vérification des conditions de validité
 par(mar = c(2, 2, 2, 2))
@@ -441,14 +446,14 @@ hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normalit
 # Quantile-Quantile plot
 qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
 qqline(gam_peris$residuals,col='red')
-# Pas terrible pour le deuxième graph
+# Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
 
 # Homogénéité de la variance
 plot(residuals(gam_peris)~fitted(gam_peris)
      , col='dodgerblue3'
      , pch=16)
 abline(h = 0)
-# Plus de variance au centre qu'aux extrémités
+# meilleure homogénéité de la variance (hétérogénéité plus faible)
 
 plot(residuals(gam_peris)~ elona_recapture_sansNA$Site, 
      pch=16,
@@ -457,6 +462,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Site,
      xlab = "Sites",
      main = "")
 abline(h = 0)
+#Faible différence entre les deux sites
 
 plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
      pch=16,
@@ -464,7 +470,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$temps,
      ylab = "Residuals",
      xlab = "Temps",
      main = "")
-abline(h = 0)
+abline(h = 0) #repartition avec en abcisse la duree depuis le debut des echantillonages mais ce sont des residus.  
 
 plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage, 
      pch=16,
@@ -473,7 +479,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage,
      xlab = "Stage",
      main = "")
 abline(h = 0)
-
+#¨Plus d'heterohene
 plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC, 
      pch=16,
      col="dodgerblue3",
@@ -481,6 +487,22 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC,
      xlab = "Individus",
      main = "")
 abline(h = 0)
+
+# Analyse des résultats
+anova(gam_peris)
+#Effet significativite du Stade de developpement (p<2e-16) mais pas visiblement du Site (p=0.0174)
+summary(gam_peris)
+#significativite des effets des variables aleatoires(p<2e-16) 
+#Significativite de l'effet de du Site : Peristome de diametre legerement plus gros sur le site recent a forte densite de population (augmentation legere mais tres significative)
+#Même interprétation que pour le diamètre pour le stade juvénile : un effet significativement négatif par rapport au stade adulte, ce qui est lié à la croissance
+#MAIS effet non significatif du stade subadulte
+#Significativite du modele GAM : R²
+r2(gam_peris)
+# R2: 0.867 
+# R-sq.(adj) =  0.806   Deviance explained = 86.7%
+#Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
+
+
 
 
 ## 3. Démographie ----
