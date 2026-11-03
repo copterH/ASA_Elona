@@ -15,8 +15,8 @@ library(lmerTest)
 library(mgcv)
 library(corrplot) # Correlation matrix calculus
 library(lattice) # multipanel graphics
-library(vegan)
-#library(gtsummary) # regression logistique multivariee
+library(ade4) # PCA
+
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
@@ -470,7 +470,8 @@ abline(h = 0)
 
 ## 3. Démographie ----
 
-###a. Select the candidate model ----
+###a. Préparation des données ----
+
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
 
@@ -523,45 +524,73 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
-# Choix du type de modèle
-# On définit 2 possibilités
-# Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
-# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA
-# Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
-# car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
-# Par la suite on pourra essayer les régressions logistiques
 
-# RDA
-# On doit d'abord extraire les proportions dans un nouveau tableau
-
-prop_ad <- elona_dem$Prop_AD
-prop_sub <- elona_dem$Prop_SUB
-prop_juv <- elona_dem$Prop_JUV
+# On extrait ensuite les proportions dans un nouveau tableau
+prop_AD <- elona_dem$Prop_AD
+prop_SUB <- elona_dem$Prop_SUB
+prop_JUV <- elona_dem$Prop_JUV
 proportions <- data.frame(prop_ad, prop_sub, prop_juv)
+# Site <- elona_dem$Site
+# Event <- elona_dem$Event
+# proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
 
+###b. Sélection du modèle ----
+
+# On veut analyser les proportions des classes d'âges par rapport aux sites et aux évènements
+# Il y a 4 possibilités
+
+#### 1. Régression logistique ----
+# En effet on veut une analyse de proportions donc on pourrait réaliser 3 modèles
+# de régression logistique.
+
+# Cependant ici nous voulons analyser 3 variables quantitatives différentes,
+# ce qui n'est pas compatible avec une régression logistique multivariée.
+
+#### 2. RDA ----
+# En effet on veut analyser les relations entre un tableau avec les proportions 
+# et un tableau avec les caractéristiques des captures.
+
+# Cependant la RDA se concentre sur la prédiction de données,
+# ce qui n'est pas ce que nous recherchons.
+
+# ↓ code de la tentative
 # On écrit le modèle
-RDA <- rda(proportions ~ Site + Event, 
-           data = elona_dem)
-summary(RDA)
-RsquareAdj(RDA)
+# RDA <- rda(proportions ~ Site + Event, data = elona_dem)
+# summary(RDA)
+# RsquareAdj(RDA)
 # Résultats du modèle
-anova(RDA, by = "margin")
+# anova(RDA, by = "margin")
 
-# Analyse des résultats
+# plot(RDA, display=c("species","cn"))
 
+#### 3. ACP ----
+# Il s'agit d'un équivalent de la RDA mais concentré sur l'explication des données.
 
+# Cependant la structure des données ne correspond pas à la méthode.
 
-###b. Analyze coefficient estimates & residual deviance ----
+# ↓ code de la tentative
+# demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
+# demo_PCA$cw
+# demo_PCA$lw
 
-###c. Model diagnostic ----
-# Checking distribution of residuals (histogramm/Qqplot)
-# Distribution of residuals depending on fitted values/ Y values
-# Cook’s distance for influential observations
-# Fitted values against observed ones (predictive value of model )
+# library(FactoMineR)
+# demo_PCA <- PCA(proportions, quali.sup = c(Site, Event))
+# same as dudi.pca(palmer[,3:6], scannf=FALSE, scale = TRUE)
 
+# library(Factoshiny)
+# res <- Factoshiny(proportions)
 
+#### 4. Régression linéaire multiple ----
+# La structure du modèle n'est pas analysable par les outils communs.
 
-
+# ↓ code de la tentative
+# demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV)
+#                  ~ elona_dem$Site + elona_dem$Event)
+# summary(demo_model)
+# step(demo_model)
+# AIC(demo_model)
+# drop1(demo_model)
+# add1(demo_model)
 
 
 ### Spatial description ##
