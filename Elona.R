@@ -13,8 +13,10 @@ library(predictmeans)#diagramme de cook
 library(nlme)
 library(lmerTest)
 library(mgcv)
-library(corrplot)# Correlation matrix calculus
-library(lattice)# multipanel graphics
+library(corrplot) # Correlation matrix calculus
+library(lattice) # multipanel graphics
+library(vegan)
+#library(gtsummary) # regression logistique multivariee
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
@@ -459,10 +461,11 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, SUB, fill = Site))
 
-# Visualisation des proportions par site
+# Visualisation du nombre total d'individus par sites
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, TOT_Site, fill = Site))
 
+# Visualisation des proportions par site
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_AD, fill = Site))
 
@@ -472,8 +475,33 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
-  
-  
+# Choix du type de modèle
+# On définit 2 possibilités
+# Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
+# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA
+# Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
+# car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
+# Par la suite on pourra essayer les régressions logistiques
+
+# RDA
+# On doit d'abord extraire les proportions dans un nouveau tableau
+
+prop_ad <- elona_dem$Prop_AD
+prop_sub <- elona_dem$Prop_SUB
+prop_juv <- elona_dem$Prop_JUV
+proportions <- data.frame(prop_ad, prop_sub, prop_juv)
+
+# On écrit le modèle
+RDA <- rda(proportions ~ Site + Event, 
+           data = elona_dem)
+summary(RDA)
+RsquareAdj(RDA)
+# Résultats du modèle
+anova(RDA, by = "margin")
+
+# Analyse des résultats
+
+
 
 ###b. Analyze coefficient estimates & residual deviance ----
 
