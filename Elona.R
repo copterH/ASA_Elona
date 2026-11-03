@@ -1,16 +1,26 @@
-
-# IMPORTATION DES LIBRARIES ----
-install.packages("readxl")
-install.packages("lme4")
+# IMPORTATION DES LIBRARIES ----------------------------------------------------
+#install.packages("readxl")
+#install.packages("lme4")
+#install.packages("mgcv")
 library(lme4)
 library(readxl)
 library(GGally)
-library(ggcorrplot)
+library(ggcorrplot) #graphe de correlation
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
+library(predictmeans)#diagramme de cook
+library(nlme)
+library(lmerTest)
+library(mgcv)
+library(corrplot) # Correlation matrix calculus
+library(lattice) # multipanel graphics
+library(ade4) # PCA
+library(performance)#r2 LMM
 
+# IMPORTATION DES DONNEES ------------------------------------------------------
 
+<<<<<<< HEAD
 # IMPORTATION DES DONNEES ----
 # Importation et gestion des classes
 elona_recapture <- read_xlsx("data_elona.xlsx", sheet = 3, col_types = c('text', 'numeric', 'numeric', 'text', 'text', 'text', 'numeric', 'numeric', 'numeric', 'text', 'text'))
@@ -36,70 +46,107 @@ elona_firstcapture$Y <- as.factor(elona_firstcapture$Y)
 elona_firstcapture <- data.frame(elona_firstcapture$Site, elona_firstcapture$Diameter, elona_firstcapture$Peristome, elona_firstcapture$Stage, elona_firstcapture$Type_Event, elona_firstcapture$Day, elona_firstcapture$Month, elona_firstcapture$Year, elona_firstcapture$Event, elona_firstcapture$ID_1erC,elona_firstcapture$IDZone, elona_firstcapture$X, elona_firstcapture$Y)
 colnames(elona_firstcapture) <- c('Site', 'Diameter', 'Peristome', 'Stage', 'Type_Event', "Day", "Month", "Year", "Event", "ID_1erC", "IDZone", "X", "Y")
 
-
+=======
 # Importer la feuille 2 pour rajouter les sites
+elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
+elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
+>>>>>>> origin/main
 
+
+#Modification des dates
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
-elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
+#QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
+# We aim to determine whether the two populations share the same demographic characteristics and traits.
 
-# EXPLORATION DES DONNEES ----
+
+# EXPLORATION DES DONNEES ------------------------------------------------------
 
 ## 1. Valeurs extrêmes ----
 
-# valeur abérante dans Y
+#Diametre
 boxplot(elona_recapture$Diameter)
 summary(elona_recapture$Diameter)
-# On a des valeurs très faibles mais ça me parait pas improbable
+# On a des valeurs très faibles mais ça ne parait pas improbable
 
-boxplot(elona_recapture$Peristome) # Une valeur très très haute => on va l'enlever ça parait improbable
+
+#Peristome
+boxplot(elona_recapture$Peristome) # Une valeur très très haute (901mm) => on va l'enlever cela parait improbable
 summary(elona_recapture$Peristome)
 elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
-boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
+
+boxplot(elona_recapture$Peristome) # On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
 summary(elona_recapture$Peristome)
+#Les 3 points correspondent à des valeurs de péristome plus larges que la taille de l'escargot (diamètre), donnant lieu à un paradoxe biologique
+#De plus, ces valeurs potentiellement aberrantes ne sont pas en raccord avec d'autres mesures de diamètre et peristome sur Elona quimperiana, 
+#comme l'article DAGUZAN J. & GLOAGUEN J.-C., 1986.- Contribution à l’écologie d’Elona quimperiana (de Férussac) (Gastéropode Pulmoné Stylommatophore) en Bretagne occidentale. Haliotis, 15 : 17-30.
+#Nous choississons donc de remplacer ces trois valeurs par NA.
+elona_recapture$Peristome[elona_recapture$Peristome>15] <- NA
 
-#Normalité de Y
-hist(elona_recapture$Diameter)
-hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
+## 2. Normalité de Y----
+
+hist(elona_recapture$Peristome,breaks=1000) 
+hist(elona_recapture$Peristome,breaks=1000) 
 summary(elona_recapture$Peristome)
+hist(elona_recapture$Diameter,col='chartreuse',xlab="Diameter",main="Check Normality
+ (Diameter) ")
+hist(elona_recapture$Peristome,col='purple',xlab="Peristome",main="Check Normality
+(Peristome)")
+# Ni le Diamètre, Ni le Péristome ne semblent suivrent une loi normale.
 
 
+## 3. Nettoyage des données X ----
 
-## 2. Nettoyage des données ----
-
-table(elona_recapture$Site)
+table(elona_recapture$Site)#avec summary, on a la meme chose avec le nb de NA en +
 table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
 # On a des catégories (?, JUV? JUV/SUB, SUB/AD) où on a très peu d'individus, passer en NA ou dans une autre classe
 elona_recapture$Stage[which(elona_recapture$Stage=="?")] <- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV?")]<- "JUV"
-# Pour les deux autres on peut les passer en NA ou alors trancher mais on a aucunes données pour trancher
+
+# Pour les deux autres on peut les passer en NA ou alors trancher mais on a aucunes données pour trancher, on les passe donc en NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV/SUB")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
+
+#On supprime également les catégories non conformes 
 elona_recapture$Stage = droplevels(elona_recapture$Stage)
 table(elona_recapture$Stage)
 
+
+
+#Même chose pour les modalités de "Activity"
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT  ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT   ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
+
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
+#On supprime également les catégories non conformes 
 elona_recapture$Activity = droplevels(elona_recapture$Activity)
 table(elona_recapture$Activity)
 
+
+
+
+#Même chose pour les modalités de "Type_Event"
 table(elona_recapture$Type_Event)
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
+#On supprime également les catégories non conformes
 elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
 table(elona_recapture$Type_Event)
 
+# Ajouter données de sites à elona_recapture
+elona_recapture<-merge(elona_recapture,elona_firstcapture[,c(10,11)], by="ID_1erC")
 
 
+
+#Même chose pour les modalités de "Stage" dans first_capture
 table(elona_firstcapture$Stage)
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV?")]<- "JUV"
@@ -107,12 +154,17 @@ elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV/SUB")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="SUB/AD")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV ")]<- "JUV"
+#On supprime également les catégories non conformes
+elona_firstcapture$Stage = droplevels(elona_firstcapture$Stage)
 table(elona_firstcapture$Stage)
 
+#On reformule correctement les NA dans les coordonnées géographiques de firstcapture
+elona_firstcapture$X[431] <- NA
+elona_firstcapture$Y[431] <- NA
 
-# Relation entre les Ys (Diameter & Peristome)
-plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
-    ylab = "Diameter",xlab="Peristome")
+
+
+## 4.  Relation entre les Ys (Diameter & Peristome) ----
 
 elona_recapture$Peristome[which(elona_recapture$Peristome>19)] <- NA
 
@@ -121,17 +173,19 @@ ggplot(data = elona_recapture,
            shape = Site, col = Stage)) +
   geom_point() +
   scale_shape_manual(values = c(0,1,2))
+#Il semble y avoir une colinéarité assez forte entre le diamètre et le péristome 
+#De plus, si l'on considère la classe d'âge,on observe que les individus avec un petit diamètre et péristome sont les juvéniles, ce qui fait sens biologiquement.
+#Il semble qu'il y a une légère différence de tailles pour les individus adultes selon le site. 
 
 
-elona_firstcapture$X[431] <- NA
-elona_firstcapture$Y[431] <- NA
 
-# Relation potentielle entre X et Y
-boxplot(elona_recapture$Diameter~elona_recapture$Site)
-boxplot(elona_recapture$Peristome~elona_recapture$Site)
-# Recent a l'air plus haut
+## 5. Relation potentielle entre X et Y ----
 
-## 3. Analyse des interactions ----
+boxplot(elona_recapture$Diameter~elona_recapture$Site, main = "Diameter")
+boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
+# Il semble que les escargots du site Recent ont un diamètre et un péristome plus important, sans que cela soit significatif 
+
+## 6. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
@@ -147,55 +201,348 @@ plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stage
 plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
 
 
-## 4. Analyse des colinéarités ----
+## 7. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
+## Checking collinearity between categorical and continuous independent variables
+par(mfrow=c(1,2))
+###Boxplot Dimension selon var explicatives -----
+####Year ----
 
+##Diameter and year (recapture)
+boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,25), main = "Recapture Diameter ")
+##Diameter and year (First capture)
+boxplot(elona_firstcapture$Diameter~elona_firstcapture$Year, ylab = "Diameter", xlab = "Year",varwidth = TRUE, col=c('royalblue','chartreuse'), ylim = c(0,25), main = "First Capture Diameter")
+#tendance à légère augmentation au cours du temps du diametre des coquilles
+
+
+##peristome and year (recapture)
+boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,12), main = "Recapture Peristome")
+##peristome and year (First capture)
+boxplot(elona_firstcapture$Peristome~elona_firstcapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "First Capture Peristome")
+#tendance à légère augmentation au cours du temps de la taille du peristome
+
+
+#### Event----
+##Diameter and Event (recapture)
+boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+##Diameter and Event (First capture)
+boxplot(elona_firstcapture$Diameter~elona_firstcapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "First Capture")
+
+#### ID_1erC -----
+boxplot(elona_recapture$Diameter~elona_recapture$ID_1erC, varwidth = TRUE, ylab = "Diameter", xlab = "ID_1erC",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+####TypeEvent -----
+boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+#Difference de diametre en fonction de l'etat (logique car individus recapturés plus vieux)
+
+
+#Autres BONUS test -----
+### selection Lignes où peristome n'est pas NA select{dplyr} -----
+#####Recapture ----
+summary(elona_recapture$Peristome)#initiallement, 125 NA
+summary(elona_recapture$Diameter)#initiallement, 80 NA
+elona_recapture_cor <- 
+  subset (elona_recapture, 
+          elona_recapture$Peristome != "NA" &  elona_recapture$Diameter!="NA" )
+dim(elona_recapture_cor) ; dim(elona_recapture)
+MRC <- cor(elona_recapture_cor[, c(3,4,8,9)])#correlation forte entre Diametre et Peristome 88%
+#####First capture -----
+summary(elona_firstcapture$Diameter)#initiallement, 3 NA
+summary(elona_firstcapture$Peristome)#initiallement, 27 NA
+
+elona_firstcapture_cor <- 
+  subset (elona_firstcapture, 
+          elona_firstcapture$Peristome != "NA" &  elona_firstcapture$Diameter!="NA" )
+dim(elona_firstcapture_cor) ; dim(elona_recapture) #verifier le nb de lignes supprimees
+M1C <- cor(elona_firstcapture_cor[, c(2,3, 6, 7,8)])#correlation forte entre Diametre et Peristome 94%
+M1C#affichage des coefficients de correlation
+
+# We represent plot for each X continuous covariate pairs
+#We calculate correlation between each pair of X covariate
+corrplot.mixed(M1C,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "First capture")
+
+
+sum(is.na(elona_recapture_cor)) #6 NA 
+which(is.na(elona_recapture_cor)) #6 NA 
+
+
+#Tentative de matrice de correlation pour les variables catégorielles
 # Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
 # --> pas d'utilité je pense
-cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
-                                   elona_recapture$Date)])
-ggcorrplot(cor_mat, method = "square", lab = TRUE)
+# cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
+#                                  elona_recapture$Date)])
+# ggcorrplot(cor_mat, method = "square", lab = TRUE)
+
+# 
+# #Tentative  séparation des données selon les classes d'ages pour obs tendances temporelles
+# elona_ADULT <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="AD")
+# elona_JUVENILE <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="JUV")
+# elona_SUBADULT <- subset (elona_recapture_sansNA, elona_recapture_sansNA$Stage=="SUB")
 
 
-m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
+
+## (I) DIAMETRE -----
+##creation du modele mixte du diametre avec le site en modele fixe, et les etapes,annees,  n° d'identification en numero aleatoire ------
+m1<-lmer(Diameter ~ Site + Stage +(1|Date)+(1|ID_1erC),data=elona_recapture)
+
+summary(m1)
 
 # CONDITIONS DE VALIDITE ----
 
 ## 1. Normalité des résidus ----
-plot(m1) # résidus ok
-
-# Homoscédasticité
-
-
-
-
-
+par(mfrow=c(1,2))
+# Histogram
+hist(residuals(m1),col='dodgerblue3',xlab="residuals",main="Check Normality") 
+# Quantile-Quantile plot
+qqnorm(residuals(m1),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
+qqline(residuals(m1),col='red')
 
 
 ## 2. Homoscédasticité ----
-plot(x = elona_recapture$Date, y = elona_recapture$Diameter )
-plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
+plot(m1) # heteroscedasticite que l'on prendra en compte lors de l'interpretations
+
+
+#GLMM 
+# un glm, avec en réponse diamètre et peristome, en variables classiques le site (old ou new), stage et act (?) et en variables aléatoires l'ID, l'event et la date ?
+
+mod_tot<-lmer(Diameter ~ Site + Stage + Activity + (1|Year)+ (1|ID_1erC) + (1|Type_Event) + (1|Event) + (1| Date),data=elona_recapture)
+anova(mod_tot)
+summary(mod_tot)
+
+
 
 ## 3. Résidus indépendants ----
 
+#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
+
+
+#Plusieurs graphes ont ete realises a titre indicatif (pour observer la colinearite des variables)
+#on recherche l'independence des residus
+# #selon la date
+# nrow(na.omit(elona_recapture))
+# plot(x = elona_recapture$Date, y = residuals(m1) ) #problème de taille des matrices
+# #selon l'annee
+# plot(x = elona_recapture$Year, y = residuals(m1) )
+# #selon le n° d'identification
+# plot(x = elona_recapture$ID_1erC, y = residuals(m1) )
+# #selon le stade de developpement (classe d'Age)
+# plot(x = elona_recapture$Stage, y = residuals(m1) )
+
+
+## 4. Colinearite entre les variables X num ou facteur -----
+#vif{car}
+vif(m1) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
+# vif(elona_recapture_cor [,2:7])
+
+#regles lecture fiv coeff 
+# VIF = 1 : il n’existe aucune corrélation entre une variable prédictive donnée et toute autre variable prédictive du modèle.
+# VIF entre 1 et 5 : il existe une corrélation modérée entre une variable prédictive donnée et d’autres variables prédictives du modèle.
+# VIF > 5 : il existe une forte corrélation entre une variable prédictive donnée et d’autres variables prédictives dans le modèle.
+# GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
+# GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
+#Stade juvenile est le facteur avec un effet le plus fort
+
+# Significativité de la variance associé au facteur aléatoire
+# intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
+
+
+mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
+mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
+vif(mod_test_tot)
+#erreur :   there are aliased coefficients in the model
+
+# #                  GVIF  Df GVIF^(1/(2*Df))
+# Site       1.594304e+02   1       12.626574
+# Peristome  5.746555e+00   1        2.397197
+# Stage      1.100995e+01   2        1.821572
+# Type_Event 5.381555e+00   2        1.523095 
+# Event      2.108339e+06  19        1.466964
+# Day        3.388570e+02   1       18.408068
+# ID_1erC    3.271475e+07 508        1.017177
+#multicolinearite moderee pour  Peristome et Type Event ?? 
+# forte pour Site, Day, Peristome (erreur type gonflee ?)
+#grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
+
+sort(vif(mod_test_tot), decreasing = TRUE)
+vif(mod_tot) #GVIF = 1 --> colinearite moderee
+
+# confint (mod_tot, level = 0.95, method = "boot", nsim = 500)
+#500 bootstrap
+#                           2.5 %     97.5 %
+# .sig01                 2.05098373  2.3840300
+# .sig02                 0.04657717  0.4782746
+# .sig03                 0.00000000  0.4951948
+# .sig04                 0.00000000  0.5966943
+# .sig05                 0.00000000  1.3120622
+# .sigma                 1.35065496  1.4783467
+# (Intercept)           19.58192678 21.5849593
+# SiteRecent_lowdensity  0.38647602  1.3611775
+# StageJUV              -4.61585735 -4.0701877
+# StageSUB              -1.29917847 -0.5985583
+# ActivityIMMO          -0.30856977  0.4759665
+# ActivityMORT          -1.31770650  0.4159386
+
+#(II)- PERISTOME -----
+# CONDITIONS DE VALIDITE ----
+
+## 1. Normalité des résidus ----
+par(mfrow=c(1,2))
+# Histogram
+hist(residuals(m_peris),col='dodgerblue3',xlab="residuals",main="Check Normality") 
+# Quantile-Quantile plot
+qqnorm(residuals(m_peris),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
+qqline(residuals(m_peris),col='red')
+
+
+## 2. Homoscédasticité ----
+plot(m_peris) # heteroscedasticite encore + que l'on prendra en compte lors de l'interpretations
+
+## 3. Résidus indépendants ----
+
+#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
+
+
+## 4. Colinearite entre les variables X num ou facteur -----
+vif(m_peris) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
 
 # ANALYSE ----
-# Choix de la méthode pour répondre à la question :
-# We aim to determine whether the two populations share the same demographic characteristics and traits.
+
 
 ## 1. Diameter ----
 # Modèle linéaire général mixte
 # Diameter = Site + Stage + (ID_1erC + Date)
+#ATTENTION: m1 = m_diam
 m_diam<-lmer(Diameter ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
+m1
+m_diam
+plot(m_diam)
+
+#selection modele en retirant des var : methode descendante stepAIC {MASS}
+M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
+stepAIC (M0, mod_tot, direction = "backward")
+
+#R² du modele Diametre 
+r2(m_diam)
+# Conditional R2: 0.833 #effets fixes et aleatoire
+# Marginal R2: 0.411 #seulement effets fixes 
+#ce modele est tres significatif, meme avec seulement les effets fixes 
+summary(m_diam)
+summary(m1)
+anova(m1) # effet tres significatif de classe d'Age (Stade de dvt), plus faible pour les stades juvéniles et subadultes, ce qui est cohérent
+# Présence d'un effet significatif du site légèrement supérieur pour le récent (0.7838).
 plot(m_diam)
 
 ## 2. Peristome ----
+# Transformation de Peristome pour lui faire suivre une loi normale
+m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
+
+# Analyse modele peristome
+plot(m_peris) # Résidus répartis de manière non normale
+r2(m_peris)
+#R² plus petit que celui du modele Diameter mais quand meme plutot eleve pour les effets mixtes
+# Conditional R2: 0.794
+# Marginal R2: 0.207
+summary(m_peris)
+# effet tres significatif de classe d'Age (Stade de dvt), plus faible pour le stade juvénile et non-significatif pour le stade subadultes, par rapport au stade adulte
+#Presence d'un effet significatif du site, superieur pour l'Ancien (densite forte)
+anova(m_peris) #confirme la forte significativite des 2 variables : Site et Stade de developement (classe d'Age)
+
+
+### GAM ----
+# On transforme Date en temps depuis le début de l'expérience parce que les GAM n'acceptent pas les données Dates
+temps <- elona_recapture[,12] - min(elona_recapture$Date)
+elona_recapture$temps<-temps
+elona_recapture$temps<-as.numeric(elona_recapture$temps)
+class(elona_recapture$temps)
+
+# On enlève les NA, ça permet d'éviter les messages d'erreurs lors de la vérification de l'homogénéité des variances
+elona_recapture_sansNA<-na.omit(elona_recapture)
+hist(elona_recapture_sansNA$temps)
+
+# Le modèle GAM 
+gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+          family = gaussian,
+          data = elona_recapture_sansNA)
+# regarder pourquoi on doit indiquer gaussian 
+# à voir aussi il est possible de mettre bs = "re" ou bs = "cr"
+
+
+# Vérification des conditions de validité
+par(mar = c(2, 2, 2, 2))
+vis.gam(gam_peris, theta = -20, color = "heat") # fonctionne pas
+
+par(mfrow=c(1,2))
+# Histogram
+hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
+# Quantile-Quantile plot
+qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris$residuals,col='red')
+# Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
+
+# Homogénéité de la variance
+plot(residuals(gam_peris)~fitted(gam_peris)
+     , col='dodgerblue3'
+     , pch=16)
+abline(h = 0)
+# meilleure homogénéité de la variance (hétérogénéité plus faible)
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$Site, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Sites",
+     main = "")
+abline(h = 0)
+#Faible différence entre les deux sites
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Temps",
+     main = "")
+abline(h = 0) #repartition avec en abcisse la duree depuis le debut des echantillonages mais ce sont des residus.  
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Stage",
+     main = "")
+abline(h = 0)
+#¨Plus d'heterogeneite
+
+
+
+plot(residuals(gam_peris)~ elona_recapture_sansNA$ID_1erC, 
+     pch=16,
+     col="dodgerblue3",
+     ylab = "Residuals",
+     xlab = "Individus",
+     main = "")
+abline(h = 0)
+
+# Analyse des résultats
+anova(gam_peris)
+#Effet significativite du Stade de developpement (p<2e-16) mais pas visiblement du Site (p=0.0174)
+summary(gam_peris)
+#significativite des effets des variables aleatoires(p<2e-16) 
+#Significativite de l'effet de du Site : Peristome de diametre legerement plus gros sur le site recent a forte densite de population (augmentation legere mais tres significative)
+#Même interprétation que pour le diamètre pour le stade juvénile : un effet significativement négatif par rapport au stade adulte, ce qui est lié à la croissance
+#MAIS effet non significatif du stade subadulte
+#Significativite du modele GAM : R²
+r2(gam_peris)
+# R2: 0.867 
+# R-sq.(adj) =  0.806   Deviance explained = 86.7%
+#Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
+
+
 
 
 ## 3. Démographie ----
 
-###a. Select the candidate model ----
+###a. Préparation des données ----
+
 #f(proportion de chaque classe d'âge)= Site + Date
 # On considère que les individus retrouvés morts comme appartenant à leur classe d'âge respective. 
 
@@ -214,36 +561,116 @@ for (site in unique(elona_recapture$Site)){
     L_Event_Site <- c(L_Event_Site, Event_Site)
     elona_dem <- rbind(elona_dem, cbind(AD, SUB, JUV))
   }}
+
 elona_dem <- cbind(elona_dem, L_Site, L_Event, L_Event_Site)
 colnames(elona_dem) <- c('AD', 'SUB', 'JUV', 'Site', 'Event', "Event_Site")
 
+# Ajout des proportions dans le dataframe
+elona_dem <- elona_dem %>% mutate(TOT_Site = AD + SUB + JUV)
+elona_dem <- elona_dem %>% mutate(Prop_AD = AD / TOT_Site)
+elona_dem <- elona_dem %>% mutate(Prop_SUB = SUB / TOT_Site)
+elona_dem <- elona_dem %>% mutate(Prop_JUV = JUV / TOT_Site)
+
+# Visualisation des quantités par site
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, AD, fill = Site))
 
-  
-  
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, JUV, fill = Site))
 
-###b. Analyze coefficient estimates & residual deviance ----
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, SUB, fill = Site))
 
-###c. Model diagnostic ----
-# Checking distribution of residuals (histogramm/Qqplot)
-# Distribution of residuals depending on fitted values/ Y values
-# Cook’s distance for influential observations
-# Fitted values against observed ones (predictive value of model )
+# Visualisation du nombre total d'individus par sites
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, TOT_Site, fill = Site))
+
+# Visualisation des proportions par site
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_AD, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_JUV, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
 
+# On extrait ensuite les proportions dans un nouveau tableau
+prop_AD <- elona_dem$Prop_AD
+prop_SUB <- elona_dem$Prop_SUB
+prop_JUV <- elona_dem$Prop_JUV
+proportions <- data.frame(prop_ad, prop_sub, prop_juv)
+# Site <- elona_dem$Site
+# Event <- elona_dem$Event
+# proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
 
+###b. Sélection du modèle ----
 
+# On veut analyser les proportions des classes d'âges par rapport aux sites et aux évènements
+# Il y a 4 possibilités
+
+#### 1. Régression logistique ----
+# En effet on veut une analyse de proportions donc on pourrait réaliser 3 modèles
+# de régression logistique.
+
+# Cependant ici nous voulons analyser 3 variables quantitatives différentes,
+# ce qui n'est pas compatible avec une régression logistique multivariée.
+
+#### 2. RDA ----
+# En effet on veut analyser les relations entre un tableau avec les proportions 
+# et un tableau avec les caractéristiques des captures.
+
+# Cependant la RDA se concentre sur la prédiction de données,
+# ce qui n'est pas ce que nous recherchons.
+
+# ↓ code de la tentative
+# On écrit le modèle
+# RDA <- rda(proportions ~ Site + Event, data = elona_dem)
+# summary(RDA)
+# RsquareAdj(RDA)
+# Résultats du modèle
+# anova(RDA, by = "margin")
+
+# plot(RDA, display=c("species","cn"))
+
+#### 3. ACP ----
+# Il s'agit d'un équivalent de la RDA mais concentré sur l'explication des données.
+
+# Cependant la structure des données ne correspond pas à la méthode.
+
+# ↓ code de la tentative
+# demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
+# demo_PCA$cw
+# demo_PCA$lw
+
+# library(FactoMineR)
+# demo_PCA <- PCA(proportions, quali.sup = c(Site, Event))
+# same as dudi.pca(palmer[,3:6], scannf=FALSE, scale = TRUE)
+
+# library(Factoshiny)
+# res <- Factoshiny(proportions)
+
+#### 4. Régression linéaire multiple ----
+# La structure du modèle n'est pas analysable par les outils communs.
+
+# ↓ code de la tentative
+# demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV)
+#                  ~ elona_dem$Site + elona_dem$Event)
+# summary(demo_model)
+# step(demo_model)
+# AIC(demo_model)
+# drop1(demo_model)
+# add1(demo_model)
 
 
 ### Spatial description ##
 ## elona_sf contains the portion of the data relevant for analysis
-elona_sf <- elona_firstcapture %>%
-  filter(!is.na(elona_firstcapture$X)) %>%
-  select(Site, 
-         X, 
-         Y, 
-         IDZone)
+elona_sf <- elona_firstcapture[,c("Site", 
+                                  "X", 
+                                  "Y", 
+                                  "IDZone")] %>%
+  filter(!is.na(elona_firstcapture$X))
 ## The coordinates are turned into an sf object in the geometry column
 elona_sf$X <- as.numeric(as.character(elona_sf$X))
 elona_sf$Y <- as.numeric(as.character(elona_sf$Y))
@@ -297,7 +724,91 @@ ggplot() +
   theme_void()
 # ligne 1 en haut, ligne 13 en bas, colonne A à gauche, I à droite
 
+# 
+# mapview(elona_sf_new, 
+#         zcol = 'IDZone')
 
-mapview(elona_sf_new, 
-        zcol = 'IDZone')
 
+# Homoscédasticité : ncvTest {car} (cad homogeneite des variances)
+ncvTest (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
+confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut être long
+# 50 Bootstrap : 
+#                             2.5 %    97.5 %
+# .sig01                 1.928837139  2.255510
+# .sig02                 0.004078734  5.162814
+# .sig03                 0.000000000  1.133452
+# .sig04                 0.119252867  3.317632
+# .sigma                 1.445200328  1.576007
+# (Intercept)           15.216941199 21.592898
+# SiteRecent_lowdensity  0.376591648  1.380474
+
+# 200 Bootstrap : 
+#                             2.5 %    97.5 %
+# .sig01                1.950901e+00  2.280667
+# .sig02                3.350949e-04  4.080984
+# .sig03                0.000000e+00  1.347881
+# .sig04                6.294728e-02  2.951125
+# .sigma                1.448151e+00  1.581611
+# (Intercept)           1.555703e+01 22.053213
+# SiteRecent_lowdensity 4.291910e-01  1.261994
+
+#500 Bootstrap : 
+#                             2.5 %    97.5 %
+# .sig01                1.969093e+00  2.281308
+# .sig02                9.295588e-04  3.928594
+# .sig03                0.000000e+00  1.142263
+# .sig04                6.463473e-02  2.947597
+# .sigma                1.454283e+00  1.581192
+# (Intercept)           1.601762e+01 21.652034
+# SiteRecent_lowdensity 4.479101e-01  1.345800
+
+
+# Checking collinearity between categorical and continuous independent variables
+par(mfrow=c(2,2))
+
+boxplot(elona_recapture$Diameter~elona_recapture$Stage, varwidth = TRUE, ylab = "Diameter", xlab = "Age Stage", col='grey', main = "")
+
+
+
+
+summary(elona_recapture_cor)
+
+
+
+###PLOT OBS -----
+summary(elona_recapture)
+head(elona_recapture)
+table(elona_recapture$Diameter)
+table(elona_recapture$Peristome)
+subset(elona_recapture, elona_recapture$Peristome>19)
+
+nrow(table(elona_recapture$Date))
+table (elona_recapture$Site)
+table(elona_recapture$Stage)
+#diagramme de cook (valeurs extremes du modele ?)
+par(mfrow = c(1, 1))
+# A<-CookD(m1,newwd=TRUE)#le calcul semble trop long, perturbe le logiciel
+# plot(A)
+# plot.lm(m1)
+
+# LIMITE DE L'ETUDE ------------------------------------------------------------
+
+# Fait qu'on ne sait pas si les placettes ont des ressources très différentes ou pas
+# Le jeu de données ne nous permet pas de prendre en compte si les escargots bougent ou pas
+
+# Que des psuedo-réplicats ce serait bien d'avoir d'autres sites.
+# De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats
+# Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en varaible explicative
+
+#Pour approfondir les analyses, il faudrait plus de détails sur la méthode d'échantillonnage et le milieu (type de substrat, conditions de vie, vitesse de déplacement, mode de mesure...)
+#On a fait l'hypothèse que les escargots n'ont pas migré d'un site à l'autre durant toute la durée de l'échantillonnage.
+
+#L'estimation de la démographie aurait pu nous aiguiller sur l'hypothèse que les escargots du nouveau sites n'ont pas encore atteint la capacité limite du milieu. 
+
+# CONCLUSION -------------------------------------------------------------------
+
+#Dans les modèles testés, le diamètre et le péristome sont en premier lieu affecté par le stade de développement
+#Ce qui est cohérent avec l'interprétation biologique: la croissance impacte la taille. 
+
+#Le site a également un effet important : les escargots adultes sont plus gros sur le nouveau site, avec une faible densité de population.
+#Cela peut être lié à différents facteurs : la plus grande quantité de ressources disponibles (liées à la densité de population), le type de milieu (substrat, exposition aux prédateurs)
