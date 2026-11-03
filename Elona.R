@@ -297,8 +297,19 @@ vif(m1) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible d
 # GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
 # GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
 #Stade juvenile est le facteur avec un effet le plus fort
+<<<<<<< HEAD
+#les correlationsd'effet fixes sont toutes <0.2
+r2(m1)
+
+
+
+#selection modele en retirant des var : methode descendante stepAIC {MASS}
+M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
+stepAIC (M0, mod_tot, direction = "backward")
+=======
 # Significativité de la variance associé au facteur aléatoire
 # intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
+>>>>>>> 598f663fdd72b86100f43ef1f17d3b7595e180b8
 
 mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
