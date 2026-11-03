@@ -763,7 +763,7 @@ par(mfrow = c(1, 1))
 # plot(A)
 # plot.lm(m1)
 
-# Limite de l'étude
+# LIMITE DE L'ETUDE ------------------------------------------------------------
 
 # Fait qu'on ne sait pas si les placettes ont des ressources très différentes ou pas
 # Le jeu de données ne nous permet pas de prendre en compte si les escargots bougent ou pas
@@ -771,3 +771,16 @@ par(mfrow = c(1, 1))
 # Que des psuedo-réplicats ce serait bien d'avoir d'autres sites.
 # De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats
 # Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en varaible explicative
+
+#Pour approfondir les analyses, il faudrait plus de détails sur la méthode d'échantillonnage et le milieu (type de substrat, conditions de vie, vitesse de déplacement, mode de mesure...)
+#On a fait l'hypothèse que les escargots n'ont pas migré d'un site à l'autre durant toute la durée de l'échantillonnage.
+
+#L'estimation de la démographie aurait pu nous aiguiller sur l'hypothèse que les escargots du nouveau sites n'ont pas encore atteint la capacité limite du milieu. 
+
+# CONCLUSION -------------------------------------------------------------------
+
+#Dans les modèles testés, le diamètre et le péristome sont en premier lieu affecté par le stade de développement
+#Ce qui est cohérent avec l'interprétation biologique: la croissance impacte la taille. 
+
+#Le site a également un effet important : les escargots adultes sont plus gros sur le nouveau site, avec une faible densité de population.
+#Cela peut être lié à différents facteurs : la plus grande quantité de ressources disponibles (liées à la densité de population), le type de milieu (substrat, exposition aux prédateurs)
