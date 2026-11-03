@@ -138,9 +138,10 @@ cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peris
                                    elona_recapture$Date)])
 ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
+##creation du modele mixte du diametre avec le site en modele fixe, et les etapes,annees,  n° d'identification en numero aleatoire ------
 
 m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
-
+summary(m1)
 # CONDITIONS DE VALIDITE ----
 
 ## 1. Normalité des résidus ----
@@ -168,11 +169,75 @@ plot(x = elona_recapture$ID_1erC, y = elona_recapture$Peristome )
 plot(x = elona_recapture$Stage, y = elona_recapture$Diameter )
 plot(x = elona_recapture$Stage, y = elona_recapture$Peristome )
 
+######vif{car} ----
+#regles lecture fiv coeff 
+# VIF = 1 : il n’existe aucune corrélation entre une variable prédictive donnée et toute autre variable prédictive du modèle.
+# VIF entre 1 et 5 : il existe une corrélation modérée entre une variable prédictive donnée et d’autres variables prédictives du modèle.
+# VIF > 5 : il existe une forte corrélation entre une variable prédictive donnée et d’autres variables prédictives dans le modèle.
+vif(mod_test_tot) #erreur :   there are aliased coefficients in the model
+# GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
+# GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
+#Stade juvenile est le facteur avec un effet le plus fort
+#les correlationsd'effet fixes sont toutes <0.2
+vif(mod_tot) #GVIF = 1 --> colinearite moderee
+vif.cca(mod_tot)
+plot(mod_tot)#residus ok ?
+# confint (mod_tot, level = 0.95, method = "boot", nsim = 500)
+#500 bootstrap
+#                           2.5 %     97.5 %
+# .sig01                 2.05098373  2.3840300
+# .sig02                 0.04657717  0.4782746
+# .sig03                 0.00000000  0.4951948
+# .sig04                 0.00000000  0.5966943
+# .sig05                 0.00000000  1.3120622
+# .sigma                 1.35065496  1.4783467
+# (Intercept)           19.58192678 21.5849593
+# SiteRecent_lowdensity  0.38647602  1.3611775
+# StageJUV              -4.61585735 -4.0701877
+# StageSUB              -1.29917847 -0.5985583
+# ActivityIMMO          -0.30856977  0.4759665
+# ActivityMORT          -1.31770650  0.4159386
+
+
+#selection modele en retirant des var : methode descendante stepAIC {MASS}
+M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
+stepAIC (M0, mod_tot, direction = "backward")
+
+
 ## 3. Résidus indépendants ----
-par(mfrow = c(1, 1))
-plots(m1)
-A<-CookD(m1,newwd=TRUE)
-plot(A)
+## Checking collinearity between categorical and continuous independent variables
+par(mfrow=c(1,3))
+###Boxplot Dimension selon var explicatives -----
+####Year ----
+##Diameter and year (recapture)
+boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,25), main = "Recapture ")
+##Diameter and year (First capture)
+boxplot(elona_firstcapture$Diameter~elona_firstcapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "First Capture")
+
+##peristome and year (recapture)
+boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,12), main = "Recapture ")
+##peristome and year (First capture)
+boxplot(elona_firstcapture$Peristome~elona_firstcapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "First Capture")
+#### Event----
+##Diameter and Event (recapture)
+boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+##Diameter and Event (First capture)
+boxplot(elona_firstcapture$Diameter~elona_firstcapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "First Capture")
+
+#### ID_1erC -----
+boxplot(elona_recapture$Diameter~elona_recapture$ID_1erC, varwidth = TRUE, ylab = "Diameter", xlab = "ID_1erC",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+####TypeEvent -----
+boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+
+sum(is.na(elona_recapture_cor)) #6 NA 
+which(is.na(elona_recapture_cor)) #6 NA 
+
+##Colinearite entre les variables X num ou facteur -----
+vif(m1) #erreur : model contains fewer than 2 terms
+vif(elona_recapture_cor [,2:7])
+
+
+
 # ANALYSE ----
 # Choix de la méthode pour répondre à la question :
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
@@ -321,11 +386,7 @@ ggplot() +
 mapview(elona_sf_new, 
         zcol = 'IDZone')
 
-##creation du modele mixte du diametre avec le site en modele fixe, et les etapes,annees,  n° d'identification en numero aleatoire ------
-m1<-lmer(Diameter ~ Site + (1|Stage)+(1|Year)+(1|Stage)+ (1|ID_1erC),data=elona_recapture)
-summary(m1)
-## Conditions de validité  -----
-plot(m1) # résidus ok
+
 # Homoscédasticité : ncvTest {car} (cad homogeneite des variances)
 ncvTest (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
 confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut être long
@@ -359,17 +420,6 @@ confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut être lon
 # (Intercept)           1.601762e+01 21.652034
 # SiteRecent_lowdensity 4.479101e-01  1.345800
 
-## Coefficients de correlation entre les X -----
-cor(elona_firstcapture[, c(2,3,6,7, 8)])#pas de correlation forte entre les variables numeriques (NA avec peristome ??)
-cor(elona_recapture[, c(2,3, 7,8, 9)])#pas de correlation forte entre les variables numeriques
-
-###COLINEARITE ??? -----
-# Checking collinearity between continuous independent variables
-# We represent plot for each X continuous covariate pair.
-plot(elona_recapture[,c(2,3,9)],pch=16,col='dodgerblue3')
-#We calculate correlation between each pair of X covariate
-Mbis<-cor(elona_recapture[,2:3])
-corrplot.mixed(Mbis,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8)##erreur de coordonnees des symboles
 
 # Checking collinearity between categorical and continuous independent variables
 par(mfrow=c(2,2))
@@ -394,7 +444,7 @@ boxplot(dataFly$FatContent~dataFly$Habitat, varwidth = TRUE, ylab = "Fat Content
 
 
 
-
+#Autres a trier -----
 ### selection Lignes où peristome n'est pas NA select{dplyr} -----
 #####Recapture ----
 summary(elona_recapture$Peristome)#initiallement, 125 NA
@@ -414,23 +464,13 @@ elona_firstcapture_cor <-
 dim(elona_firstcapture_cor) ; dim(elona_recapture) #verifier le nb de lignes supprimees
 M1C <- cor(elona_firstcapture_cor[, c(2,3, 6, 7,8)])#correlation forte entre Diametre et Peristome 94%
 
-##Colinearite entre les variables X num ou facteur -----
-vif(m1) #erreur : model contains fewer than 2 terms
-vif(elona_recapture_cor [,2:7])
+
 
 summary(elona_recapture_cor)
 
 mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
 
-#####vif{car} ----
-#regles lecture fiv coeff 
-# VIF = 1 : il n’existe aucune corrélation entre une variable prédictive donnée et toute autre variable prédictive du modèle.
-# VIF entre 1 et 5 : il existe une corrélation modérée entre une variable prédictive donnée et d’autres variables prédictives du modèle.
-# VIF > 5 : il existe une forte corrélation entre une variable prédictive donnée et d’autres variables prédictives dans le modèle.
-vif(mod_test_tot) #erreur :   there are aliased coefficients in the model
-# GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
-# GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
 # #                  GVIF  Df GVIF^(1/(2*Df))
 # Site       1.594304e+02   1       12.626574
 # Peristome  5.746555e+00   1        2.397197
@@ -454,33 +494,7 @@ sort(vif(mod_test_tot), decreasing = TRUE)
 corrplot.mixed(M1C,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "First capture")
 corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = " REcapture")
 
-# Checking collinearity between categorical and continuous independent variables
-par(mfrow=c(1,3))
-##Boxplot Dimension selon var explicatives -----
-###Year ----
-#Diameter and year (recapture)
-boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,25), main = "Recapture ")
-#Diameter and year (First capture)
-boxplot(elona_firstcapture$Diameter~elona_firstcapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "First Capture")
 
-#peristome and year (recapture)
-boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('#000099','#339900'), ylim = c(0,12), main = "Recapture ")
-#peristome and year (First capture)
-boxplot(elona_firstcapture$Peristome~elona_firstcapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "First Capture")
-### Event----
-#Diameter and Event (recapture)
-boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-#Diameter and Event (First capture)
-boxplot(elona_firstcapture$Diameter~elona_firstcapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "First Capture")
-
-## ID_1erC -----
-boxplot(elona_recapture$Diameter~elona_recapture$ID_1erC, varwidth = TRUE, ylab = "Diameter", xlab = "ID_1erC",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-##TypeEvent -----
-boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-
-
-sum(is.na(elona_recapture_cor)) #6 NA 
-which(is.na(elona_recapture_cor)) #6 NA 
 #QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
 #GLMM 
 # un glm, avec en réponse diamètre et peristome, en variables classiques le site (old ou new), stage et act (?) et en variables aléatoires l'ID, l'event et la date ?
@@ -489,31 +503,6 @@ which(is.na(elona_recapture_cor)) #6 NA
 mod_tot<-lmer(Diameter ~ Site + Stage + Activity + (1|Year)+ (1|ID_1erC) + (1|Type_Event) + (1|Event) + (1| Date),data=elona_recapture)
 anova(mod_tot)
 summary(mod_tot)
-#Stade juvenile est le facteur avec un effet le plus fort
-#les correlationsd'effet fixes sont toutes <0.2
-vif(mod_tot) #GVIF = 1 --> colinearite moderee
-vif.cca(mod_tot)
-plot(mod_tot)#residus ok ?
-# confint (mod_tot, level = 0.95, method = "boot", nsim = 500)
-#500 bootstrap
-#                           2.5 %     97.5 %
-# .sig01                 2.05098373  2.3840300
-# .sig02                 0.04657717  0.4782746
-# .sig03                 0.00000000  0.4951948
-# .sig04                 0.00000000  0.5966943
-# .sig05                 0.00000000  1.3120622
-# .sigma                 1.35065496  1.4783467
-# (Intercept)           19.58192678 21.5849593
-# SiteRecent_lowdensity  0.38647602  1.3611775
-# StageJUV              -4.61585735 -4.0701877
-# StageSUB              -1.29917847 -0.5985583
-# ActivityIMMO          -0.30856977  0.4759665
-# ActivityMORT          -1.31770650  0.4159386
-
-
-#selection modele en retirant des var : methode descendante stepAIC {MASS}
-M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
-stepAIC (M0, mod_tot, direction = "backward")
 
 
 
@@ -527,3 +516,9 @@ subset(elona_recapture, elona_recapture$Peristome>19)
 nrow(table(elona_recapture$Date))
 table (elona_recapture$Site)
 table(elona_recapture$Stage)
+#diagramme de cook (valeurs extremes ?)
+par(mfrow = c(1, 1))
+plots(m1)
+A<-CookD(m1,newwd=TRUE)#le calcul semble trop long, perturbe le logiciel
+plot(A)
+plot.lm(m1)
