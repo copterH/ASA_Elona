@@ -1,15 +1,15 @@
 
 # IMPORTATION DES LIBRARIES ----
-install.packages("readxl")
-install.packages("lme4")
+#install.packages("readxl")
+#install.packages("lme4")
 library(lme4)
 library(readxl)
 library(GGally)
-library(ggcorrplot)
+library(ggcorrplot) #graphe de correlation
 library(dplyr)
 library(ggplot2)
 library(tidyverse)
-
+library(predictmeans)#diagramme de cook
 
 # IMPORTATION DES DONNEES ----
 
@@ -19,7 +19,6 @@ elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", de
 # Importer la feuille 2 pour rajouter les sites
 
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
-elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
 
 # EXPLORATION DES DONNEES ----
 
@@ -40,12 +39,15 @@ summary(elona_recapture$Peristome)
 hist(elona_recapture$Diameter)
 hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
 summary(elona_recapture$Peristome)
-
+hist(elona_recapture$Diameter,col='chartreuse',xlab="Diameter",main="Check Normality
+ (Diameter) ")
+hist(elona_recapture$Peristome,col='purple',xlab="Peristome",main="Check Normality
+(Peristome)")
 
 
 ## 2. Nettoyage des données ----
 
-table(elona_recapture$Site)
+table(elona_recapture$Site)#avec summary, on a la meme chose avec le nb de NA en +
 table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
 # On a des catégories (?, JUV? JUV/SUB, SUB/AD) où on a très peu d'individus, passer en NA ou dans une autre classe
 elona_recapture$Stage[which(elona_recapture$Stage=="?")] <- NA
@@ -65,6 +67,7 @@ elona_recapture$Activity[which(elona_recapture$Activity=="ACT  ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT   ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
+
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
 elona_recapture$Activity = droplevels(elona_recapture$Activity)
@@ -141,23 +144,35 @@ m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapt
 # CONDITIONS DE VALIDITE ----
 
 ## 1. Normalité des résidus ----
-plot(m1) # résidus ok
-
-# Homoscédasticité
-
-
-
-
-
-
+plot(m1) # residuals vs fitted ok
+summary(m1)
+par(mfrow=c(1,2))
+# Histogram
+hist(residuals(m1),col='dodgerblue3',xlab="residuals",main="Check Normality")
+# Quantile-Quantile plot
+qqnorm(residuals(m1),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
+qqline(residuals(m1),col='red')
 
 ## 2. Homoscédasticité ----
+#on recherche l'homogeneite de la variance
+#selon la date
 plot(x = elona_recapture$Date, y = elona_recapture$Diameter )
 plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
+#selon l'annee
+plot(x = elona_recapture$Year, y = elona_recapture$Diameter )
+plot(x = elona_recapture$Year, y = elona_recapture$Peristome )
+#selon le n° d'identification
+plot(x = elona_recapture$ID_1erC, y = elona_recapture$Diameter )
+plot(x = elona_recapture$ID_1erC, y = elona_recapture$Peristome )
+#selon le stade de developpement (classe d'Age)
+plot(x = elona_recapture$Stage, y = elona_recapture$Diameter )
+plot(x = elona_recapture$Stage, y = elona_recapture$Peristome )
 
 ## 3. Résidus indépendants ----
-
-
+par(mfrow = c(1, 1))
+plots(m1)
+A<-CookD(m1,newwd=TRUE)
+plot(A)
 # ANALYSE ----
 # Choix de la méthode pour répondre à la question :
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
