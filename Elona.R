@@ -486,33 +486,21 @@ proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 # On veut analyser les proportions des classes d'âges par rapport aux sites et aux évènements
 # Il y a 4 possibilités
 
-# 1. Régression logistique
+#### 1. Régression logistique ----
 # En effet on veut une analyse de proportions donc on pourrait réaliser 3 modèles
 # de régression logistique.
 
-# Cependant ici nous voulons analyser 3 variables quantitatives différentes 
+# Cependant ici nous voulons analyser 3 variables quantitatives différentes,
+# ce qui n'est pas compatible avec une régression logistique multivariée.
 
-# 2. RDA
+#### 2. RDA ----
 # En effet on veut analyser les relations entre un tableau avec les proportions 
 # et un tableau avec les caractéristiques des captures.
 
+# Cependant la RDA se concentre sur la prédiction de données,
+# ce qui n'est pas ce que nous recherchons.
 
-# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA (MAIS RDA plus pour prédiction donc non)
-# Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
-# car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
-# Par la suite on pourra essayer les régressions logistiques
-
-
-
-
-# 3. ACP (même chose que RDA mais pas de prédiction, plus explicatif)
-# Non car ne marche pas dans la structure des données
-# 4. Régression multiple
-# Trop de variables différentes à cause de interaction Site*Event
-
-
-# RDA
-
+# ↓ code de la tentative
 # On écrit le modèle
 # RDA <- rda(proportions ~ Site + Event, data = elona_dem)
 # summary(RDA)
@@ -522,9 +510,12 @@ proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 
 # plot(RDA, display=c("species","cn"))
 
+#### 3. ACP ----
+# Il s'agit d'un équivalent de la RDA mais concentré sur l'explication des données.
 
-# ACP
+# Cependant la structure des données ne correspond pas à la méthode.
 
+# ↓ code de la tentative
 # demo_PCA <- dudi.pca(proportions[,1:5], scannf=FALSE)
 # demo_PCA$cw
 # demo_PCA$lw
@@ -536,44 +527,17 @@ proportions <- data.frame(prop_ad, prop_sub, prop_juv)
 # library(Factoshiny)
 # res <- Factoshiny(proportions)
 
+#### 4. Régression linéaire multiple ----
+# La structure du modèle n'est pas analysable par les outils communs.
 
-# Régression linéaire multiple
-
+# ↓ code de la tentative
 # demo_model <- lm(cbind(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV)
 #                  ~ elona_dem$Site + elona_dem$Event)
 # summary(demo_model)
 # step(demo_model)
-
-
-
-
-
-
-# Regress each (centered) y variable on explanatory matrix X
-# and compute the fitted (y^) and residuals (yres) vectors.
-
-# y_chapeau <-
-# yres <-
-
-# Create a new matrix (Y^) containing all the fitted vectors (y^).
-
-# Compute a PCA on Y^ . This will produces a vector of canonical eigenvalues and a matrix U
-# of canonical eigenvectors (principal components).
-
-###b. Analyze coefficient estimates & residual deviance ----
-
-
-
-
-###c. Model diagnostic ----
-# Checking distribution of residuals (histogramm/Qqplot)
-# Distribution of residuals depending on fitted values/ Y values
-# Cook’s distance for influential observations
-# Fitted values against observed ones (predictive value of model )
-
-
-
-
+# AIC(demo_model)
+# drop1(demo_model)
+# add1(demo_model)
 
 
 ### Spatial description ##
