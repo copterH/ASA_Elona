@@ -17,11 +17,9 @@ library(corrplot) # Correlation matrix calculus
 library(lattice) # multipanel graphics
 library(ade4) # PCA
 library(performance)#r2 LMM
+library(car)
 
 # IMPORTATION DES DONNEES ------------------------------------------------------
-
-<<<<<<< HEAD
-# IMPORTATION DES DONNEES ----
 # Importation et gestion des classes
 elona_recapture <- read_xlsx("data_elona.xlsx", sheet = 3, col_types = c('text', 'numeric', 'numeric', 'text', 'text', 'text', 'numeric', 'numeric', 'numeric', 'text', 'text'))
 elona_recapture$Site <- as.factor(elona_recapture$Site)
@@ -46,11 +44,6 @@ elona_firstcapture$Y <- as.factor(elona_firstcapture$Y)
 elona_firstcapture <- data.frame(elona_firstcapture$Site, elona_firstcapture$Diameter, elona_firstcapture$Peristome, elona_firstcapture$Stage, elona_firstcapture$Type_Event, elona_firstcapture$Day, elona_firstcapture$Month, elona_firstcapture$Year, elona_firstcapture$Event, elona_firstcapture$ID_1erC,elona_firstcapture$IDZone, elona_firstcapture$X, elona_firstcapture$Y)
 colnames(elona_firstcapture) <- c('Site', 'Diameter', 'Peristome', 'Stage', 'Type_Event', "Day", "Month", "Year", "Event", "ID_1erC", "IDZone", "X", "Y")
 
-=======
-# Importer la feuille 2 pour rajouter les sites
-elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
-elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
->>>>>>> origin/main
 
 
 #Modification des dates
