@@ -1,7 +1,7 @@
 
-# IMPORTATION DES LIBRARIES ----
-install.packages("readxl")
-install.packages("lme4")
+# IMPORTATION DES LIBRARIES ----------------------------------------------------
+#install.packages("readxl")
+#install.packages("lme4")
 library(lme4)
 library(readxl)
 library(GGally)
@@ -11,54 +11,70 @@ library(ggplot2)
 library(tidyverse)
 
 
-# IMPORTATION DES DONNEES ----
+# IMPORTATION DES DONNEES ------------------------------------------------------
 
+# Importer la feuille 2 pour rajouter les sites
 elona_recapture <- read.csv2("recapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 elona_firstcapture <- read.csv2("firstcapture.csv", header = TRUE, sep = ";", dec = ",", stringsAsFactors = TRUE)
 
-# Importer la feuille 2 pour rajouter les sites
 
+#Modification des dates
 elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),as.character(elona_recapture$Month),as.character(elona_recapture$Day), sep = "-"))
 elona_firstcapture$Date <- as.Date(paste(as.character(elona_firstcapture$Year),as.character(elona_firstcapture$Month),as.character(elona_firstcapture$Day), sep = "-"))
 
-# EXPLORATION DES DONNEES ----
+# EXPLORATION DES DONNEES ------------------------------------------------------
 
 ## 1. Valeurs extrêmes ----
 
-# valeur abérante dans Y
+#Diametre
 boxplot(elona_recapture$Diameter)
 summary(elona_recapture$Diameter)
-# On a des valeurs très faibles mais ça me parait pas improbable
+# On a des valeurs très faibles mais ça ne parait pas improbable
 
-boxplot(elona_recapture$Peristome) # Une valeur très très haute => on va l'enlever ça parait improbable
+
+#Peristome
+boxplot(elona_recapture$Peristome) # Une valeur très très haute (901mm) => on va l'enlever cela parait improbable
 summary(elona_recapture$Peristome)
 elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
-boxplot(elona_recapture$Peristome) # On en a encore 3 grandes, je sais pas trop si c'est probable ou pas
-summary(elona_recapture$Peristome)
 
-#Normalité de Y
+boxplot(elona_recapture$Peristome) # On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
+summary(elona_recapture$Peristome)
+#Les 3 points correspondent à des valeurs de péristome plus larges que la taille de l'escargot (diamètre), donnant lieu à un paradoxe biologique
+#De plus, ces valeurs potentiellement aberrantes ne sont pas en raccord avec d'autres mesures de diamètre et peristome sur Elona quimperiana, 
+#comme l'article DAGUZAN J. & GLOAGUEN J.-C., 1986.- Contribution à l’écologie d’Elona quimperiana (de Férussac) (Gastéropode Pulmoné Stylommatophore) en Bretagne occidentale. Haliotis, 15 : 17-30.
+#Nous choississons donc de remplacer ces trois valeurs par NA.
+elona_recapture$Peristome[elona_recapture$Peristome>15] <- NA
+
+## 2. Normalité de Y----
+
 hist(elona_recapture$Diameter)
-hist(elona_recapture$Peristome,breaks=1000) # pas du tout normal, ressemble un peu à une loi de poisson (non)
+hist(elona_recapture$Peristome,breaks=1000) 
 summary(elona_recapture$Peristome)
+# Ni le Diamètre, Ni le Péristome ne semblent suivrent une loi normale.
 
 
-
-## 2. Nettoyage des données ----
+## 3. Nettoyage des données X ----
 
 table(elona_recapture$Site)
 table(elona_recapture$Stage)# Nombre de modalités dans "Stage" va pas, pareil dans activity 
 # On a des catégories (?, JUV? JUV/SUB, SUB/AD) où on a très peu d'individus, passer en NA ou dans une autre classe
 elona_recapture$Stage[which(elona_recapture$Stage=="?")] <- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV?")]<- "JUV"
-# Pour les deux autres on peut les passer en NA ou alors trancher mais on a aucunes données pour trancher
+
+# Pour les deux autres on peut les passer en NA ou alors trancher mais on a aucunes données pour trancher, on les passe donc en NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV/SUB")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="SUB/AD")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="")]<- NA
 elona_recapture$Stage[which(elona_recapture$Stage=="JUV ")]<- "JUV"
 table(elona_recapture$Stage)
+
+#On supprime également les catégories non conformes 
 elona_recapture$Stage = droplevels(elona_recapture$Stage)
 table(elona_recapture$Stage)
 
+
+
+#Même chose pour les modalités de "Activity"
 table(elona_recapture$Activity)
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT ")]<- "ACT"
 elona_recapture$Activity[which(elona_recapture$Activity=="ACT  ")]<- "ACT"
@@ -67,18 +83,27 @@ elona_recapture$Activity[which(elona_recapture$Activity=="IMM")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="IMMO ")]<- "IMMO"
 elona_recapture$Activity[which(elona_recapture$Activity=="MORT ")]<- "MORT"
 table(elona_recapture$Activity)
+#On supprime également les catégories non conformes 
 elona_recapture$Activity = droplevels(elona_recapture$Activity)
 table(elona_recapture$Activity)
 
+
+
+
+#Même chose pour les modalités de "Type_Event"
 table(elona_recapture$Type_Event)
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R ")]<- "R"
 elona_recapture$Type_Event[which(elona_recapture$Type_Event=="R  ")]<- "R"
 table(elona_recapture$Type_Event)
+#On supprime également les catégories non conformes
 elona_recapture$Type_Event = droplevels(elona_recapture$Type_Event)
 table(elona_recapture$Type_Event)
 
 
 
+
+
+#Même chose pour les modalités de "Stage" dans first_capture
 table(elona_firstcapture$Stage)
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV?")]<- "JUV"
@@ -86,10 +111,12 @@ elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV/SUB")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="SUB/AD")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="")]<- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV ")]<- "JUV"
+#On supprime également les catégories non conformes
+elona_firstcapture$Stage = droplevels(elona_firstcapture$Stage)
 table(elona_firstcapture$Stage)
 
 
-# Relation entre les Ys (Diameter & Peristome)
+## 4.  Relation entre les Ys (Diameter & Peristome) ----
 plot(elona_recapture$Diameter~elona_recapture$Peristome, col=elona_recapture$Stage,
     ylab = "Diameter",xlab="Peristome")
 
@@ -105,12 +132,12 @@ ggplot(data = elona_recapture,
 elona_firstcapture$X[431] <- NA
 elona_firstcapture$Y[431] <- NA
 
-# Relation potentielle entre X et Y
+## 5. Relation potentielle entre X et Y ----
 boxplot(elona_recapture$Diameter~elona_recapture$Site)
 boxplot(elona_recapture$Peristome~elona_recapture$Site)
 # Recent a l'air plus haut
 
-## 3. Analyse des interactions ----
+## 6. Analyse des interactions ----
 # Dans le cours ils disent qu'il faut aussi analyser les interactions éventuelles entre les X mais là vu qu'on a des effets fixes et un effet aléaoire je sais pas si ça compte
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
@@ -126,7 +153,7 @@ plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stage
 plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
 
 
-## 4. Analyse des colinéarités ----
+## 5. Analyse des colinéarités ----
 # Il faut aussi vérifier une éventuelle colinéarité entre les X, mais pareil je sais pas si ça vaut le coup
 
 # Seules les variables numériques peuvent être prises en compte dans la matrice de corrélation
@@ -138,7 +165,7 @@ ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
 m1<-lmer(Diameter ~ Site + (1|Year) + (1|Stage) + (1|ID_1erC), data=elona_recapture)
 
-# CONDITIONS DE VALIDITE ----
+# CONDITIONS DE VALIDITE -------------------------------------------------------
 
 ## 1. Normalité des résidus ----
 plot(m1) # résidus ok
@@ -158,7 +185,7 @@ plot(x = elona_recapture$Date, y = elona_recapture$Peristome )
 ## 3. Résidus indépendants ----
 
 
-# ANALYSE ----
+# ANALYSE ----------------------------------------------------------------------
 # Choix de la méthode pour répondre à la question :
 # We aim to determine whether the two populations share the same demographic characteristics and traits.
 
