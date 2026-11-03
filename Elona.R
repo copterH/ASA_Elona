@@ -196,8 +196,34 @@ for (site in unique(elona_recapture$Site)){
 elona_dem <- cbind(elona_dem, L_Site, L_Event, L_Event_Site)
 colnames(elona_dem) <- c('AD', 'SUB', 'JUV', 'Site', 'Event', "Event_Site")
 
+# Ajout des proportions dans le dataframe
+elona_dem <- elona_dem %>% mutate(TOT_Site = AD + SUB + JUV)
+elona_dem <- elona_dem %>% mutate(Prop_AD = AD / TOT_Site)
+elona_dem <- elona_dem %>% mutate(Prop_SUB = SUB / TOT_Site)
+elona_dem <- elona_dem %>% mutate(Prop_JUV = JUV / TOT_Site)
+
+# Visualisation des quantités par site
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, AD, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, JUV, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, SUB, fill = Site))
+
+# Visualisation des proportions par site
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, TOT_Site, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_AD, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_JUV, fill = Site))
+
+ggplot(data = elona_dem)+
+  geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
   
   
