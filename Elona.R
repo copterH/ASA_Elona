@@ -212,10 +212,11 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, SUB, fill = Site))
 
-# Visualisation des proportions par site
+# Visualisation du nombre total d'individus par sites
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, TOT_Site, fill = Site))
 
+# Visualisation des proportions par site
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_AD, fill = Site))
 
