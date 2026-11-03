@@ -13,8 +13,10 @@ library(tidyverse)
 library(nlme)
 library(lmerTest)
 library(mgcv)
-library(corrplot)# Correlation matrix calculus
-library(lattice)# multipanel graphics
+library(corrplot) # Correlation matrix calculus
+library(lattice) # multipanel graphics
+library(vegan)
+#library(gtsummary) # regression logistique multivariee
 
 # IMPORTATION DES DONNEES ----
 
@@ -323,8 +325,32 @@ ggplot(data = elona_dem)+
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
 
+# Choix du type de modèle
+# On définit 2 possibilités
+# Analyse de proportions donc on pourrait réaliser 3 modèles de régression logistique
+# Analyse des 3 proportions dans un tout donc on pourrait réaliser une RDA
+# Il paraît plus pertinent d'analyser les 3 proportions dans un même modèle
+# car la somme des proportions fait 1 donc les variables ne sont pas indépendantes.
+# Par la suite on pourra essayer les régressions logistiques
+
+# RDA
+# On doit d'abord extraire les proportions dans un nouveau tableau
+
+proportions <- select(c(elona_dem$Prop_AD, elona_dem$Prop_SUB, elona_dem$Prop_JUV))
+
+RDA <- rda(elona_dem ~ pC + cn + pH + NPP + map + mat + forest + conifer + relEM +P + K + Ca + Mg, 
+           data = env_observed)
+
+
+
+
+# Régressions linéaires
+mv_reg <- glm(elona_dem ~ Prop_AD + Prop_SUB + Prop_JUV, family = "binomial", data = linelist)
+
+summary(mv_reg)
   
-  
+m_demo <- multinom(elona_dem$Prop_AD~elona_dem$Event_Site)
+
 
 ###b. Analyze coefficient estimates & residual deviance ----
 
