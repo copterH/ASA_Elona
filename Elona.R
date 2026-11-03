@@ -215,9 +215,31 @@ vif(mod_test_tot) #erreur :   there are aliased coefficients in the model
 # GVIF plutot que VIF utilisé quand le modèle comprend des variables catégorielles à plusieurs niveaux.
 #Stade juvenile est le facteur avec un effet le plus fort
 #les correlationsd'effet fixes sont toutes <0.2
+
+
+
+#selection modele en retirant des var : methode descendante stepAIC {MASS}
+M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
+stepAIC (M0, mod_tot, direction = "backward")
+
+mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
+mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
+
+# #                  GVIF  Df GVIF^(1/(2*Df))
+# Site       1.594304e+02   1       12.626574
+# Peristome  5.746555e+00   1        2.397197
+# Stage      1.100995e+01   2        1.821572
+# Type_Event 5.381555e+00   2        1.523095 
+# Event      2.108339e+06  19        1.466964
+# Day        3.388570e+02   1       18.408068
+# ID_1erC    3.271475e+07 508        1.017177
+#multicolinearite moderee pour  Peristome et Type Event ?? 
+# forte pour Site, Day, Peristome (erreur type gonflee ?)
+#grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
+
+sort(vif(mod_test_tot), decreasing = TRUE)
 vif(mod_tot) #GVIF = 1 --> colinearite moderee
 vif.cca(mod_tot)
-plot(mod_tot)#residus ok ?
 # confint (mod_tot, level = 0.95, method = "boot", nsim = 500)
 #500 bootstrap
 #                           2.5 %     97.5 %
@@ -234,10 +256,19 @@ plot(mod_tot)#residus ok ?
 # ActivityIMMO          -0.30856977  0.4759665
 # ActivityMORT          -1.31770650  0.4159386
 
+##matrice de correlation -----
 
-#selection modele en retirant des var : methode descendante stepAIC {MASS}
-M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
-stepAIC (M0, mod_tot, direction = "backward")
+
+
+#QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
+#GLMM 
+# un glm, avec en réponse diamètre et peristome, en variables classiques le site (old ou new), stage et act (?) et en variables aléatoires l'ID, l'event et la date ?
+
+
+mod_tot<-lmer(Diameter ~ Site + Stage + Activity + (1|Year)+ (1|ID_1erC) + (1|Type_Event) + (1|Event) + (1| Date),data=elona_recapture)
+anova(mod_tot)
+summary(mod_tot)
+
 
 
 ## 3. Résidus indépendants ----
@@ -272,6 +303,12 @@ which(is.na(elona_recapture_cor)) #6 NA
 vif(m1) #erreur : model contains fewer than 2 terms
 vif(elona_recapture_cor [,2:7])
 
+# Checking collinearity between continuous independent variables
+
+# We represent plot for each X continuous covariate pairs
+#We calculate correlation between each pair of X covariate
+corrplot.mixed(M1C,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "First capture")
+corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = " REcapture")
 
 # Significativité de la variance associé au facteur aléatoire
 intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
@@ -569,7 +606,7 @@ boxplot(dataFly$FatContent~dataFly$Habitat, varwidth = TRUE, ylab = "Fat Content
 
 
 
-#Autres a trier -----
+#Autres BONUS test -----
 ### selection Lignes où peristome n'est pas NA select{dplyr} -----
 #####Recapture ----
 summary(elona_recapture$Peristome)#initiallement, 125 NA
@@ -592,42 +629,6 @@ M1C <- cor(elona_firstcapture_cor[, c(2,3, 6, 7,8)])#correlation forte entre Dia
 
 
 summary(elona_recapture_cor)
-
-mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
-mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
-
-# #                  GVIF  Df GVIF^(1/(2*Df))
-# Site       1.594304e+02   1       12.626574
-# Peristome  5.746555e+00   1        2.397197
-# Stage      1.100995e+01   2        1.821572
-# Type_Event 5.381555e+00   2        1.523095 
-# Event      2.108339e+06  19        1.466964
-# Day        3.388570e+02   1       18.408068
-# ID_1erC    3.271475e+07 508        1.017177
-#multicolinearite moderee pour  Peristome et Type Event ?? 
-# forte pour Site, Day, Peristome (erreur type gonflee ?)
-#grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
-
-sort(vif(mod_test_tot), decreasing = TRUE)
-
-##matrice de correlation -----
-
-# Checking collinearity between continuous independent variables
-
-# We represent plot for each X continuous covariate pairs
-#We calculate correlation between each pair of X covariate
-corrplot.mixed(M1C,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "First capture")
-corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = " REcapture")
-
-
-#QUESTION : What is the impact of population density on biometry and individual growth in Elona quimperianal ? ------
-#GLMM 
-# un glm, avec en réponse diamètre et peristome, en variables classiques le site (old ou new), stage et act (?) et en variables aléatoires l'ID, l'event et la date ?
-
-
-mod_tot<-lmer(Diameter ~ Site + Stage + Activity + (1|Year)+ (1|ID_1erC) + (1|Type_Event) + (1|Event) + (1| Date),data=elona_recapture)
-anova(mod_tot)
-summary(mod_tot)
 
 
 
