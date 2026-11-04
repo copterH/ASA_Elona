@@ -398,7 +398,7 @@ plot(m_diam)
 
 #selection modele en retirant des var : methode descendante stepAIC {MASS}
 M0 <- lmer (Diameter ~1 + (1|Date), data = elona_recapture)
-stepAIC (M0, mod_tot, direction = "backward")
+
 
 #R² du modele Diametre 
 r2(m_diam)
@@ -455,6 +455,10 @@ anova(m_peris) #confirme la forte significativite des 2 variables : Site et Stad
 
 
 ## GAM ----
+# Les GAM permettent d'analyser des données dont la distribution de la variable réponse n'est pas connue.
+# Dans notre cas, elles permettent d'analyser nos données de peristome qui ne suivent pas une loi normale
+# (même après transformation logarithmique) et dont la distribution est dificilement identifiable.
+
 # On transforme Date en temps depuis le début de l'expérience parce que les GAM n'acceptent pas les données Dates
 temps <- elona_recapture[,12] - min(elona_recapture$Date)
 elona_recapture$temps<-temps
@@ -735,7 +739,7 @@ ggplot() +
 
 
 # Homoscédasticité : ncvTest {car} (cad homogeneite des variances)
-ncvTest (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
+# (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
 confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut être long
 # 50 Bootstrap : 
 #                             2.5 %    97.5 %
