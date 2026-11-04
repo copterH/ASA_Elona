@@ -24,6 +24,8 @@ library(mapview)
 
 
 
+
+
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
 
@@ -667,6 +669,7 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 
 
 ### Spatial description ##
+# The only purpose of this part is visualization and verification of the distances
 ## elona_sf contains the portion of the data relevant for analysis
 elona_sf <- elona_firstcapture[,c("Site", 
                                   "X", 
@@ -681,7 +684,7 @@ elona_sf <- elona_sf %>%
                       "Y"))
 
 
-## We separate the old and new sites because some zone avec the same ID (but different coodinates)
+## We separate the old and new sites because some zone with the same ID (but different coordinates)
 elona_sf_old <- elona_sf %>%
   filter(Site == 'Old_highdensity')
 elona_sf_old <- distinct(elona_sf_old, 
@@ -705,13 +708,12 @@ st_distance(
   st_combine(elona_sf_old$geometry) %>%
     st_centroid()
 )
+# The 2 sites are as expected about 500m appart
 
 ### PLOTS 
 
-ggplot() +
-  geom_sf(data = elona_sf$geometry, 
-          aes(col = elona_sf$Site))
 
+# Both sites, zoom in to see the the quadrat's IDs
 mapview(elona_sf, 
         zcol = 'IDZone')
 
@@ -727,8 +729,7 @@ ggplot() +
 # ligne 1 en haut, ligne 13 en bas, colonne A à gauche, I à droite
 
 # 
-# mapview(elona_sf_new, 
-#         zcol = 'IDZone')
+# 
 
 
 # Homoscédasticité : ncvTest {car} (cad homogeneite des variances)
