@@ -197,9 +197,7 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
-
-"A COMMENTER"
-
+#le stade de developpement (classe d'age) et l'activite semblent avoir un effet different selon le site)
 # Interactions entre Stage et Activity
 plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
 #Il semble il y avoir une plus grande proportion d'individus adultes à l'état immobile ou mort que de junéviles ou subadultes.
@@ -368,8 +366,8 @@ plot(m1_inter)
 
 #L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
 
-"EST-CE QUE l'ON GARDE SI CA MARCHE PAS"
 #Plusieurs graphes ont ete realises a titre indicatif (pour observer la colinearite des variables)
+#ces graphes ayant ete realises avant changement des modeles, a la suite des modifications, des problemes generes par des differencesde taille de jeu de donnees compliquent l'affichage des graphiques
 #on recherche l'independence des residus
 # #selon la date
 # nrow(na.omit(elona_recapture))
@@ -456,7 +454,7 @@ summary(m1_inter)
 #II - PERISTOME ----------------------------------------------------------------
 ## A. Transformation logarithmique ----
 ### 1. Création du modèle - transformation au logarithme   ----
-"EXPLIQUER LE CHOIX DU MODELE ET DU PASSAGE AU LOGARITHME"
+# le site et le stade de developpement sont des variables factorielles dont on observe l'effet, tandis que la date et le n° d'identifications sont des variables avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent egalement la variable reponse mais ne constituent pas l'effet principal observe en priorite (d'ou les variables a effets aleatoires)
 m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
 ### 2. Conditions de validité lors du passage au log ----
