@@ -453,7 +453,9 @@ summary(m1_inter)
 #II - PERISTOME ----------------------------------------------------------------
 ## A. Transformation logarithmique ----
 ### 1. Création du modèle - transformation au logarithme   ----
-# le site et le stade de developpement sont des variables factorielles dont on observe l'effet, tandis que la date et le n° d'identifications sont des variables avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent egalement la variable reponse mais ne constituent pas l'effet principal observe en priorite (d'ou les variables a effets aleatoires)
+# le site et le stade de developpement sont des variables factorielles dont on observe l'effet, 
+# tandis que la date et le n° d'identifications sont des variables avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent egalement la variable reponse mais ne constituent pas l'effet principal observe en priorite (d'ou les variables a effets aleatoires)
+# La transformation en LOG est utilisee pour normaliser les donnees de peristome qui suivent pas tout a fait une distribution normale
 m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
 
 ### 2. Conditions de validité lors du passage au log ----
