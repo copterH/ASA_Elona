@@ -324,8 +324,8 @@ mapview(elona_sf,
 # Toutes les variables explicatives sont catégorielles
 
 # Modele mixte du diametre avec toutes* les variables explicatives, dont la date et n° d'identification en variables aleatoires :
-# *Event et Date sont colinéaire, nous n'avons conservé que Date
-# *IDZone n'est pas pertient à ajouter car les noms sont répétés entre les deux sites
+# *Event et Date sont colinéaires, nous n'avons conservé que Date
+# *IDZone n'est pas pertinent à ajouter car les noms sont répétés entre les deux sites
 m1_comp <- lmer(Diameter ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
 anova(m1_comp)
 # Toutes les variables sauf Activity ont un effet significatif donc on la retire
@@ -382,8 +382,7 @@ plot(m1_inter)
 
 ### d. Colinearite entre les variables X num ou facteur -----
 #vif{car}
-vif(m1_inter) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
-# vif(elona_recapture_cor [,2:7])
+vif(m1_inter)  #GVIF ~1 donc colinearite moderee#GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
 
 #regles lecture fiv coeff 
 # VIF = 1 : il n’existe aucune corrélation entre une variable prédictive donnée et toute autre variable prédictive du modèle.
@@ -394,12 +393,12 @@ vif(m1_inter) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot fa
 #Stade juvenile est le facteur avec un effet le plus fort
 
 # Significativité de la variance associé au facteur aléatoire
-# intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
+# intervals(m1) # Ne Fonctionne pas, doit être adapté à lme et pas à lmer, qu'on utilise ici
 
 
 mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
-vif(mod_test_tot)
+vif(mod_test_tot)##erreur : donne des resultats NA ou infini
 #erreur :   there are aliased coefficients in the model
 
 # #                  GVIF  Df GVIF^(1/(2*Df))
@@ -417,7 +416,7 @@ vif(mod_test_tot)
 sort(vif(mod_test_tot), decreasing = TRUE)
 vif(mod_test) #GVIF = 1 --> colinearite moderee
 
-# confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)
+# confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)# /!\ ne pas run car calcul long!!
 #500 bootstrap
 #                                            2.5 %        97.5 %
 # (Intercept)                           3.56422468  7.932955e+00
@@ -638,6 +637,7 @@ ggplot(data = elona_dem)+
 
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
+#plus forte proportion de juveniles dans l'ancien site (forte densite) ; et d'adultes dans le nouveau site (faible densite)
 
 
 # On extrait ensuite les proportions dans un nouveau tableau
