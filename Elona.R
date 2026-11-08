@@ -507,24 +507,24 @@ hist(elona_recapture_sansNA$temps)
 gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs="re"),
           family = gaussian,
           data = elona_recapture_sansNA)
-"regarder pourquoi on doit indiquer gaussian 
-à voir aussi il est possible de mettre bs = re ou bs = cr "
-
+#la famille gaussienne du modele est declaree par defaut, et elle se rapproche le plus des donnees (distribution proche de normale) par rapport aux autres familles possibles
+# bs = re correspond a des termes parametriques penalises par une penalite de Ridge;  bs = cr correspond a une base a cannelure cubique (basis cubic spline) definie par une taille de jeu de noeuds modeste (avec une expansion equivalete entre les covariables)
+#Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnés) ne sont pas autorisés
 
 ### 2. Conditions de validité----
 par(mar = c(2, 2, 2, 2))
-vis.gam(gam_peris, theta = -20, color = "heat") # fonctionne pas
+vis.gam(gam_peris, theta = -20, color = "heat") # pas de changement avec bs = re ou cr
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
 # Histogram
 hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
 # Quantile-Quantile plot
-qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
-qqline(gam_peris$residuals,col='red')
+qqnorm(gam_peris_cr$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris_cr$residuals,col='red') #pas de difference avec bs = re ou bs = cr
 # Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
 
-#### b.Homoscédasticité ----
+#### b.Homoscédasticité ---- 
 # Homogénéité de la variance
 plot(residuals(gam_peris)~fitted(gam_peris)
      , col='dodgerblue3'
@@ -538,7 +538,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Site,
      ylab = "Residuals",
      xlab = "Sites",
      main = "")
-abline(h = 0)
+abline(h = 0) #
 #Faible différence de répartition des résidus entre les deux sites
 
 plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
@@ -557,23 +557,30 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage,
      main = "")
 abline(h = 0)
 #heterogenéité plus importante avec une plus grande variance pour les juvéniles, sûrement liée à la croissance des individus.
-
+#pour les 4 plot : pas de difference avec bs=cr ou bs = res
 
 ### 3. Analyse des résultats----
 anova(gam_peris)
 #Effet significativite du Stade de developpement et du site (p<2e-16 et p=1.63e-06)
-summary(gam_peris)
+#modele bs=cr : Parametric Terms:
+#         df      F                 p-value
+# Site    1     23.5              1.43e-06 (=/=1.39e-06)
+# Stage   2     319.73 (=/= 318.5)  < 2e-16
+# Les unites de df changent de decimales : Ref.df de s(ID_1erC) =  506.0 au lieu de 5.060e+02 pour bs = re
+
+
+summary(gam_peris)  #Coefficient StageSUB p = 8.71e-08(bs = re) vs 8.66e-08(bs = cr)
+#                          #  Intercept : t = 145.963 (bs = re) vs 147.686 (bs = cr)
 #significativite des effets de la variable aleatoire de l'individu (p<2e-16), mais pas du temps. 
 #Significativite de l'effet de du Site : Peristome ont un diametre legerement plus gros sur le site recent a faible densite de population (augmentation legere mais tres significative)
 #Même interprétation que pour le diamètre pour le stade juvénile et subadulte : un effet significativement négatif par rapport au stade adulte, ce qui est lié à la croissance
 
+
 #Significativite du modele GAM : R²
-r2(gam_peris)
+r2(gam_peris)#pas de changement selon l'argument bs
 # R2: 0.825
 # R-sq.(adj) =  0.758   Deviance explained = 82.5%
 #Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
-
-
 
 
 # III - DEMOGRAPHIE ------------------------------------------------------------
