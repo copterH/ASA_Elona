@@ -1,3 +1,7 @@
+#Noms Auteur.ices : BARON Anaelle, BRES-MONVOISIN Chloe, CORDIER Emilie, DESNYDER Eli, DAVID Meline
+#M2 MODE 2026-2027
+#Projet ASA (Advanced Statistical Analysis): sujet ELONA
+
 # IMPORTATION DES LIBRARIES ----------------------------------------------------
 #install.packages("readxl")
 #install.packages("lme4")
@@ -202,9 +206,7 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
-
-"A COMMENTER"
-
+#le stade de developpement (classe d'age) et l'activite semblent avoir un effet different selon le site)
 # Interactions entre Stage et Activity
 plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
 #Il semble il y avoir une plus grande proportion d'individus adultes à l'état immobile ou mort que de junéviles ou subadultes.
@@ -331,8 +333,8 @@ mapview(elona_sf,
 # Toutes les variables explicatives sont catégorielles
 
 # Modele mixte du diametre avec toutes* les variables explicatives, dont la date et n° d'identification en variables aleatoires :
-# *Event et Date sont colinéaire, nous n'avons conservé que Date
-# *IDZone n'est pas pertient à ajouter car les noms sont répétés entre les deux sites
+# *Event et Date sont colinéaires, nous n'avons conservé que Date
+# *IDZone n'est pas pertinent à ajouter car les noms sont répétés entre les deux sites
 m1_comp <- lmer(Diameter ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
 anova(m1_comp)
 # Toutes les variables sauf Activity ont un effet significatif donc on la retire
@@ -373,8 +375,8 @@ plot(m1_inter)
 
 #L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
 
-"EST-CE QUE l'ON GARDE SI CA MARCHE PAS"
 #Plusieurs graphes ont ete realises a titre indicatif (pour observer la colinearite des variables)
+#ces graphes ayant ete realises avant changement des modeles, a la suite des modifications, des problemes generes par des differencesde taille de jeu de donnees compliquent l'affichage des graphiques
 #on recherche l'independence des residus
 # #selon la date
 # nrow(na.omit(elona_recapture))
@@ -389,8 +391,7 @@ plot(m1_inter)
 
 ### d. Colinearite entre les variables X num ou facteur -----
 #vif{car}
-vif(m1_inter) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot faible donc pas trop de colinearite
-# vif(elona_recapture_cor [,2:7])
+vif(m1_inter)  #GVIF ~1 donc colinearite moderee#GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
 
 #regles lecture fiv coeff 
 # VIF = 1 : il n’existe aucune corrélation entre une variable prédictive donnée et toute autre variable prédictive du modèle.
@@ -401,12 +402,12 @@ vif(m1_inter) #GVIF ~1 donc colinearite moderee#GVIF = 1.001 a 1.003 = plutot fa
 #Stade juvenile est le facteur avec un effet le plus fort
 
 # Significativité de la variance associé au facteur aléatoire
-# intervals(m1) # Fonctionne pas doit être adapté à lme pas lmer
+# intervals(m1) # Ne Fonctionne pas, doit être adapté à lme et pas à lmer, qu'on utilise ici
 
 
 mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
-vif(mod_test_tot)
+vif(mod_test_tot)##erreur : donne des resultats NA ou infini
 #erreur :   there are aliased coefficients in the model
 
 # #                  GVIF  Df GVIF^(1/(2*Df))
@@ -424,7 +425,7 @@ vif(mod_test_tot)
 sort(vif(mod_test_tot), decreasing = TRUE)
 vif(mod_test) #GVIF = 1 --> colinearite moderee
 
-# confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)
+# confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)# /!\ ne pas run car calcul long!!
 #500 bootstrap
 #                                            2.5 %        97.5 %
 # (Intercept)                           3.56422468  7.932955e+00
@@ -458,9 +459,11 @@ summary(m1_inter)
 
 
 
-#II - PERISTOME ----------------------------------------------------------------
+#II - PERISTOME
 ## A. LMM
 ### 1. Création du modèle -
+# le site et le stade de developpement sont des variables factorielles dont on observe l'effet, 
+# tandis que la date et le n° d'identifications sont des variables avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent egalement la variable reponse mais ne constituent pas l'effet principal observe en priorite (d'ou les variables a effets aleatoires)
 # *Event et Date sont colinéaire, nous n'avons conservé que Date
 # *IDZone n'est pas pertient à ajouter car les noms sont répétés entre les deux sites
 m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
@@ -468,6 +471,7 @@ anova(m1_comp)
 # Toutes la variables sauf Activity sont significatives, on la retire donc
 m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date), data=elona_recapture)
 anova(m_peris)
+
 ### 2. Conditions de validité
 
 #### a. Normalité des résidus ----
@@ -523,25 +527,29 @@ anova(gam_peris)
 gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
                        family = gaussian,
                        data = elona_recapture_sansNA)
+#la famille gaussienne du modele est declaree par defaut, et elle se rapproche le plus des donnees (distribution proche de normale) par rapport aux autres familles possibles
+# bs = re correspond a des termes parametriques penalises par une penalite de Ridge;  bs = cr correspond a une base a cannelure cubique (basis cubic spline) definie par une taille de jeu de noeuds modeste (avec une expansion equivalete entre les covariables)
+# On change l'argument bs pour temps ; Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnés) ne sont pas autorisés
 anova(gam_peris)
-"regarder pourquoi on doit indiquer gaussian 
-à voir aussi il est possible de mettre bs = re ou bs = cr "
-
 
 ### 2. Conditions de validité----
 par(mar = c(2, 2, 2, 2))
 vis.gam(gam_peris, theta = -20, color = "heat")
+
+### 2. Conditions de validité----
+par(mar = c(2, 2, 2, 2))
+vis.gam(gam_peris, theta = -20, color = "heat") # pas de changement avec bs = re ou cr
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
 # Histogram
 hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
 # Quantile-Quantile plot
-qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
-qqline(gam_peris$residuals,col='red')
+qqnorm(gam_peris_cr$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris_cr$residuals,col='red') #pas de difference avec bs = re ou bs = cr
 # Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
 
-#### b.Homoscédasticité ----
+#### b.Homoscédasticité ---- 
 # Homogénéité de la variance
 plot(residuals(gam_peris)~fitted(gam_peris)
      , col='dodgerblue3'
@@ -555,7 +563,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Site,
      ylab = "Residuals",
      xlab = "Sites",
      main = "")
-abline(h = 0)
+abline(h = 0) #
 #Faible différence de répartition des résidus entre les deux sites
 
 plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
@@ -574,23 +582,30 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage,
      main = "")
 abline(h = 0)
 #heterogenéité plus importante avec une plus grande variance pour les juvéniles, sûrement liée à la croissance des individus.
-
+#pour les 4 plot : pas de difference avec bs=cr ou bs = res
 
 ### 3. Analyse des résultats----
 anova(gam_peris)
 #Effet significativite du Stade de developpement et du site (p<2e-16 et p=1.63e-06)
-summary(gam_peris)
+#modele bs=cr : Parametric Terms:
+#         df      F                 p-value
+# Site    1     23.5              1.43e-06 (=/=1.39e-06)
+# Stage   2     319.73 (=/= 318.5)  < 2e-16
+# Les unites de df changent de decimales : Ref.df de s(ID_1erC) =  506.0 au lieu de 5.060e+02 pour bs = re
+
+
+summary(gam_peris)  #Coefficient StageSUB p = 8.71e-08(bs = re) vs 8.66e-08(bs = cr)
+#                          #  Intercept : t = 145.963 (bs = re) vs 147.686 (bs = cr)
 #significativite des effets de la variable aleatoire de l'individu (p<2e-16), mais pas du temps. 
 #Significativite de l'effet de du Site : Peristome ont un diametre legerement plus gros sur le site recent a faible densite de population (augmentation legere mais tres significative)
 #Même interprétation que pour le diamètre pour le stade juvénile et subadulte : un effet significativement négatif par rapport au stade adulte, ce qui est lié à la croissance
 
+
 #Significativite du modele GAM : R²
-r2(gam_peris)
+r2(gam_peris)#pas de changement selon l'argument bs
 # R2: 0.825
 # R-sq.(adj) =  0.758   Deviance explained = 82.5%
 #Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
-
-
 
 
 # III - DEMOGRAPHIE ------------------------------------------------------------
@@ -648,6 +663,7 @@ ggplot(data = elona_dem)+
 
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
+#plus forte proportion de juveniles dans l'ancien site (forte densite) ; et d'adultes dans le nouveau site (faible densite)
 
 
 # On extrait ensuite les proportions dans un nouveau tableau
