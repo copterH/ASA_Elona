@@ -195,9 +195,6 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
 
 ## 6. Analyse des interactions entre les X ----
 
-ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
-        aes(color = Diameter, alpha = 0.5))
-#le stade de developpement (classe d'age) et l'activite semblent avoir un effet different selon le site)
 # Interactions entre Stage et Activity
 plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
 #Il semble il y avoir une plus grande proportion d'individus adultes à l'état immobile ou mort que de junéviles ou subadultes.
@@ -365,19 +362,6 @@ plot(m1_inter)
 ### c. Résidus indépendants ----
 
 #L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
-
-#Plusieurs graphes ont ete realises a titre indicatif (pour observer la colinearite des variables)
-#ces graphes ayant ete realises avant changement des modeles, a la suite des modifications, des problemes generes par des differencesde taille de jeu de donnees compliquent l'affichage des graphiques
-#on recherche l'independence des residus
-# #selon la date
-# nrow(na.omit(elona_recapture))
-#plot(x = elona_recapture$Date, y = residuals(m1) ) #problème de taille des matrices
-# #selon l'annee
-# plot(x = elona_recapture$Year, y = residuals(m1) )
-# #selon le n° d'identification
-# plot(x = elona_recapture$ID_1erC, y = residuals(m1) )
-# #selon le stade de developpement (classe d'Age)
-# plot(x = elona_recapture$Stage, y = residuals(m1) )
 
 
 ### d. Colinearite entre les variables X num ou facteur -----
@@ -783,13 +767,13 @@ par(mfrow = c(1, 1))
 # Le jeu de données ne nous permet pas de prendre en compte si les escargots bougent ou pas car nous n'avons leur quadrat que pour leur première capture
 # Nous ne savons pas non plus s'il est possible pour les escargots de parcourir les 500m qui séparent les sites. 
 
-# Nous n'avons que des psuedo-réplicats il serait intéressant d'avoir d'autres sites.
-# De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats
-# Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en varaible explicative, 
-# mais aussi prendre en compte les possibles différences dans les caractéristiques (biotiques et abiotiques) des milieux
+# Nous n'avons que des pseudo-réplicats il serait intéressant d'avoir d'autres sites.
+# De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats...
+# Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en variable explicative, 
+# mais aussi prendre en compte les possibles différences dans les caractéristiques (biotiques et abiotiques) des milieux (type de substrat, conditions de vie, vitesse de déplacement...)
 
-# Pour approfondir les analyses, il faudrait plus de détails sur la méthode d'échantillonnage et le milieu (type de substrat, conditions de vie, vitesse de déplacement, mode de mesure...),
-# et un partitionnement plus fin de la classe junévile aurait permis une variance plus faible dans cette catégorie.  
+# Pour approfondir les analyses, il faudrait plus de détails sur la méthode d'échantillonnage,
+# et un partitionnement plus fin de la classe juvénile aurait permis une variance plus faible dans cette catégorie.  
 # Nous avons fait l'hypothèse que les escargots n'ont pas migré d'un site à l'autre durant toute la durée de l'échantillonnage.
 
 # L'estimation de la démographie aurait pu nous aiguiller sur l'hypothèse que les escargots du nouveau sites n'ont pas encore atteint la capacité limite du milieu. 
