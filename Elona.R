@@ -246,8 +246,8 @@ boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, yl
 
 
 ## 8. selection Lignes où peristome n'est pas NA select{dplyr} -----
-summary(elona_recapture$Peristome)#initiallement, 139 NA
-summary(elona_recapture$Diameter)#initiallement, 81 NA
+summary(elona_recapture$Peristome)#initiallement, 148 NA
+summary(elona_recapture$Diameter)#initiallement, 84 NA
 elona_recapture_cor <- 
   subset (elona_recapture, 
           elona_recapture$Peristome != "NA" &  elona_recapture$Diameter!="NA" )
@@ -264,8 +264,8 @@ MRC
 corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "Recapture")
 
 
-sum(is.na(elona_recapture_cor)) #6 NA 
-which(is.na(elona_recapture_cor)) #6 NA 
+sum(is.na(elona_recapture_cor)) #956 NA 
+# which(is.na(elona_recapture_cor)) #les index des lignes avec NA
 
 
 #Tentative de matrice de correlation pour les variables catégorielles
@@ -525,8 +525,8 @@ par(mfrow=c(1,2))
 # Histogram
 hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
 # Quantile-Quantile plot
-qqnorm(gam_peris_cr$residuals,pch=16,col='dodgerblue3',xlab='')
-qqline(gam_peris_cr$residuals,col='red') #pas de difference avec bs = re ou bs = cr
+qqnorm(gam_peris$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris$residuals,col='red') #pas de difference avec bs = re ou bs = cr
 # Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
 
 #### b.Homoscédasticité ---- 
