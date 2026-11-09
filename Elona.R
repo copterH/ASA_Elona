@@ -154,11 +154,16 @@ elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
 
 boxplot(elona_recapture$Peristome) # On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
 summary(elona_recapture$Peristome)
+elona_recapture[which(elona_recapture$Peristome>15),]
 #Les 3 points correspondent à des valeurs de péristome plus larges que la taille de l'escargot (diamètre), donnant lieu à un paradoxe biologique
 #De plus, ces valeurs potentiellement aberrantes ne sont pas en raccord avec d'autres mesures de diamètre et peristome sur Elona quimperiana, 
 #comme l'article DAGUZAN J. & GLOAGUEN J.-C., 1986.- Contribution à l’écologie d’Elona quimperiana (de Férussac) (Gastéropode Pulmoné Stylommatophore) en Bretagne occidentale. Haliotis, 15 : 17-30.
 #Nous choississons donc de remplacer ces trois valeurs par NA.
 elona_recapture$Peristome[elona_recapture$Peristome>15] <- NA
+
+# On regarde également s'il y a d'autres valeurs de péristomes qui sont supérieures au diamètres
+which(elona_recapture$Peristome > elona_recapture$Diameter)
+# Il n'y a aucun autre individu dont le peristome est supérieur au diamètre
 
 ## 2. Normalité de Y----
 
@@ -168,7 +173,7 @@ hist(elona_recapture$Diameter,col='chartreuse',xlab="Diameter",main="Check Norma
  (Diameter) ",breaks=100)
 hist(elona_recapture$Peristome,col='purple',xlab="Peristome",main="Check Normality
 (Peristome)",breaks=100)
-# Ni le Diamètre, Ni le Péristome ne semblent suivrent une loi normale. 
+# Ni le Diamètre, Ni le Péristome ne semblent suivre une loi normale. 
 # Les queues de distribution ne sont pas symétriques.
 
 
@@ -454,12 +459,16 @@ summary(m1_inter)
 
 
 #II - PERISTOME ----------------------------------------------------------------
-## A. Transformation logarithmique ----
-### 1. Création du modèle - transformation au logarithme   ----
-"EXPLIQUER LE CHOIX DU MODELE ET DU PASSAGE AU LOGARITHME"
-m_peris <- lmer(log(Peristome) ~ Site + Stage + (1|ID_1erC) + (1|Date), data=elona_recapture)
-
-### 2. Conditions de validité lors du passage au log ----
+## A. LMM
+### 1. Création du modèle -
+# *Event et Date sont colinéaire, nous n'avons conservé que Date
+# *IDZone n'est pas pertient à ajouter car les noms sont répétés entre les deux sites
+m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
+anova(m1_comp)
+# Toutes la variables sauf Activity sont significatives, on la retire donc
+m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date), data=elona_recapture)
+anova(m_peris)
+### 2. Conditions de validité
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
@@ -506,16 +515,22 @@ elona_recapture_sansNA<-na.omit(elona_recapture)
 hist(elona_recapture_sansNA$temps) 
 
 ### 1. Création du modèle GAM ----
-gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Activity + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
           family = gaussian,
           data = elona_recapture_sansNA)
+anova(gam_peris)
+# Seule Activity n'est pas significative, on le supprime donc du modèle
+gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+                       family = gaussian,
+                       data = elona_recapture_sansNA)
+anova(gam_peris)
 "regarder pourquoi on doit indiquer gaussian 
 à voir aussi il est possible de mettre bs = re ou bs = cr "
 
 
 ### 2. Conditions de validité----
 par(mar = c(2, 2, 2, 2))
-vis.gam(gam_peris, theta = -20, color = "heat") # fonctionne pas
+vis.gam(gam_peris, theta = -20, color = "heat")
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
@@ -776,7 +791,8 @@ par(mfrow = c(1, 1))
 # Le jeu de données ne nous permet pas de prendre en compte si les escargots bougent ou pas car nous n'avons leur quadrat que pour leur première capture
 # Nous ne savons pas non plus s'il est possible pour les escargots de parcourir les 500m qui séparent les sites. 
 
-# Nous n'avons que des psuedo-réplicats il serait intéressant d'avoir d'autres sites.
+# Il faut noter que cette étude ne porte que sur la différence de traits morphologique et démographique entre deux zones, du fait de l'abscence de réplicats (il n'y a que des pseudo-répliquats), 
+# il est donc impossible de généraliser les conclusions de cette étude.
 # De plus, rien n'indique que ces sites sont équivalents en termes de ressources alimentaires, qualité d'habitats
 # Pour réellement étudier l'effet de la densité de population sur les caractéristiques morphologiques il faudrait réaliser une étude démographique et utiliser la densité de population en varaible explicative, 
 # mais aussi prendre en compte les possibles différences dans les caractéristiques (biotiques et abiotiques) des milieux
