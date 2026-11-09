@@ -106,7 +106,7 @@ elona_recapture<-merge(elona_recapture,elona_firstcapture[,c(10,11)], by="ID_1er
 
 
 
-#Même chose pour les modalités de "Stage" dans first_capture
+# Même chose pour les modalités de "Stage" dans first_capture
 table(elona_firstcapture$Stage)
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="?")] <- NA
 elona_firstcapture$Stage[which(elona_firstcapture$Stage=="JUV?")]<- "JUV"
@@ -197,15 +197,16 @@ boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
 
 ggpairs(elona_recapture, columns = c("Site", "Stage", "Activity"),
         aes(color = Diameter, alpha = 0.5))
-#le stade de developpement (classe d'age) et l'activite semblent avoir un effet different selon le site)
+# Le stade de developpement (classe d'age) et l'activite semblent avoir un effet different selon le site)
 # Interactions entre Stage et Activity
 plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
-#Il semble il y avoir une plus grande proportion d'individus adultes à l'état immobile ou mort que de junéviles ou subadultes.
+# Dans la categorie ACT, il y a autant de juvéniles que d'adultes.
+# Dans les categories IMMO et MORT, la majorite des observations sont des individus adultes
 
 # Interactions entre Stage & Type_Event
 plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stages",xlab="Type Event")
 # Les proportions de juvéniles et subadultes sont plus élevée lors des premières captures (type event = C),
-# c'est logique car plus les individus sont agés plus ils ont de chance d'avoir déjà été capturés
+# C'est logique car plus les individus sont agés plus ils ont de chance d'avoir déjà été capturés
 
 # Interactions entre Activity & Type_Event
 plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
@@ -217,8 +218,8 @@ plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab
 # Il faut aussi vérifier une éventuelle colinéarité entre les X
 ## Checking collinearity between categorical and continuous independent variables
 par(mfrow=c(1,2))
-####Boxplot Dimension selon var explicatives -----
-####Year ----
+#### Boxplot Dimension selon var explicatives -----
+#### Year ----
 
 ## Diameter and year 
 boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "Recapture Diameter ")
@@ -233,7 +234,6 @@ boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = 
 #### Event----
 ##Diameter and Event
 boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-##Diameter and Event 
 # Le diamètre moyen varie peu, en revanche les variances sont très différentes selon l'évènement.
 
 ####TypeEvent -----
