@@ -1,3 +1,7 @@
+#Noms Auteur.ices : BARON Anaelle, BRES-MONVOISIN Chloe, CORDIER Emilie, DESNYDER Eli, DAVID Meline
+#M2 MODE 2026-2027
+#Projet ASA (Advanced Statistical Analysis): sujet ELONA
+
 # IMPORTATION DES LIBRARIES ----------------------------------------------------
 #install.packages("readxl")
 #install.packages("lme4")
@@ -510,7 +514,7 @@ gam_peris <- mgcv::gam(Peristome ~ Site + Stage + s(ID_1erC,bs="re")+ s(temps,bs
           data = elona_recapture_sansNA)
 #la famille gaussienne du modele est declaree par defaut, et elle se rapproche le plus des donnees (distribution proche de normale) par rapport aux autres familles possibles
 # bs = re correspond a des termes parametriques penalises par une penalite de Ridge;  bs = cr correspond a une base a cannelure cubique (basis cubic spline) definie par une taille de jeu de noeuds modeste (avec une expansion equivalete entre les covariables)
-#Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnés) ne sont pas autorisés
+# On change l'argument bs pour temps ; Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnés) ne sont pas autorisés
 
 ### 2. Conditions de validité----
 par(mar = c(2, 2, 2, 2))
