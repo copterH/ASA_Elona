@@ -198,8 +198,8 @@ ggplot(data = elona_recapture,
 
 ## 5. Relation potentielle entre X et Y ----
 par(mfrow=c(1,2))
-boxplot(elona_recapture$Diameter~elona_recapture$Site, main = "Diameter")
-boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
+boxplot(elona_recapture$Diameter~elona_recapture$Site, main = "Diamètre",ylab='Diamètre',names=c("Old high-density","Recent low-density"),xlab="Site")
+boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Péristome",ylab="Péristome",names=c("Old high-density","Recent low-density"),xlab="Site")
 # Il semble que les escargots du site Recent ont un diamètre et un péristome plus important, sans que cela soit significatif. 
 
 ## 6. Analyse des interactions entre les X ----
@@ -228,22 +228,27 @@ par(mfrow=c(1,2))
 #### Year ----
 
 ## Diameter and year 
-boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "Recapture Diameter ")
+boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", 
+        xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "Recapture Diameter ")
 # Les diamètres des coquilles ne semblent pas augmenter au cours du temps.
 
 
 ##peristome and year
-boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "Recapture Peristome")
+boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome",
+        xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "Recapture Peristome")
 # Tendance à légère augmentation au cours du temps de la taille du peristome
 
 
 #### Event----
 ##Diameter and Event
-boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, 
+        ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
 # Le diamètre moyen varie peu, en revanche les variances sont très différentes selon l'évènement.
 
+
 ####TypeEvent -----
-boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, 
+        ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
 #Difference de diametre en fonction de l'etat (logique car les individus recapturés ont plus de chance d'être plus vieux)
 
 
@@ -327,7 +332,7 @@ mapview(elona_sf,
 #I -  DIAMETRE -----------------------------------------------------------------
 ## 1. Creation du modèle ----
 # Nous avons choisi de faire un modèle linéaire général mixte pour le diamètre, car nous ne voulons pas prendre en compte l'effet des individus ni de la Date des mesures.
-# Toutes les variables explicatives sont catégorielles
+# Toutes les variables explicatives sont catégorielles et que la variable réponse est quantitative continue 
 
 # Modele mixte du diametre avec toutes* les variables explicatives, dont la date et n° d'identification en variables aleatoires :
 # *Event et Date sont colinéaires, nous n'avons conservé que Date
@@ -338,7 +343,7 @@ anova(m1_comp)
 m1 <- lmer(Diameter ~ Site + Stage  + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
 anova(m1)
 
-# Nous avions vu précédement que le site semblait avoir un effet différent sur le diamètre des Adultes
+# Nous avions vu précédement que le site semblait avoir un effet différent sur le diamètre des Adultes (ligne 187)
 # Il y aurait donc une interraction entre le site et l'age, ajoutons la au modèle
 # Modele mixte du diametre avec le site et l'age et leur interaction en variables fixes, et la date et n° d'identification en variables aleatoires :
 m1_inter <-lmer(Diameter ~ Site + Stage + Site:Stage + Type_Event +(1|Date)+(1|ID_1erC), data = elona_recapture)
@@ -358,7 +363,7 @@ hist(residuals(m1_inter),col='dodgerblue3',xlab="residuals",main="Check Normalit
 qqnorm(residuals(m1_inter),pch=16,col='dodgerblue3',xlab='')
 qqline(residuals(m1_inter),col='red')
 # Les résidus ne semblent pas suivre distribution normale.
-# La normalité des résidus n'est pas tout à fait respectée. Les valeurs extrèmes s'éloingnent un peu trop. 
+# La normalité des résidus n'est pas tout à fait respectée. Les valeurs extrèmes s'éloignent un peu trop. 
 
 
 ### b. Homoscédasticité des résidus ----
@@ -456,20 +461,25 @@ anova(m1_comp)
 m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date), data=elona_recapture)
 anova(m_peris)
 
+# Comme pour le diamètre le dite semble avoir un effet différent sur le péristome des adultes (ligne 187)
+m2_inter <-lmer(Peristome ~ Site + Stage + Site:Stage + Type_Event +(1|Date)+(1|ID_1erC), data = elona_recapture)
+anova(m2_inter)
+# L'intéraction porte une part significative de la variance dans le modèle
+
 ### 2. Conditions de validité
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
 # Histogram
-hist(residuals(m_peris),col='dodgerblue3',xlab="residuals",main="Check Normality") 
+hist(residuals(m2_inter),col='dodgerblue3',xlab="residuals",main="Check Normality") 
 # Quantile-Quantile plot
-qqnorm(residuals(m_peris),pch=16,col='dodgerblue3',xlab='')#residus ne semblent pas suivre distribution normale
-qqline(residuals(m_peris),col='red')
+qqnorm(residuals(m2_inter),pch=16,col='dodgerblue3',xlab='') #les residus ne semblent pas suivre distribution normale
+qqline(residuals(m2_inter),col='red')
 # La normalité des résidus n'est pas tout à fait respectée. Les valeurs extrèmes s'éloignent un peu trop. 
 
 
 #### b. Homoscédasticité ----
-plot(m_peris) # heteroscedasticite encore plus forte que l'on prendra en compte lors de l'interpretations
+plot(m2_inter) # heteroscedasticite encore plus forte que l'on prendra en compte lors de l'interpretations
 #La variance est plus faible pour les hautes valeurs de péristome
 
 
@@ -479,7 +489,7 @@ plot(m_peris) # heteroscedasticite encore plus forte que l'on prendra en compte 
 
 
 #### d. Colinearite entre les variables X num ou facteur -----
-vif(m_peris) #GVIF ~1 donc colinearite moderee
+vif(m2_inter) #GVIF ~1 donc colinearite moderee
 #GVIF = 1.001 a 1.003 = plutot faible donc pas de colinearite très marquée.
 
 
@@ -516,32 +526,37 @@ gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Type_Event + s(ID_1erC,bs="re"
 # On change l'argument bs pour temps ; Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnés) ne sont pas autorisés
 anova(gam_peris)
 
-### 2. Conditions de validité----
-par(mar = c(2, 2, 2, 2))
-vis.gam(gam_peris, theta = -20, color = "heat")
+# On rajoute une intéraction entre le site et le stade developpement pour les mêmes raisons que précédemment
+gam_peris_inter <- mgcv::gam(Peristome ~ Site * Stage + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+                       family = gaussian,
+                       data = elona_recapture_sansNA)
 
 ### 2. Conditions de validité----
 par(mar = c(2, 2, 2, 2))
-vis.gam(gam_peris, theta = -20, color = "heat") # pas de changement avec bs = re ou cr
+vis.gam(gam_peris_inter, theta = -20, color = "heat")
+
+### 2. Conditions de validité----
+par(mar = c(2, 2, 2, 2))
+vis.gam(gam_peris_inter, theta = -20, color = "heat") # pas de changement avec bs = re ou cr
 
 #### a. Normalité des résidus ----
 par(mfrow=c(1,2))
 # Histogram
-hist(gam_peris$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
+hist(gam_peris_inter$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
 # Quantile-Quantile plot
-qqnorm(gam_peris_cr$residuals,pch=16,col='dodgerblue3',xlab='')
-qqline(gam_peris_cr$residuals,col='red') #pas de difference avec bs = re ou bs = cr
+qqnorm(gam_peris_inter$residuals,pch=16,col='dodgerblue3',xlab='')
+qqline(gam_peris_inter$residuals,col='red') #pas de difference avec bs = re ou bs = cr
 # Mieux que le précédent modèle pour le qqplot, mais malgré tout pas une distribution normale
 
 #### b.Homoscédasticité ---- 
 # Homogénéité de la variance
-plot(residuals(gam_peris)~fitted(gam_peris)
+plot(residuals(gam_peris_inter)~fitted(gam_peris_inter)
      , col='dodgerblue3'
      , pch=16)
 abline(h = 0)
 # On observe une meilleure homogénéité de la variance (il y a toujours une hétérogénéité, mais plus faible)
 
-plot(residuals(gam_peris)~ elona_recapture_sansNA$Site, 
+plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$Site, 
      pch=16,
      col="dodgerblue3",
      ylab = "Residuals",
@@ -550,7 +565,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$Site,
 abline(h = 0) #
 #Faible différence de répartition des résidus entre les deux sites
 
-plot(residuals(gam_peris)~ elona_recapture_sansNA$temps, 
+plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$temps, 
      pch=16,
      col="dodgerblue3",
      ylab = "Residuals",
@@ -558,7 +573,7 @@ plot(residuals(gam_peris)~ elona_recapture_sansNA$temps,
      main = "")
 abline(h = 0) #repartition avec en abcisse la duree depuis le debut des echantillonages mais ce sont des residus.  
 
-plot(residuals(gam_peris)~ elona_recapture_sansNA$Stage, 
+plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$Stage, 
      pch=16,
      col="dodgerblue3",
      ylab = "Residuals",
@@ -569,26 +584,28 @@ abline(h = 0)
 #pour les 4 plot : pas de difference avec bs=cr ou bs = res
 
 ### 3. Analyse des résultats----
-anova(gam_peris)
-#Effet significativite du Stade de developpement et du site (p<2e-16 et p=1.63e-06)
-#modele bs=cr : Parametric Terms:
-#         df      F                 p-value
-# Site    1     23.5              1.43e-06 (=/=1.39e-06)
-# Stage   2     319.73 (=/= 318.5)  < 2e-16
-# Les unites de df changent de decimales : Ref.df de s(ID_1erC) =  506.0 au lieu de 5.060e+02 pour bs = re
+anova(gam_peris_inter)
 
+# Effet significatif du site, du stade de développement, du site et de l'intéraction entre le site et le stade de développement
+# Parametric Terms:
+#   df       F  p-value
+# Site        1  27.622 1.78e-07
+# Stage       2 101.518  < 2e-16
+# Type_Event  2  46.589  < 2e-16
+# Site:Stage  2   8.623 0.000193
 
-summary(gam_peris)  #Coefficient StageSUB p = 8.71e-08(bs = re) vs 8.66e-08(bs = cr)
-#                          #  Intercept : t = 145.963 (bs = re) vs 147.686 (bs = cr)
+summary(gam_peris_inter)  
+
+#Tous les coefficients des variables fixe ont une valeur significative sauf StageSUB
 #significativite des effets de la variable aleatoire de l'individu (p<2e-16), mais pas du temps. 
 #Significativite de l'effet de du Site : Peristome ont un diametre legerement plus gros sur le site recent a faible densite de population (augmentation legere mais tres significative)
 #Même interprétation que pour le diamètre pour le stade juvénile et subadulte : un effet significativement négatif par rapport au stade adulte, ce qui est lié à la croissance
 
 
 #Significativite du modele GAM : R²
-r2(gam_peris)#pas de changement selon l'argument bs
-# R2: 0.825
-# R-sq.(adj) =  0.758   Deviance explained = 82.5%
+r2(gam_peris_inter)#pas de changement selon l'argument bs
+# R2: 0.848
+# R-sq.(adj) =  0.785   Deviance explained = 84.8%
 #Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
 
 
