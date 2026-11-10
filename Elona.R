@@ -172,7 +172,7 @@ elona_recapture$Date <- as.Date(paste(as.character(elona_recapture$Year),
                                       sep = "-"))
 
 
-# QUESTION : ----
+# QUESTION : -------------------------------------------------------------------
 # What is the impact of population density on biometry and individual growth
 # in Elona quimperianal ? We aim to determine whether the two populations share
 # the same demographic characteristics and traits.
@@ -191,37 +191,42 @@ summary(elona_recapture$Diameter)
 # Peristome
 par(mfrow=c(1,2))
 boxplot(elona_recapture$Peristome)
-# Une valeur tres tres haute (901mm) => Cela parait tres improbable, nous avons fait le choix de la retirer 
+# Une valeur tres tres haute (901mm) => Cela parait tres improbable, nous avons
+# fait le choix de la retirer 
 summary(elona_recapture$Peristome)
 elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
 
-boxplot(elona_recapture$Peristome) # On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
+boxplot(elona_recapture$Peristome)
+# On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
 summary(elona_recapture$Peristome)
 elona_recapture[which(elona_recapture$Peristome>15),]
-#Les 3 points correspondent a des valeurs de peristome plus larges que la taille de l'escargot (diametre), donnant lieu a un paradoxe biologique
-#De plus, ces valeurs potentiellement aberrantes ne sont pas en raccord avec d'autres mesures de diametre et peristome sur Elona quimperiana, 
-#comme l'article DAGUZAN J. & GLOAGUEN J.-C., 1986.- Contribution a l’ecologie d’Elona quimperiana (de Ferussac) (Gasteropode Pulmone Stylommatophore) en Bretagne occidentale. Haliotis, 15 : 17-30.
-#Nous choississons donc de remplacer ces trois valeurs par NA.
+# Les 3 points correspondent a des valeurs de peristome plus larges que la taille
+# de l'escargot (diametre), donnant lieu a un paradoxe biologique.
+# De plus, ces valeurs potentiellement aberrantes ne sont pas en raccord avec
+# d'autres mesures de diametre et peristome sur Elona quimperiana, comme l'article
+# DAGUZAN J. & GLOAGUEN J.-C., 1986.- Contribution a l’ecologie d’Elona quimperiana
+# (de Ferussac) (Gasteropode Pulmone Stylommatophore) en Bretagne occidentale. Haliotis, 15 : 17-30.
+
+# Nous choississons donc de remplacer ces trois valeurs par NA.
 elona_recapture$Peristome[elona_recapture$Peristome>15] <- NA
 
-# On regarde egalement s'il y a d'autres valeurs de peristomes qui sont superieures au diametres
+# On regarde egalement s'il y a d'autres valeurs de peristomes qui sont superieures au diametres.
 which(elona_recapture$Peristome > elona_recapture$Diameter)
-# Il n'y a aucun autre individu dont le peristome est superieur au diametre
+# Il n'y a aucun autre individu dont le peristome est superieur au diametre.
+
 
 ## 2. Normalite de Y----
-
 
 summary(elona_recapture$Peristome)
 hist(elona_recapture$Diameter,col='chartreuse',xlab="Diameter",main="Check Normality
  (Diameter) ",breaks=100)
 hist(elona_recapture$Peristome,col='purple',xlab="Peristome",main="Check Normality
 (Peristome)",breaks=100)
-# Ni le Diametre, Ni le Peristome ne semblent suivre une loi normale. 
+# Ni le Diametre, ni le Peristome ne semblent suivre une loi normale. 
 # Les queues de distribution ne sont pas symetriques.
 
 
-
-## 4.  Relation entre les Ys (Diameter & Peristome) ----
+## 3.  Relation entre les Ys (Diameter & Peristome) ----
 
 ggplot(data = elona_recapture,  
        aes(geom_point, x = Peristome, y = Diameter,
@@ -229,107 +234,122 @@ ggplot(data = elona_recapture,
   geom_point() +
   scale_shape_manual(values = c(0,1,2))
 # Il semble y avoir une colinearite assez forte entre le diametre et le peristome 
-# De plus, si l'on considere la classe d'âge,on observe que les individus avec un petit diametre et peristome sont les juveniles, ce qui fait sens biologiquement.
+# De plus, si l'on considere la classe d'âge,on observe que les individus avec un
+# petit diametre et peristome sont les juveniles, ce qui fait sens biologiquement.
 # Le diametre et le peristome des individus des deux sites sont confondus pour les juveniles.
 # Mais il semble qu'il y ait une legere difference de tailles pour les individus adultes selon le site. 
 
 
+## 4. Relation potentielle entre X et Y ----
 
-## 5. Relation potentielle entre X et Y ----
 par(mfrow=c(1,2))
-boxplot(elona_recapture$Diameter~elona_recapture$Site, main = "Diameter")
+boxplot(elona_recapture$Diameter ~ elona_recapture$Site, main = "Diameter")
 boxplot(elona_recapture$Peristome~elona_recapture$Site, main = "Peristome")
-# Il semble que les escargots du site Recent ont un diametre et un peristome plus important, sans que cela soit significatif. 
+# Il semble que les escargots du site Recent ont un diametre et un peristome plus
+# important, sans que cela soit significatif. 
 
-## 6. Analyse des interactions entre les X ----
+
+## 5. Analyse des interactions entre les X ----
 
 # Interactions entre Stage et Activity
-plot(elona_recapture$Stage~elona_recapture$Activity, ylab = "Demographic stages",xlab="Activity")
-# Dans la categorie ACT, il y a autant de juveniles que d'adultes.
+plot(elona_recapture$Stage ~ elona_recapture$Activity,
+     ylab = "Demographic stages", xlab="Activity")
+# Dans la categorie ACT, il y a autant de juveniles que d adultes.
 # Dans les categories IMMO et MORT, la majorite des observations sont des individus adultes
 
 # Interactions entre Stage & Type_Event
-plot(elona_recapture$Stage~elona_recapture$Type_Event, ylab = "Demographic stages",xlab="Type Event")
-# Les proportions de juveniles et subadultes sont plus elevee lors des premieres captures (type event = C),
-# C'est logique car plus les individus sont ages plus ils ont de chance d'avoir deja ete captures
+plot(elona_recapture$Stage ~ elona_recapture$Type_Event,
+     ylab = "Demographic stages", xlab="Type Event")
+# Les proportions de juveniles et subadultes sont plus elevee lors des premieres
+# captures (type event = C), c est logique car plus les individus sont ages plus
+# ils ont de chance d'avoir deja ete captures.
 
 # Interactions entre Activity & Type_Event
-plot(elona_recapture$Activity~elona_recapture$Type_Event, ylab = "Activity",xlab="Type_Event")
+plot(elona_recapture$Activity ~ elona_recapture$Type_Event,
+     ylab = "Activity", xlab="Type_Event")
 # Graphique peu lisible car la majorite (86%) des escargots sont actifs.
 
 
+## 6. Analyse des colinearites ----
 
-## 7. Analyse des colinearites ----
-# Il faut aussi verifier une eventuelle colinearite entre les X
-## Checking collinearity between categorical and continuous independent variables
+# Il faut aussi verifier une eventuelle colinearite entre les X.
+
 par(mfrow=c(1,2))
-#### Boxplot Dimension selon var explicatives -----
-#### Year ----
+
+#### a. Year ----
 
 ## Diameter and year 
-boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "Recapture Diameter ")
+boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE,
+        ylab = "Diameter", xlab = "Year",col=c('royalblue','chartreuse'),
+        ylim = c(0,25), main = "Recapture Diameter ")
 # Les diametres des coquilles ne semblent pas augmenter au cours du temps.
 
 
-##peristome and year
-boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "Recapture Peristome")
+## Peristome and year
+boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE,
+        ylab = "Peristome", xlab = "Year",col=c('royalblue','chartreuse'),
+        ylim = c(0,12), main = "Recapture Peristome")
 # Tendance a legere augmentation au cours du temps de la taille du peristome
 
 
-#### Event----
-##Diameter and Event
-boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE, ylab = "Diameter", xlab = "Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
+#### b. Event ----
+
+## Diameter and Event
+boxplot(elona_recapture$Diameter~elona_recapture$Event, varwidth = TRUE,
+        ylab = "Diameter", xlab = "Event",col=c(blues9),
+        ylim = c(0,25), main = "Recapture ")
 # Le diametre moyen varie peu, en revanche les variances sont tres differentes selon l'evenement.
 
-####TypeEvent -----
-boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, ylab = "Diameter", xlab = "Type_Event",col=c(blues9), ylim = c(0,25), main = "Recapture ")
-#Difference de diametre en fonction de l'etat (logique car les individus recaptures ont plus de chance d'etre plus vieux)
+#### c. TypeEvent -----
+
+boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE,
+        ylab = "Diameter", xlab = "Type_Event",col=c(blues9),
+        ylim = c(0,25), main = "Recapture ")
+# Difference de diametre en fonction de l'etat (logique car les individus recaptures ont plus de chance d etre plus vieux)
 
 
-## 8. selection Lignes où peristome n'est pas NA select{dplyr} -----
-summary(elona_recapture$Peristome)#initiallement, 139 NA
-summary(elona_recapture$Diameter)#initiallement, 81 NA
+## 7. Selection lignes sans NA pour le Peristome -----
+summary(elona_recapture$Peristome) # Initiallement, 139 NA
+summary(elona_recapture$Diameter) # Initiallement, 81 NA
 elona_recapture_cor <- 
   subset (elona_recapture, 
           elona_recapture$Peristome != "NA" &  elona_recapture$Diameter!="NA" )
-dim(elona_recapture_cor) ; dim(elona_recapture) #verifier le nb de lignes supprimees
+dim(elona_recapture_cor) ; dim(elona_recapture) # Verifier le nb de lignes supprimees
 
 
-## 9. Matrice de correlation ----
+## 8. Matrice de correlation ----
 MRC <- cor(elona_recapture_cor[, c(2,3,6,7,8)])
 MRC
-# Correlation forte entre Diametre et Peristome (93%), comme nous l'avions remarque graphiquement.
+# Correlation forte entre Diametre et Peristome (93%), comme nous l avions remarque graphiquement.
 
 # We represent plot for each X continuous covariate pairs
-#We calculate correlation between each pair of X covariate
-corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,tl.cex = 0.7,number.cex =0.8, main = "Recapture")
+# We calculate correlation between each pair of X covariate
+corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8,
+               tl.cex = 0.7,number.cex =0.8, main = "Recapture")
 
 
-sum(is.na(elona_recapture_cor)) #6 NA 
-which(is.na(elona_recapture_cor)) #6 NA 
+sum(is.na(elona_recapture_cor)) # 6 NA 
+which(is.na(elona_recapture_cor)) # 6 NA 
 
-
-#Tentative de matrice de correlation pour les variables categorielles
 # Seules les variables numeriques peuvent etre prises en compte dans la matrice de correlation
-# cor_mat <- cor(elona_recapture[c(elona_recapture$Diameter, elona_recapture$Peristome,
-#                                  elona_recapture$Date)])
-# ggcorrplot(cor_mat, method = "square", lab = TRUE)
 
-## 10. Description spatiale ----
-# Cette partie ne sert qu'a visualiser les sites et les quadrats et a verifier les distances
-## elona_sf contains the portion of the data relevant for analysis
+
+## 9. Description spatiale ----
+
+# Cette partie ne sert qu a visualiser les sites et les quadrats et a verifier les distances
+# elona_sf contains the portion of the data relevant for analysis
 elona_sf <- elona_firstcapture[,c("Site", 
                                   "X", 
                                   "Y", 
                                   "IDZone")] %>%
   filter(!is.na(elona_firstcapture$X))
-## The coordinates are turned into an sf object in the geometry column
+# The coordinates are turned into an sf object in the geometry column
 elona_sf$X <- as.numeric(as.character(elona_sf$X))
 elona_sf$Y <- as.numeric(as.character(elona_sf$Y))
 elona_sf <- elona_sf %>%
   st_as_sf(coords = c("X", 
                       "Y"))
-## We separate the old and new sites because some zone with the same ID (but different coordinates)
+# We separate the old and new sites because some zone with the same ID (but different coordinates)
 elona_sf_old <- elona_sf %>%
   filter(Site == 'Old_highdensity')
 elona_sf_old <- distinct(elona_sf_old, 
@@ -340,11 +360,11 @@ elona_sf_new <- elona_sf %>%
 elona_sf_new <- distinct(elona_sf_new, 
                          IDZone, 
                          .keep_all = TRUE)
-## After filtering to keep only one line per zone we bind the 2 sites back together
+# After filtering to keep only one line per zone we bind the 2 sites back together
 elona_sf <- rbind(elona_sf_old, 
                   elona_sf_new)
 
-## Distances between the centroids of the two sites
+# Distances between the centroids of the two sites
 st_distance(
   st_combine(elona_sf_new$geometry) %>%
     st_centroid(),
@@ -364,59 +384,78 @@ mapview(elona_sf,
 
 
 #I -  DIAMETRE -----------------------------------------------------------------
-## 1. Creation du modele ----
-# Nous avons choisi de faire un modele lineaire general mixte pour le diametre, car nous ne voulons pas prendre en compte l'effet des individus ni de la Date des mesures.
-# Toutes les variables explicatives sont categorielles
 
-# Modele mixte du diametre avec toutes* les variables explicatives, dont la date et n° d'identification en variables aleatoires :
+
+## 1. Creation du modele ----
+
+# Nous avons choisi de faire un modele lineaire general mixte pour le diametre,
+# car nous ne voulons pas prendre en compte l'effet des individus ni de la sate des mesures.
+# Toutes les variables explicatives sont categorielles.
+
+# Modele mixte du diametre avec toutes* les variables explicatives, dont la date
+# et n° d identification en variables aleatoires :
 # *Event et Date sont colineaires, nous n'avons conserve que Date
 # *IDZone n'est pas pertinent a ajouter car les noms sont repetes entre les deux sites
-m1_comp <- lmer(Diameter ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
+
+m1_comp <- lmer(Diameter ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC),
+                data = elona_recapture)
 anova(m1_comp)
+
 # Toutes les variables sauf Activity ont un effet significatif donc on la retire
-m1 <- lmer(Diameter ~ Site + Stage  + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
+m1 <- lmer(Diameter ~ Site + Stage  + Type_Event +(1|Date) + (1|ID_1erC),
+           data = elona_recapture)
 anova(m1)
 
-# Nous avions vu precedement que le site semblait avoir un effet different sur le diametre des Adultes
+# Nous avions vu precedement que le site semblait avoir un effet different sur le diametre des adultes
 # Il y aurait donc une interraction entre le site et l'age, ajoutons la au modele
-# Modele mixte du diametre avec le site et l'age et leur interaction en variables fixes, et la date et n° d'identification en variables aleatoires :
-m1_inter <-lmer(Diameter ~ Site + Stage + Site:Stage + Type_Event +(1|Date)+(1|ID_1erC), data = elona_recapture)
+# Modele mixte du diametre avec le site et l'age et leur interaction en variables
+# fixes, et la date et n° d identification en variables aleatoires :
+m1_inter <-lmer(Diameter ~ Site + Stage + Site:Stage + Type_Event +(1|Date)+(1|ID_1erC),
+                data = elona_recapture)
 anova(m1_inter)
-# Le site est moins significatif que dans le modele precedent, 
-# mais l'interaction avec l'age est aussi significative (elle a surement "absorbe" une partie de l'effet du Site).
+# Le site est moins significatif que dans le modele precedent, mais l interaction
+# avec l age est aussi significative (elle a surement "absorbe" une partie de l'effet du Site).
 
 # Nous conserverons le modele m1_inter
 
+
 ## 2. Conditions de validite ----
 
+
 ### a. Normalite des residus ----
+
 par(mfrow=c(1,2))
-# Histogram
+# Histogramme
 hist(residuals(m1_inter),col='dodgerblue3',xlab="residuals",main="Check Normality") 
 # Quantile-Quantile plot
 qqnorm(residuals(m1_inter),pch=16,col='dodgerblue3',xlab='')
 qqline(residuals(m1_inter),col='red')
+
 # Les residus ne semblent pas suivre distribution normale.
-# La normalite des residus n'est pas tout a fait respectee. Les valeurs extremes s'eloingnent un peu trop. 
+# La normalite des residus n'est pas tout a fait respectee.
+# Les valeurs extremes s'eloingnent un peu trop. 
 
 
 ### b. Homoscedasticite des residus ----
+
 plot(m1_inter)
 # Il semble y avoir moins de variance pour les valeurs extremes
 # Heteroscedasticite que l'on prendra en compte lors de l'interpretation
 
 
-
 ### c. Residus independants ----
 
-#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
+# L independance des residus n'est pas un critere pour les modeles lineaires
+# general mixte, donc n'est pas necessaire d etre valide. 
 
 
 ### d. Colinearite entre les variables X num ou facteur -----
-#vif{car}
-vif(m1_inter)  #GVIF ~1 donc colinearite moderee#GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
 
-#regles lecture fiv coeff 
+#vif{car}
+vif(m1_inter) # GVIF ~1 donc colinearite moderee
+# GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
+
+# Regles lecture fiv coeff 
 # VIF = 1 : il n’existe aucune correlation entre une variable predictive donnee et toute autre variable predictive du modele.
 # VIF entre 1 et 5 : il existe une correlation moderee entre une variable predictive donnee et d’autres variables predictives du modele.
 # VIF > 5 : il existe une forte correlation entre une variable predictive donnee et d’autres variables predictives dans le modele.
