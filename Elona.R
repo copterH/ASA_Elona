@@ -236,7 +236,7 @@ ggplot(data = elona_recapture,
 
 
 # Il semble y avoir une colinéarité assez forte entre le diamètre et le péristome.
-# De plus, si l'on considère la classe d'âge,on observe que les individus avec un 
+# De plus, si l'on considère la classe d'age,on observe que les individus avec un 
 # petit diamètre et péristome sont les juvéniles, ce qui fait sens biologiquement.
 # Le diamètre et le péristome des individus des deux sites sont confondus pour les juvéniles.
 
@@ -458,20 +458,26 @@ vif(m1_inter) # GVIF ~1 donc colinearite moderee
 # Regles lecture fiv coeff 
 # VIF = 1 : il n’existe aucune correlation entre une variable predictive
 # donnee et toute autre variable predictive du modele.
-# VIF entre 1 et 5 : il existe une correlation moderee entre une variable predictive donnee et d’autres variables predictives du modele.
-# VIF > 5 : il existe une forte correlation entre une variable predictive donnee et d’autres variables predictives dans le modele.
+# VIF entre 1 et 5 : il existe une correlation moderee entre une variable
+# predictive donnee et d’autres variables predictives du modele.
+# VIF > 5 : il existe une forte correlation entre une variable predictive donnee
+# et d’autres variables predictives dans le modele.
+
 # GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
 # GVIF plutot que VIF utilise quand le modele comprend des variables categorielles a plusieurs niveaux.
-#Stade juvenile est le facteur avec un effet le plus fort
+# Stade juvenile est le facteur avec un effet le plus fort.
 
 # Significativite de la variance associe au facteur aleatoire
-# intervals(m1) # Ne Fonctionne pas, doit etre adapte a lme et pas a lmer, qu'on utilise ici
+# intervals(m1) # Ne Fonctionne pas, doit etre adapte a lme et pas a lmer, qu on utilise ici
 
 
-mod_test <-     lm (Diameter ~ Site + Peristome+ Stage+Type_Event, data = elona_recapture_cor)
-mod_test_tot <- lm (Diameter ~ Site + Peristome+ Stage+Type_Event + Event + Day + ID_1erC , data = elona_recapture_cor)#modele lineaire simple avec toutes les variables qui ne sont pas des "aliased coeff" pour faire fonctionner la fonction vif{car}
-vif(mod_test_tot)##erreur : donne des resultats NA ou infini
-#erreur :   there are aliased coefficients in the model
+mod_test <- lm (Diameter ~ Site + Peristome + Stage + Type_Event, data = elona_recapture_cor)
+mod_test_tot <- lm (Diameter ~ Site + Peristome + Stage + Type_Event + Event + Day + ID_1erC,
+                    data = elona_recapture_cor)
+# Modele lineaire simple avec toutes les variables qui ne sont pas des
+# "aliased coeff" pour faire fonctionner la fonction vif{car}
+vif(mod_test_tot) # Erreur : donne des resultats NA ou infini
+# Erreur :   there are aliased coefficients in the model
 
 # #                  GVIF  Df GVIF^(1/(2*Df))
 # Site       1.594304e+02   1       12.626574
@@ -481,15 +487,16 @@ vif(mod_test_tot)##erreur : donne des resultats NA ou infini
 # Event      2.108339e+06  19        1.466964
 # Day        3.388570e+02   1       18.408068
 # ID_1erC    3.271475e+07 508        1.017177
-#multicolinearite moderee pour  Peristome et Type Event ?? 
-# forte pour Site, Day, Peristome (erreur type gonflee ?)
-#grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
+
+# Multicolinearite moderee pour  Peristome et Type Event ?
+# Forte pour Site, Day, Peristome (erreur type gonflee ?)
+# Grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
 
 sort(vif(mod_test_tot), decreasing = TRUE)
-vif(mod_test) #GVIF = 1 --> colinearite moderee
+vif(mod_test) # GVIF = 1 --> colinearite moderee
 
 # confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)# /!\ ne pas run car calcul long!!
-#500 bootstrap
+# 500 bootstrap
 #                                            2.5 %        97.5 %
 # (Intercept)                           3.56422468  7.932955e+00
 # SiteRecent_lowdensity                -1.11733205  3.775009e-01
@@ -508,31 +515,47 @@ vif(mod_test) #GVIF = 1 --> colinearite moderee
 r2_nakagawa(m1_inter)
 # 42% de la variance est expliquee par les effets fixes
 # et 84% de la variance est expliquee par les effets fixes et aleatoires. 
-# L'effet aleatoire explique donc une grande part de la variabilite. 
+# L effet aleatoire explique donc une grande part de la variabilite. 
 # Les variables fixes ont toutefois un effet significatif. 
 anova(m1_inter)
 # Le stade est la variable qui a le plus d'effet (p value tres faible).
 # Toutefois le site et son interaction avec le stade ont un effet signifcatif. 
 # Mais leur effet est bien plus faible. 
 summary(m1_inter)
-# Dans le summary on voit que l'estimate associe au changement de Site est faible (devant l'intercept et devant l'effet du changement de stade (JUV)).
+# Dans le summary on voit que l'estimate associe au changement de Site est
+# faible (devant l'intercept et devant l'effet du changement de stade (JUV)).
 # Cela confirme l'effet significatif mais faible du site.
 
-# Le modele est donc valide mais montre que le site a un effet significatif mais faible sur le diametre comparativement aux autres variables. 
+# Le modele est donc valide mais montre que le site a un effet significatif
+# mais faible sur le diametre comparativement aux autres variables. 
 
 
 
 #II - PERISTOME
-## A. LMM
-### 1. Creation du modele -
-# le site et le stade de developpement sont des variables factorielles dont on observe l'effet, 
-# tandis que la date et le n° d'identifications sont des variables avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent egalement la variable reponse mais ne constituent pas l'effet principal observe en priorite (d'ou les variables a effets aleatoires)
+
+
+## A. LMM ----
+
+
+### 1. Creation du modele ----
+
+
+# Le site et le stade de developpement sont des variables factorielles dont on observe l'effet, 
+# tandis que la date et le n° d'identifications sont des variables avec de
+# nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent
+# egalement la variable reponse mais ne constituent pas l'effet principal observe
+# en priorite (d'ou les variables a effets aleatoires)
+
 # *Event et Date sont colineaire, nous n'avons conserve que Date
 # *IDZone n'est pas pertient a ajouter car les noms sont repetes entre les deux sites
-m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC), data = elona_recapture)
+
+m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC),
+                 data = elona_recapture)
 anova(m1_comp)
-# Toutes la variables sauf Activity sont significatives, on la retire donc
-m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date), data=elona_recapture)
+# Toutes la variables sauf Activity sont significatives, on la retire donc.
+
+m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date),
+                data=elona_recapture)
 anova(m_peris)
 
 # Comme pour le diamètre le dite semble avoir un effet différent sur le péristome des adultes (ligne 187)
@@ -543,6 +566,7 @@ anova(m2_inter)
 ### 2. Conditions de validité
 
 #### a. Normalite des residus ----
+
 par(mfrow=c(1,2))
 # Histogram
 hist(residuals(m2_inter),col='dodgerblue3',xlab="residuals",main="Check Normality") 
@@ -557,9 +581,11 @@ plot(m2_inter) # heteroscedasticite encore plus forte que l'on prendra en compte
 #La variance est plus faible pour les hautes valeurs de péristome
 
 
+
 #### c. Residus independants ----
 
-#L'independance des residus n'est pas un critere pour les modeles lineaires general mixte, donc n'est pas necessaire d'etre valide. 
+# L independance des residus n est pas un critere pour les modeles lineaires
+# general mixte, donc n'est pas necessaire d'etre valide. 
 
 
 #### d. Colinearite entre les variables X num ou facteur -----
@@ -569,34 +595,47 @@ vif(m2_inter) #GVIF ~1 donc colinearite moderee
 
 
 
+
 ## B. GAM ----
-# Les GAM permettent d'analyser des donnees dont la distribution de la variable reponse n'est pas connue.
-# Dans notre cas, elles permettent d'analyser nos donnees de peristome qui ne suivent pas une loi normale
+
+# Les GAM permettent d analyser des donnees dont la distribution de la variable reponse n est pas connue.
+# Dans notre cas, elles permettent d analyser nos donnees de peristome qui ne suivent pas une loi normale
 # (meme apres transformation logarithmique) et dont la distribution est dificilement identifiable.
 
 
-# On transforme Date en temps depuis le debut de l'experience parce que les GAM n'acceptent pas les donnees Dates
+# On transforme Date en temps depuis le debut de l experience
+# parce que les GAM n acceptent pas les donnees au format Dates.
 temps <- elona_recapture[,12] - min(elona_recapture$Date)
-elona_recapture$temps<-temps
-elona_recapture$temps<-as.numeric(elona_recapture$temps)
+elona_recapture$temps <- temps
+elona_recapture$temps <- as.numeric(elona_recapture$temps)
 class(elona_recapture$temps)
 
-# On enleve les NA, ça permet d'eviter les messages d'erreurs lors de la verification de l'homogeneite des variances
+# On enleve les NA, ça permet d eviter les messages d erreurs lors de la verification de l homogeneite des variances
 elona_recapture_sansNA<-na.omit(elona_recapture)
 hist(elona_recapture_sansNA$temps) 
 
 ### 1. Creation du modele GAM ----
-gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Activity + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
+
+gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Activity + Type_Event
+                       + s(ID_1erC,bs="re") + s(temps,bs="re"),
           family = gaussian,
           data = elona_recapture_sansNA)
 anova(gam_peris)
-# Seule Activity n'est pas significative, on le supprime donc du modele
+# Seule Activity n est pas significative, on le supprime donc du modele.
+
 gam_peris <- mgcv::gam(Peristome ~ Site + Stage + Type_Event + s(ID_1erC,bs="re")+ s(temps,bs="re"),
                        family = gaussian,
                        data = elona_recapture_sansNA)
-#la famille gaussienne du modele est declaree par defaut, et elle se rapproche le plus des donnees (distribution proche de normale) par rapport aux autres familles possibles
-# bs = re correspond a des termes parametriques penalises par une penalite de Ridge;  bs = cr correspond a une base a cannelure cubique (basis cubic spline) definie par une taille de jeu de noeuds modeste (avec une expansion equivalete entre les covariables)
-# On change l'argument bs pour temps ; Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :  les facteurs (non ordonnes) ne sont pas autorises
+
+# La famille gaussienne du modele est declaree par defaut, et elle se rapproche
+# le plus des donnees (distribution proche de normale) par rapport aux autres familles possibles
+# bs = re correspond a des termes parametriques penalises par une penalite de Ridge;
+# bs = cr correspond a une base a cannelure cubique (basis cubic spline)
+# definie par une taille de jeu de noeuds modeste (avec une expansion equivalete entre les covariables)
+# On change l'argument bs pour temps;
+# Si on change bs pour ID_1erC : Erreur dans quantile.default(xu, seq(0, 1, length = nk)) :
+# les facteurs (non ordonnes) ne sont pas autorises.
+
 anova(gam_peris)
 
 # On rajoute une intéraction entre le site et le stade developpement pour les mêmes raisons que précédemment
@@ -604,7 +643,9 @@ gam_peris_inter <- mgcv::gam(Peristome ~ Site * Stage + Type_Event + s(ID_1erC,b
                        family = gaussian,
                        data = elona_recapture_sansNA)
 
+
 ### 2. Conditions de validite----
+
 par(mar = c(2, 2, 2, 2))
 vis.gam(gam_peris_inter, theta = -20, color = "heat")
 
@@ -612,7 +653,9 @@ vis.gam(gam_peris_inter, theta = -20, color = "heat")
 par(mar = c(2, 2, 2, 2))
 vis.gam(gam_peris_inter, theta = -20, color = "heat") # pas de changement avec bs = re ou cr
 
+
 #### a. Normalite des residus ----
+
 par(mfrow=c(1,2))
 # Histogram
 hist(gam_peris_inter$residuals,col='dodgerblue3',xlab="residuals",main="Check Normality")
@@ -624,6 +667,12 @@ qqline(gam_peris_inter$residuals,col='red') #pas de difference avec bs = re ou b
 #### b.Homoscédasticité ---- 
 # Homogénéité de la variance
 plot(residuals(gam_peris_inter)~fitted(gam_peris_inter)
+
+
+#### b.Homoscedasticite ---- 
+
+# Homogeneite de la variance
+plot(residuals(gam_peris)~fitted(gam_peris)
      , col='dodgerblue3'
      , pch=16)
 abline(h = 0)
@@ -636,7 +685,7 @@ plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$Site,
      xlab = "Sites",
      main = "")
 abline(h = 0) #
-#Faible difference de repartition des residus entre les deux sites
+# Faible difference de repartition des residus entre les deux sites
 
 plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$temps, 
      pch=16,
@@ -644,7 +693,8 @@ plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$temps,
      ylab = "Residuals",
      xlab = "Temps",
      main = "")
-abline(h = 0) #repartition avec en abcisse la duree depuis le debut des echantillonages mais ce sont des residus.  
+abline(h = 0)
+# Repartition avec en abcisse la duree depuis le debut des echantillonages mais ce sont des residus.  
 
 plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$Stage, 
      pch=16,
@@ -653,8 +703,13 @@ plot(residuals(gam_peris_inter)~ elona_recapture_sansNA$Stage,
      xlab = "Stage",
      main = "")
 abline(h = 0)
-#heterogeneite plus importante avec une plus grande variance pour les juveniles, sûrement liee a la croissance des individus.
-#pour les 4 plot : pas de difference avec bs=cr ou bs = res
+# Heterogeneite plus importante avec une plus grande variance pour les juveniles,
+# surement liee a la croissance des individus.
+# Pour les 4 plot : pas de difference avec bs=cr ou bs = res
+
+
+
+### 3. Analyse des resultats----
 
 
 ### 3. Analyse des résultats----
@@ -682,12 +737,22 @@ r2(gam_peris_inter)#pas de changement selon l'argument bs
 #Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
 
 
+# Significativite des effets de la variable aleatoire de l'individu (p<2e-16), mais pas du temps. 
+# Significativite de l'effet du Site : Peristome ont un diametre legerement plus
+# gros sur le site recent a faible densite de population (augmentation legere mais tres significative)
+# Meme interpretation que pour le diametre pour le stade juvenile et subadulte :
+# un effet significativement negatif par rapport au stade adulte, ce qui est lie a la croissance
+
+
+
 # III - DEMOGRAPHIE ------------------------------------------------------------
 
-###1. Preparation des donnees ----
-#On cherche a expliquer les proportions dans chaque classe d'age en fonction des sites et du lieu:
-#f(proportion de chaque classe d'âge)= Site + Date
-# On considere que les individus retrouves morts comme appartenant a leur classe d'âge respective. 
+
+### 1. Preparation des donnees ----
+
+# On cherche a expliquer les proportions dans chaque classe d'age en fonction des sites et du lieu:
+# f(proportion de chaque classe d'age) = Site + Date
+# On considere que les individus retrouves morts comme appartenant a leur classe d age respective. 
 
 elona_dem <- data.frame(matrix(ncol = 6, nrow = 0))
 L_Site <- c()
@@ -737,7 +802,8 @@ ggplot(data = elona_dem)+
 
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
-#plus forte proportion de juveniles dans l'ancien site (forte densite) ; et d'adultes dans le nouveau site (faible densite)
+# Plus forte proportion de juveniles dans l'ancien site (forte densite);
+# et d'adultes dans le nouveau site (faible densite)
 
 
 # On extrait ensuite les proportions dans un nouveau tableau
@@ -749,19 +815,22 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # Event <- elona_dem$Event
 # proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
 
-###2. Selection du modele ----
 
-# On veut analyser les proportions des classes d'âges par rapport aux sites et aux evenements
-# Il y a 4 possibilites
+### 2. Selection du modele ----
 
-#### 1. Regression logistique ----
+# On veut analyser les proportions des classes d ages par rapport aux sites et aux evenements
+# Il y a 4 possibilites :
+
+
+#### a. Regression logistique ----
 # En effet on veut une analyse de proportions donc on pourrait realiser 3 modeles
 # de regression logistique.
 
 # Cependant ici nous voulons analyser 3 variables quantitatives differentes,
 # ce qui n'est pas compatible avec une regression logistique multivariee.
 
-#### 2. RDA ----
+
+#### b. RDA ----
 # En effet on veut analyser les relations entre un tableau avec les proportions 
 # et un tableau avec les caracteristiques des captures.
 
@@ -778,7 +847,8 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 
 # plot(RDA, display=c("species","cn"))
 
-#### 3. ACP ----
+
+#### c. ACP ----
 # Il s'agit d'un equivalent de la RDA mais concentre sur l'explication des donnees.
 
 # Cependant la structure des donnees ne correspond pas a la methode.
@@ -795,7 +865,8 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # library(Factoshiny)
 # res <- Factoshiny(proportions)
 
-#### 4. Regression lineaire multiple ----
+
+#### d. Regression lineaire multiple ----
 # La structure du modele n'est pas analysable par les outils communs.
 
 # ↓ code de la tentative
@@ -807,14 +878,14 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # drop1(demo_model)
 # add1(demo_model)
 
-# Malgre nos tentatives, nous n'avons donc pas reussis a analyser la demographie. 
+# Malgre nos tentatives, nous n avons donc pas reussi a analyser la demographie. 
 
 
-" A partir d'ici je ne comprend pas ce qui est fait ni dans quelle cadre cela s'inscrit "
+# Analyse du bootstrap
 
 # Homoscedasticite : ncvTest {car} (cad homogeneite des variances)
 # (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
-confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut etre long
+confint(m1, level = 0.95, method = "boot", nsim = 50) # ! attention peut etre long
 # 50 Bootstrap : 
 #                             2.5 %    97.5 %
 # .sig01                 1.928837139  2.255510
@@ -859,6 +930,7 @@ summary(elona_recapture_cor)
 
 
 ###PLOT OBS -----
+
 summary(elona_recapture)
 head(elona_recapture)
 table(elona_recapture$Diameter)
@@ -873,6 +945,8 @@ par(mfrow = c(1, 1))
 # A<-CookD(m1,newwd=TRUE)#le calcul semble trop long, perturbe le logiciel
 # plot(A)
 # plot.lm(m1)
+
+
 
 # LIMITE DE L'ETUDE ------------------------------------------------------------
 
@@ -894,6 +968,8 @@ par(mfrow = c(1, 1))
 # Nous avons fait l'hypothese que les escargots n'ont pas migre d'un site a l'autre durant toute la duree de l'echantillonnage.
 
 # L'estimation de la demographie aurait pu nous aiguiller sur l'hypothese que les escargots du nouveau sites n'ont pas encore atteint la capacite limite du milieu. 
+
+
 
 # CONCLUSION -------------------------------------------------------------------
 
