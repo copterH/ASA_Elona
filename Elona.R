@@ -236,7 +236,7 @@ ggplot(data = elona_recapture,
 
 
 # Il semble y avoir une colinéarité assez forte entre le diamètre et le péristome.
-# De plus, si l'on considère la classe d'âge,on observe que les individus avec un 
+# De plus, si l'on considère la classe d'age,on observe que les individus avec un 
 # petit diamètre et péristome sont les juvéniles, ce qui fait sens biologiquement.
 # Le diamètre et le péristome des individus des deux sites sont confondus pour les juvéniles.
 
@@ -728,15 +728,18 @@ summary(gam_peris)  # Coefficient StageSUB p = 8.71e-08(bs = re) vs 8.66e-08(bs 
 r2(gam_peris) # Pas de changement selon l'argument bs
 # R2: 0.825
 # R-sq.(adj) =  0.758   Deviance explained = 82.5%
-#Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
+# Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome)
+
 
 
 # III - DEMOGRAPHIE ------------------------------------------------------------
 
-###1. Preparation des donnees ----
-#On cherche a expliquer les proportions dans chaque classe d'age en fonction des sites et du lieu:
-#f(proportion de chaque classe d'âge)= Site + Date
-# On considere que les individus retrouves morts comme appartenant a leur classe d'âge respective. 
+
+### 1. Preparation des donnees ----
+
+# On cherche a expliquer les proportions dans chaque classe d'age en fonction des sites et du lieu:
+# f(proportion de chaque classe d'age) = Site + Date
+# On considere que les individus retrouves morts comme appartenant a leur classe d age respective. 
 
 elona_dem <- data.frame(matrix(ncol = 6, nrow = 0))
 L_Site <- c()
@@ -786,7 +789,8 @@ ggplot(data = elona_dem)+
 
 ggplot(data = elona_dem)+
   geom_col(aes(Event_Site, Prop_SUB, fill = Site))
-#plus forte proportion de juveniles dans l'ancien site (forte densite) ; et d'adultes dans le nouveau site (faible densite)
+# Plus forte proportion de juveniles dans l'ancien site (forte densite);
+# et d'adultes dans le nouveau site (faible densite)
 
 
 # On extrait ensuite les proportions dans un nouveau tableau
@@ -798,19 +802,22 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # Event <- elona_dem$Event
 # proportions <- data.frame(prop_ad, prop_sub, prop_juv, Site, Event)
 
-###2. Selection du modele ----
 
-# On veut analyser les proportions des classes d'âges par rapport aux sites et aux evenements
-# Il y a 4 possibilites
+### 2. Selection du modele ----
 
-#### 1. Regression logistique ----
+# On veut analyser les proportions des classes d ages par rapport aux sites et aux evenements
+# Il y a 4 possibilites :
+
+
+#### a. Regression logistique ----
 # En effet on veut une analyse de proportions donc on pourrait realiser 3 modeles
 # de regression logistique.
 
 # Cependant ici nous voulons analyser 3 variables quantitatives differentes,
 # ce qui n'est pas compatible avec une regression logistique multivariee.
 
-#### 2. RDA ----
+
+#### b. RDA ----
 # En effet on veut analyser les relations entre un tableau avec les proportions 
 # et un tableau avec les caracteristiques des captures.
 
@@ -827,7 +834,8 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 
 # plot(RDA, display=c("species","cn"))
 
-#### 3. ACP ----
+
+#### c. ACP ----
 # Il s'agit d'un equivalent de la RDA mais concentre sur l'explication des donnees.
 
 # Cependant la structure des donnees ne correspond pas a la methode.
@@ -844,7 +852,8 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # library(Factoshiny)
 # res <- Factoshiny(proportions)
 
-#### 4. Regression lineaire multiple ----
+
+#### d. Regression lineaire multiple ----
 # La structure du modele n'est pas analysable par les outils communs.
 
 # ↓ code de la tentative
@@ -856,14 +865,14 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # drop1(demo_model)
 # add1(demo_model)
 
-# Malgre nos tentatives, nous n'avons donc pas reussis a analyser la demographie. 
+# Malgre nos tentatives, nous n avons donc pas reussi a analyser la demographie. 
 
 
-" A partir d'ici je ne comprend pas ce qui est fait ni dans quelle cadre cela s'inscrit "
+# Analyse du bootstrap
 
 # Homoscedasticite : ncvTest {car} (cad homogeneite des variances)
 # (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
-confint(m1, level = 0.95, method = "boot", nsim = 50)#! attention peut etre long
+confint(m1, level = 0.95, method = "boot", nsim = 50) # ! attention peut etre long
 # 50 Bootstrap : 
 #                             2.5 %    97.5 %
 # .sig01                 1.928837139  2.255510
@@ -908,6 +917,7 @@ summary(elona_recapture_cor)
 
 
 ###PLOT OBS -----
+
 summary(elona_recapture)
 head(elona_recapture)
 table(elona_recapture$Diameter)
@@ -922,6 +932,8 @@ par(mfrow = c(1, 1))
 # A<-CookD(m1,newwd=TRUE)#le calcul semble trop long, perturbe le logiciel
 # plot(A)
 # plot.lm(m1)
+
+
 
 # LIMITE DE L'ETUDE ------------------------------------------------------------
 
@@ -943,6 +955,8 @@ par(mfrow = c(1, 1))
 # Nous avons fait l'hypothese que les escargots n'ont pas migre d'un site a l'autre durant toute la duree de l'echantillonnage.
 
 # L'estimation de la demographie aurait pu nous aiguiller sur l'hypothese que les escargots du nouveau sites n'ont pas encore atteint la capacite limite du milieu. 
+
+
 
 # CONCLUSION -------------------------------------------------------------------
 
