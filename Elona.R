@@ -180,10 +180,18 @@ ggplot(data = elona_recapture,
            shape = Site, col = Stage)) +
   geom_point() +
   scale_shape_manual(values = c(0,1,2))
+
 # Il semble y avoir une colinéarité assez forte entre le diamètre et le péristome 
 # De plus, si l'on considère la classe d'âge,on observe que les individus avec un petit diamètre et péristome sont les juvéniles, ce qui fait sens biologiquement.
 # Le diamètre et le péristome des individus des deux sites sont confondus pour les juvéniles.
-# Mais il semble qu'il y ait une légère différence de tailles pour les individus adultes selon le site. 
+
+ggplot(data = elona_recapture %>% filter(Stage == "AD" & Diameter >= 15),  
+       aes(geom_point, x = Peristome, y = Diameter,
+           col = Site)) +
+  geom_point() +
+  scale_shape_manual(values = c(0,1,2))
+
+# En ne regardant que les adultes, il semble qu'il y ait une différence de taille selon le site. 
 
 
 
