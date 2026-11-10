@@ -456,7 +456,8 @@ vif(m1_inter) # GVIF ~1 donc colinearite moderee
 # GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
 
 # Regles lecture fiv coeff 
-# VIF = 1 : il n’existe aucune correlation entre une variable predictive donnee et toute autre variable predictive du modele.
+# VIF = 1 : il n’existe aucune correlation entre une variable predictive
+# donnee et toute autre variable predictive du modele.
 # VIF entre 1 et 5 : il existe une correlation moderee entre une variable predictive donnee et d’autres variables predictives du modele.
 # VIF > 5 : il existe une forte correlation entre une variable predictive donnee et d’autres variables predictives dans le modele.
 # GVIF = generalized Variation Inflation Factor | GVIFj =(1/ (1−Rj^2 )^d)
