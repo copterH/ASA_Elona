@@ -544,7 +544,10 @@ summary(m1_inter)
 # Dans le summary on voit que l'estimate associe au changement de Site est
 # faible (devant l'intercept et devant l'effet du changement de stade (JUV)).
 # Cela confirme l'effet significatif mais faible du site.
-#Pour le stade (classe d'age) on voit que le coefficient de l'intercept(SiteOld_Highdensity:stageAD) est fort, et que au sein de chaque site y a un plus fort coefficient en stage juvenilequ'en au stade subadulte (par rapport au stade adulte, condition de reference)
+# Pour le stade (classe d age) on voit que le coefficient de l'intercept
+# (SiteOld_Highdensity:stageAD) est fort, et que au sein de chaque site y a un
+# plus fort coefficient en stage juvenile qu au stade subadulte
+# (par rapport au stade adulte, condition de reference).
 # Le modele est donc valide mais montre que le site a un effet significatif
 # mais faible sur le diametre comparativement aux autres variables. 
 
@@ -567,7 +570,7 @@ summary(m1_inter)
 # *Event et Date sont colineaire, nous n'avons conserve que Date
 # *IDZone n'est pas pertient a ajouter car les noms sont repetes entre les deux sites.
 
-m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC),
+m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event + (1|Date) + (1|ID_1erC),
                  data = elona_recapture)
 anova(m1_comp)
 # Toutes la variables sauf Activity sont significatives, on la retire donc.
@@ -584,9 +587,12 @@ anova(m2_inter)
 # L'interaction porte une part significative de la variance dans le modele
 # Le stage est la p_valeur la plus forte mais on retrouve aussi un effet significatif du site.
 # Type_Event porte aussi une part significative de la variance dans le modele
+
 summary(m2_inter)
-# en site de reference (Old_Highdensity): l'effet du stade juvenile est plus important que celui de subadulte, par rapport au stade adulte
-# en site recent, on voit peu de difference entre les stades
+
+# En site de reference (Old_Highdensity): l'effet du stade juvenile est plus
+# important que celui de subadulte, par rapport au stade adulte.
+# En site recent, on voit peu de difference entre les stades.
 
 ### 2. Conditions de validite ----
 
@@ -759,9 +765,10 @@ summary(gam_peris_inter)
 # Significativite de l'effet de du Site : Peristome ont un diametre legerement
 # plus gros sur le site recent a faible densite de population (augmentation legere mais tres significative)
 # Meme interpretation que pour le diametre pour le stade juvenile et subadulte :
-# un effet significativement negatif par rapport au stade adulte, ce qui est lie a la croissance
+# un effet significativement negatif par rapport au stade adulte, ce qui est lie a la croissance.
 
-# Les coefficients des variables sont faibles (-1 et 1) les effets de ces variables sont donc faible dans le modele malgre leur significativite
+# Les coefficients des variables sont faibles (-1 et 1), les effets de ces
+# variables sont donc faible dans le modele malgre leur significativite.
 
 
 # Significativite du modele GAM : R²
@@ -956,7 +963,7 @@ par(mfrow = c(1, 1))
 # Nous ne pouvons pas determiner si les quadrats (au sein d'un meme site) ont
 # des ressources differentes ou non.
 # Le jeu de donnees ne nous permet pas de prendre en compte si les escargots
-# bougent ou pas car nous n'avons leur quadrat que pour leur premiere capture.
+# bougent ou non car nous n'avons leur quadrat que pour leur premiere capture.
 # Nous ne savons pas non plus s'il est possible pour les escargots de parcourir
 # les 500m qui separent les sites. 
 
@@ -966,7 +973,7 @@ par(mfrow = c(1, 1))
 # replicats (il n'y a que des pseudo-repliquats), il est donc impossible de
 # generaliser les conclusions de cette etude.
 # De plus, rien n'indique que ces sites sont equivalents en termes de ressources
-# alimentaires, qualite d'habitats.
+# alimentaires ou de qualite d'habitats.
 # Pour reellement etudier l'effet de la densite de population sur les
 # caracteristiques morphologiques il faudrait realiser une etude demographique
 # et utiliser la densite de population en varaible explicative, mais aussi
@@ -982,15 +989,20 @@ par(mfrow = c(1, 1))
 # l'autre durant toute la duree de l'echantillonnage.
 
 # L'estimation de la demographie aurait pu nous aiguiller sur l'hypothese que les
-# escargots du nouveau sites n'ont pas encore atteint la capacite limite du milieu. 
+# escargots du nouveau site n'ont pas encore atteint la capacite limite du milieu. 
 
 
 
 # CONCLUSION -------------------------------------------------------------------
 
+# Aucun des modeles ne remplissaient les conditions de validite, notamment celle
+# de la normalité des residus. Dans un cadre theorique, nous n aurions pas pu
+# interpreter. Dans le cadre de notre projet, nous nous sommes permis de le faire
+# pour apporter un minimum d interpretation.
+
 # Dans les modeles testes, le diametre et le peristome sont en premier lieu 
 # affecte par le stade de developpement ce qui est coherent avec l'interpretation
-# biologique: la croissance impacte la taille. 
+# biologique : la croissance impacte la taille. 
 
 # Le site a egalement un effet important : les escargots adultes sont plus
 # gros sur le nouveau site, avec une faible densite de population.
