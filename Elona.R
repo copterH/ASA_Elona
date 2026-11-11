@@ -34,6 +34,7 @@ library(lmerTest)
 # IMPORTATION DES DONNEES ------------------------------------------------------
 
 ## 1. Importation et gestion des classes ----
+
 # Le tableau de donnees est organise en deux feuilles :
 # firstcapture donnant l inventaire de tous les individus, et recapture
 # informant sur les donnees prises lors de la recapture de ces memes individus.
@@ -151,6 +152,7 @@ elona_firstcapture$Stage[which(elona_firstcapture$Stage=="NA")]<- NA
 elona_firstcapture$Stage = droplevels(elona_firstcapture$Stage)
 table(elona_firstcapture$Stage)
 
+
 ## 3. Rajout des donnees de firstcapture dans recapture ----
 
 # Certains escargots ne sont pas recaptures, ils ne figurent donc pas dans le
@@ -190,14 +192,14 @@ summary(elona_recapture$Diameter)
 
 # Peristome
 par(mfrow=c(1,2))
-boxplot(elona_recapture$Peristome)
+boxplot(elona_recapture$Peristome, main = 'Peristome')
 # Une valeur tres tres haute (901mm) => Cela parait tres improbable, nous avons
 # fait le choix de la retirer 
 summary(elona_recapture$Peristome)
 elona_recapture$Peristome[which.max(elona_recapture$Peristome)] <- NA
+boxplot(elona_recapture$Peristome, main = 'Peristome wt 1rst outlier')
 
-boxplot(elona_recapture$Peristome)
-# On en a encore 3 grandes valeurs, on ne sait pas si c'est probable ou pas
+# On en a encore 3 grandes valeurs, on ne sait pas si c est probable ou pas
 summary(elona_recapture$Peristome)
 elona_recapture[which(elona_recapture$Peristome>15),]
 # Les 3 points correspondent a des valeurs de peristome plus larges que la taille
@@ -287,19 +289,20 @@ plot(elona_recapture$Activity ~ elona_recapture$Type_Event,
 
 # Il faut aussi verifier une eventuelle colinearite entre les X.
 
-par(mfrow=c(1,2))
 
 #### a. Year ----
 
+par(mfrow=c(1,2))
+
 ## Diameter and year 
 boxplot(elona_recapture$Diameter~elona_recapture$Year, varwidth = TRUE, ylab = "Diameter", 
-        xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,25), main = "Recapture Diameter ")
+        xlab = "Year",col=c('steelblue','darkgreen', 'pink'), ylim = c(0,25), main = "Recapture Diameter ")
 # Les diametres des coquilles ne semblent pas augmenter au cours du temps.
 
 
 ## Peristome and year
 boxplot(elona_recapture$Peristome~elona_recapture$Year, varwidth = TRUE, ylab = "Peristome",
-        xlab = "Year",col=c('royalblue','chartreuse'), ylim = c(0,12), main = "Recapture Peristome")
+        xlab = "Year",col=c('royalblue','chartreuse', 'plum3'), ylim = c(0,12), main = "Recapture Peristome")
 # Tendance a legere augmentation au cours du temps de la taille du peristome.
 
 
@@ -343,7 +346,7 @@ corrplot.mixed(MRC,upper="square",lower.col="black", tl.col="black",cl.cex = 0.8
 sum(is.na(elona_recapture_cor)) # 6 NA 
 which(is.na(elona_recapture_cor)) # 6 NA 
 
-# Seules les variables numeriques peuvent etre prises en compte dans la matrice de correlation
+# Seules les variables numeriques peuvent etre prises en compte dans la matrice de correlation.
 
 
 ## 9. Description spatiale ----
@@ -359,8 +362,7 @@ elona_sf <- elona_firstcapture[,c("Site",
 elona_sf$X <- as.numeric(as.character(elona_sf$X))
 elona_sf$Y <- as.numeric(as.character(elona_sf$Y))
 elona_sf <- elona_sf %>%
-  st_as_sf(coords = c("X", 
-                      "Y"))
+  st_as_sf(coords = c("X", "Y"))
 
 # We separate the old and new sites because some zone with the same ID (but different coordinates).
 elona_sf_old <- elona_sf %>%
@@ -409,7 +411,7 @@ mapview(elona_sf,
 # Modele mixte du diametre avec toutes* les variables explicatives, dont la date
 # et n° d identification en variables aleatoires :
 # *Event et Date sont colineaires, nous n'avons conserve que Date
-# *IDZone n'est pas pertinent a ajouter car les noms sont repetes entre les deux sites
+# *IDZone n'est pas pertinent a ajouter car les noms sont repetes entre les deux sites.
 
 m1_comp <- lmer(Diameter ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC),
                 data = elona_recapture)
@@ -434,7 +436,7 @@ anova(m1_inter)
 # Le site est moins significatif que dans le modele precedent, mais l interaction
 # avec l age est aussi significative (elle a surement "absorbe" une partie de l'effet du Site).
 
-# Nous conserverons le modele m1_inter
+# Nous conserverons le modele m1_inter.
 
 
 ## 2. Conditions de validite ----
@@ -470,7 +472,7 @@ plot(m1_inter)
 ### d. Colinearite entre les variables X num ou facteur -----
 
 # vif{car}
-vif(m1_inter) # GVIF ~1 donc colinearite moderee
+vif(m1_inter) # GVIF ~ 1 donc colinearite moderee
 # GVIF = 1.04 a 2.48 = plutot faible donc pas trop de colinearite
 
 # Regles lecture fiv coeff 
@@ -488,58 +490,45 @@ vif(m1_inter) # GVIF ~1 donc colinearite moderee
 # Significativite de la variance associe au facteur aleatoire
 # intervals(m1) # Ne Fonctionne pas, doit etre adapte a lme et pas a lmer, qu on utilise ici
 
-
 mod_test <- lm (Diameter ~ Site + Peristome + Stage + Type_Event, data = elona_recapture_cor)
 mod_test_tot <- lm (Diameter ~ Site + Peristome + Stage + Type_Event + Event + Day + ID_1erC,
                     data = elona_recapture_cor)
+
 # Modele lineaire simple avec toutes les variables qui ne sont pas des
-# "aliased coeff" pour faire fonctionner la fonction vif{car}
-vif(mod_test_tot) # Erreur : donne des resultats NA ou infini
-# Erreur :   there are aliased coefficients in the model
+# "aliased coeff" pour faire fonctionner la fonction vif{car}.
+vif(mod_test)
 
-# #                  GVIF  Df GVIF^(1/(2*Df))
-# Site       1.594304e+02   1       12.626574
-# Peristome  5.746555e+00   1        2.397197
-# Stage      1.100995e+01   2        1.821572
-# Type_Event 5.381555e+00   2        1.523095 
-# Event      2.108339e+06  19        1.466964
-# Day        3.388570e+02   1       18.408068
-# ID_1erC    3.271475e+07 508        1.017177
+#                 GVIF Df GVIF^(1/(2*Df))
+# Site       1.154095  1        1.074288
+# Peristome  1.855775  1        1.362268
+# Stage      1.792451  2        1.157076
+# Type_Event 1.195633  2        1.045682
 
-# Multicolinearite moderee pour  Peristome et Type Event ?
+# Multicolinearite moderee pour Peristome et Type Event ?
 # Forte pour Site, Day, Peristome (erreur type gonflee ?)
-# Grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses
+# Grave pour Event, ID_1erC (estimateur instable) --> on ne les utilise pas trop dans les analyses.
 
 sort(vif(mod_test_tot), decreasing = TRUE)
 vif(mod_test) # GVIF = 1 --> colinearite moderee
 
-# confint (mod_test_tot, level = 0.95, method = "boot", nsim = 500)# /!\ ne pas run car calcul long!!
-# 500 bootstrap
-#                                            2.5 %        97.5 %
-# (Intercept)                           3.56422468  7.932955e+00
-# SiteRecent_lowdensity                -1.11733205  3.775009e-01
-# Peristome                             1.45544302  1.634215e+00
-# StageJUV                             -1.91943213 -1.455367e+00
-# StageSUB                             -0.65383084 -1.707252e-01
-# Type_EventR                          -0.17528457  1.605032e-01
-# Type_EventR_MORT                     -1.08266541 -9.938132e-03
-# EventE02                             -2.05426208  1.273395e+00
-# EventE03                              0.03046729  1.027276e+00
-# EventE04                             -1.17696363  1.687324e+00
-# EventE09                              0.43151888  1.177013e+00
-# EventE10                             -1.21769069  2.102742e+00
 
 ## 3. Interpretation ----
+
 r2_nakagawa(m1_inter)
+
 # 42% de la variance est expliquee par les effets fixes
 # et 84% de la variance est expliquee par les effets fixes et aleatoires. 
 # L effet aleatoire explique donc une grande part de la variabilite. 
-# Les variables fixes ont toutefois un effet significatif. 
+# Les variables fixes ont toutefois un effet significatif.
+
 anova(m1_inter)
+
 # Le stade est la variable qui a le plus d'effet (p value tres faible).
 # Toutefois le site et son interaction avec le stade ont un effet signifcatif. 
-# Mais leur effet est bien plus faible. 
+# Mais leur effet est bien plus faible.
+
 summary(m1_inter)
+
 # Dans le summary on voit que l'estimate associe au changement de Site est
 # faible (devant l'intercept et devant l'effet du changement de stade (JUV)).
 # Cela confirme l'effet significatif mais faible du site.
@@ -549,7 +538,7 @@ summary(m1_inter)
 
 
 
-#II - PERISTOME
+# II - PERISTOME ---------------------------------------------------------------
 
 
 ## A. LMM ----
@@ -558,14 +547,14 @@ summary(m1_inter)
 ### 1. Creation du modele ----
 
 
-# Le site et le stade de developpement sont des variables factorielles dont on observe l'effet, 
-# tandis que la date et le n° d'identifications sont des variables avec de
-# nombreuses valeurs differentes (d'ou les variables a effet fixe), qui impactent
-# egalement la variable reponse mais ne constituent pas l'effet principal observe
-# en priorite (d'ou les variables a effets aleatoires)
+# Le site et le stade de developpement sont des variables factorielles dont on
+# observe l effet, tandis que la date et le n° d'identifications sont des variables
+# avec de nombreuses valeurs differentes (d'ou les variables a effet fixe), qui
+# impactent egalement la variable reponse mais ne constituent pas l'effet principal
+# observe en priorite (d'ou les variables a effets aleatoires).
 
 # *Event et Date sont colineaire, nous n'avons conserve que Date
-# *IDZone n'est pas pertient a ajouter car les noms sont repetes entre les deux sites
+# *IDZone n'est pas pertient a ajouter car les noms sont repetes entre les deux sites.
 
 m1_peris <- lmer(Peristome ~ Site + Stage + Activity + Type_Event +(1|Date) + (1|ID_1erC),
                  data = elona_recapture)
@@ -575,9 +564,11 @@ anova(m1_comp)
 m_peris <- lmer(Peristome ~ Site + Stage + Type_Event + (1|ID_1erC) + (1|Date),
                 data=elona_recapture)
 anova(m_peris)
+# Comme pour le diametre le dite semble avoir un effet different sur le peristome
+# des adultes (ligne 187)
 
-# Comme pour le diametre le dite semble avoir un effet different sur le peristome des adultes (ligne 187)
-m2_inter <-lmer(Peristome ~ Site + Stage + Site:Stage + Type_Event +(1|Date)+(1|ID_1erC), data = elona_recapture)
+m2_inter <-lmer(Peristome ~ Site + Stage + Site:Stage + Type_Event + (1|Date) + (1|ID_1erC),
+                data = elona_recapture)
 anova(m2_inter)
 # L'interaction porte une part significative de la variance dans le modele
 
@@ -588,30 +579,33 @@ anova(m2_inter)
 #### a. Normalite des residus ----
 
 par(mfrow=c(1,2))
-# Histogram
+# Histogramme
 hist(residuals(m2_inter),col='dodgerblue3',xlab="residuals",main="Check Normality") 
 # Quantile-Quantile plot
-qqnorm(residuals(m2_inter),pch=16,col='dodgerblue3',xlab='') #les residus ne semblent pas suivre distribution normale
+qqnorm(residuals(m2_inter),pch=16,col='dodgerblue3',xlab='')
+# Les residus ne semblent pas suivre distribution normale
 qqline(residuals(m2_inter),col='red')
-# La normalite des residus n'est pas tout a fait respectee. Les valeurs extremes s'eloignent un peu trop. 
+# La normalite des residus n'est pas tout a fait respectee.
+# Les valeurs extremes s'eloignent un peu trop. 
 
 
 #### b. Homoscedasticite ----
 
-plot(m2_inter) # heteroscedasticite encore plus forte que l'on prendra en compte lors de l'interpretations
-#La variance est plus faible pour les hautes valeurs de peristome
+plot(m2_inter)
+# Heteroscedasticite encore plus forte que l'on prendra en compte lors de l interpretation.
+# La variance est plus faible pour les hautes valeurs de peristome
 
 
 #### c. Residus independants ----
 
 # L independance des residus n est pas un critere pour les modeles lineaires
-# general mixte, donc n'est pas necessaire d'etre valide. 
+# general mixte, donc n est pas necessaire d etre valide. 
 
 
 #### d. Colinearite entre les variables X num ou facteur -----
 
-vif(m2_inter) #GVIF ~1 donc colinearite moderee
-#GVIF = 1.001 a 1.003 = plutot faible donc pas de colinearite tres marquee.
+vif(m2_inter)
+# GVIF = 1.03 a 2.42 = plutot faible donc pas de colinearite tres marquee.
 
 
 
@@ -625,7 +619,7 @@ vif(m2_inter) #GVIF ~1 donc colinearite moderee
 
 # On transforme Date en temps depuis le debut de l experience
 # parce que les GAM n acceptent pas les donnees au format Dates.
-temps <- elona_recapture[,12] - min(elona_recapture$Date)
+temps <- elona_recapture$Date - min(elona_recapture$Date)
 elona_recapture$temps <- temps
 elona_recapture$temps <- as.numeric(elona_recapture$temps)
 class(elona_recapture$temps)
@@ -967,7 +961,7 @@ subset(elona_recapture, elona_recapture$Peristome>19)
 nrow(table(elona_recapture$Date))
 table (elona_recapture$Site)
 table(elona_recapture$Stage)
-#diagramme de cook (valeurs extremes du modele ?)
+# Diagramme de cook (valeurs extremes du modele ?)
 par(mfrow = c(1, 1))
 # A<-CookD(m1,newwd=TRUE)#le calcul semble trop long, perturbe le logiciel
 # plot(A)
