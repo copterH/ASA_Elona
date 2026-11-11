@@ -248,7 +248,7 @@ boxplot(elona_recapture$Diameter~elona_recapture$Type_Event, varwidth = TRUE, yl
 ## 8. selection Lignes où peristome n'est pas NA select{dplyr} -----
 summary(elona_recapture$Peristome)#initiallement, 148 NA
 summary(elona_recapture$Diameter)#initiallement, 84 NA
-elona_recapture_cor <- 
+elona_recapture_cor <- s
   subset (elona_recapture, 
           elona_recapture$Peristome != "NA" &  elona_recapture$Diameter!="NA" )
 dim(elona_recapture_cor) ; dim(elona_recapture) #verifier le nb de lignes supprimees
