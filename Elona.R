@@ -920,7 +920,8 @@ confint(m1, level = 0.95, method = "boot", nsim = 50) # ! attention peut etre lo
 # Checking collinearity between categorical and continuous independent variables
 par(mfrow=c(2,2))
 
-boxplot(elona_recapture$Diameter~elona_recapture$Stage, varwidth = TRUE, ylab = "Diameter", xlab = "Age Stage", col='grey', main = "")
+boxplot(elona_recapture$Diameter~elona_recapture$Stage, varwidth = TRUE,
+        ylab = "Diameter", xlab = "Age Stage", col='grey', main = "")
 
 
 
@@ -950,31 +951,48 @@ par(mfrow = c(1, 1))
 
 # LIMITE DE L'ETUDE ------------------------------------------------------------
 
-# Certaines imprecision nous limitent dans notre comprehension des donnees par exemple
-# Nous ne pouvons pas determiner si les quadrats (au sein d'un meme site) ont des ressources differentes ou pas
-# Le jeu de donnees ne nous permet pas de prendre en compte si les escargots bougent ou pas car nous n'avons leur quadrat que pour leur premiere capture
-# Nous ne savons pas non plus s'il est possible pour les escargots de parcourir les 500m qui separent les sites. 
+# Certaines imprecision nous limitent dans notre comprehension des donnees par exemple.
+# Nous ne pouvons pas determiner si les quadrats (au sein d'un meme site) ont
+# des ressources differentes ou non.
+# Le jeu de donnees ne nous permet pas de prendre en compte si les escargots
+# bougent ou pas car nous n'avons leur quadrat que pour leur premiere capture.
+# Nous ne savons pas non plus s'il est possible pour les escargots de parcourir
+# les 500m qui separent les sites. 
 
 
-# Il faut noter que cette etude ne porte que sur la difference de traits morphologique et demographique entre deux zones, du fait de l'abscence de replicats (il n'y a que des pseudo-repliquats), 
-# il est donc impossible de generaliser les conclusions de cette etude.
-# De plus, rien n'indique que ces sites sont equivalents en termes de ressources alimentaires, qualite d'habitats
-# Pour reellement etudier l'effet de la densite de population sur les caracteristiques morphologiques il faudrait realiser une etude demographique et utiliser la densite de population en varaible explicative, 
-# mais aussi prendre en compte les possibles differences dans les caracteristiques (biotiques et abiotiques) des milieux (type de substrat, conditions de vie, vitesse de deplacement...)
+# Il faut noter que cette etude ne porte que sur la difference de traits
+# morphologique et demographique entre deux zones, du fait de l'abscence de
+# replicats (il n'y a que des pseudo-repliquats), il est donc impossible de
+# generaliser les conclusions de cette etude.
+# De plus, rien n'indique que ces sites sont equivalents en termes de ressources
+# alimentaires, qualite d'habitats.
+# Pour reellement etudier l'effet de la densite de population sur les
+# caracteristiques morphologiques il faudrait realiser une etude demographique
+# et utiliser la densite de population en varaible explicative, mais aussi
+# prendre en compte les possibles differences dans les caracteristiques
+# (biotiques et abiotiques) des milieux (type de substrat, conditions de vie,
+# vitesse de deplacement...).
 
 
-# Pour approfondir les analyses, il faudrait plus de details sur la methode d'echantillonnage,
-# et un partitionnement plus fin de la classe juvenile aurait permis une variance plus faible dans cette categorie.  
-# Nous avons fait l'hypothese que les escargots n'ont pas migre d'un site a l'autre durant toute la duree de l'echantillonnage.
+# Pour approfondir les analyses, il faudrait plus de details sur la methode
+# d'echantillonnage, et un partitionnement plus fin de la classe juvenile
+# aurait permis une variance plus faible dans cette categorie.  
+# Nous avons fait l'hypothese que les escargots n'ont pas migre d'un site a
+# l'autre durant toute la duree de l'echantillonnage.
 
-# L'estimation de la demographie aurait pu nous aiguiller sur l'hypothese que les escargots du nouveau sites n'ont pas encore atteint la capacite limite du milieu. 
+# L'estimation de la demographie aurait pu nous aiguiller sur l'hypothese que les
+# escargots du nouveau sites n'ont pas encore atteint la capacite limite du milieu. 
 
 
 
 # CONCLUSION -------------------------------------------------------------------
 
-#Dans les modeles testes, le diametre et le peristome sont en premier lieu affecte par le stade de developpement
-#Ce qui est coherent avec l'interpretation biologique: la croissance impacte la taille. 
+# Dans les modeles testes, le diametre et le peristome sont en premier lieu 
+# affecte par le stade de developpement ce qui est coherent avec l'interpretation
+# biologique: la croissance impacte la taille. 
 
-#Le site a egalement un effet important : les escargots adultes sont plus gros sur le nouveau site, avec une faible densite de population.
-#Cela peut etre lie a differents facteurs : la plus grande quantite de ressources disponibles (liees a la densite de population), le type de milieu (substrat, exposition aux predateurs)...
+# Le site a egalement un effet important : les escargots adultes sont plus
+# gros sur le nouveau site, avec une faible densite de population.
+# Cela peut etre lie a differents facteurs : la plus grande quantite de
+# ressources disponibles (liees a la densite de population), le type de milieu
+# (substrat, exposition aux predateurs)...
