@@ -730,11 +730,11 @@ anova(gam_peris_inter)
 # l interaction entre le site et le stade de developpement.
 
 # Parametric Terms:
-#   df       F  p-value
-# Site        1  27.622 1.78e-07
-# Stage       2 101.518  < 2e-16
-# Type_Event  2  46.589  < 2e-16
-# Site:Stage  2   8.623 0.000193
+#             df     F  p-value
+# Site        1 11.52 0.000714
+# Stage       2 32.48 2.08e-14
+# Type_Event  2 19.12 7.04e-09
+# Site:Stage  2 11.40 1.26e-05
 
 summary(gam_peris_inter)  
 
@@ -745,11 +745,13 @@ summary(gam_peris_inter)
 # Meme interpretation que pour le diametre pour le stade juvenile et subadulte :
 # un effet significativement negatif par rapport au stade adulte, ce qui est lie a la croissance
 
+# ICIIIIIIII
+
 
 # Significativite du modele GAM : R²
 r2(gam_peris_inter) # Pas de changement selon l'argument bs
-# R2: 0.848
-# R-sq.(adj) =  0.785   Deviance explained = 84.8%
+# R2: 0.876
+# R-sq.(adj) =  0.817   Deviance explained = 87.6% (dans summary)
 # Le modele GAM est tres significatif : il explique tres bien la variable reponse (Peristome).
 
 
@@ -899,43 +901,6 @@ proportions <- data.frame(prop_AD, prop_SUB, prop_JUV)
 # add1(demo_model)
 
 # Malgre nos tentatives, nous n avons donc pas reussi a analyser la demographie. 
-
-
-# Analyse du bootstrap
-
-# Homoscedasticite : ncvTest {car} (cad homogeneite des variances)
-# (m1$Residuals)#ne fonctionne pas sur les modeles mixtes ;(
-confint(m1, level = 0.95, method = "boot", nsim = 50) # ! attention peut etre long
-# 50 Bootstrap : 
-#                             2.5 %    97.5 %
-# .sig01                 1.928837139  2.255510
-# .sig02                 0.004078734  5.162814
-# .sig03                 0.000000000  1.133452
-# .sig04                 0.119252867  3.317632
-# .sigma                 1.445200328  1.576007
-# (Intercept)           15.216941199 21.592898
-# SiteRecent_lowdensity  0.376591648  1.380474
-
-# 200 Bootstrap : 
-#                             2.5 %    97.5 %
-# .sig01                1.950901e+00  2.280667
-# .sig02                3.350949e-04  4.080984
-# .sig03                0.000000e+00  1.347881
-# .sig04                6.294728e-02  2.951125
-# .sigma                1.448151e+00  1.581611
-# (Intercept)           1.555703e+01 22.053213
-# SiteRecent_lowdensity 4.291910e-01  1.261994
-
-#500 Bootstrap : 
-#                             2.5 %    97.5 %
-# .sig01                1.969093e+00  2.281308
-# .sig02                9.295588e-04  3.928594
-# .sig03                0.000000e+00  1.142263
-# .sig04                6.463473e-02  2.947597
-# .sigma                1.454283e+00  1.581192
-# (Intercept)           1.601762e+01 21.652034
-# SiteRecent_lowdensity 4.479101e-01  1.345800
-
 
 # Checking collinearity between categorical and continuous independent variables
 par(mfrow=c(2,2))
